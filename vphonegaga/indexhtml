@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VPhoneGaGa Dashboard</title>
+<title>VPhoneGaGa Download</title>
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -162,3 +162,4 @@ if(width>=100) clearInterval(interval);
 
 </body>
 </html>
+
