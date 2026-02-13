@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VPhoneGaGa Dashboard</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white min-h-screen">
+
+<!-- ================= HEADER ================= -->
+<header class="flex items-center gap-4 h-14 px-4 border-b border-slate-800
+bg-slate-950/80 backdrop-blur sticky top-0 z-40">
+
+<!-- LEFT -->
+<div class="flex items-center gap-3">
+<button onclick="toggleMenu()" class="lg:hidden text-gray-300 text-xl">☰</button>
+<img src="https://modsfire.com/alt/assets/images/logo.png" class="h-7">
+</div>
+
+<!-- CENTER SEARCH -->
+<div class="flex-1 max-w-xl mx-auto">
+<input
+placeholder="Search apps..."
+class="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-2 outline-none focus:border-indigo-500">
+</div>
+
+<!-- DESKTOP MENU -->
+<nav class="hidden lg:flex items-center gap-6 text-sm text-gray-300">
+<a href="#" class="hover:text-white">Home</a>
+<a href="#" class="hover:text-white">Apps</a>
+<a href="#" class="hover:text-white">Download</a>
+<a href="#" class="hover:text-white">Help</a>
+</nav>
+
+<!-- RIGHT PROFILE -->
+<img src="https://i.pravatar.cc/40"
+class="w-9 h-9 rounded-full ring-2 ring-slate-700">
+
+</header>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu"
+class="lg:hidden hidden bg-slate-900 border-b border-slate-800 px-4 py-3 space-y-2">
+
+<a href="#" class="block py-2 text-gray-300 hover:text-white">Home</a>
+<a href="#" class="block py-2 text-gray-300 hover:text-white">Apps</a>
+<a href="#" class="block py-2 text-gray-300 hover:text-white">Download</a>
+<a href="#" class="block py-2 text-gray-300 hover:text-white">Help</a>
+
+</div>
+
+
+<!-- ================= MAIN ================= -->
+<main class="p-5 lg:p-8">
+
+<div class="max-w-4xl mx-auto space-y-6">
+
+<!-- APP CARD -->
+<div class="bg-white/5 backdrop-blur-md border border-white/10
+rounded-2xl p-4 lg:p-6 space-y-6 shadow-2xl">
+
+<!-- APP HEADER -->
+<div class="flex items-center gap-4">
+<img src="https://techylist.com/wp-content/uploads/2023/03/VPhoneGaga-icon.png" class="w-14 h-14 object-contain">
+<div>
+<h2 class="text-2xl font-bold">Virtual Machine App</h2>
+
+<div class="flex gap-2 mt-1">
+<span class="text-xs bg-indigo-600 px-2 py-1 rounded">v3.3.3</span>
+<span class="text-xs bg-emerald-600 px-2 py-1 rounded">390 MB</span>
+</div>
+</div>
+</div>
+
+<!-- DESCRIPTION -->
+<p class="text-gray-300 text-sm leading-relaxed">
+Create a virtual phone inside your real device. Install apps separately,
+run multiple accounts, and keep work & personal apps fully isolated.
+Switch instantly between environments.
+</p>
+
+<!-- DOWNLOAD -->
+<div class="space-y-3">
+<button onclick="startDownload()"
+class="bg-indigo-600 hover:bg-indigo-700 transition px-6 py-2 rounded-lg font-medium">
+Download APK
+</button>
+
+<div class="w-full h-2 bg-slate-800 rounded overflow-hidden">
+<div id="bar" class="h-full bg-indigo-500 w-0 transition-all duration-300"></div>
+</div>
+</div>
+
+<!-- DETAILS -->
+<div class="border border-slate-800 rounded-xl overflow-hidden text-sm">
+<div class="grid grid-cols-2 border-b border-slate-800">
+<div class="p-3 text-gray-400">Developer</div>
+<div class="p-3">Shenzhen Zhiduo Interactive</div>
+</div>
+<div class="grid grid-cols-2 border-b border-slate-800">
+<div class="p-3 text-gray-400">Category</div>
+<div class="p-3">Virtual Machine</div>
+</div>
+<div class="grid grid-cols-2">
+<div class="p-3 text-gray-400">Updated</div>
+<div class="p-3">2024</div>
+</div>
+</div>
+
+<!-- SCREENSHOTS -->
+<div>
+<h3 class="font-semibold mb-3">Screenshots</h3>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+<img src="https://picsum.photos/300?1" class="rounded-lg hover:scale-105 transition">
+<img src="https://picsum.photos/300?2" class="rounded-lg hover:scale-105 transition">
+<img src="https://picsum.photos/300?3" class="rounded-lg hover:scale-105 transition">
+</div>
+</div>
+
+<!-- INSTALL -->
+<div>
+<h3 class="font-semibold mb-2">How to Install</h3>
+<ol class="text-sm text-gray-300 space-y-1 list-decimal pl-5">
+<li>Download APK file</li>
+<li>Allow unknown sources</li>
+<li>Open installer</li>
+<li>Launch virtual phone</li>
+</ol>
+</div>
+
+<!-- ALTERNATIVES -->
+<div>
+<h3 class="font-semibold mb-1">Alternatives</h3>
+<p class="text-sm text-gray-400">VMOS Pro • X8Sandbox • Twoyi</p>
+</div>
+
+</div>
+</div>
+</main>
+
+
+<!-- ================= SCRIPT ================= -->
+<script>
+
+function toggleMenu(){
+document.getElementById("mobileMenu").classList.toggle("hidden");
+}
+
+function startDownload(){
+let bar=document.getElementById("bar");
+let width=0;
+let interval=setInterval(()=>{
+width+=5;
+bar.style.width=width+"%";
+if(width>=100) clearInterval(interval);
+},150);
+}
+
+</script>
+
+</body>
+</html>
