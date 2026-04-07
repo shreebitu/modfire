@@ -1,235 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Explore Files — ShreeBitu.in</title>
-<meta name="description" content="Explore and discover files shared by the community on ShreeBitu.in.">
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-<style>
-  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-  .fade-in { animation: fadeInUp 0.6s ease-out forwards; }
-  .fade-in-delay { animation: fadeInUp 0.6s ease-out 0.15s forwards; opacity: 0; }
-  .fade-in-delay-2 { animation: fadeInUp 0.6s ease-out 0.3s forwards; opacity: 0; }
-  .card-hover { transition: all 0.3s ease; }
-  .card-hover:hover { transform: translateY(-4px); border-color: #4f46e5; box-shadow: 0 8px 30px rgba(79,70,229,0.15); }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Files — ShreeBitu.in</title>
+  <meta name="description" content="Explore and discover files shared by the community on ShreeBitu.in.">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .fade-in-delay {
+      animation: fadeInUp 0.6s ease-out 0.15s forwards;
+      opacity: 0;
+    }
+
+    .fade-in-delay-2 {
+      animation: fadeInUp 0.6s ease-out 0.3s forwards;
+      opacity: 0;
+    }
+
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-4px);
+      border-color: #4f46e5;
+      box-shadow: 0 8px 30px rgba(79, 70, 229, 0.15);
+    }
+  </style>
 </head>
 
 <body class="bg-gray-950 text-gray-200">
 
-<!-- HEADER -->
-<header class="sticky top-0 z-50 backdrop-blur bg-gray-950/80 border-b border-gray-800">
-<div class="max-w-7xl mx-auto flex items-center justify-between px-6 h-16">
-  <div class="flex items-center gap-3">
-    <svg class="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="32" height="32" rx="8" fill="url(#logo-grad)"/>
-      <defs><linearGradient id="logo-grad" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#818cf8"/><stop offset="1" stop-color="#4f46e5"/></linearGradient></defs>
-      <text x="16" y="22" text-anchor="middle" fill="white" font-size="14" font-weight="bold" font-family="Arial, sans-serif">SB</text>
-    </svg>
-    <a href="index.html" class="text-lg font-semibold text-white hover:text-indigo-400 transition">ShreeBitu.in</a>
-  </div>
-  <nav class="hidden md:flex items-center gap-8 text-sm">
-    <a href="index.html" class="hover:text-white transition">Home</a>
-    <a href="upload.html" class="hover:text-white transition">Upload</a>
-    <a href="explore.html" class="text-white font-medium">Explore</a>
-    <a href="about.html" class="hover:text-white transition">About</a>
-    <a href="contact.html" class="hover:text-white transition">Contact</a>
-  </nav>
-  <a href="upload.html" class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-sm font-medium transition">
-    Upload File
-  </a>
-</div>
-</header>
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-gray-950/80 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 h-16">
+      <div class="flex items-center gap-3">
 
-<!-- HERO -->
-<section class="text-center py-16 px-6 fade-in">
-<div class="max-w-3xl mx-auto">
-  <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">
-    Explore Files
-  </h1>
-  <p class="mt-4 text-gray-400 text-lg">
-    Discover files, apps, documents, and media shared by the community on ShreeBitu.in.
-  </p>
-</div>
-</section>
-
-<!-- SEARCH BAR -->
-<section class="px-6 pb-12 fade-in-delay">
-<div class="max-w-3xl mx-auto">
-  <div class="relative">
-    <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-    </svg>
-    <input type="text" id="searchInput" placeholder="Search files by name or type..." 
-      class="w-full bg-gray-900 border border-gray-800 rounded-xl pl-12 pr-4 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-600 transition">
-  </div>
-
-  <!-- CATEGORY FILTERS -->
-  <div class="flex flex-wrap gap-3 mt-6">
-    <button class="filter-btn bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition" data-filter="all">All</button>
-    <button class="filter-btn bg-gray-900 border border-gray-800 text-gray-400 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white transition" data-filter="app">📱 Apps</button>
-    <button class="filter-btn bg-gray-900 border border-gray-800 text-gray-400 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white transition" data-filter="document">📄 Documents</button>
-    <button class="filter-btn bg-gray-900 border border-gray-800 text-gray-400 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white transition" data-filter="image">🖼️ Images</button>
-    <button class="filter-btn bg-gray-900 border border-gray-800 text-gray-400 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white transition" data-filter="media">🎬 Media</button>
-  </div>
-</div>
-</section>
-
-<!-- FILE GRID -->
-<section class="px-6 pb-20 fade-in-delay-2">
-<div class="max-w-6xl mx-auto">
-
-  <div id="fileGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-    <!-- Sample File Cards -->
-    <div class="card-hover bg-gray-900 border border-gray-800 rounded-2xl p-6" data-type="app">
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-12 h-12 bg-indigo-600/20 rounded-xl flex items-center justify-center text-2xl">📱</div>
-        <div>
-          <h3 class="text-white font-semibold">VPhoneGaGa APK</h3>
-          <p class="text-gray-500 text-xs">v2.5.1 • 45.2 MB</p>
-        </div>
+        <a href="index.html" class="text-lg font-semibold text-white hover:text-indigo-400 transition">ShreeBitu.in</a>
       </div>
-      <p class="text-gray-400 text-sm mb-4">Virtual phone application for Android devices with multiple features.</p>
-      <div class="flex items-center justify-between">
-        <span class="text-xs text-gray-500">Uploaded 2 days ago</span>
-        <button class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
+      <nav class="hidden md:flex items-center gap-8 text-sm">
+        <a href="index.html" class="hover:text-white transition">Home</a>
+        <a href="upload.html" class="hover:text-white transition">Upload</a>
+        <a href="explore.html" class="text-white font-medium">Explore</a>
+        <a href="about.html" class="hover:text-white transition">About</a>
+        <a href="contact.html" class="hover:text-white transition">Contact</a>
+      </nav>
+      <a href="upload.html"
+        class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-sm font-medium transition">
+        Upload File
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="text-center py-16 px-6 fade-in">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">
+        Explore Files
+      </h1>
+      <p class="mt-4 text-gray-400 text-lg">
+        Discover files, apps, documents, and media shared by the community on ShreeBitu.in.
+      </p>
+    </div>
+  </section>
+
+  <!-- SEARCH BAR -->
+  <section class="px-6 pb-12 fade-in-delay">
+    <div class="max-w-3xl mx-auto">
+      <div class="relative">
+        <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search files by name or type..."
+          class="w-full bg-gray-900 border border-gray-800 rounded-xl pl-12 pr-4 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-600 transition">
+      </div>
+
+      <!-- CATEGORY FILTERS -->
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button class="filter-btn bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition"
+          data-filter="all">All</button>
+        <button
+          class="filter-btn bg-gray-900 border border-gray-800 text-gray-400 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white transition"
+          data-filter="app">📱 Apps</button>
+        <button
+          class="filter-btn bg-gray-900 border border-gray-800 text-gray-400 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white transition"
+          data-filter="document">📄 Documents</button>
+        <button
+          class="filter-btn bg-gray-900 border border-gray-800 text-gray-400 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white transition"
+          data-filter="image">🖼️ Images</button>
+        <button
+          class="filter-btn bg-gray-900 border border-gray-800 text-gray-400 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white transition"
+          data-filter="media">🎬 Media</button>
       </div>
     </div>
+  </section>
 
-    <div class="card-hover bg-gray-900 border border-gray-800 rounded-2xl p-6" data-type="document">
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-12 h-12 bg-purple-600/20 rounded-xl flex items-center justify-center text-2xl">📄</div>
-        <div>
-          <h3 class="text-white font-semibold">Web Dev Guide</h3>
-          <p class="text-gray-500 text-xs">PDF • 12.8 MB</p>
+  <!-- FILE GRID -->
+  <section class="px-6 pb-20 fade-in-delay-2">
+    <div class="max-w-6xl mx-auto">
+
+      <div id="fileGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Sample File Cards -->
+        <div class="card-hover bg-gray-900 border border-gray-800 rounded-2xl p-6" data-type="app">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-indigo-600/20 rounded-xl flex items-center justify-center text-2xl">📱</div>
+            <div>
+              <h3 class="text-white font-semibold">VPhoneGaGa APK</h3>
+              <p class="text-gray-500 text-xs">v2.5.1 • 45.2 MB</p>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm mb-4">Virtual phone application for Android devices with multiple features.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-gray-500">Uploaded 2 days ago</span>
+            <button
+              class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
+          </div>
         </div>
-      </div>
-      <p class="text-gray-400 text-sm mb-4">Complete beginner guide to HTML, CSS and JavaScript development.</p>
-      <div class="flex items-center justify-between">
-        <span class="text-xs text-gray-500">Uploaded 5 days ago</span>
-        <button class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
-      </div>
-    </div>
 
-    <div class="card-hover bg-gray-900 border border-gray-800 rounded-2xl p-6" data-type="image">
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-12 h-12 bg-pink-600/20 rounded-xl flex items-center justify-center text-2xl">🖼️</div>
-        <div>
-          <h3 class="text-white font-semibold">Wallpapers Pack</h3>
-          <p class="text-gray-500 text-xs">ZIP • 89.5 MB</p>
+        <div class="card-hover bg-gray-900 border border-gray-800 rounded-2xl p-6" data-type="document">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-purple-600/20 rounded-xl flex items-center justify-center text-2xl">📄</div>
+            <div>
+              <h3 class="text-white font-semibold">Web Dev Guide</h3>
+              <p class="text-gray-500 text-xs">PDF • 12.8 MB</p>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm mb-4">Complete beginner guide to HTML, CSS and JavaScript development.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-gray-500">Uploaded 5 days ago</span>
+            <button
+              class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
+          </div>
         </div>
-      </div>
-      <p class="text-gray-400 text-sm mb-4">Collection of high-quality 4K wallpapers for desktop and mobile.</p>
-      <div class="flex items-center justify-between">
-        <span class="text-xs text-gray-500">Uploaded 1 week ago</span>
-        <button class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
-      </div>
-    </div>
 
-    <div class="card-hover bg-gray-900 border border-gray-800 rounded-2xl p-6" data-type="app">
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-12 h-12 bg-green-600/20 rounded-xl flex items-center justify-center text-2xl">📱</div>
-        <div>
-          <h3 class="text-white font-semibold">File Manager Pro</h3>
-          <p class="text-gray-500 text-xs">APK • 18.3 MB</p>
+        <div class="card-hover bg-gray-900 border border-gray-800 rounded-2xl p-6" data-type="image">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-pink-600/20 rounded-xl flex items-center justify-center text-2xl">🖼️</div>
+            <div>
+              <h3 class="text-white font-semibold">Wallpapers Pack</h3>
+              <p class="text-gray-500 text-xs">ZIP • 89.5 MB</p>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm mb-4">Collection of high-quality 4K wallpapers for desktop and mobile.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-gray-500">Uploaded 1 week ago</span>
+            <button
+              class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
+          </div>
         </div>
-      </div>
-      <p class="text-gray-400 text-sm mb-4">Advanced file manager with cloud integration and built-in viewer.</p>
-      <div class="flex items-center justify-between">
-        <span class="text-xs text-gray-500">Uploaded 3 days ago</span>
-        <button class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
-      </div>
-    </div>
 
-    <div class="card-hover bg-gray-900 border border-gray-800 rounded-2xl p-6" data-type="media">
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-12 h-12 bg-red-600/20 rounded-xl flex items-center justify-center text-2xl">🎬</div>
-        <div>
-          <h3 class="text-white font-semibold">Tutorial Videos</h3>
-          <p class="text-gray-500 text-xs">MP4 • 256 MB</p>
+        <div class="card-hover bg-gray-900 border border-gray-800 rounded-2xl p-6" data-type="app">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-green-600/20 rounded-xl flex items-center justify-center text-2xl">📱</div>
+            <div>
+              <h3 class="text-white font-semibold">File Manager Pro</h3>
+              <p class="text-gray-500 text-xs">APK • 18.3 MB</p>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm mb-4">Advanced file manager with cloud integration and built-in viewer.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-gray-500">Uploaded 3 days ago</span>
+            <button
+              class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
+          </div>
         </div>
-      </div>
-      <p class="text-gray-400 text-sm mb-4">Step-by-step coding tutorials for beginners in web development.</p>
-      <div class="flex items-center justify-between">
-        <span class="text-xs text-gray-500">Uploaded 4 days ago</span>
-        <button class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
-      </div>
-    </div>
 
-    <div class="card-hover bg-gray-900 border border-gray-800 rounded-2xl p-6" data-type="document">
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-12 h-12 bg-yellow-600/20 rounded-xl flex items-center justify-center text-2xl">📄</div>
-        <div>
-          <h3 class="text-white font-semibold">Resume Templates</h3>
-          <p class="text-gray-500 text-xs">DOCX • 5.4 MB</p>
+        <div class="card-hover bg-gray-900 border border-gray-800 rounded-2xl p-6" data-type="media">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-red-600/20 rounded-xl flex items-center justify-center text-2xl">🎬</div>
+            <div>
+              <h3 class="text-white font-semibold">Tutorial Videos</h3>
+              <p class="text-gray-500 text-xs">MP4 • 256 MB</p>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm mb-4">Step-by-step coding tutorials for beginners in web development.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-gray-500">Uploaded 4 days ago</span>
+            <button
+              class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
+          </div>
         </div>
+
+        <div class="card-hover bg-gray-900 border border-gray-800 rounded-2xl p-6" data-type="document">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-yellow-600/20 rounded-xl flex items-center justify-center text-2xl">📄</div>
+            <div>
+              <h3 class="text-white font-semibold">Resume Templates</h3>
+              <p class="text-gray-500 text-xs">DOCX • 5.4 MB</p>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm mb-4">Professional resume templates in multiple styles ready to edit.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-gray-500">Uploaded 6 days ago</span>
+            <button
+              class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
+          </div>
+        </div>
+
       </div>
-      <p class="text-gray-400 text-sm mb-4">Professional resume templates in multiple styles ready to edit.</p>
-      <div class="flex items-center justify-between">
-        <span class="text-xs text-gray-500">Uploaded 6 days ago</span>
-        <button class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
+
+      <!-- LOAD MORE -->
+      <div class="text-center mt-12">
+        <button
+          class="border border-gray-700 hover:border-indigo-600 hover:text-white px-8 py-3 rounded-xl text-sm font-medium transition">
+          Load More Files
+        </button>
       </div>
+
     </div>
+  </section>
 
-  </div>
+  <!-- FOOTER -->
+  <footer class="border-t border-gray-800 py-10 text-center text-gray-500">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-wrap justify-center gap-6 text-sm mb-6">
+        <a href="index.html" class="hover:text-white transition">Home</a>
+        <a href="upload.html" class="hover:text-white transition">Upload</a>
+        <a href="explore.html" class="hover:text-white transition">Explore</a>
+        <a href="about.html" class="hover:text-white transition">About</a>
+        <a href="contact.html" class="hover:text-white transition">Contact</a>
+        <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
+      </div>
+      <p>© 2026 ShreeBitu.in — All rights reserved.</p>
+      <p class="mt-2 text-sm">Built with passion and continuous learning.</p>
+    </div>
+  </footer>
 
-  <!-- LOAD MORE -->
-  <div class="text-center mt-12">
-    <button class="border border-gray-700 hover:border-indigo-600 hover:text-white px-8 py-3 rounded-xl text-sm font-medium transition">
-      Load More Files
-    </button>
-  </div>
+  <script>
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.className = 'filter-btn bg-gray-900 border border-gray-800 text-gray-400 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white transition';
+        });
+        btn.className = 'filter-btn bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition';
 
-</div>
-</section>
-
-<!-- FOOTER -->
-<footer class="border-t border-gray-800 py-10 text-center text-gray-500">
-<div class="max-w-6xl mx-auto px-6">
-  <div class="flex flex-wrap justify-center gap-6 text-sm mb-6">
-    <a href="index.html" class="hover:text-white transition">Home</a>
-    <a href="upload.html" class="hover:text-white transition">Upload</a>
-    <a href="explore.html" class="hover:text-white transition">Explore</a>
-    <a href="about.html" class="hover:text-white transition">About</a>
-    <a href="contact.html" class="hover:text-white transition">Contact</a>
-    <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
-  </div>
-  <p>© 2026 ShreeBitu.in — All rights reserved.</p>
-  <p class="mt-2 text-sm">Built with passion and continuous learning.</p>
-</div>
-</footer>
-
-<script>
-  // Filter buttons
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => {
-        b.className = 'filter-btn bg-gray-900 border border-gray-800 text-gray-400 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white transition';
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('#fileGrid > div').forEach(card => {
+          if (filter === 'all' || card.dataset.type === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
       });
-      btn.className = 'filter-btn bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition';
-      
-      const filter = btn.dataset.filter;
+    });
+
+    // Search
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase();
       document.querySelectorAll('#fileGrid > div').forEach(card => {
-        if (filter === 'all' || card.dataset.type === filter) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? '' : 'none';
       });
     });
-  });
-
-  // Search
-  document.getElementById('searchInput').addEventListener('input', (e) => {
-    const q = e.target.value.toLowerCase();
-    document.querySelectorAll('#fileGrid > div').forEach(card => {
-      const text = card.textContent.toLowerCase();
-      card.style.display = text.includes(q) ? '' : 'none';
-    });
-  });
-</script>
+  </script>
 
 </body>
+
 </html>
