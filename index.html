@@ -7,8 +7,10 @@
     <title>ShreeBitu.in — Cloud Storage & File Sharing</title>
     <meta name="description"
         content="ShreeBitu.in is a cloud storage platform where anyone can upload, store, and share files online securely.">
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
+        body { font-family: 'Outfit', sans-serif; }
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -62,31 +64,31 @@
     </style>
 </head>
 
-<body class="bg-gray-950 text-gray-200">
+<body class="bg-[#0B0F19] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#111827] via-[#0B0F19] to-black text-gray-200 antialiased selection:bg-indigo-500/30">
 
     <!-- ================= HEADER ================= -->
-    <header class="sticky top-0 z-50 backdrop-blur bg-gray-950/80 border-b border-gray-800">
+    <header class="sticky top-0 z-50 backdrop-blur backdrop-blur-xl bg-[#0B0F19]/60 border-b border-white/5 shadow-sm">
         <div class="max-w-7xl mx-auto flex items-center justify-between px-6 h-16">
 
             <!-- LOGO -->
             <div class="flex items-center gap-3">
 
                 <a href="index.html"
-                    class="text-xl font-bold tracking-wide text-white hover:text-indigo-400 transition">SHREEBITU</a>
+                    class="text-2xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 hover:opacity-80 drop-shadow-md transition">SHREEBITU</a>
             </div>
 
             <!-- NAV -->
             <nav class="hidden md:flex items-center gap-8 text-sm">
                 <a href="index.html" class="text-white font-medium">Home</a>
-                <a href="upload.html" class="hover:text-white transition">Upload</a>
-                <a href="explore.html" class="hover:text-white transition">Explore</a>
-                <a href="about.html" class="hover:text-white transition">About</a>
-                <a href="contact.html" class="hover:text-white transition">Contact</a>
+                <a href="upload.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Upload</a>
+                <a href="explore.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Explore</a>
+                <a href="about.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">About</a>
+                <a href="contact.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Contact</a>
             </nav>
 
             <!-- BUTTON -->
             <a href="upload.html"
-                class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-sm font-medium transition hover:scale-105 active:scale-95">
+                class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-sm font-medium transition hover:scale-105 active:scale-95">
                 Upload File
             </a>
 
@@ -102,14 +104,14 @@
                 Store, Share & Manage Files Online
             </h1>
 
-            <p class="mt-6 text-gray-400 text-lg">
+            <p class="mt-6 text-gray-400/90 text-lg">
                 ShreeBitu.in is a cloud storage platform where anyone can register and safely store
                 PDF files, APK apps, documents, media, and more — all in one place.
             </p>
 
             <div class="mt-10 flex justify-center gap-4">
                 <a href="upload.html"
-                    class="hero-glow bg-indigo-600 hover:bg-indigo-500 px-6 py-3 rounded-lg font-medium transition hover:scale-105 active:scale-95">
+                    class="hero-glow bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-6 py-3 rounded-lg font-medium transition hover:scale-105 active:scale-95">
                     Start Uploading
                 </a>
 
@@ -122,9 +124,169 @@
         </div>
     </section>
 
+    <!-- Horizontal Divider -->
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="border-t border-white/10 w-full mb-10"></div>
+    </div>
+
+
+
+    <!-- SEARCH BAR & EXPLORE -->
+    <section class="px-6 pb-12 pt-6 fade-in-delay">
+        <div class="max-w-3xl mx-auto text-center mb-10 mt-10">
+            <h2 class="text-4xl md:text-5xl font-bold text-white leading-tight">Explore Files</h2>
+            <p class="mt-4 text-gray-400/90 text-lg">
+                Discover files, apps, documents, and media shared by the community on ShreeBitu.in.
+            </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto">
+            <div class="relative">
+                <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input type="text" id="searchInput" placeholder="Search files by name or type..."
+                    class="w-full backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-xl pl-12 pr-4 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-600 transition">
+            </div>
+
+            <!-- CATEGORY FILTERS -->
+            <div class="flex flex-wrap gap-3 mt-6 justify-center">
+                <button class="filter-btn bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition"
+                    data-filter="all">All</button>
+                <button
+                    class="filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white hover:text-indigo-400 transition-colors duration-300"
+                    data-filter="app">📱 Apps</button>
+                <button
+                    class="filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white hover:text-indigo-400 transition-colors duration-300"
+                    data-filter="document">📄 Documents</button>
+                <button
+                    class="filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white hover:text-indigo-400 transition-colors duration-300"
+                    data-filter="image">🖼️ Images</button>
+                <button
+                    class="filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white hover:text-indigo-400 transition-colors duration-300"
+                    data-filter="media">🎬 Media</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILE GRID -->
+    <section class="px-6 pb-20 fade-in-delay-2">
+        <div class="max-w-6xl mx-auto">
+            
+            <div id="loadingIndicator" class="text-center py-6 mb-4 hidden">
+                <div class="inline-block w-6 h-6 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+                <p class="text-gray-400/90 text-sm mt-3">Syncing new files...</p>
+            </div>
+
+            <div id="dynamicFileGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Static Sample File Cards from Explore -->
+                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card" data-type="app">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-indigo-600/20 rounded-xl flex items-center justify-center text-2xl">📱
+                        </div>
+                        <div>
+                            <h3 class="text-white font-semibold flex-1">VPhoneGaGa APK</h3>
+                            <p class="text-gray-500 text-xs">v2.5.1 • 45.2 MB</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400/90 text-sm mb-4">Virtual phone application for Android devices with multiple
+                        features.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">Uploaded 2 days ago</span>
+                        <button
+                            class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95 text-white">Download</button>
+                    </div>
+                </div>
+
+                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card" data-type="document">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-purple-600/20 rounded-xl flex items-center justify-center text-2xl">📄
+                        </div>
+                        <div>
+                            <h3 class="text-white font-semibold flex-1">Web Dev Guide</h3>
+                            <p class="text-gray-500 text-xs">PDF • 12.8 MB</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400/90 text-sm mb-4">Complete beginner guide to HTML, CSS and JavaScript
+                        development.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">Uploaded 5 days ago</span>
+                        <button
+                            class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95 text-white">Download</button>
+                    </div>
+                </div>
+
+                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card" data-type="image">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-pink-600/20 rounded-xl flex items-center justify-center text-2xl">🖼️
+                        </div>
+                        <div>
+                            <h3 class="text-white font-semibold flex-1">Wallpapers Pack</h3>
+                            <p class="text-gray-500 text-xs">ZIP • 89.5 MB</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400/90 text-sm mb-4">Collection of high-quality 4K wallpapers for desktop and mobile.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">Uploaded 1 week ago</span>
+                        <button
+                            class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95 text-white">Download</button>
+                    </div>
+                </div>
+                
+                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card" data-type="app">
+                  <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-green-600/20 rounded-xl flex items-center justify-center text-2xl">📱</div>
+                    <div>
+                      <h3 class="text-white font-semibold">File Manager Pro</h3>
+                      <p class="text-gray-500 text-xs">APK • 18.3 MB</p>
+                    </div>
+                  </div>
+                  <p class="text-gray-400/90 text-sm mb-4">Advanced file manager with cloud integration and built-in viewer.</p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-gray-500">Uploaded 3 days ago</span>
+                    <button class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
+                  </div>
+                </div>
+
+                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card" data-type="media">
+                  <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-red-600/20 rounded-xl flex items-center justify-center text-2xl">🎬</div>
+                    <div>
+                      <h3 class="text-white font-semibold">Tutorial Videos</h3>
+                      <p class="text-gray-500 text-xs">MP4 • 256 MB</p>
+                    </div>
+                  </div>
+                  <p class="text-gray-400/90 text-sm mb-4">Step-by-step coding tutorials for beginners in web development.</p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-gray-500">Uploaded 4 days ago</span>
+                    <button class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
+                  </div>
+                </div>
+
+                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card" data-type="document">
+                  <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-yellow-600/20 rounded-xl flex items-center justify-center text-2xl">📄</div>
+                    <div>
+                      <h3 class="text-white font-semibold">Resume Templates</h3>
+                      <p class="text-gray-500 text-xs">DOCX • 5.4 MB</p>
+                    </div>
+                  </div>
+                  <p class="text-gray-400/90 text-sm mb-4">Professional resume templates in multiple styles ready to edit.</p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-gray-500">Uploaded 6 days ago</span>
+                    <button class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
+                  </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <!-- ================= FEATURES ================= -->
-    <section class="py-20 border-t border-gray-800 fade-in-delay">
+    <section class="py-20 border-t border-white/5 fade-in-delay">
         <div class="max-w-6xl mx-auto px-6">
 
             <h2 class="text-3xl font-bold text-white text-center mb-12">
@@ -133,26 +295,26 @@
 
             <div class="grid md:grid-cols-3 gap-8">
 
-                <div class="card-hover bg-gray-900 p-6 rounded-xl border border-gray-800 cursor-pointer">
+                <div class="card-hover bg-gray-900 p-6 rounded-xl border border-white/5 cursor-pointer">
                     <div class="text-3xl mb-3">🔒</div>
                     <h3 class="font-semibold text-white mb-2">Secure File Storage</h3>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-400/90 text-sm">
                         Upload and store APK files, PDFs, documents, and other data safely online.
                     </p>
                 </div>
 
-                <div class="card-hover bg-gray-900 p-6 rounded-xl border border-gray-800 cursor-pointer">
+                <div class="card-hover bg-gray-900 p-6 rounded-xl border border-white/5 cursor-pointer">
                     <div class="text-3xl mb-3">🔗</div>
                     <h3 class="font-semibold text-white mb-2">Easy Sharing</h3>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-400/90 text-sm">
                         Share download links instantly with anyone across the internet.
                     </p>
                 </div>
 
-                <div class="card-hover bg-gray-900 p-6 rounded-xl border border-gray-800 cursor-pointer">
+                <div class="card-hover bg-gray-900 p-6 rounded-xl border border-white/5 cursor-pointer">
                     <div class="text-3xl mb-3">🌍</div>
                     <h3 class="font-semibold text-white mb-2">Open Platform</h3>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-400/90 text-sm">
                         Anyone can register, upload, and contribute content freely.
                     </p>
                 </div>
@@ -161,74 +323,15 @@
         </div>
     </section>
 
-
-    <!-- ================= DYNAMIC EXPLORE SECTION ================= -->
-    <section class="px-6 pb-6 pt-10 fade-in-delay text-center">
-        <h2 class="text-3xl font-bold text-white mb-6">Explore the Latest Files</h2>
-        <div class="max-w-3xl mx-auto">
-            <div class="relative">
-                <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                <input type="text" id="searchInput" placeholder="Search for files, apps, or documents..." class="w-full bg-gray-900 border border-gray-800 rounded-xl pl-12 pr-4 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-600 transition">
-            </div>
-        </div>
-    </section>
-
-    <!-- FILE GRID -->
-    <section class="px-6 pb-20 fade-in-delay-2">
-        <div class="max-w-6xl mx-auto">
-            <div id="loadingIndicator" class="text-center py-10">
-                <div class="inline-block w-8 h-8 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-                <p class="text-gray-400 mt-4 font-medium">Checking live servers for new files...</p>
-            </div>
-            <div id="dynamicFileGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
-                <!-- Javascript will inject cards here -->
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ================= AUTHOR ================= -->
-    <section class="py-20 border-t border-gray-800">
-        <div class="max-w-3xl mx-auto px-6">
-
-            <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8">
-
-                <h2 class="text-2xl font-bold text-white mb-4">
-                    About the Developer
-                </h2>
-
-                <p class="text-gray-400 leading-relaxed">
-                    Hello, my name is <span class="text-white font-medium">Bitu Talukdar</span>.
-                    I am a new developer who is currently learning web development using
-                    HTML, CSS, and JavaScript.
-                </p>
-
-                <p class="text-gray-400 mt-4 leading-relaxed">
-                    ShreeBitu.in is a long-term project and still has a lot of development remaining.
-                    In the future, this platform may grow into something much bigger —
-                    or it may evolve in different directions depending on time and progress.
-                </p>
-
-                <p class="text-gray-400 mt-4 leading-relaxed">
-                    This website is open source and anyone can contribute to improve it.
-                    If you are a developer, designer, or tech enthusiast,
-                    you are welcome to collaborate and help build this platform.
-                </p>
-
-            </div>
-        </div>
-    </section>
-
-
     <!-- ================= OPEN SOURCE ================= -->
-    <section class="py-16 border-t border-gray-800">
+    <section class="py-16 border-t border-white/5">
         <div class="max-w-3xl mx-auto text-center px-6">
 
             <h2 class="text-2xl font-bold text-white mb-4">
                 Open Source & Community
             </h2>
 
-            <p class="text-gray-400">
+            <p class="text-gray-400/90">
                 ShreeBitu.in supports open contribution. Anyone can suggest improvements,
                 features, design updates, or help develop the platform.
                 Together we can build a powerful cloud storage ecosystem.
@@ -239,15 +342,15 @@
 
 
     <!-- ================= FOOTER ================= -->
-    <footer class="border-t border-gray-800 py-10 text-center text-gray-500">
+    <footer class="border-t border-white/5 py-10 text-center text-gray-500">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex flex-wrap justify-center gap-6 text-sm mb-6">
-                <a href="index.html" class="hover:text-white transition">Home</a>
-                <a href="upload.html" class="hover:text-white transition">Upload</a>
-                <a href="explore.html" class="hover:text-white transition">Explore</a>
-                <a href="about.html" class="hover:text-white transition">About</a>
-                <a href="contact.html" class="hover:text-white transition">Contact</a>
-                <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
+                <a href="index.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Home</a>
+                <a href="upload.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Upload</a>
+                <a href="explore.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Explore</a>
+                <a href="about.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">About</a>
+                <a href="contact.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Contact</a>
+                <a href="privacy.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Privacy Policy</a>
             </div>
             <p>© 2026 ShreeBitu.in — All rights reserved.</p>
             <p class="mt-2 text-sm">Built with passion and continuous learning.</p>
@@ -288,7 +391,10 @@
         const validFiles = allFiles.filter(file => file.type === 'file' && !file.name.startsWith('.'));
 
         if (validFiles.length === 0) {
-            grid.innerHTML = '<p class="text-gray-400 col-span-full text-center py-6 border border-gray-800 rounded-xl border-dashed">No files uploaded yet.</p>';
+            // Do not wipe grid if static cards exist
+            if (grid.children.length === 0) {
+                grid.innerHTML = '<p class="text-gray-400/90 col-span-full text-center py-6 border border-white/5 rounded-xl border-dashed">No files uploaded yet.</p>';
+            }
             return;
         }
 
@@ -311,7 +417,7 @@
             else if (isHtml) { icon = "🌐"; colorClass = "bg-indigo-600/20"; }
 
             const card = document.createElement('div');
-            card.className = "card-hover bg-gray-900 border border-gray-800 rounded-2xl p-6 searchable-card";
+            card.className = "card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card";
             card.innerHTML = `
                 <div class="flex items-center gap-4 mb-4">
                     <div class="w-14 h-14 ${colorClass} rounded-xl flex items-center justify-center text-2xl flex-shrink-0">${icon}</div>
@@ -320,9 +426,9 @@
                         <p class="text-gray-500 text-xs uppercase mt-1">${fileExt} • ${sizeMB} MB</p>
                     </div>
                 </div>
-                <div class="flex items-center justify-between mt-5 border-t border-gray-800 pt-4">
+                <div class="flex items-center justify-between mt-5 border-t border-white/5 pt-4">
                     <span class="text-xs text-green-400 font-medium">⚡ Auto Synced</span>
-                    <a href="${itemUrl}" ${linkTarget} class="bg-indigo-600 hover:bg-indigo-500 px-5 py-2 rounded-lg text-xs font-medium text-white transition hover:scale-105 active:scale-95 text-center shadow-lg shadow-indigo-600/20">${actionText}</a>
+                    <a href="${itemUrl}" ${linkTarget} class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-5 py-2 rounded-lg text-xs font-medium text-white transition hover:scale-105 active:scale-95 text-center shadow-lg shadow-indigo-600/20">${actionText}</a>
                 </div>
             `;
             grid.appendChild(card);
@@ -348,5 +454,35 @@
             });
         });
     }
+
+    // Category Filters
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.className = 'filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white hover:text-indigo-400 transition-colors duration-300';
+            });
+            btn.className = 'filter-btn bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition';
+
+            const filter = btn.dataset.filter;
+            document.querySelectorAll('.searchable-card').forEach(card => {
+                // Determine card type: static cards have data-type, dynamic cards we can guess from text
+                let type = card.dataset.type || 'all';
+                if (!card.dataset.type) {
+                    const text = card.textContent.toLowerCase();
+                    if (text.includes('apk') || text.includes('exe')) type = 'app';
+                    else if (text.includes('pdf') || text.includes('doc')) type = 'document';
+                    else if (text.includes('png') || text.includes('jpg')) type = 'image';
+                    else if (text.includes('mp4') || text.includes('mp3')) type = 'media';
+                    card.dataset.type = type; // save it
+                }
+
+                if (filter === 'all' || type === filter) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
 </script>
 </html>
