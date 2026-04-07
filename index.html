@@ -7,10 +7,14 @@
     <title>ShreeBitu.in — Cloud Storage & File Sharing</title>
     <meta name="description"
         content="ShreeBitu.in is a cloud storage platform where anyone can upload, store, and share files online securely.">
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        body { font-family: 'Outfit', sans-serif; }
+        body {
+            font-family: 'Outfit', sans-serif;
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -64,11 +68,12 @@
     </style>
 </head>
 
-<body class="bg-[#0B0F19] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#111827] via-[#0B0F19] to-black text-gray-200 antialiased selection:bg-indigo-500/30">
+<body
+    class="bg-[#0B0F19] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#111827] via-[#0B0F19] to-black text-gray-200 antialiased selection:bg-indigo-500/30">
 
     <!-- ================= HEADER ================= -->
     <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#0B0F19]/60 border-b border-white/5 shadow-sm">
-        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 h-16 relative z-10">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 h-16 relative z-10">
 
             <!-- LOGO -->
             <div class="flex items-center gap-3">
@@ -80,10 +85,14 @@
             <!-- NAV -->
             <nav class="hidden md:flex items-center gap-8 text-sm">
                 <a href="index.html" class="text-white font-medium">Home</a>
-                <a href="upload.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Upload</a>
-                <a href="explore.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Explore</a>
-                <a href="about.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">About</a>
-                <a href="contact.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Contact</a>
+                <a href="upload.html"
+                    class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Upload</a>
+                <a href="explore.html"
+                    class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Explore</a>
+                <a href="about.html"
+                    class="hover:text-white hover:text-indigo-400 transition-colors duration-300">About</a>
+                <a href="contact.html"
+                    class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Contact</a>
             </nav>
 
             <!-- BUTTON -->
@@ -97,7 +106,7 @@
 
 
     <!-- ================= HERO ================= -->
-    <section class="text-center py-8 md:py-24 px-6 fade-in">
+    <section class="text-center py-8 md:py-24 px-4 md:px-6 fade-in">
         <div class="max-w-3xl mx-auto">
 
             <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">
@@ -132,7 +141,7 @@
 
 
     <!-- SEARCH BAR & EXPLORE -->
-    <section class="px-6 pb-6 md:pb-12 pt-4 fade-in-delay">
+    <section class="px-4 md:px-6 pb-6 md:pb-12 pt-4 fade-in-delay">
         <div class="max-w-3xl mx-auto text-center mb-10 mt-10">
             <h2 class="text-4xl md:text-5xl font-bold text-white leading-tight">Explore Files</h2>
             <p class="mt-4 text-gray-400/90 text-lg">
@@ -172,18 +181,21 @@
     </section>
 
     <!-- FILE GRID -->
-    <section class="px-6 pb-8 md:pb-20 fade-in-delay-2">
+    <section class="px-4 md:px-6 pb-8 md:pb-20 fade-in-delay-2">
         <div class="max-w-6xl mx-auto">
-            
+
             <div id="loadingIndicator" class="text-center py-6 mb-4 hidden">
-                <div class="inline-block w-6 h-6 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+                <div
+                    class="inline-block w-6 h-6 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin">
+                </div>
                 <p class="text-gray-400/90 text-sm mt-3">Syncing new files...</p>
             </div>
 
             <div id="dynamicFileGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
                 <!-- Static Sample File Cards from Explore -->
-                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card" data-type="app">
+                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card"
+                    data-type="app">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-12 h-12 bg-indigo-600/20 rounded-xl flex items-center justify-center text-2xl">📱
                         </div>
@@ -201,7 +213,8 @@
                     </div>
                 </div>
 
-                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card" data-type="document">
+                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card"
+                    data-type="document">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-12 h-12 bg-purple-600/20 rounded-xl flex items-center justify-center text-2xl">📄
                         </div>
@@ -219,7 +232,8 @@
                     </div>
                 </div>
 
-                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card" data-type="image">
+                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card"
+                    data-type="image">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-12 h-12 bg-pink-600/20 rounded-xl flex items-center justify-center text-2xl">🖼️
                         </div>
@@ -228,57 +242,70 @@
                             <p class="text-gray-500 text-xs">ZIP • 89.5 MB</p>
                         </div>
                     </div>
-                    <p class="text-gray-400/90 text-sm mb-4">Collection of high-quality 4K wallpapers for desktop and mobile.</p>
+                    <p class="text-gray-400/90 text-sm mb-4">Collection of high-quality 4K wallpapers for desktop and
+                        mobile.</p>
                     <div class="flex items-center justify-between">
                         <span class="text-xs text-gray-500">Uploaded 1 week ago</span>
                         <button
                             class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95 text-white">Download</button>
                     </div>
                 </div>
-                
-                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card" data-type="app">
-                  <div class="flex items-center gap-3 mb-4">
-                    <div class="w-12 h-12 bg-green-600/20 rounded-xl flex items-center justify-center text-2xl">📱</div>
-                    <div>
-                      <h3 class="text-white font-semibold">File Manager Pro</h3>
-                      <p class="text-gray-500 text-xs">APK • 18.3 MB</p>
+
+                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card"
+                    data-type="app">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-green-600/20 rounded-xl flex items-center justify-center text-2xl">📱
+                        </div>
+                        <div>
+                            <h3 class="text-white font-semibold">File Manager Pro</h3>
+                            <p class="text-gray-500 text-xs">APK • 18.3 MB</p>
+                        </div>
                     </div>
-                  </div>
-                  <p class="text-gray-400/90 text-sm mb-4">Advanced file manager with cloud integration and built-in viewer.</p>
-                  <div class="flex items-center justify-between">
-                    <span class="text-xs text-gray-500">Uploaded 3 days ago</span>
-                    <button class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
-                  </div>
+                    <p class="text-gray-400/90 text-sm mb-4">Advanced file manager with cloud integration and built-in
+                        viewer.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">Uploaded 3 days ago</span>
+                        <button
+                            class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
+                    </div>
                 </div>
 
-                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card" data-type="media">
-                  <div class="flex items-center gap-3 mb-4">
-                    <div class="w-12 h-12 bg-red-600/20 rounded-xl flex items-center justify-center text-2xl">🎬</div>
-                    <div>
-                      <h3 class="text-white font-semibold">Tutorial Videos</h3>
-                      <p class="text-gray-500 text-xs">MP4 • 256 MB</p>
+                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card"
+                    data-type="media">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-red-600/20 rounded-xl flex items-center justify-center text-2xl">🎬
+                        </div>
+                        <div>
+                            <h3 class="text-white font-semibold">Tutorial Videos</h3>
+                            <p class="text-gray-500 text-xs">MP4 • 256 MB</p>
+                        </div>
                     </div>
-                  </div>
-                  <p class="text-gray-400/90 text-sm mb-4">Step-by-step coding tutorials for beginners in web development.</p>
-                  <div class="flex items-center justify-between">
-                    <span class="text-xs text-gray-500">Uploaded 4 days ago</span>
-                    <button class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
-                  </div>
+                    <p class="text-gray-400/90 text-sm mb-4">Step-by-step coding tutorials for beginners in web
+                        development.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">Uploaded 4 days ago</span>
+                        <button
+                            class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
+                    </div>
                 </div>
 
-                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card" data-type="document">
-                  <div class="flex items-center gap-3 mb-4">
-                    <div class="w-12 h-12 bg-yellow-600/20 rounded-xl flex items-center justify-center text-2xl">📄</div>
-                    <div>
-                      <h3 class="text-white font-semibold">Resume Templates</h3>
-                      <p class="text-gray-500 text-xs">DOCX • 5.4 MB</p>
+                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card"
+                    data-type="document">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-yellow-600/20 rounded-xl flex items-center justify-center text-2xl">📄
+                        </div>
+                        <div>
+                            <h3 class="text-white font-semibold">Resume Templates</h3>
+                            <p class="text-gray-500 text-xs">DOCX • 5.4 MB</p>
+                        </div>
                     </div>
-                  </div>
-                  <p class="text-gray-400/90 text-sm mb-4">Professional resume templates in multiple styles ready to edit.</p>
-                  <div class="flex items-center justify-between">
-                    <span class="text-xs text-gray-500">Uploaded 6 days ago</span>
-                    <button class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
-                  </div>
+                    <p class="text-gray-400/90 text-sm mb-4">Professional resume templates in multiple styles ready to
+                        edit.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">Uploaded 6 days ago</span>
+                        <button
+                            class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
+                    </div>
                 </div>
 
             </div>
@@ -287,7 +314,7 @@
 
     <!-- ================= FEATURES ================= -->
     <section class="py-10 md:py-20 border-t border-gray-800 fade-in-delay">
-        <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
 
             <h2 class="text-3xl font-bold text-white text-center mb-12">
                 Platform Features
@@ -325,7 +352,7 @@
 
     <!-- ================= OPEN SOURCE ================= -->
     <section class="py-8 md:py-16 border-t border-gray-800">
-        <div class="max-w-3xl mx-auto text-center px-6">
+        <div class="max-w-3xl mx-auto text-center px-4 md:px-6">
 
             <h2 class="text-2xl font-bold text-white mb-4">
                 Open Source & Community
@@ -343,14 +370,20 @@
 
     <!-- ================= FOOTER ================= -->
     <footer class="border-t border-gray-800 py-6 md:py-10 text-center text-gray-500">
-        <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
             <div class="flex flex-wrap justify-center gap-6 text-sm mb-6">
-                <a href="index.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Home</a>
-                <a href="upload.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Upload</a>
-                <a href="explore.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Explore</a>
-                <a href="about.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">About</a>
-                <a href="contact.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Contact</a>
-                <a href="privacy.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Privacy Policy</a>
+                <a href="index.html"
+                    class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Home</a>
+                <a href="upload.html"
+                    class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Upload</a>
+                <a href="explore.html"
+                    class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Explore</a>
+                <a href="about.html"
+                    class="hover:text-white hover:text-indigo-400 transition-colors duration-300">About</a>
+                <a href="contact.html"
+                    class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Contact</a>
+                <a href="privacy.html"
+                    class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Privacy Policy</a>
             </div>
             <p>© 2026 ShreeBitu.in — All rights reserved.</p>
             <p class="mt-2 text-sm">Built with passion and continuous learning.</p>
@@ -365,7 +398,7 @@
         const folders = ['apk', 'files'];
         const grid = document.getElementById('dynamicFileGrid');
         const loader = document.getElementById('loadingIndicator');
-        
+
         let allFiles = [];
 
         // Fetch contents dynamically from GitHub API
@@ -403,17 +436,17 @@
             const isHtml = file.name.endsWith('.html') || file.name.endsWith('.htm');
             const fileExt = file.name.split('.').pop().toLowerCase();
             const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
-            
+
             const itemUrl = isHtml ? `${file.path}` : file.download_url;
             const linkTarget = isHtml ? "" : 'target="_blank"';
             const actionText = isHtml ? "View Page" : "Download";
 
             let icon = "📄";
             let colorClass = "bg-purple-600/20";
-            
+
             if (['apk', 'exe', 'msi'].includes(fileExt)) { icon = "📱"; colorClass = "bg-green-600/20"; }
-            else if (['jpg','png','gif','svg'].includes(fileExt)) { icon = "🖼️"; colorClass = "bg-pink-600/20"; }
-            else if (['mp4','mp3','mkv'].includes(fileExt)) { icon = "🎬"; colorClass = "bg-red-600/20"; }
+            else if (['jpg', 'png', 'gif', 'svg'].includes(fileExt)) { icon = "🖼️"; colorClass = "bg-pink-600/20"; }
+            else if (['mp4', 'mp3', 'mkv'].includes(fileExt)) { icon = "🎬"; colorClass = "bg-red-600/20"; }
             else if (isHtml) { icon = "🌐"; colorClass = "bg-indigo-600/20"; }
 
             const card = document.createElement('div');
@@ -422,7 +455,7 @@
                 <div class="flex items-center gap-4 mb-4">
                     <div class="w-14 h-14 ${colorClass} rounded-xl flex items-center justify-center text-2xl flex-shrink-0">${icon}</div>
                     <div class="overflow-hidden">
-                        <h3 class="text-white font-semibold truncate" title="${file.name}">${file.name.replace('.html','')}</h3>
+                        <h3 class="text-white font-semibold truncate" title="${file.name}">${file.name.replace('.html', '')}</h3>
                         <p class="text-gray-500 text-xs uppercase mt-1">${fileExt} • ${sizeMB} MB</p>
                     </div>
                 </div>
@@ -446,7 +479,7 @@
             const cards = document.querySelectorAll('.searchable-card');
             cards.forEach(card => {
                 const text = card.textContent.toLowerCase();
-                if(text.includes(query)) {
+                if (text.includes(query)) {
                     card.style.display = '';
                 } else {
                     card.style.display = 'none';
@@ -485,4 +518,5 @@
         });
     });
 </script>
+
 </html>
