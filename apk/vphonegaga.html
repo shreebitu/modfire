@@ -1,164 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VPhoneGaGa Dashboard</title>
-<script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPhoneGaGa Virtual Machine - Download | ShreeBitu.in</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeInUp 0.6s ease-out forwards; }
+        .fade-in-delay { animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0; }
+        
+        @keyframes shimmer {
+            100% { transform: translateX(300%); }
+        }
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
 </head>
 
-<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white min-h-screen">
+<body class="bg-[#0B0F19] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#111827] via-[#0B0F19] to-black text-gray-200 antialiased selection:bg-indigo-500/30">
 
-<!-- ================= HEADER ================= -->
-<header class="flex items-center gap-4 h-14 px-4 border-b border-slate-800
-bg-slate-950/80 backdrop-blur sticky top-0 z-40">
+    <!-- BACKGROUND GLOW -->
+    <div class="pointer-events-none fixed inset-0 z-0 flex justify-center">
+        <div class="w-[800px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px] -translate-y-1/2"></div>
+    </div>
 
-<!-- LEFT -->
-<div class="flex items-center gap-3">
-<button onclick="toggleMenu()" class="lg:hidden text-gray-300 text-xl">☰</button>
-<img src="https://modsfire.com/alt/assets/images/logo.png" class="h-7">
-</div>
+    <!-- ================= HEADER ================= -->
+    <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#0B0F19]/60 border-b border-white/5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-2 md:px-6 h-16 relative z-10">
+            <div class="flex items-center gap-3">
+                <a href="../index.html" class="text-2xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 hover:opacity-80 drop-shadow-md transition">SHREEBITU</a>
+            </div>
+            <nav class="hidden md:flex items-center gap-8 text-sm">
+                <a href="../index.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Home</a>
+                <a href="../upload.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Upload</a>
+                <a href="../explore.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Explore</a>
+            </nav>
+            <a href="../upload.html" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-sm font-medium transition hover:scale-105 active:scale-95">
+                Upload File
+            </a>
+        </div>
+    </header>
 
-<!-- CENTER SEARCH -->
-<div class="flex-1 max-w-xl mx-auto">
-<input
-placeholder="Search apps..."
-class="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-2 outline-none focus:border-indigo-500">
-</div>
+    <!-- ================= APP HERO CONTENT ================= -->
+    <main class="relative z-10 max-w-6xl mx-auto px-2 md:px-6 py-2 md:py-12">
+        
+        <!-- Breadcrumbs -->
+        <div class="text-sm text-gray-400/90 mb-4 md:mb-8 fade-in">
+            <a href="../explore.html" class="hover:text-indigo-400 transition">Apps</a> 
+            <span class="mx-2">›</span> 
+            <span class="text-white">VPhoneGaGa</span>
+        </div>
 
-<!-- DESKTOP MENU -->
-<nav class="hidden lg:flex items-center gap-6 text-sm text-gray-300">
-<a href="#" class="hover:text-white">Home</a>
-<a href="#" class="hover:text-white">Apps</a>
-<a href="#" class="hover:text-white">Download</a>
-<a href="#" class="hover:text-white">Help</a>
-</nav>
+        <div class="grid lg:grid-cols-3 gap-8">
+            
+            <!-- LEFT COLUMN: APP DETAILS & DOWNLOAD -->
+            <div class="lg:col-span-2 space-y-4 md:space-y-8 fade-in">
+                
+                <!-- Main Identity Card -->
+                <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-3 md:p-6 lg:p-8 relative overflow-hidden">
+                    <!-- Glass glare effect -->
+                    <div class="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
-<!-- RIGHT PROFILE -->
-<img src="https://i.pravatar.cc/40"
-class="w-9 h-9 rounded-full ring-2 ring-slate-700">
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+                        <img src="https://techylist.com/wp-content/uploads/2023/03/VPhoneGaga-icon.png" class="w-24 h-24 object-contain rounded-2xl shadow-lg shadow-black/40 ring-1 ring-white/10 p-2 bg-white/5">
+                        
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-1">
+                                <h1 class="text-2xl md:text-3xl font-bold text-white">VPhoneGaGa</h1>
+                                <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 text-xs px-2.5 py-1 rounded-full flex items-center gap-1 font-semibold">
+                                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    Verified Safe
+                                </span>
+                            </div>
+                            <p class="text-indigo-400 font-medium mb-3">Virtual Android Machine Environment</p>
+                            
+                            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-400/90">
+                                <span class="flex items-center gap-1">⭐ 4.8 (8,245 reviews)</span>
+                                <span>•</span>
+                                <span class="flex items-center gap-1">📱 Android 7.0+</span>
+                                <span>•</span>
+                                <span class="font-medium text-white">390 MB</span>
+                            </div>
+                        </div>
+                    </div>
 
-</header>
+                    <!-- Description -->
+                    <div class="mt-8">
+                        <h3 class="text-lg font-semibold text-white mb-3">About This App</h3>
+                        <p class="text-gray-400/90 leading-relaxed text-sm">
+                            VPhoneGaGa creates a completely isolated virtual Android environment inside your real device. 
+                            It allows you to install apps independently, run multiple accounts (dual WhatsApp, Facebook, games), 
+                            and keep your work & personal data entirely separate. It supports Root access and Google Play Services right out of the box.
+                        </p>
+                    </div>
 
-<!-- MOBILE MENU -->
-<div id="mobileMenu"
-class="lg:hidden hidden bg-slate-900 border-b border-slate-800 px-4 py-3 space-y-2">
+                    <!-- Virus Scan Alert -->
+                    <div class="mt-6 flex items-center gap-4 bg-emerald-500/10 border border-emerald-500/20 p-4 rounded-xl text-emerald-400 text-sm">
+                        <svg class="w-8 h-8 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        <div>
+                            <p class="font-bold text-white mb-0.5">Scanned by VirusTotal</p>
+                            <p>0/65 Antivirus engines detected any malware. File is completely clean and secure.</p>
+                        </div>
+                    </div>
+                </div>
 
-<a href="#" class="block py-2 text-gray-300 hover:text-white">Home</a>
-<a href="#" class="block py-2 text-gray-300 hover:text-white">Apps</a>
-<a href="#" class="block py-2 text-gray-300 hover:text-white">Download</a>
-<a href="#" class="block py-2 text-gray-300 hover:text-white">Help</a>
+                <!-- Screenshots Gallery (Horizontal Scroll) -->
+                <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 relative">
+                    <h3 class="text-lg font-semibold text-white mb-4">Screenshots</h3>
+                    <div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
+                        <img src="https://picsum.photos/250/450?random=1" class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
+                        <img src="https://picsum.photos/250/450?random=2" class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
+                        <img src="https://picsum.photos/250/450?random=3" class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
+                        <img src="https://picsum.photos/250/450?random=4" class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
+                    </div>
+                </div>
 
-</div>
+                <!-- What's New -->
+                <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6">
+                    <h3 class="text-lg font-semibold text-white mb-4">What's New in v2.5.1</h3>
+                    <ul class="space-y-2 text-sm text-gray-400/90 list-disc pl-5">
+                        <li>Optimized performance and reduced battery consumption.</li>
+                        <li>Fixed Android 14 compatibility issues.</li>
+                        <li>Improved native Root framework stability.</li>
+                        <li>Update Google Play Services to latest version securely.</li>
+                    </ul>
+                </div>
 
+            </div>
 
-<!-- ================= MAIN ================= -->
-<main class="p-5 lg:p-8">
+            <!-- RIGHT COLUMN: DOWNLOAD CARD & INFO -->
+            <div class="space-y-6 fade-in-delay sticky top-24">
+                
+                <div class="backdrop-blur-md bg-indigo-600/5 text-center border border-indigo-500/20 shadow-2xl shadow-indigo-600/10 rounded-2xl p-6">
+                    
+                    <h3 class="text-white font-bold text-xl mb-4">Ready to Download?</h3>
+                    <p class="text-gray-400/90 text-sm mb-8">Direct high-speed servers provided by ShreeBitu Cloud.</p>
+                    
+                    <!-- Main Download -->
+                    <div class="space-y-4 min-h-[60px] flex flex-col justify-center">
+                        <button id="downloadBtn" onclick="startDownload()" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 py-4 rounded-xl font-bold transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 group">
+                            <svg class="w-5 h-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Download APK (390 MB)
+                        </button>
+                        
+                        <!-- Progress Bar (Hidden initially) -->
+                        <div id="progressContainer" class="hidden w-full space-y-2">
+                            <div class="flex justify-between text-xs text-indigo-400 font-medium">
+                                <span id="progressText">Preparing download...</span>
+                                <span id="progressPercent">0%</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden border border-white/5">
+                                <div id="progressBar" class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 w-0 transition-all duration-150 relative">
+                                    <!-- Shine effect -->
+                                    <div class="absolute inset-0 bg-white/20 w-1/3 skew-x-12 animate-[shimmer_1s_infinite]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-<div class="max-w-4xl mx-auto space-y-6">
+                    <div class="flex items-center justify-center gap-2 my-6">
+                        <div class="h-px bg-white/5 flex-1"></div>
+                        <span class="text-xs text-gray-500 uppercase tracking-widest font-semibold">Or use</span>
+                        <div class="h-px bg-white/5 flex-1"></div>
+                    </div>
 
-<!-- APP CARD -->
-<div class="bg-white/5 backdrop-blur-md border border-white/10
-rounded-2xl p-4 lg:p-6 space-y-6 shadow-2xl">
+                    <!-- Mirrors -->
+                    <div class="space-y-3">
+                        <button class="w-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-indigo-400 transition-colors py-2.5 rounded-lg text-sm text-gray-300 font-medium flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                            Mirror Link 1 (Mega)
+                        </button>
+                        <button class="w-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-indigo-400 transition-colors py-2.5 rounded-lg text-sm text-gray-300 font-medium flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                            Mirror Link 2 (Google Drive)
+                        </button>
+                    </div>
 
-<!-- APP HEADER -->
-<div class="flex items-center gap-4">
-<img src="https://techylist.com/wp-content/uploads/2023/03/VPhoneGaga-icon.png" class="w-14 h-14 object-contain">
-<div>
-<h2 class="text-2xl font-bold">Virtual Machine App</h2>
+                </div>
 
-<div class="flex gap-2 mt-1">
-<span class="text-xs bg-indigo-600 px-2 py-1 rounded">v3.3.3</span>
-<span class="text-xs bg-emerald-600 px-2 py-1 rounded">390 MB</span>
-</div>
-</div>
-</div>
+                <!-- Info Table -->
+                <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-xl rounded-2xl p-6 text-sm">
+                    <h3 class="font-semibold text-white mb-4 border-b border-white/5 pb-2">Technical Information</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-gray-400/90">
+                            <span>Package Name:</span>
+                            <span class="text-white">com.vmos.pro</span>
+                        </div>
+                        <div class="flex justify-between items-center text-gray-400/90">
+                            <span>Architecture:</span>
+                            <span class="text-white">arm64-v8a</span>
+                        </div>
+                        <div class="flex justify-between items-center text-gray-400/90">
+                            <span>Installs:</span>
+                            <span class="text-white">100,000+</span>
+                        </div>
+                        <div class="flex justify-between items-center text-gray-400/90">
+                            <span>Developer:</span>
+                            <span class="text-white">Zhiduo Interaction</span>
+                        </div>
+                        <div class="flex justify-between items-center text-gray-400/90">
+                            <span>File Hash (MD5):</span>
+                            <span class="text-white font-mono text-xs">8f9d2a1b...</span>
+                        </div>
+                    </div>
+                </div>
 
-<!-- DESCRIPTION -->
-<p class="text-gray-300 text-sm leading-relaxed">
-Create a virtual phone inside your real device. Install apps separately,
-run multiple accounts, and keep work & personal apps fully isolated.
-Switch instantly between environments.
-</p>
+            </div>
 
-<!-- DOWNLOAD -->
-<div class="space-y-3">
-<button onclick="startDownload()"
-class="bg-indigo-600 hover:bg-indigo-700 transition px-6 py-2 rounded-lg font-medium">
-Download APK
-</button>
+        </div>
+    </main>
 
-<div class="w-full h-2 bg-slate-800 rounded overflow-hidden">
-<div id="bar" class="h-full bg-indigo-500 w-0 transition-all duration-300"></div>
-</div>
-</div>
+    <!-- ================= FOOTER ================= -->
+    <footer class="border-t border-white/5 py-6 md:py-10 text-center text-gray-500 mt-8 md:mt-20 relative z-10">
+        <div class="max-w-6xl mx-auto px-2 md:px-6">
+            <p>© 2026 ShreeBitu.in — All rights reserved.</p>
+            <p class="mt-2 text-sm text-gray-600">Premium file hosting and cloud sharing platform.</p>
+        </div>
+    </footer>
 
-<!-- DETAILS -->
-<div class="border border-slate-800 rounded-xl overflow-hidden text-sm">
-<div class="grid grid-cols-2 border-b border-slate-800">
-<div class="p-3 text-gray-400">Developer</div>
-<div class="p-3">Shenzhen Zhiduo Interactive</div>
-</div>
-<div class="grid grid-cols-2 border-b border-slate-800">
-<div class="p-3 text-gray-400">Category</div>
-<div class="p-3">Virtual Machine</div>
-</div>
-<div class="grid grid-cols-2">
-<div class="p-3 text-gray-400">Updated</div>
-<div class="p-3">2024</div>
-</div>
-</div>
+    <!-- ================= SCRIPTS ================= -->
+    <script>
+        function startDownload() {
+            const btn = document.getElementById('downloadBtn');
+            const container = document.getElementById('progressContainer');
+            const bar = document.getElementById('progressBar');
+            const text = document.getElementById('progressText');
+            const percent = document.getElementById('progressPercent');
 
-<!-- SCREENSHOTS -->
-<div>
-<h3 class="font-semibold mb-3">Screenshots</h3>
-<div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-<img src="https://picsum.photos/300?1" class="rounded-lg hover:scale-105 transition">
-<img src="https://picsum.photos/300?2" class="rounded-lg hover:scale-105 transition">
-<img src="https://picsum.photos/300?3" class="rounded-lg hover:scale-105 transition">
-</div>
-</div>
+            // Hide button, show progress
+            btn.style.display = 'none';
+            container.classList.remove('hidden');
 
-<!-- INSTALL -->
-<div>
-<h3 class="font-semibold mb-2">How to Install</h3>
-<ol class="text-sm text-gray-300 space-y-1 list-decimal pl-5">
-<li>Download APK file</li>
-<li>Allow unknown sources</li>
-<li>Open installer</li>
-<li>Launch virtual phone</li>
-</ol>
-</div>
+            let width = 0;
+            const interval = setInterval(() => {
+                // Randomize increment between 2 to 8
+                let increment = Math.random() * 8 + 2; 
+                width += increment;
+                
+                if (width > 100) width = 100;
 
-<!-- ALTERNATIVES -->
-<div>
-<h3 class="font-semibold mb-1">Alternatives</h3>
-<p class="text-sm text-gray-400">VMOS Pro • X8Sandbox • Twoyi</p>
-</div>
+                bar.style.width = width + "%";
+                percent.innerText = Math.floor(width) + "%";
 
-</div>
-</div>
-</main>
+                if (width < 30) text.innerText = "Connecting to Secure Server...";
+                else if (width < 70) text.innerText = "Downloading VPhoneGaGa.apk...";
+                else if (width < 100) text.innerText = "Finalizing...";
 
-
-<!-- ================= SCRIPT ================= -->
-<script>
-
-function toggleMenu(){
-document.getElementById("mobileMenu").classList.toggle("hidden");
-}
-
-function startDownload(){
-let bar=document.getElementById("bar");
-let width=0;
-let interval=setInterval(()=>{
-width+=5;
-bar.style.width=width+"%";
-if(width>=100) clearInterval(interval);
-},150);
-}
-
-</script>
-
+                if (width >= 100) {
+                    clearInterval(interval);
+                    text.innerText = "Download Complete!";
+                    text.classList.remove("text-indigo-400");
+                    text.classList.add("text-emerald-400");
+                    percent.classList.add("text-emerald-400");
+                    
+                    // Trigger real download logically
+                    setTimeout(() => {
+                        window.location.href = "#"; // Replace with real direct link
+                    }, 500);
+                }
+            }, 300);
+        }
+    </script>
 </body>
 </html>
