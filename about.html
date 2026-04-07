@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — ShreeBitu.in</title>
+<meta name="description" content="Learn about ShreeBitu.in, a cloud storage and file sharing platform built by Bitu Talukdar.">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style>
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeInUp 0.6s ease-out forwards; }
+  .fade-in-delay { animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0; }
+  .fade-in-delay-2 { animation: fadeInUp 0.6s ease-out 0.4s forwards; opacity: 0; }
+  @keyframes glow { 0%, 100% { box-shadow: 0 0 20px rgba(79,70,229,0.3); } 50% { box-shadow: 0 0 40px rgba(79,70,229,0.5); } }
+  .glow-card { animation: glow 3s ease-in-out infinite; }
+</style>
+</head>
+
+<body class="bg-gray-950 text-gray-200">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 backdrop-blur bg-gray-950/80 border-b border-gray-800">
+<div class="max-w-7xl mx-auto flex items-center justify-between px-6 h-16">
+  <div class="flex items-center gap-3">
+    <div class="w-8 h-8 bg-indigo-600 rounded-lg"></div>
+    <a href="index.html" class="text-lg font-semibold text-white hover:text-indigo-400 transition">ShreeBitu.in</a>
+  </div>
+  <nav class="hidden md:flex items-center gap-8 text-sm">
+    <a href="index.html" class="hover:text-white transition">Home</a>
+    <a href="upload.html" class="hover:text-white transition">Upload</a>
+    <a href="explore.html" class="hover:text-white transition">Explore</a>
+    <a href="about.html" class="text-white font-medium">About</a>
+    <a href="contact.html" class="hover:text-white transition">Contact</a>
+  </nav>
+  <a href="upload.html" class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-sm font-medium transition">
+    Upload File
+  </a>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="text-center py-20 px-6 fade-in">
+<div class="max-w-3xl mx-auto">
+  <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">
+    About ShreeBitu.in
+  </h1>
+  <p class="mt-6 text-gray-400 text-lg leading-relaxed">
+    A cloud storage and file sharing platform where anyone can upload, manage, 
+    and share files online. Built with passion by a young developer from India.
+  </p>
+</div>
+</section>
+
+<!-- MISSION -->
+<section class="pb-20 px-6 fade-in-delay">
+<div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
+
+  <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-indigo-600 transition">
+    <div class="text-4xl mb-4">🎯</div>
+    <h3 class="text-xl font-bold text-white mb-3">Our Mission</h3>
+    <p class="text-gray-400 text-sm leading-relaxed">
+      To provide a simple, secure, and free cloud storage platform where 
+      anyone can store and share their digital files without complexity.
+    </p>
+  </div>
+
+  <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-indigo-600 transition">
+    <div class="text-4xl mb-4">🌟</div>
+    <h3 class="text-xl font-bold text-white mb-3">Our Vision</h3>
+    <p class="text-gray-400 text-sm leading-relaxed">
+      To become a reliable and easy-to-use file hosting platform that 
+      anyone can access and use from anywhere in the world.
+    </p>
+  </div>
+
+  <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-indigo-600 transition">
+    <div class="text-4xl mb-4">💡</div>
+    <h3 class="text-xl font-bold text-white mb-3">Our Values</h3>
+    <p class="text-gray-400 text-sm leading-relaxed">
+      Simplicity, transparency, and open-source collaboration. 
+      We believe technology should be accessible to everyone.
+    </p>
+  </div>
+
+</div>
+</section>
+
+<!-- DEVELOPER -->
+<section class="py-20 border-t border-gray-800">
+<div class="max-w-3xl mx-auto px-6 fade-in-delay-2">
+
+  <div class="glow-card bg-gray-900 border border-indigo-600/30 rounded-2xl p-10 text-center">
+    
+    <div class="w-24 h-24 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center text-4xl font-bold text-white">
+      BT
+    </div>
+
+    <h2 class="text-2xl font-bold text-white mb-2">Bitu Talukdar</h2>
+    <p class="text-indigo-400 text-sm font-medium mb-6">Founder & Developer</p>
+
+    <p class="text-gray-400 leading-relaxed mb-4">
+      Hello! I am a new developer currently learning web development using 
+      HTML, CSS, and JavaScript. ShreeBitu.in is my long-term project that 
+      I am building step by step while learning.
+    </p>
+
+    <p class="text-gray-400 leading-relaxed mb-4">
+      In the future, this platform may grow into something much bigger — 
+      or it may evolve in different directions depending on time and progress.
+    </p>
+
+    <p class="text-gray-400 leading-relaxed">
+      This project is open source and anyone is welcome to contribute, 
+      suggest improvements, or help build the platform together.
+    </p>
+
+    <div class="flex justify-center gap-4 mt-8">
+      <a href="https://github.com/shreebitu" target="_blank" class="bg-gray-800 hover:bg-gray-700 px-5 py-2 rounded-lg text-sm font-medium transition hover:scale-105">
+        GitHub →
+      </a>
+      <a href="contact.html" class="bg-indigo-600 hover:bg-indigo-500 px-5 py-2 rounded-lg text-sm font-medium transition hover:scale-105">
+        Contact Me
+      </a>
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+<!-- STATS -->
+<section class="py-16 border-t border-gray-800">
+<div class="max-w-5xl mx-auto px-6">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div>
+      <p class="text-3xl font-bold text-white">100+</p>
+      <p class="text-gray-500 text-sm mt-1">Files Hosted</p>
+    </div>
+    <div>
+      <p class="text-3xl font-bold text-white">50+</p>
+      <p class="text-gray-500 text-sm mt-1">Active Users</p>
+    </div>
+    <div>
+      <p class="text-3xl font-bold text-white">24/7</p>
+      <p class="text-gray-500 text-sm mt-1">Uptime</p>
+    </div>
+    <div>
+      <p class="text-3xl font-bold text-white">Free</p>
+      <p class="text-gray-500 text-sm mt-1">Forever</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-gray-800 py-10 text-center text-gray-500">
+<div class="max-w-6xl mx-auto px-6">
+  <div class="flex flex-wrap justify-center gap-6 text-sm mb-6">
+    <a href="index.html" class="hover:text-white transition">Home</a>
+    <a href="upload.html" class="hover:text-white transition">Upload</a>
+    <a href="explore.html" class="hover:text-white transition">Explore</a>
+    <a href="about.html" class="hover:text-white transition">About</a>
+    <a href="contact.html" class="hover:text-white transition">Contact</a>
+    <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
+  </div>
+  <p>© 2026 ShreeBitu.in — All rights reserved.</p>
+  <p class="mt-2 text-sm">Built with passion and continuous learning.</p>
+</div>
+</footer>
+
+</body>
+</html>

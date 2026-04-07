@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload Files — ShreeBitu.in</title>
+<meta name="description" content="Upload and share your files securely on ShreeBitu.in cloud storage platform.">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style>
+  @keyframes pulse-border {
+    0%, 100% { border-color: #4f46e5; }
+    50% { border-color: #818cf8; }
+  }
+  .upload-zone:hover { animation: pulse-border 2s ease-in-out infinite; }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  .float-icon { animation: float 3s ease-in-out infinite; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeInUp 0.6s ease-out forwards; }
+  .fade-in-delay { animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0; }
+</style>
+</head>
+
+<body class="bg-gray-950 text-gray-200">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 backdrop-blur bg-gray-950/80 border-b border-gray-800">
+<div class="max-w-7xl mx-auto flex items-center justify-between px-6 h-16">
+  <div class="flex items-center gap-3">
+    <div class="w-8 h-8 bg-indigo-600 rounded-lg"></div>
+    <a href="index.html" class="text-lg font-semibold text-white hover:text-indigo-400 transition">ShreeBitu.in</a>
+  </div>
+  <nav class="hidden md:flex items-center gap-8 text-sm">
+    <a href="index.html" class="hover:text-white transition">Home</a>
+    <a href="upload.html" class="text-white font-medium">Upload</a>
+    <a href="explore.html" class="hover:text-white transition">Explore</a>
+    <a href="about.html" class="hover:text-white transition">About</a>
+    <a href="contact.html" class="hover:text-white transition">Contact</a>
+  </nav>
+  <a href="upload.html" class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-sm font-medium transition">
+    Upload File
+  </a>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="text-center py-16 px-6 fade-in">
+<div class="max-w-3xl mx-auto">
+  <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">
+    Upload Your Files
+  </h1>
+  <p class="mt-4 text-gray-400 text-lg">
+    Securely upload PDFs, APKs, documents, images, and more to ShreeBitu.in cloud storage.
+  </p>
+</div>
+</section>
+
+<!-- UPLOAD ZONE -->
+<section class="pb-20 px-6 fade-in-delay">
+<div class="max-w-2xl mx-auto">
+
+  <div id="uploadZone" class="upload-zone border-2 border-dashed border-gray-700 rounded-2xl p-12 text-center cursor-pointer hover:bg-gray-900/50 transition-all duration-300">
+    
+    <div class="float-icon mb-6">
+      <svg class="w-16 h-16 mx-auto text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+      </svg>
+    </div>
+
+    <h3 class="text-xl font-semibold text-white mb-2">Drag & Drop Files Here</h3>
+    <p class="text-gray-400 mb-6">or click to browse from your device</p>
+
+    <input type="file" id="fileInput" class="hidden" multiple>
+    <button onclick="document.getElementById('fileInput').click()" class="bg-indigo-600 hover:bg-indigo-500 px-6 py-3 rounded-lg font-medium transition-all hover:scale-105 active:scale-95">
+      Choose Files
+    </button>
+
+    <p class="mt-6 text-gray-500 text-sm">Supports: PDF, APK, DOC, JPG, PNG, ZIP, MP4 & more</p>
+  </div>
+
+  <!-- FILE LIST -->
+  <div id="fileList" class="mt-8 space-y-3 hidden">
+    <h3 class="text-lg font-semibold text-white mb-4">Selected Files</h3>
+  </div>
+
+  <!-- UPLOAD PROGRESS -->
+  <div id="uploadProgress" class="mt-8 hidden">
+    <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-white font-medium">Uploading...</span>
+        <span id="progressText" class="text-indigo-400 text-sm">0%</span>
+      </div>
+      <div class="w-full bg-gray-800 rounded-full h-2">
+        <div id="progressBar" class="bg-gradient-to-r from-indigo-600 to-purple-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- SUPPORTED FORMATS -->
+<section class="py-16 border-t border-gray-800">
+<div class="max-w-5xl mx-auto px-6">
+  <h2 class="text-2xl font-bold text-white text-center mb-10">Supported File Types</h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 text-center hover:border-indigo-600 transition">
+      <div class="text-3xl mb-2">📄</div>
+      <p class="text-white font-medium text-sm">Documents</p>
+      <p class="text-gray-500 text-xs mt-1">PDF, DOC, TXT</p>
+    </div>
+    <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 text-center hover:border-indigo-600 transition">
+      <div class="text-3xl mb-2">📱</div>
+      <p class="text-white font-medium text-sm">Applications</p>
+      <p class="text-gray-500 text-xs mt-1">APK, EXE, ZIP</p>
+    </div>
+    <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 text-center hover:border-indigo-600 transition">
+      <div class="text-3xl mb-2">🖼️</div>
+      <p class="text-white font-medium text-sm">Images</p>
+      <p class="text-gray-500 text-xs mt-1">JPG, PNG, SVG</p>
+    </div>
+    <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 text-center hover:border-indigo-600 transition">
+      <div class="text-3xl mb-2">🎬</div>
+      <p class="text-white font-medium text-sm">Media</p>
+      <p class="text-gray-500 text-xs mt-1">MP4, MP3, MKV</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-gray-800 py-10 text-center text-gray-500">
+<div class="max-w-6xl mx-auto px-6">
+  <div class="flex flex-wrap justify-center gap-6 text-sm mb-6">
+    <a href="index.html" class="hover:text-white transition">Home</a>
+    <a href="upload.html" class="hover:text-white transition">Upload</a>
+    <a href="explore.html" class="hover:text-white transition">Explore</a>
+    <a href="about.html" class="hover:text-white transition">About</a>
+    <a href="contact.html" class="hover:text-white transition">Contact</a>
+    <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
+  </div>
+  <p>© 2026 ShreeBitu.in — All rights reserved.</p>
+  <p class="mt-2 text-sm">Built with passion and continuous learning.</p>
+</div>
+</footer>
+
+<script>
+  const uploadZone = document.getElementById('uploadZone');
+  const fileInput = document.getElementById('fileInput');
+  const fileList = document.getElementById('fileList');
+
+  ['dragenter','dragover'].forEach(e => {
+    uploadZone.addEventListener(e, (ev) => {
+      ev.preventDefault();
+      uploadZone.classList.add('border-indigo-500','bg-gray-900/50');
+    });
+  });
+
+  ['dragleave','drop'].forEach(e => {
+    uploadZone.addEventListener(e, (ev) => {
+      ev.preventDefault();
+      uploadZone.classList.remove('border-indigo-500','bg-gray-900/50');
+    });
+  });
+
+  uploadZone.addEventListener('drop', (e) => {
+    const files = e.dataTransfer.files;
+    showFiles(files);
+  });
+
+  fileInput.addEventListener('change', () => {
+    showFiles(fileInput.files);
+  });
+
+  function showFiles(files) {
+    fileList.classList.remove('hidden');
+    for (let f of files) {
+      const size = (f.size / 1024 / 1024).toFixed(2);
+      const item = document.createElement('div');
+      item.className = 'bg-gray-900 border border-gray-800 rounded-xl p-4 flex items-center justify-between';
+      item.innerHTML = `
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-indigo-600/20 rounded-lg flex items-center justify-center text-indigo-400">📁</div>
+          <div>
+            <p class="text-white text-sm font-medium">${f.name}</p>
+            <p class="text-gray-500 text-xs">${size} MB</p>
+          </div>
+        </div>
+        <span class="text-green-400 text-xs font-medium bg-green-400/10 px-3 py-1 rounded-full">Ready</span>
+      `;
+      fileList.appendChild(item);
+    }
+  }
+</script>
+
+</body>
+</html>
