@@ -151,12 +151,12 @@
                     </div>
 
                     <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
-                        <img src="vimg/vphonegaga_logo.webp" alt="VPhoneGaGa Application Logo"
-                            class="w-24 h-24 object-contain rounded-2xl shadow-lg shadow-black/40 ring-1 ring-white/10 p-2 bg-white/5">
+                        <img id="appLogo" src="vimg/vphonegaga_logo.webp" alt="VPhoneGaGa Application Logo"
+                            class="w-24 h-24 object-contain rounded-2xl shadow-lg shadow-black/40 ring-1 ring-white/10 p-2 bg-white/5 transition-opacity duration-500">
 
                         <div class="flex-1">
                             <div class="flex items-center gap-2 mb-1">
-                                <h1 class="text-2xl md:text-3xl font-bold text-white">VPhoneGaGa</h1>
+                                <h1 id="appTitle" class="text-2xl md:text-3xl font-bold text-white">VPhoneGaGa</h1>
                                 <span
                                     class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 text-xs px-2.5 py-1 rounded-full flex items-center gap-1 font-semibold">
                                     <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
@@ -166,17 +166,17 @@
                                     </svg>
                                     Verified Safe
                                 </span>
+                                <span id="syncBadge" class="hidden bg-indigo-500/20 text-indigo-400 border border-indigo-500/20 text-[10px] px-2 py-0.5 rounded-md font-bold uppercase tracking-tighter animate-pulse">⚡ Auto Synced</span>
                             </div>
                             <p class="text-indigo-400 font-medium mb-3">Virtual Android Machine Environment</p>
 
                             <div class="flex flex-wrap items-center gap-4 text-sm text-gray-400/90">
-                                <span class="flex items-center gap-1">⭐ <span id="appRating">2.9</span> (<span
-                                        id="appReviews">4,750</span> reviews)</span>
+                                <span class="flex items-center gap-1">⭐ <span id="appRating">...</span> (<span
+                                        id="appReviews">...</span> reviews)</span>
                                 <span>•</span>
-                                <span class="flex items-center gap-1">📱 <span id="appAndroid">Android
-                                        5.0+</span></span>
+                                <span class="flex items-center gap-1">📱 <span id="appAndroid">...</span></span>
                                 <span>•</span>
-                                <span class="font-medium text-white" id="appSize">390 MB</span>
+                                <span class="font-medium text-white"><span id="appHeroSize">390 MB</span></span>
                             </div>
                         </div>
                     </div>
@@ -342,7 +342,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                             </svg>
-                            Download APK (390 MB)
+                            <span id="downloadBtnText">Download APK (390 MB)</span>
                         </button>
 
                         <a href="https://play.google.com/store/apps/details?id=com.yoyo.snake.rush&referrer=utm_source%3Dvphoneos_website"
@@ -467,59 +467,57 @@
 
     <!-- ================= SCRIPTS ================= -->
     <script>
-        function startDownload() {
-            const btn = document.getElementById('downloadBtn');
-            const container = document.getElementById('progressContainer');
-            const bar = document.getElementById('progressBar');
-            const text = document.getElementById('progressText');
-            const percent = document.getElementById('progressPercent');
-
-            // Hide button, show progress
-            btn.style.display = 'none';
-            container.classList.remove('hidden');
-
-            let width = 0;
-            const interval = setInterval(() => {
-                // Randomize increment between 2 to 8
-                let increment = Math.random() * 8 + 2;
-                width += increment;
-
-                if (width > 100) width = 100;
-
-                bar.style.width = width + "%";
-                percent.innerText = Math.floor(width) + "%";
-
-                if (width < 30) text.innerText = "Connecting to Secure Server...";
-                else if (width < 70) text.innerText = "Downloading VPhoneGaGa.apk...";
-                else if (width < 100) text.innerText = "Finalizing...";
-
-                if (width >= 100) {
-                    clearInterval(interval);
-                    text.innerText = "Download Complete!";
-                    text.classList.remove("text-indigo-400");
-                    text.classList.add("text-emerald-400");
-                    percent.classList.add("text-emerald-400");
-
-                    // Trigger real download logically
-                    setTimeout(() => {
-                        window.location.href = "#"; // Replace with real direct link
-                    }, 500);
-                }
-            }, 300);
-        }
-    </script>
-    <script>
         /**
-         * Play Store Data Fetcher (Inline Version)
-         * Automatically fetches rating, reviews, and version from Google Play.
+         * Auto-Sync Engine
+         * Fetches real-time data from Play Store and GitHub
          */
+        const config = {
+            appId: "com.yoyo.snake.rush", // Fallback for stats
+            repo: "shreebitu/modfire",
+            apkPath: "apk/"
+        };
+
+        async function initAutoSync() {
+            console.log("🚀 Initializing Auto-Sync...");
+            
+            // 1. Fetch GitHub Content (Priority for APK Link & Size)
+            fetchGitHubData();
+            
+            // 2. Fetch Play Store Content (Name, Logo, Ratings)
+            fetchPlayStoreData();
+        }
+
+        async function fetchGitHubData() {
+            try {
+                const res = await fetch(`https://api.github.com/repos/${config.repo}/contents/${config.apkPath}`);
+                if (!res.ok) return;
+                
+                const files = await res.json();
+                const apkFile = files.find(f => f.name.toLowerCase().endsWith('.apk'));
+                
+                if (apkFile) {
+                    const sizeMB = (apkFile.size / (1024 * 1024)).toFixed(2);
+                    console.log(`✅ APK Found: ${apkFile.name} (${sizeMB} MB)`);
+                    
+                    document.getElementById('appHeroSize').textContent = `${sizeMB} MB`;
+                    document.getElementById('downloadBtnText').textContent = `Download APK (${sizeMB} MB)`;
+                    
+                    // Update technical info table size if exists
+                    const sizeRows = Array.from(document.querySelectorAll('span')).filter(s => s.textContent.includes('Size:'));
+                    sizeRows.forEach(row => {
+                        const val = row.nextElementSibling;
+                        if (val) val.textContent = `${sizeMB} MB`;
+                    });
+
+                    // Set download link
+                    window.realDownloadUrl = apkFile.download_url;
+                    document.getElementById('syncBadge').classList.remove('hidden');
+                }
+            } catch (e) { console.error("GitHub Sync failed", e); }
+        }
+
         async function fetchPlayStoreData() {
-            const appId = "com.yoyo.snake.rush";
-            const playStoreUrl = `https://play.google.com/store/apps/details?id=${appId}`;
-
-            console.log("Attempting Play Store data fetch...");
-
-            // Multiple proxies for reliability
+            const playStoreUrl = `https://play.google.com/store/apps/details?id=${config.appId}`;
             const proxies = [
                 url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
                 url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`
@@ -540,7 +538,7 @@
                     }
 
                     if (parseAndUpdate(html)) {
-                        console.log("Play Store stats successfully updated!");
+                        console.log("✅ Play Store Sync complete!");
                         return;
                     }
                 } catch (e) { console.warn("Proxy failed, trying next..."); }
@@ -552,44 +550,83 @@
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(htmlContent, "text/html");
 
-                // 1. Extract JSON-LD for Rating and Reviews
-                let rating = null, reviews = null;
+                // Extract App Name & Logo from Meta Tags
+                const metaTitle = doc.querySelector('meta[property="og:title"]')?.content || doc.querySelector('title')?.textContent;
+                const metaImage = doc.querySelector('meta[property="og:image"]')?.content;
+
+                if (metaTitle && metaTitle !== "Google Play") {
+                    const cleanName = metaTitle.split(' - ')[0].split(' – ')[0];
+                    document.getElementById('appTitle').textContent = cleanName;
+                }
+                
+                if (metaImage) {
+                    const logoImg = document.getElementById('appLogo');
+                    logoImg.style.opacity = '0';
+                    setTimeout(() => {
+                        logoImg.src = metaImage;
+                        logoImg.style.opacity = '1';
+                    }, 500);
+                }
+
+                // Extract Rating and Reviews (JSON-LD)
                 doc.querySelectorAll('script[type="application/ld+json"]').forEach(s => {
                     try {
                         const j = JSON.parse(s.textContent);
                         const items = Array.isArray(j) ? j : [j];
                         items.forEach(item => {
                             if (item.aggregateRating) {
-                                rating = parseFloat(item.aggregateRating.ratingValue).toFixed(1);
-                                reviews = parseInt(item.aggregateRating.ratingCount).toLocaleString();
+                                document.getElementById('appRating').textContent = parseFloat(item.aggregateRating.ratingValue).toFixed(1);
+                                document.getElementById('appReviews').textContent = parseInt(item.aggregateRating.ratingCount).toLocaleString();
                             }
                         });
-                    } catch (e) { }
+                    } catch (e) {}
                 });
 
-                // 2. Extract Downloads and Android Version
+                // Extract Android Version
                 const bodyText = doc.body.innerText || doc.body.textContent;
                 const androidMatch = bodyText.match(/Android\s*(\d+\.?\d*)\s*and\s*up/i) || bodyText.match(/Android\s*(\d+\.?\d*)\+/i);
-                const downloadMatch = bodyText.match(/(\d[\d,.]*[MKB]?\+?)\s+downloads/i);
-
-                if (rating) document.getElementById('appRating').textContent = rating;
-                if (reviews) document.getElementById('appReviews').textContent = reviews;
                 if (androidMatch) document.getElementById('appAndroid').textContent = `Android ${androidMatch[1]}+`;
 
-                // Update "Installs" in technical info
-                if (downloadMatch) {
-                    document.querySelectorAll('div.flex.justify-between').forEach(row => {
-                        if (row.textContent.includes("Installs:")) {
-                            const valSpan = row.querySelector('.text-white');
-                            if (valSpan) valSpan.textContent = downloadMatch[1];
-                        }
-                    });
-                }
-                return (rating || reviews);
+                return true;
             } catch (e) { return false; }
         }
 
-        document.addEventListener('DOMContentLoaded', fetchPlayStoreData);
+        function startDownload() {
+            const btn = document.getElementById('downloadBtn');
+            const container = document.getElementById('progressContainer');
+            const bar = document.getElementById('progressBar');
+            const text = document.getElementById('progressText');
+            const percent = document.getElementById('progressPercent');
+
+            btn.style.display = 'none';
+            container.classList.remove('hidden');
+
+            let width = 0;
+            const interval = setInterval(() => {
+                let increment = Math.random() * 8 + 2; 
+                width += increment;
+                if (width > 100) width = 100;
+
+                bar.style.width = width + "%";
+                percent.innerText = Math.floor(width) + "%";
+
+                if (width < 30) text.innerText = "Connecting to Secure Server...";
+                else if (width < 70) text.innerText = "Downloading VPhoneGaGa.apk...";
+                else if (width < 100) text.innerText = "Finalizing...";
+
+                if (width >= 100) {
+                    clearInterval(interval);
+                    text.innerText = "Download Complete!";
+                    text.style.color = "#10b981";
+                    
+                    setTimeout(() => {
+                        window.location.href = window.realDownloadUrl || "#"; 
+                    }, 500);
+                }
+            }, 300);
+        }
+
+        document.addEventListener('DOMContentLoaded', initAutoSync);
     </script>
 </body>
 

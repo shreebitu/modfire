@@ -432,40 +432,122 @@
         }
 
         // Render Cards
-        validFiles.forEach(file => {
-            const isHtml = file.name.endsWith('.html') || file.name.endsWith('.htm');
-            const fileExt = file.name.split('.').pop().toLowerCase();
-            const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+        const fileGroups = {};
 
-            const itemUrl = isHtml ? `${file.path}` : file.download_url;
-            const linkTarget = isHtml ? "" : 'target="_blank"';
-            const actionText = isHtml ? "View Page" : "Download";
+        // 1. Group files by base name
+        validFiles.forEach(file => {
+            const baseName = file.name.split('.')[0];
+            if (!fileGroups[baseName]) fileGroups[baseName] = { html: null, apk: null, other: null, name: baseName };
+
+            if (file.name.endsWith('.html')) fileGroups[baseName].html = file;
+            else if (file.name.endsWith('.apk')) fileGroups[baseName].apk = file;
+            else fileGroups[baseName].other = file;
+        });
+
+        for (const group of Object.values(fileGroups)) {
+            const mainFile = group.apk || group.html || group.other;
+            if (!mainFile) continue;
+
+            const isHtml = mainFile.name.endsWith('.html');
+            const fileExt = mainFile.name.split('.').pop().toLowerCase();
+            const sizeMB = (mainFile.size / (1024 * 1024)).toFixed(2);
+
+            let downloadUrl = group.apk ? group.apk.download_url : (isHtml ? null : mainFile.download_url);
+            let pageUrl = group.html ? group.html.path : null;
 
             let icon = "📄";
             let colorClass = "bg-purple-600/20";
+            let displaySize = `${sizeMB} MB`;
+            const isAppPage = mainFile.path.includes('apk/') && isHtml;
 
-            if (['apk', 'exe', 'msi'].includes(fileExt)) { icon = "📱"; colorClass = "bg-green-600/20"; }
+            if (group.apk || isAppPage) {
+                icon = "📱"; colorClass = "bg-green-600/20";
+                if (isAppPage && !group.apk) displaySize = "390 MB";
+            }
             else if (['jpg', 'png', 'gif', 'svg'].includes(fileExt)) { icon = "🖼️"; colorClass = "bg-pink-600/20"; }
             else if (['mp4', 'mp3', 'mkv'].includes(fileExt)) { icon = "🎬"; colorClass = "bg-red-600/20"; }
+            else if (['pdf', 'doc', 'docx'].includes(fileExt)) { icon = "📄"; colorClass = "bg-purple-600/20"; }
             else if (isHtml) { icon = "🌐"; colorClass = "bg-indigo-600/20"; }
 
             const card = document.createElement('div');
             card.className = "card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card";
+
+            let actionUrl = pageUrl || downloadUrl || '#';
+            let actionTarget = downloadUrl && !pageUrl ? 'target="_blank"' : '';
+            let btnLabel = 'Download';
+            if (group.apk) btnLabel = 'Download APK';
+            else if (fileExt === 'pdf') btnLabel = 'Download PDF';
+
             card.innerHTML = `
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-14 h-14 ${colorClass} rounded-xl flex items-center justify-center text-2xl flex-shrink-0">${icon}</div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 ${colorClass} rounded-xl flex items-center justify-center text-2xl flex-shrink-0 overflow-hidden card-icon">${icon}</div>
                     <div class="overflow-hidden">
-                        <h3 class="text-white font-semibold truncate" title="${file.name}">${file.name.replace('.html', '')}</h3>
-                        <p class="text-gray-500 text-xs uppercase mt-1">${fileExt} • ${sizeMB} MB</p>
+                        <h3 class="text-white font-semibold truncate card-title" title="${group.name}">${group.name}</h3>
+                        <p class="text-gray-500 text-xs mt-0.5">${(group.apk || isAppPage) ? 'APK' : fileExt.toUpperCase()} • ${displaySize}</p>
                     </div>
                 </div>
-                <div class="flex items-center justify-between mt-5 border-t border-white/5 pt-4">
-                    <span class="text-xs text-green-400 font-medium">⚡ Auto Synced</span>
-                    <a href="${itemUrl}" ${linkTarget} class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-5 py-2 rounded-lg text-xs font-medium text-white transition hover:scale-105 active:scale-95 text-center shadow-lg shadow-indigo-600/20">${actionText}</a>
+                <p class="text-gray-400/90 text-sm mb-4 line-clamp-2 card-desc">Loading description...</p>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs text-gray-500 card-date">Updated ...</span>
+                    <a href="${actionUrl}" ${actionTarget} class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95 text-white">${btnLabel}</a>
                 </div>
             `;
             grid.appendChild(card);
-        });
+
+            // Fetch last commit date for this file
+            fetch(`https://api.github.com/repos/${repo}/commits?path=${mainFile.path}&per_page=1`)
+                .then(r => r.ok ? r.json() : null)
+                .then(commits => {
+                    if (commits && commits.length > 0) {
+                        const dateStr = commits[0].commit.committer.date;
+                        const d = new Date(dateStr);
+                        const formatted = d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+                        const dateEl = card.querySelector('.card-date');
+                        if (dateEl) dateEl.textContent = `Updated ${formatted}`;
+                    }
+                })
+                .catch(() => {});
+
+            // Auto-fetch metadata from HTML pages: title, logo (og:image), description
+            if ((isAppPage || isHtml) && mainFile.path) {
+                fetch(`https://raw.githubusercontent.com/${repo}/main/${mainFile.path}`)
+                    .then(r => r.ok ? r.text() : null)
+                    .then(html => {
+                        if (!html) return;
+                        // Title
+                        const titleMatch = html.match(/<title>([^<]+)<\/title>/i);
+                        if (titleMatch) {
+                            const clean = titleMatch[1].split(' - ')[0].split(' – ')[0].trim();
+                            const el = card.querySelector('.card-title');
+                            if (el) { el.textContent = clean; el.title = clean; }
+                        }
+                        // Logo from og:image
+                        const ogImg = (html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i)
+                                    || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i));
+                        if (ogImg) {
+                            const iconEl = card.querySelector('.card-icon');
+                            if (iconEl) iconEl.innerHTML = `<img src="${ogImg[1]}" alt="logo" class="w-10 h-10 object-contain rounded-lg" onerror="this.parentElement.innerHTML='${icon}'">`;
+                        }
+                        // Description — extract meta description (no length limit in regex)
+                        const descMatch = html.match(/name=["']description["'][^>]+content=["']([^"']+)["']/i)
+                                       || html.match(/content=["']([^"']+)["'][^>]+name=["']description["']/i);
+                        if (descMatch) {
+                            const descEl = card.querySelector('.card-desc');
+                            if (descEl) {
+                                // Trim to ~150 chars for the card
+                                let desc = descMatch[1].trim();
+                                if (desc.length > 150) desc = desc.substring(0, 147) + '...';
+                                descEl.textContent = desc;
+                            }
+                        } else {
+                            // Fallback: clear placeholder
+                            const descEl = card.querySelector('.card-desc');
+                            if (descEl) descEl.textContent = 'Download the latest version.';
+                        }
+                    })
+                    .catch(() => {});
+            }
+        }
     }
 
     // Initialize fetching
