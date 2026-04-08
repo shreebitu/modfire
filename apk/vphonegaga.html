@@ -75,7 +75,7 @@
                     <div class="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
                     <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
-                        <img src="https://techylist.com/wp-content/uploads/2023/03/VPhoneGaga-icon.png" class="w-24 h-24 object-contain rounded-2xl shadow-lg shadow-black/40 ring-1 ring-white/10 p-2 bg-white/5">
+                        <img src="vimg/vphonegaga_logo.webp" class="w-24 h-24 object-contain rounded-2xl shadow-lg shadow-black/40 ring-1 ring-white/10 p-2 bg-white/5">
                         
                         <div class="flex-1">
                             <div class="flex items-center gap-2 mb-1">
@@ -88,11 +88,11 @@
                             <p class="text-indigo-400 font-medium mb-3">Virtual Android Machine Environment</p>
                             
                             <div class="flex flex-wrap items-center gap-4 text-sm text-gray-400/90">
-                                <span class="flex items-center gap-1">⭐ 4.8 (8,245 reviews)</span>
+                                <span class="flex items-center gap-1">⭐ <span id="appRating">2.9</span> (<span id="appReviews">4,750</span> reviews)</span>
                                 <span>•</span>
-                                <span class="flex items-center gap-1">📱 Android 7.0+</span>
+                                <span class="flex items-center gap-1">📱 <span id="appAndroid">Android 5.0+</span></span>
                                 <span>•</span>
-                                <span class="font-medium text-white">390 MB</span>
+                                <span class="font-medium text-white" id="appSize">390 MB</span>
                             </div>
                         </div>
                     </div>
@@ -121,10 +121,12 @@
                 <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 relative">
                     <h3 class="text-lg font-semibold text-white mb-4">Screenshots</h3>
                     <div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
-                        <img src="https://picsum.photos/250/450?random=1" class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
-                        <img src="https://picsum.photos/250/450?random=2" class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
-                        <img src="https://picsum.photos/250/450?random=3" class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
-                        <img src="https://picsum.photos/250/450?random=4" class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
+                        <img src="vimg/vphonegaga1.webp" class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
+                        <img src="vimg/vphonegaga2.webp" class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
+                        <img src="vimg/vphonegaga3.webp" class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
+                        <img src="vimg/vphonegaga4.webp" class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
+                        <img src="vimg/vphonegaga_01.webp" class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
+                        <img src="vimg/vphonegaga_011.webp" class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
                     </div>
                 </div>
 
@@ -155,6 +157,11 @@
                             <svg class="w-5 h-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                             Download APK (390 MB)
                         </button>
+
+                        <a href="https://play.google.com/store/apps/details?id=com.yoyo.snake.rush&referrer=utm_source%3Dvphoneos_website" target="_blank" class="w-full bg-[#1A1F2E] hover:bg-[#252B3D] border border-white/10 py-4 rounded-xl font-bold transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 shadow-lg group">
+                            <img src="https://www.gstatic.com/android/market_images/web/play_prism_h_64.png" alt="Play Store" class="w-5 h-5">
+                            <span>Get it on Google Play</span>
+                        </a>
                         
                         <!-- Progress Bar (Hidden initially) -->
                         <div id="progressContainer" class="hidden w-full space-y-2">
@@ -273,6 +280,89 @@
                 }
             }, 300);
         }
+    </script>
+    <script>
+        /**
+         * Play Store Data Fetcher (Inline Version)
+         * Automatically fetches rating, reviews, and version from Google Play.
+         */
+        async function fetchPlayStoreData() {
+            const appId = "com.yoyo.snake.rush";
+            const playStoreUrl = `https://play.google.com/store/apps/details?id=${appId}`;
+            
+            console.log("Attempting Play Store data fetch...");
+
+            // Multiple proxies for reliability
+            const proxies = [
+                url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
+                url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`
+            ];
+
+            for (const getProxyUrl of proxies) {
+                try {
+                    const response = await fetch(getProxyUrl(playStoreUrl));
+                    if (!response.ok) continue;
+
+                    let html = "";
+                    const contentType = response.headers.get('content-type');
+                    if (contentType && contentType.includes('application/json')) {
+                        const json = await response.json();
+                        html = json.contents || json;
+                    } else {
+                        html = await response.text();
+                    }
+
+                    if (parseAndUpdate(html)) {
+                        console.log("Play Store stats successfully updated!");
+                        return;
+                    }
+                } catch (e) { console.warn("Proxy failed, trying next..."); }
+            }
+        }
+
+        function parseAndUpdate(htmlContent) {
+            try {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlContent, "text/html");
+
+                // 1. Extract JSON-LD for Rating and Reviews
+                let rating = null, reviews = null;
+                doc.querySelectorAll('script[type="application/ld+json"]').forEach(s => {
+                    try {
+                        const j = JSON.parse(s.textContent);
+                        const items = Array.isArray(j) ? j : [j];
+                        items.forEach(item => {
+                            if (item.aggregateRating) {
+                                rating = parseFloat(item.aggregateRating.ratingValue).toFixed(1);
+                                reviews = parseInt(item.aggregateRating.ratingCount).toLocaleString();
+                            }
+                        });
+                    } catch (e) {}
+                });
+
+                // 2. Extract Downloads and Android Version
+                const bodyText = doc.body.innerText || doc.body.textContent;
+                const androidMatch = bodyText.match(/Android\s*(\d+\.?\d*)\s*and\s*up/i) || bodyText.match(/Android\s*(\d+\.?\d*)\+/i);
+                const downloadMatch = bodyText.match(/(\d[\d,.]*[MKB]?\+?)\s+downloads/i);
+
+                if (rating) document.getElementById('appRating').textContent = rating;
+                if (reviews) document.getElementById('appReviews').textContent = reviews;
+                if (androidMatch) document.getElementById('appAndroid').textContent = `Android ${androidMatch[1]}+`;
+
+                // Update "Installs" in technical info
+                if (downloadMatch) {
+                    document.querySelectorAll('div.flex.justify-between').forEach(row => {
+                        if (row.textContent.includes("Installs:")) {
+                            const valSpan = row.querySelector('.text-white');
+                            if (valSpan) valSpan.textContent = downloadMatch[1];
+                        }
+                    });
+                }
+                return (rating || reviews);
+            } catch (e) { return false; }
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchPlayStoreData);
     </script>
 </body>
 </html>
