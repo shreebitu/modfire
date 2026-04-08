@@ -1,76 +1,34 @@
 /**
  * Auto-Sync Engine
- * Fetches real-time data from Play Store and GitHub
+ * Fetches real-time data from Play Store with 3-Day Caching
  */
-const config = {
-    appId: "com.yoyo.snake.rush", // Fallback for stats as VPhoneGaGa is not on Play Store
-    repo: "shreebitu/modfire",
-    apkPath: "apk/"
-};
+
+const CACHE_KEY = "vphonegaga_playstore_data";
+const CACHE_TIME_KEY = "vphonegaga_playstore_sync_time";
+const CACHE_EXPIRY_MS = 3 * 24 * 60 * 60 * 1000; // 3 Days in milliseconds
+
+// Exact URL requested by user
+const playStoreUrl = `https://play.google.com/store/apps/details?id=com.yoyo.snake.rush&referrer=utm_source%3Dvphoneos_website`;
 
 async function initAutoSync() {
-    console.log("🚀 Initializing Auto-Sync...");
+    console.log("🚀 Initializing Auto-Sync from Play Store URL...");
 
-    // 1. Fetch GitHub Content (Priority for APK Link & Size)
-    fetchGitHubData();
+    // Check Cache First
+    const lastSync = localStorage.getItem(CACHE_TIME_KEY);
+    if (lastSync && (Date.now() - parseInt(lastSync) < CACHE_EXPIRY_MS)) {
+        const cachedData = localStorage.getItem(CACHE_KEY);
+        if (cachedData) {
+            console.log("⚡ Using Cached Play Store Data (Valid for 3 days).");
+            applyDataToUI(JSON.parse(cachedData));
+            return;
+        }
+    }
 
-    // 2. Fetch Play Store Content (Name, Logo, Ratings)
+    // Cache missing or expired, fetch new data
     fetchPlayStoreData();
 }
 
-async function fetchGitHubData() {
-    try {
-        const res = await fetch(`https://api.github.com/repos/${config.repo}/contents/${config.apkPath}`);
-        if (!res.ok) {
-            applyFallbackSize();
-            return;
-        }
-
-        const files = await res.json();
-        const apkFile = files.find(f => f.name.toLowerCase().endsWith('.apk') || f.name.toLowerCase().includes('vphonegaga'));
-
-        if (apkFile) {
-            const sizeMB = (apkFile.size / (1024 * 1024)).toFixed(2);
-            console.log(`✅ APK Found: ${apkFile.name} (${sizeMB} MB)`);
-
-            const sizeElem = document.getElementById('appHeroSize');
-            if(sizeElem) sizeElem.textContent = `${sizeMB} MB`;
-            
-            const btnText = document.getElementById('downloadBtnText');
-            if(btnText) btnText.textContent = `Download APK (${sizeMB} MB)`;
-
-            // Update technical info table size if exists
-            const sizeRows = Array.from(document.querySelectorAll('span')).filter(s => s.textContent.includes('Size:'));
-            sizeRows.forEach(row => {
-                const val = row.nextElementSibling;
-                if (val) val.textContent = `${sizeMB} MB`;
-            });
-
-            // Set download link
-            window.realDownloadUrl = apkFile.download_url;
-            
-            const badge = document.getElementById('syncBadge');
-            if(badge) badge.classList.remove('hidden');
-        } else {
-            applyFallbackSize();
-        }
-    } catch (e) { 
-        console.error("GitHub Sync failed", e); 
-        applyFallbackSize();
-    }
-}
-
-function applyFallbackSize() {
-    console.warn("Using fallback GitHub data...");
-    const sizeElem = document.getElementById('appHeroSize');
-    if(sizeElem) sizeElem.textContent = `390 MB`;
-    
-    const btnText = document.getElementById('downloadBtnText');
-    if(btnText) btnText.textContent = `Download APK (390 MB)`;
-}
-
 async function fetchPlayStoreData() {
-    const playStoreUrl = `https://play.google.com/store/apps/details?id=${config.appId}`;
     const proxies = [
         url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`,
         url => `https://corsproxy.io/?${encodeURIComponent(url)}`
@@ -90,8 +48,16 @@ async function fetchPlayStoreData() {
                 html = await response.text();
             }
 
-            if (parseAndUpdate(html)) {
-                console.log("✅ Play Store Sync complete!");
+            const extractedData = parsePlayStoreHtml(html);
+            if (extractedData) {
+                console.log("✅ Play Store Sync complete! Saving to cache...");
+                
+                // Save to localStorage
+                localStorage.setItem(CACHE_KEY, JSON.stringify(extractedData));
+                localStorage.setItem(CACHE_TIME_KEY, Date.now().toString());
+                
+                // Apply immediately
+                applyDataToUI(extractedData);
                 return;
             }
         } catch (e) { 
@@ -99,45 +65,70 @@ async function fetchPlayStoreData() {
         }
     }
     
-    // If all proxies fail, apply fallbacks so it doesn't stay as "..."
+    // If all proxies fail, apply fallbacks
     applyFallbackStats();
 }
 
-function parseAndUpdate(htmlContent) {
+function parsePlayStoreHtml(htmlContent) {
     try {
         const parser = new DOMParser();
         const doc = parser.parseFromString(htmlContent, "text/html");
+        let data = { rating: null, reviews: null, android: null };
 
-        // Extract Rating and Reviews (JSON-LD)
-        let success = false;
+        // EXTRACT RATING & REVIEWS
+        // Method 1: JSON-LD Structured Data
         doc.querySelectorAll('script[type="application/ld+json"]').forEach(s => {
             try {
                 const j = JSON.parse(s.textContent);
                 const items = Array.isArray(j) ? j : [j];
                 items.forEach(item => {
-                    if (item.aggregateRating) {
-                        const ratingEl = document.getElementById('appRating');
-                        const reviewsEl = document.getElementById('appReviews');
-                        
-                        if(ratingEl) ratingEl.textContent = parseFloat(item.aggregateRating.ratingValue).toFixed(1);
-                        if(reviewsEl) reviewsEl.textContent = parseInt(item.aggregateRating.ratingCount).toLocaleString();
-                        success = true;
+                    if (item.aggregateRating && !data.rating) {
+                        data.rating = parseFloat(item.aggregateRating.ratingValue).toFixed(1);
+                        data.reviews = parseInt(item.aggregateRating.ratingCount).toLocaleString();
                     }
                 });
             } catch (e) { }
         });
 
-        // Extract Android Version
-        const bodyText = doc.body.innerText || doc.body.textContent;
-        const androidMatch = bodyText.match(/Android\s*(\d+\.?\d*)\s*and\s*up/i) || bodyText.match(/Android\s*(\d+\.?\d*)\+/i);
-        const androidEl = document.getElementById('appAndroid');
-        if (androidMatch && androidEl) {
-            androidEl.textContent = `Android ${androidMatch[1]}+`;
+        // Method 2: Regex HTML Scrape as Fallback
+        if (!data.rating) {
+            // Google Play obfuscates classes, so we rely on Aria-labels
+            const ratingAriaMatch = htmlContent.match(/aria-label="Rated ([\d\.]+) stars out of five"/i);
+            const reviewsAriaMatch = htmlContent.match(/([\d\.,]+)\s*reviews/i) || htmlContent.match(/([\d\.,]+)\s*ratings/i);
+            
+            // Backup direct regex
+            const nakedRatingMatch = htmlContent.match(/<div class="[^"]*">([\d\.]+)<i class="star/);
+
+            if (ratingAriaMatch) data.rating = parseFloat(ratingAriaMatch[1]).toFixed(1);
+            else if (nakedRatingMatch) data.rating = parseFloat(nakedRatingMatch[1]).toFixed(1);
+            
+            if (reviewsAriaMatch) data.reviews = reviewsAriaMatch[1];
         }
 
-        if (!success) return false;
-        return true;
-    } catch (e) { return false; }
+        // EXTRACT ANDROID VERSION
+        const bodyText = doc.body.innerText || doc.body.textContent;
+        const androidMatch = bodyText.match(/Requires Android[\s\n]*([\d\.]+) and up/i) || bodyText.match(/Android\s*(\d+\.?\d*)\s*and\s*up/i) || bodyText.match(/Android\s*(\d+\.?\d*)\+/i);
+        if (androidMatch) {
+            data.android = `${androidMatch[1]}+`;
+        }
+
+        // Return data only if we successfully grabbed something
+        if (data.rating || data.android) {
+            return data;
+        }
+
+        return null;
+    } catch (e) { return null; }
+}
+
+function applyDataToUI(data) {
+    const ratingEl = document.getElementById('appRating');
+    const reviewsEl = document.getElementById('appReviews');
+    const androidEl = document.getElementById('appAndroid');
+
+    if (ratingEl && data.rating) ratingEl.textContent = data.rating;
+    if (reviewsEl && data.reviews) reviewsEl.textContent = data.reviews;
+    if (androidEl && data.android) androidEl.textContent = data.android;
 }
 
 function applyFallbackStats() {
@@ -146,9 +137,10 @@ function applyFallbackStats() {
     const reviewsEl = document.getElementById('appReviews');
     const androidEl = document.getElementById('appAndroid');
 
-    if(ratingEl && ratingEl.textContent === '...') ratingEl.textContent = '4.6';
-    if(reviewsEl && reviewsEl.textContent === '...') reviewsEl.textContent = '12,500';
-    if(androidEl && androidEl.textContent === 'Android ...') androidEl.textContent = 'Android 7.0+';
+    // Only apply if they are still the '...' placeholder
+    if(ratingEl && ratingEl.textContent.includes('...')) ratingEl.textContent = '4.6';
+    if(reviewsEl && reviewsEl.textContent.includes('...')) reviewsEl.textContent = '12,500';
+    if(androidEl && androidEl.textContent.includes('...')) androidEl.textContent = '7.0+';
 }
 
 function startDownload() {
