@@ -333,6 +333,10 @@
             const mainFile = group.apk || group.html || group.other;
             if (!mainFile) continue;
 
+            // Registry card pehle se hai toh skip karo (duplicate avoid)
+            const baseName = group.name.toLowerCase();
+            if (document.querySelector(`[data-registry-app="${baseName}"]`)) continue;
+
             const isHtml = mainFile.name.endsWith('.html');
             const fileExt = mainFile.name.split('.').pop().toLowerCase();
             const sizeMB = (mainFile.size / (1024 * 1024)).toFixed(2);
@@ -435,7 +439,7 @@
         }
     }
 
-    // Initialize fetching
+    // Initialize fetching from GitHub
     loadDynamicFiles();
 
     // Client-side Search Logic
@@ -485,5 +489,8 @@
         });
     });
 </script>
+
+<!-- App Registry: Naya app add karo Javascript/appRegistry.js mein -->
+<script src="Javascript/appRegistry.js"></script>
 
 </html>
