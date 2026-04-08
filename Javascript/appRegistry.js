@@ -59,6 +59,19 @@ const APP_LIST = [
         badge: "⌨️",
         color: "purple",
         updated: "Apr 2026"
+    },
+    {
+        name: "Gene Transfer Methods",
+        subtitle: "Biology Presentation · Free PPT",
+        description: "Comprehensive PowerPoint presentation on Gene Transfer Methods — Agrobacterium, Biolistics, Electroporation, Microinjection, Viral Vectors & more. Free download.",
+        icon: "",
+        pageUrl: "apk/gene-transfer-ppt.html",
+        filename: "gene-transfer-ppt",
+        size: "~36 KB",
+        type: "document",
+        badge: "📊",
+        color: "orange",
+        updated: "Apr 2026"
     }
     // =============================================
     // NAYA APP ADD KARNA HO TOH YAHAN COPY KARO:
@@ -101,6 +114,10 @@ const COLOR_MAP = {
     amber: {
         bg: "bg-amber-600/20",
         btn: "from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 shadow-amber-500/25"
+    },
+    orange: {
+        bg: "bg-orange-600/20",
+        btn: "from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 shadow-orange-500/25"
     }
 };
 
@@ -141,7 +158,7 @@ function renderAppRegistryCards() {
                 </div>
                 <div class="overflow-hidden">
                     <h3 class="text-white font-semibold truncate card-title" title="${app.name}">${app.name}</h3>
-                    <p class="text-gray-500 text-xs mt-0.5">APK • ${app.size}</p>
+                <p class="text-gray-500 text-xs mt-0.5">${app.type === 'document' ? 'PPT' : 'APK'} • ${app.size}</p>
                 </div>
             </div>
             <p class="text-gray-400/90 text-sm mb-4 line-clamp-2 card-desc">${app.description}</p>
@@ -149,7 +166,7 @@ function renderAppRegistryCards() {
                 <span class="text-xs text-gray-500 card-date">Updated ${app.updated}</span>
                 <a href="${app.pageUrl}" 
                    class="bg-gradient-to-r ${colors.btn} shadow-lg border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95 text-white">
-                   View App
+                   ${app.type === 'document' ? 'Download' : 'View App'}
                 </a>
             </div>
         `;
