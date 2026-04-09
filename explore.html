@@ -68,17 +68,18 @@
         <a href="index.html"
           class="text-2xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 hover:opacity-80 drop-shadow-md transition">SHREEBITU</a>
       </div>
-      <nav class="hidden md:flex items-center gap-8 text-sm">
-        <a href="index.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Home</a>
-        <a href="upload.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Upload</a>
-        <a href="explore.html" class="text-white font-medium">Explore</a>
-        <a href="about.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">About</a>
-        <a href="contact.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Contact</a>
-      </nav>
-      <a href="upload.html"
-        class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-sm font-medium transition">
-        Upload File
-      </a>
+            <!-- NAV -->
+            <nav class="hidden md:flex items-center gap-8 text-sm" id="mainNav">
+                <a href="index.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Home</a>
+                <a href="explore.html" class="text-white font-medium">Explore</a>
+                <a href="about.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">About</a>
+            </nav>
+
+            <!-- BUTTON -->
+            <div id="authButtons" class="flex gap-4">
+                <a href="login.html" class="border border-white/10 px-4 py-2 rounded-lg text-sm font-medium transition hover:bg-white/5">Login</a>
+                <a href="signup.html" class="bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg shadow-indigo-500/25 px-4 py-2 rounded-lg text-sm font-medium transition hover:scale-105 active:scale-95">Sign Up</a>
+            </div>
     </div>
   </header>
 
@@ -133,115 +134,7 @@
 
       <div id="fileGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        <!-- Sample File Cards -->
-        <div
-          class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6"
-          data-type="app">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 bg-indigo-600/20 rounded-xl flex items-center justify-center text-2xl">📱</div>
-            <div>
-              <h3 class="text-white font-semibold">VPhoneGaGa APK</h3>
-              <p class="text-gray-500 text-xs">v2.5.1 • 45.2 MB</p>
-            </div>
-          </div>
-          <p class="text-gray-400/90 text-sm mb-4">Virtual phone application for Android devices with multiple features.
-          </p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-gray-500">Uploaded 2 days ago</span>
-            <button
-              class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
-          </div>
-        </div>
-
-        <div
-          class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6"
-          data-type="document">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 bg-purple-600/20 rounded-xl flex items-center justify-center text-2xl">📄</div>
-            <div>
-              <h3 class="text-white font-semibold">Web Dev Guide</h3>
-              <p class="text-gray-500 text-xs">PDF • 12.8 MB</p>
-            </div>
-          </div>
-          <p class="text-gray-400/90 text-sm mb-4">Complete beginner guide to HTML, CSS and JavaScript development.</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-gray-500">Uploaded 5 days ago</span>
-            <button
-              class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
-          </div>
-        </div>
-
-        <div
-          class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6"
-          data-type="image">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 bg-pink-600/20 rounded-xl flex items-center justify-center text-2xl">🖼️</div>
-            <div>
-              <h3 class="text-white font-semibold">Wallpapers Pack</h3>
-              <p class="text-gray-500 text-xs">ZIP • 89.5 MB</p>
-            </div>
-          </div>
-          <p class="text-gray-400/90 text-sm mb-4">Collection of high-quality 4K wallpapers for desktop and mobile.</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-gray-500">Uploaded 1 week ago</span>
-            <button
-              class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
-          </div>
-        </div>
-
-        <div
-          class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6"
-          data-type="app">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 bg-green-600/20 rounded-xl flex items-center justify-center text-2xl">📱</div>
-            <div>
-              <h3 class="text-white font-semibold">File Manager Pro</h3>
-              <p class="text-gray-500 text-xs">APK • 18.3 MB</p>
-            </div>
-          </div>
-          <p class="text-gray-400/90 text-sm mb-4">Advanced file manager with cloud integration and built-in viewer.</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-gray-500">Uploaded 3 days ago</span>
-            <button
-              class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
-          </div>
-        </div>
-
-        <div
-          class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6"
-          data-type="media">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 bg-red-600/20 rounded-xl flex items-center justify-center text-2xl">🎬</div>
-            <div>
-              <h3 class="text-white font-semibold">Tutorial Videos</h3>
-              <p class="text-gray-500 text-xs">MP4 • 256 MB</p>
-            </div>
-          </div>
-          <p class="text-gray-400/90 text-sm mb-4">Step-by-step coding tutorials for beginners in web development.</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-gray-500">Uploaded 4 days ago</span>
-            <button
-              class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
-          </div>
-        </div>
-
-        <div
-          class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6"
-          data-type="document">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 bg-yellow-600/20 rounded-xl flex items-center justify-center text-2xl">📄</div>
-            <div>
-              <h3 class="text-white font-semibold">Resume Templates</h3>
-              <p class="text-gray-500 text-xs">DOCX • 5.4 MB</p>
-            </div>
-          </div>
-          <p class="text-gray-400/90 text-sm mb-4">Professional resume templates in multiple styles ready to edit.</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-gray-500">Uploaded 6 days ago</span>
-            <button
-              class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95">Download</button>
-          </div>
-        </div>
+        <!-- dynamic files loaded here -->
 
       </div>
 
@@ -274,6 +167,62 @@
   </footer>
 
   <script>
+    fetch('/api/authcheck').then(r => r.json()).then(data => {
+        if (data.authenticated) {
+            document.getElementById('mainNav').innerHTML += `<a href="dashboard.html" class="hover:text-white hover:text-indigo-400 font-medium text-indigo-400">Dashboard</a>`;
+            document.getElementById('authButtons').innerHTML = `
+                <a href="upload.html" class="bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-2 rounded-lg text-sm font-medium transition hover:scale-105">Upload File</a>
+            `;
+        }
+    });
+
+    // Fetch and display public files
+    async function loadPublicFiles() {
+        const grid = document.getElementById('fileGrid');
+        try {
+            const res = await fetch('/api/public/files');
+            const data = await res.json();
+            
+            if (!data.success || data.files.length === 0) {
+                grid.innerHTML = '<p class="text-gray-400/90 col-span-full text-center py-6">No public files available.</p>';
+                return;
+            }
+
+            grid.innerHTML = '';
+            data.files.forEach(f => {
+                let icon = '📄'; let color = 'bg-indigo-600/20'; let typeCat = 'document';
+                if(f.file_type === 'apk') { icon = '📱'; color = 'bg-green-600/20'; typeCat = 'app'; }
+                if(f.file_type === 'zip') { icon = '📦'; color = 'bg-yellow-600/20'; typeCat = 'app'; }
+                if(f.file_type === 'github') { icon = '💻'; color = 'bg-gray-600/20'; typeCat = 'app'; }
+                if(f.file_type === 'ppt') { icon = '📊'; color = 'bg-purple-600/20'; typeCat = 'document'; }
+
+                let metadataStr = '{}';
+                try { metadataStr = JSON.parse(f.metadata); } catch(e){}
+
+                grid.innerHTML += `
+                <div class="card-hover backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 searchable-card" data-type="${typeCat}">
+                  <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 ${color} rounded-xl flex items-center justify-center text-2xl">${icon}</div>
+                    <div class="overflow-hidden">
+                      <h3 class="text-white font-semibold truncate">${f.file_name}</h3>
+                      <p class="text-gray-500 text-xs mt-0.5 uppercase">${f.file_type}</p>
+                    </div>
+                  </div>
+                  <p class="text-gray-400/90 text-sm mb-4 line-clamp-2">${metadataStr.description || 'View details page for more info.'}</p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-gray-500">Shared publicly</span>
+                    <div class="flex gap-2">
+                        <a href="view.html?id=${f.id}" class="border border-white/10 hover:border-indigo-500 px-3 py-2 rounded-lg text-xs font-medium transition text-gray-300">View</a>
+                        <a href="/api/download/${f.id}" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-3 py-2 rounded-lg text-xs font-medium transition hover:scale-105 active:scale-95 text-white">Download</a>
+                    </div>
+                  </div>
+                </div>`;
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    }
+    loadPublicFiles();
     // Filter buttons
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {

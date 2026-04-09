@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Component — ShreeBitu.in</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    body { font-family: 'Outfit', sans-serif; }
+    .fade-in { animation: fadeInUp 0.6s ease-out forwards; }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-[#0B0F19] text-gray-200 antialiased min-h-screen flex flex-col pt-16">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-[#0B0F19]/60 border-b border-white/5 shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 h-16">
+      <a href="index.html" class="text-2xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 hover:opacity-80 drop-shadow-md">SHREEBITU</a>
+      
+      <nav class="hidden md:flex items-center gap-8 text-sm">
+          <a href="explore.html" class="hover:text-white hover:text-indigo-400 font-medium">Explore</a>
+          <a href="dashboard.html" class="hover:text-white hover:text-indigo-400 font-medium">Dashboard</a>
+      </nav>
+      <a href="upload.html" class="bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-2 rounded-lg text-sm font-medium">Upload File</a>
+    </div>
+  </header>
+
+  <main id="templateContainer" class="flex-grow max-w-5xl mx-auto w-full px-6 py-12 flex justify-center items-center">
+      <div class="text-center text-gray-400 animate-pulse">Loading content...</div>
+  </main>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const fileId = urlParams.get('id');
+
+    async function loadFile() {
+        if (!fileId) {
+            document.getElementById('templateContainer').innerHTML = `<div class="text-red-400">No File ID provided.</div>`;
+            return;
+        }
+
+        try {
+            const res = await fetch(`/api/view/${fileId}`);
+            const data = await res.json();
+            
+            if (!data.success) throw new Error(data.error);
+
+            renderTemplate(data.file);
+
+        } catch (err) {
+            document.getElementById('templateContainer').innerHTML = `
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold text-white mb-4">Error</h2>
+                    <p class="text-red-400">${err.message}</p>
+                    <a href="explore.html" class="text-indigo-400 hover:underline mt-4 inline-block">Return to Explore</a>
+                </div>
+            `;
+        }
+    }
+
+    function renderTemplate(file) {
+        const container = document.getElementById('templateContainer');
+        container.classList.remove('items-center'); // Allow children to flow naturally top-down
+        
+        let meta = {};
+        try { meta = JSON.parse(file.metadata); } catch(e){}
+
+        const downloadPath = `/api/download/${file.id}`;
+        const uploaderBlock = `<div class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between text-sm text-gray-500">
+            <span>Uploaded by ${file.uploader_email}</span>
+            <span>${new Date(file.created_at).toLocaleDateString()}</span>
+        </div>`;
+
+        let html = '';
+
+        if (file.file_type === 'ppt' || file.file_type === 'zip') {
+            const icon = file.file_type === 'ppt' ? '📊' : '📦';
+            const color = file.file_type === 'ppt' ? 'bg-purple-600/20 text-purple-400' : 'bg-yellow-600/20 text-yellow-500';
+            
+            html = `
+            <div class="w-full max-w-3xl mx-auto backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl rounded-3xl p-8 md:p-12 fade-in relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-8 opacity-10 text-9xl pointer-events-none">${icon}</div>
+                <div class="w-20 h-20 ${color} rounded-2xl flex items-center justify-center text-4xl mb-6">${icon}</div>
+                
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">${file.file_name}</h1>
+                <div class="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs font-bold rounded uppercase tracking-wider mb-6">${file.file_type}</div>
+                
+                <p class="text-gray-400 text-lg leading-relaxed mb-10 min-h-[100px]">${meta.description || 'No description provided.'}</p>
+                
+                <div class="flex gap-4">
+                    <a href="${downloadPath}" class="bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-4 rounded-xl font-semibold text-white shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:scale-105 transition active:scale-95 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Download File
+                    </a>
+                </div>
+                ${uploaderBlock}
+            </div>`;
+        } 
+        else if (file.file_type === 'apk') {
+            html = `
+            <div class="w-full max-w-4xl mx-auto fade-in">
+                <div class="flex flex-col md:flex-row gap-8 items-start mb-10 backdrop-blur-md bg-white/[0.02] border border-white/5 rounded-3xl p-8 relative overflow-hidden">
+                    <div class="w-32 h-32 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center text-6xl shadow-[0_0_30px_rgba(52,211,153,0.3)] flex-shrink-0">📱</div>
+                    
+                    <div class="flex-grow z-10">
+                        <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">${file.file_name}</h1>
+                        <p class="text-green-400 font-medium mb-4">Version: ${meta.version || '1.0.0'} • Developer: ${meta.developer || 'Unknown'}</p>
+                        
+                        <div class="flex gap-4 mt-6">
+                            <a href="${downloadPath}" class="bg-white text-green-600 px-8 py-3 rounded-xl font-bold shadow-lg hover:bg-gray-100 transition hover:scale-105 active:scale-95 flex items-center gap-2">
+                                Download APK
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="md:col-span-2 backdrop-blur-md bg-white/[0.02] border border-white/5 rounded-3xl p-8">
+                        <h2 class="text-xl font-bold text-white mb-4 border-b border-white/10 pb-2">Description & Notes</h2>
+                        <p class="text-gray-400 leading-relaxed whitespace-pre-wrap">${meta.description || 'No description provided.'}</p>
+                    </div>
+                    
+                    <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 rounded-3xl p-8 h-fit">
+                        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">App Details</h3>
+                        <div class="space-y-4 text-sm">
+                            <div class="flex justify-between"><span class="text-gray-400">File Type</span><span class="text-white">Android APK</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Uploader</span><span class="text-white truncate max-w-[120px]">${file.uploader_email}</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Updated</span><span class="text-white">${new Date(file.created_at).toLocaleDateString()}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+        }
+        else if (file.file_type === 'github') {
+            html = `
+            <div class="w-full max-w-4xl mx-auto fade-in backdrop-blur-md bg-white/[0.02] border border-white/5 rounded-3xl overflow-hidden shadow-2xl">
+                <!-- Header part -->
+                <div class="bg-gray-900/50 p-8 md:p-12 border-b border-white/5">
+                    <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center text-3xl mb-6">💻</div>
+                    <h1 class="text-4xl font-bold text-white mb-2">${file.file_name}</h1>
+                    <div class="flex flex-wrap gap-2 mt-4 text-xs font-semibold py-1">
+                        ${(meta.stack || 'Development').split(',').map(s => `<span class="px-3 py-1 bg-white/10 rounded-full text-indigo-300 border border-white/5">${s.trim()}</span>`).join('')}
+                    </div>
+                </div>
+                
+                <!-- Body -->
+                <div class="p-8 md:p-12">
+                    <h2 class="text-xl font-bold text-white mb-4">About the Project</h2>
+                    <p class="text-gray-400 leading-relaxed mb-8 whitespace-pre-wrap">${meta.description || 'No description provided.'}</p>
+                    
+                    <div class="flex gap-4">
+                        <a href="${meta.repo || '#'}" target="_blank" class="bg-white text-gray-900 px-6 py-3 rounded-lg font-bold shadow hover:bg-gray-100 transition hover:scale-105 flex items-center gap-2">
+                           <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.285 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> 
+                           View on GitHub
+                        </a>
+                        ${file.r2_key ? `<a href="${downloadPath}" class="border border-white/20 px-6 py-3 rounded-lg font-semibold hover:bg-white/5 transition flex items-center gap-2 text-white">Download Code</a>` : ''}
+                    </div>
+                </div>
+                ${uploaderBlock}
+            </div>`;
+        } else {
+            // Fallback purely minimal View
+             html = `
+            <div class="w-full max-w-2xl mx-auto backdrop-blur-md bg-white/[0.02] border border-white/5 shadow rounded-2xl p-8 text-center fade-in">
+                <h1 class="text-3xl font-bold text-white mb-2">${file.file_name}</h1>
+                <p class="text-gray-500 mb-8">${file.file_type.toUpperCase()}</p>
+                <a href="${downloadPath}" class="bg-indigo-600 px-6 py-3 rounded-xl font-semibold text-white">Download</a>
+            </div>`;
+        }
+
+        container.innerHTML = html;
+    }
+
+    loadFile();
+  </script>
+
+</body>
+</html>

@@ -83,23 +83,17 @@
             </div>
 
             <!-- NAV -->
-            <nav class="hidden md:flex items-center gap-8 text-sm">
+            <nav class="hidden md:flex items-center gap-8 text-sm" id="mainNav">
                 <a href="index.html" class="text-white font-medium">Home</a>
-                <a href="upload.html"
-                    class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Upload</a>
-                <a href="explore.html"
-                    class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Explore</a>
-                <a href="about.html"
-                    class="hover:text-white hover:text-indigo-400 transition-colors duration-300">About</a>
-                <a href="contact.html"
-                    class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Contact</a>
+                <a href="explore.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Explore</a>
+                <a href="about.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">About</a>
             </nav>
 
             <!-- BUTTON -->
-            <a href="upload.html"
-                class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-sm font-medium transition hover:scale-105 active:scale-95">
-                Upload File
-            </a>
+            <div id="authButtons" class="flex gap-4">
+                <a href="login.html" class="border border-white/10 px-4 py-2 rounded-lg text-sm font-medium transition hover:bg-white/5">Login</a>
+                <a href="signup.html" class="bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg shadow-indigo-500/25 px-4 py-2 rounded-lg text-sm font-medium transition hover:scale-105 active:scale-95">Sign Up</a>
+            </div>
 
         </div>
     </header>
@@ -490,7 +484,19 @@
     });
 </script>
 
-<!-- App Registry: Naya app add karo Javascript/appRegistry.js mein -->
+<!-- Auth Check Script -->
+<script>
+    fetch('/api/authcheck').then(r => r.json()).then(data => {
+        if (data.authenticated) {
+            document.getElementById('mainNav').innerHTML += `<a href="dashboard.html" class="hover:text-white hover:text-indigo-400 font-medium text-indigo-400">Dashboard</a>`;
+            document.getElementById('authButtons').innerHTML = `
+                <a href="upload.html" class="bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-2 rounded-lg text-sm font-medium transition hover:scale-105">Upload File</a>
+            `;
+        }
+    });
+</script>
+
+<!-- App Registry -->
 <script src="Javascript/appRegistry.js"></script>
 
 </html>
