@@ -106,26 +106,7 @@
     </div>
 
     <!-- ================= HEADER ================= -->
-    <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#0B0F19]/60 border-b border-white/5 shadow-sm">
-        <div class="w-full max-w-[1400px] mx-auto flex items-center justify-between px-6 md:px-8 h-16 relative z-10">
-            <div class="flex items-center gap-3">
-                <a href="../index.html"
-                    class="text-2xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 hover:opacity-80 drop-shadow-md transition">SHREEBITU</a>
-            </div>
-            <nav class="hidden md:flex items-center gap-8 text-sm">
-                <a href="../index.html"
-                    class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Home</a>
-                <a href="../upload.html"
-                    class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Upload</a>
-                <a href="../explore.html"
-                    class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Explore</a>
-            </nav>
-            <a href="../upload.html"
-                class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10 px-4 py-2 rounded-lg text-sm font-medium transition hover:scale-105 active:scale-95">
-                Upload File
-            </a>
-        </div>
-    </header>
+    <global-navbar></global-navbar>
 
     <!-- ================= APP HERO CONTENT ================= -->
     <main class="relative z-10 w-full max-w-[1400px] mx-auto px-2 md:px-8 pt-2 md:pt-6 pb-6 md:pb-12">
@@ -208,7 +189,7 @@
                     </div>
 
                     <div class="flex flex-row items-start md:items-center gap-4 md:gap-6">
-                        <img id="appLogo" src="vimg/vphonegaga_logo.webp" alt="VPhoneGaGa Application Logo"
+                        <img id="appLogo" src="../assets/images/vphonegaga_logo.webp" alt="VPhoneGaGa Application Logo"
                             class="w-20 h-20 md:w-24 md:h-24 object-contain rounded-2xl shadow-lg shadow-black/40 ring-1 ring-white/10 p-2 bg-white/5 transition-opacity duration-500 flex-shrink-0">
 
                         <div class="flex-1 min-w-0">
@@ -326,17 +307,17 @@
                     class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 relative">
                     <h3 class="text-lg font-semibold text-white mb-4">Screenshots</h3>
                     <div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
-                        <img src="vimg/vphonegaga1.webp" alt="VPhoneGaGa Interface Screenshot 1"
+                        <img src="../assets/images/vphonegaga1.webp" alt="VPhoneGaGa Interface Screenshot 1"
                             class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
-                        <img src="vimg/vphonegaga2.webp" alt="VPhoneGaGa Interface Screenshot 2"
+                        <img src="../assets/images/vphonegaga2.webp" alt="VPhoneGaGa Interface Screenshot 2"
                             class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
-                        <img src="vimg/vphonegaga3.webp" alt="VPhoneGaGa Interface Screenshot 3"
+                        <img src="../assets/images/vphonegaga3.webp" alt="VPhoneGaGa Interface Screenshot 3"
                             class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
-                        <img src="vimg/vphonegaga4.webp" alt="VPhoneGaGa Interface Screenshot 4"
+                        <img src="../assets/images/vphonegaga4.webp" alt="VPhoneGaGa Interface Screenshot 4"
                             class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
-                        <img src="vimg/vphonegaga_01.webp" alt="VPhoneGaGa Interface Screenshot 5"
+                        <img src="../assets/images/vphonegaga_01.webp" alt="VPhoneGaGa Interface Screenshot 5"
                             class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
-                        <img src="vimg/vphonegaga_011.webp" alt="VPhoneGaGa Interface Screenshot 6"
+                        <img src="../assets/images/vphonegaga_011.webp" alt="VPhoneGaGa Interface Screenshot 6"
                             class="h-64 object-cover rounded-xl border border-white/10 hover:border-indigo-500 transition-colors flex-shrink-0">
                     </div>
                 </div>
@@ -637,15 +618,12 @@
     </main>
 
     <!-- ================= FOOTER ================= -->
-    <footer class="border-t border-white/5 py-6 md:py-10 text-center text-gray-500 mt-8 md:mt-20 relative z-10">
-        <div class="w-full max-w-[1400px] mx-auto px-8">
-            <p>© 2026 ShreeBitu.in — All rights reserved.</p>
-            <p class="mt-2 text-sm text-gray-600">Premium file hosting and cloud sharing platform.</p>
-        </div>
-    </footer>
+    <global-footer></global-footer>
 
     <!-- ================= SCRIPTS ================= -->
-    <script src="../js/autosync.js"></script>
+    <script src="../scripts/autosync.js"></script>
+  <script src="../components/navbar.js"></script>
+  <script src="../components/footer.js"></script>
 </body>
 
 </html>
