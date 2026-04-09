@@ -18,10 +18,10 @@ class GlobalNavbar extends HTMLElement {
                 </div>
                 
                 <nav class="hidden md:flex items-center gap-8 text-sm" id="mainNav">
-                    <a href="${rootPath}index.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Home</a>
-                    <a href="${rootPath}explore.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Explore</a>
-                    <a href="${rootPath}about.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">About</a>
-                    <a href="${rootPath}contact.html" class="hover:text-white hover:text-indigo-400 transition-colors duration-300">Contact</a>
+                    <a href="${rootPath}index.html" class="hover:text-indigo-400 transition-colors duration-300">Home</a>
+                    <a href="${rootPath}explore.html" class="hover:text-indigo-400 transition-colors duration-300">Explore</a>
+                    <a href="${rootPath}about.html" class="hover:text-indigo-400 transition-colors duration-300">About</a>
+                    <a href="${rootPath}contact.html" class="hover:text-indigo-400 transition-colors duration-300">Contact</a>
                 </nav>
 
                 <div id="authButtons" class="flex gap-4">
@@ -42,7 +42,7 @@ class GlobalNavbar extends HTMLElement {
                 .then(data => {
                     if (data.authenticated) {
                         const nav = this.querySelector('#mainNav');
-                        if (nav) nav.innerHTML += `<a href="${rootPath}dashboard.html" class="hover:text-white hover:text-indigo-400 font-medium text-indigo-400">Dashboard</a>`;
+                        if (nav) nav.innerHTML += `<a href="${rootPath}dashboard.html" class="hover:text-indigo-400 font-medium text-indigo-400">Dashboard</a>`;
                         const btns = this.querySelector('#authButtons');
                         if (btns) btns.innerHTML = `<a href="${rootPath}upload.html" class="bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-2 rounded-lg text-sm font-medium text-white transition hover:scale-105">Upload File</a>`;
                     }

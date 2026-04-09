@@ -29,7 +29,7 @@ files.forEach(file => {
     content = content.replace(/text-xl font-bold tracking-wide text-white hover:text-indigo-400/g, 'text-2xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 hover:opacity-80 drop-shadow-md');
     
     // 6. Upgrade Nav Links
-    content = content.replace(/hover:text-white transition/g, 'hover:text-white hover:text-indigo-400 transition-colors duration-300');
+    content = content.replace(/hover:text-white transition/g, 'hover:text-indigo-400 transition-colors duration-300');
     
     // 7. Upgrade Primary Buttons (Indigo)
     content = content.replace(/bg-indigo-600 hover:bg-indigo-500/g, 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 border border-white/10');

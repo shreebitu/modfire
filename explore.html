@@ -93,16 +93,16 @@
         <button class="filter-btn bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition"
           data-filter="all">All</button>
         <button
-          class="filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white hover:text-indigo-400 transition-colors duration-300"
+          class="filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-indigo-400 transition-colors duration-300"
           data-filter="app">📱 Apps</button>
         <button
-          class="filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white hover:text-indigo-400 transition-colors duration-300"
+          class="filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-indigo-400 transition-colors duration-300"
           data-filter="document">📄 Documents</button>
         <button
-          class="filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white hover:text-indigo-400 transition-colors duration-300"
+          class="filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-indigo-400 transition-colors duration-300"
           data-filter="image">🖼️ Images</button>
         <button
-          class="filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white hover:text-indigo-400 transition-colors duration-300"
+          class="filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-indigo-400 transition-colors duration-300"
           data-filter="media">🎬 Media</button>
       </div>
     </div>
@@ -135,7 +135,7 @@
   <script>
     fetch('/api/authcheck').then(r => r.json()).then(data => {
         if (data.authenticated) {
-            document.getElementById('mainNav').innerHTML += `<a href="dashboard.html" class="hover:text-white hover:text-indigo-400 font-medium text-indigo-400">Dashboard</a>`;
+            document.getElementById('mainNav').innerHTML += `<a href="dashboard.html" class="hover:text-indigo-400 font-medium text-indigo-400">Dashboard</a>`;
             document.getElementById('authButtons').innerHTML = `
                 <a href="upload.html" class="bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-2 rounded-lg text-sm font-medium transition hover:scale-105">Upload File</a>
             `;
@@ -193,7 +193,7 @@
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => {
-          b.className = 'filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-white hover:text-indigo-400 transition-colors duration-300';
+          b.className = 'filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-indigo-400 transition-colors duration-300';
         });
         btn.className = 'filter-btn bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition';
 

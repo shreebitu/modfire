@@ -114,7 +114,7 @@
     // Auth Check
     fetch('/api/authcheck').then(r => r.json()).then(data => {
         if (data.authenticated) {
-            document.getElementById('mainNav').innerHTML += `<a href="dashboard.html" class="hover:text-white hover:text-indigo-400 font-medium text-indigo-400">Dashboard</a>`;
+            document.getElementById('mainNav').innerHTML += `<a href="dashboard.html" class="hover:text-indigo-400 font-medium text-indigo-400">Dashboard</a>`;
             document.getElementById('authButtons').innerHTML = `<button onclick="logout()" class="text-red-400 hover:text-red-300">Logout</button>`;
         } else {
             // Require login to upload

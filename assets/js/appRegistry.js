@@ -65,7 +65,7 @@ const APP_LIST = [
         subtitle: "Biology Presentation · Free PPT",
         description: "Comprehensive PowerPoint presentation on Gene Transfer Methods — Agrobacterium, Biolistics, Electroporation, Microinjection, Viral Vectors & more. Free download.",
         icon: "",
-        pageUrl: "apk/gene-transfer-ppt.html",
+        pageUrl: "presentation/gene-transfer-ppt.html",
         filename: "gene-transfer-ppt",
         size: "~36 KB",
         type: "document",
