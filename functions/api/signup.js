@@ -3,7 +3,16 @@ import { createJwt } from '../utils/jwt';
 
 export async function onRequestPost(context) {
     try {
-        const data = await context.request.json();
+        let data;
+        try {
+            data = await context.request.json();
+        } catch (e) {
+            return new Response(JSON.stringify({ error: "Invalid or empty JSON body" }), {
+                status: 400,
+                headers: { "Content-Type": "application/json" }
+            });
+        }
+        
         const { email, password } = data;
 
         if (!email || !password) {
