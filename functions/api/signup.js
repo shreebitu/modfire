@@ -64,6 +64,16 @@ export async function onRequestPost(context) {
             });
         }
 
+        // Auto-create table if not exists (helps in local dev)
+        await context.env.DB.prepare(`
+            CREATE TABLE IF NOT EXISTS users (
+                id TEXT PRIMARY KEY,
+                email TEXT UNIQUE NOT NULL,
+                password_hash TEXT NOT NULL,
+                created_at INTEGER NOT NULL
+            )
+        `).run();
+
         // Check existing user
         const existing = await context.env.DB.prepare(
             "SELECT id FROM users WHERE email = ?"

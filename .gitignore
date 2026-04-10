@@ -1,0 +1,6 @@
+# Local dev files - do NOT push these to GitHub
+.wrangler/
+node_modules/
+
+# Local config - only for local dev, not for Cloudflare Pages production
+wrangler.toml
