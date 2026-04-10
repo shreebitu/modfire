@@ -66,7 +66,7 @@
                 try {
                     data = await res.json();
                 } catch (e) {
-                    throw new Error("Server returned an invalid response. Make sure you are running the project using 'npx wrangler pages dev public'.");
+                    throw new Error(`API Error (HTTP ${res.status}): Server did not return valid JSON. The /api/signup endpoint may not be detected yet. Check Cloudflare Pages deployment.`);
                 }
 
                 if (res.ok) {
