@@ -9,6 +9,10 @@ export async function onRequestPost({ request, env }) {
             return new Response(JSON.stringify({ error: 'Email and password are required' }), { status: 400 });
         }
 
+        if (!env.DB) {
+            return new Response(JSON.stringify({ error: 'Database binding (DB) is missing. If testing locally, ensure you are running using wrangler.' }), { status: 500 });
+        }
+
         const user = await env.DB.prepare("SELECT id, password_hash FROM users WHERE email = ?").bind(email).first();
         if (!user) {
             return new Response(JSON.stringify({ error: 'Invalid credentials' }), { status: 401 });

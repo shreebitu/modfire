@@ -9,6 +9,10 @@ export async function onRequestPost({ request, env }) {
             return new Response(JSON.stringify({ error: 'Email and password are required' }), { status: 400 });
         }
 
+        if (!env.DB) {
+            return new Response(JSON.stringify({ error: 'Database binding (DB) is missing. If testing locally, ensure you are running using wrangler.' }), { status: 500 });
+        }
+
         // Check if user already exists
         const existingUser = await env.DB.prepare("SELECT id FROM users WHERE email = ?").bind(email).first();
         if (existingUser) {

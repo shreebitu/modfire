@@ -1,0 +1,13 @@
+name = "shreebitu"
+compatibility_date = "2024-03-20"
+pages_build_output_dir = "public"
+
+# Database Configuration
+[[d1_databases]]
+binding = "DB"
+database_name = "shreebitu-db"
+database_id = "your-database-id-here" # Remember to update this with your actual D1 ID in production!
+
+# Environmental Variables
+[vars]
+JWT_SECRET = "shreebitu-fallback-secret-2026"

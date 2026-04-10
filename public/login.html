@@ -62,7 +62,12 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password })
                 });
-                const data = await res.json();
+                let data;
+                try {
+                    data = await res.json();
+                } catch (e) {
+                    throw new Error("Server returned an invalid response. Make sure you are running the project using 'npx wrangler pages dev public'.");
+                }
 
                 if (res.ok) {
                     window.location.href = 'dashboard.html';
