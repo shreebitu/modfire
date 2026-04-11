@@ -133,13 +133,13 @@
         function filterCategory(cat) {
             // Redirect to category pages based on our new system
             const mapping = {
-                'app': 'mobile.html',
-                'windows': 'windows.html',
-                'linux': 'linux.html',
-                'presentation': 'ppt.html',
-                'zip': 'zip.html',
-                'pdf': 'pdf.html',
-                'github': 'opensource.html'
+                'app': 'apk/index.html',
+                'windows': 'windows/windows.html',
+                'linux': 'linux/index.html',
+                'presentation': 'presentation/presentation.html',
+                'zip': 'zip/index.html',
+                'pdf': 'pdf/index.html',
+                'github': 'opensource/index.html'
             };
             if (mapping[cat]) {
                 window.location.href = mapping[cat];

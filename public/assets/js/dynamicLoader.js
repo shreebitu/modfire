@@ -7,6 +7,28 @@
  */
 
 const DynamicLoader = {
+    // Determine the base path based on location (depth handling)
+    getBasePath() {
+        const path = window.location.pathname;
+        const depth = (path.split('/').length - (path.endsWith('/') ? 2 : 1));
+        
+        // If it's a subfolder (depth > 1 for /subdir/page.html, or depth > 0 depending on host)
+        // Simplified detection: if we are in a subfolder like /apk/, we need ../
+        const isSubfolder = window.location.pathname.split('/').filter(p => p).length > 1;
+        
+        // However, a more robust way for static sites:
+        if (window.location.pathname.includes('/apk/') || 
+            window.location.pathname.includes('/windows/') || 
+            window.location.pathname.includes('/linux/') || 
+            window.location.pathname.includes('/presentation/') || 
+            window.location.pathname.includes('/zip/') || 
+            window.location.pathname.includes('/pdf/') || 
+            window.location.pathname.includes('/opensource/')) {
+            return '../';
+        }
+        return '';
+    },
+
     // Categories and their respective JSON sources
     categories: {
         apk: 'data/apk.json',
@@ -23,7 +45,8 @@ const DynamicLoader = {
      */
     async fetchCategory(category) {
         try {
-            const response = await fetch(this.categories[category]);
+            const basePath = this.getBasePath();
+            const response = await fetch(basePath + this.categories[category]);
             if (!response.ok) return [];
             const data = await response.json();
             return data.map(item => ({ ...item, category }));
@@ -46,6 +69,7 @@ const DynamicLoader = {
      * Create a premium HTML card for an item
      */
     createCard(item) {
+        const basePath = this.getBasePath();
         const card = document.createElement('div');
         card.className = "glass-panel file-card searchable-card";
         card.dataset.category = item.category;
@@ -59,6 +83,9 @@ const DynamicLoader = {
         else if (item.category === 'zip') icon = "📦";
         else if (item.category === 'pdf') icon = "📄";
         else if (item.category === 'opensource') icon = "🐙";
+
+        // Handle link depth
+        const absoluteLink = item.link.startsWith('http') ? item.link : basePath + item.link;
 
         card.innerHTML = `
             <div class="file-info">
@@ -82,7 +109,7 @@ const DynamicLoader = {
                 </div>
             </div>
 
-            <a href="${item.link}" class="btn-primary" style="width: 100%; justify-content: center; font-size: 14px; text-decoration: none;">Download Now</a>
+            <a href="${absoluteLink}" class="btn-primary" style="width: 100%; justify-content: center; font-size: 14px; text-decoration: none;">Download Now</a>
         `;
         return card;
     },
