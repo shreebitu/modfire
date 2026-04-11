@@ -4,52 +4,124 @@ class GlobalNavbar extends HTMLElement {
     }
 
     connectedCallback() {
-        // Find if we are in a subdirectory (like apk/) to fix relative paths
         const depth = window.location.pathname.split('/').length - 2;
         const prefix = depth > 0 && !window.location.pathname.startsWith('/C:') ? '../'.repeat(depth) : './';
-        // Using absolute path "/" is safest for Cloudflare Pages, but we keep relative if opened locally
         const rootPath = window.location.protocol === 'file:' ? prefix : '/';
 
         this.innerHTML = `
-        <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#0B0F19]/60 border-b border-white/5 shadow-sm">
-            <div class="max-w-7xl mx-auto flex items-center justify-between px-6 h-16">
-                <div class="flex items-center gap-3">
-                    <a href="${rootPath}index.html" class="text-2xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 hover:opacity-80 drop-shadow-md transition">SHREEBITU</a>
-                </div>
+        <header class="main-header">
+            <div class="nav-container">
+                <a href="${rootPath}index.html" class="logo">SHREEBITU</a>
                 
-                <nav class="hidden md:flex items-center gap-8 text-sm" id="mainNav">
-                    <a href="${rootPath}index.html" class="hover:text-indigo-400 transition-colors duration-300">Home</a>
-                    <a href="${rootPath}explore.html" class="hover:text-indigo-400 transition-colors duration-300">Explore</a>
-                    <a href="${rootPath}about.html" class="hover:text-indigo-400 transition-colors duration-300">About</a>
-                    <a href="${rootPath}contact.html" class="hover:text-indigo-400 transition-colors duration-300">Contact</a>
+                <nav class="nav-links" id="mainNav">
+                    <a href="${rootPath}index.html" class="nav-link">Home</a>
+                    <a href="${rootPath}explore.html" class="nav-link">Explore</a>
+                    <a href="${rootPath}about.html" class="nav-link">About</a>
+                    <a href="${rootPath}contact.html" class="nav-link">Contact</a>
                 </nav>
 
-                <div id="authButtons" class="flex gap-4">
-                    <a href="${rootPath}login.html" class="border border-white/10 px-4 py-2 rounded-lg text-sm font-medium transition hover:bg-white/5 text-gray-200">Login</a>
-                    <a href="${rootPath}signup.html" class="bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg shadow-indigo-500/25 px-4 py-2 rounded-lg text-sm font-medium text-white transition hover:scale-105 active:scale-95">Sign Up</a>
+                <div id="authButtons" class="auth-group">
+                    <a href="${rootPath}login.html" class="btn-outline">Login</a>
+                    <a href="${rootPath}signup.html" class="btn-primary-sm">Sign Up</a>
                 </div>
             </div>
         </header>
+
+        <style>
+            .main-header {
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                background: rgba(3, 7, 18, 0.6);
+                backdrop-filter: blur(20px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                height: 72px;
+                display: flex;
+                align-items: center;
+            }
+            .nav-container {
+                max-width: 1200px;
+                width: 100%;
+                margin: 0 auto;
+                padding: 0 24px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .logo {
+                font-size: 24px;
+                font-weight: 900;
+                letter-spacing: 2px;
+                background: linear-gradient(135deg, #6366f1, #a855f7);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-decoration: none;
+            }
+            .nav-links {
+                display: flex;
+                gap: 32px;
+            }
+            .nav-link {
+                color: #94a3b8;
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 500;
+                transition: all 0.3s ease;
+            }
+            .nav-link:hover {
+                color: #f8fafc;
+            }
+            .auth-group {
+                display: flex;
+                gap: 16px;
+                align-items: center;
+            }
+            .btn-outline {
+                color: #f8fafc;
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 500;
+                padding: 8px 18px;
+                border-radius: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                transition: all 0.3s ease;
+            }
+            .btn-outline:hover {
+                background: rgba(255, 255, 255, 0.05);
+            }
+            .btn-primary-sm {
+                background: linear-gradient(135deg, #6366f1, #a855f7);
+                color: white;
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 600;
+                padding: 8px 20px;
+                border-radius: 10px;
+                transition: all 0.3s ease;
+            }
+            .btn-primary-sm:hover {
+                box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+                transform: translateY(-1px);
+            }
+            @media (max-width: 768px) {
+                .nav-links { display: none; }
+            }
+        </style>
         `;
 
-        // Run auth check script (if available) safely without replacing UI if offline
+        // Run auth check
         setTimeout(() => {
             fetch('/api/authcheck')
-                .then(r => {
-                    if (r.ok) return r.json();
-                    return { authenticated: false };
-                })
+                .then(r => r.ok ? r.json() : { authenticated: false })
                 .then(data => {
                     if (data.authenticated) {
                         const nav = this.querySelector('#mainNav');
-                        if (nav) nav.innerHTML += `<a href="${rootPath}dashboard.html" class="hover:text-indigo-400 font-medium text-indigo-400">Dashboard</a>`;
+                        if (nav) nav.innerHTML += `<a href="${rootPath}dashboard.html" class="nav-link" style="color:#6366f1">Dashboard</a>`;
                         const btns = this.querySelector('#authButtons');
-                        if (btns) btns.innerHTML = `<a href="${rootPath}upload.html" class="bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-2 rounded-lg text-sm font-medium text-white transition hover:scale-105">Upload File</a>`;
+                        if (btns) btns.innerHTML = `<a href="${rootPath}upload.html" class="btn-primary-sm">Upload File</a>`;
                     }
                 })
-                .catch(err => {
-                    console.log('Static preview mode or backend offline.');
-                });
+                .catch(() => {});
         }, 100);
     }
 }
