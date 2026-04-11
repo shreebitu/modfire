@@ -74,22 +74,30 @@ const DynamicLoader = {
         card.className = "glass-panel file-card searchable-card";
         card.dataset.category = item.category;
 
-        // Determine icon based on category
-        let icon = "📄";
-        if (item.category === 'apk') icon = "📱";
-        else if (item.category === 'windows') icon = "🪟";
-        else if (item.category === 'linux') icon = "🐧";
-        else if (item.category === 'ppt') icon = "📊";
-        else if (item.category === 'zip') icon = "📦";
-        else if (item.category === 'pdf') icon = "📄";
-        else if (item.category === 'opensource') icon = "🐙";
+        // Determine fallback icon based on category
+        let fallbackIcon = "📄";
+        if (item.category === 'apk') fallbackIcon = "📱";
+        else if (item.category === 'windows') fallbackIcon = "🪟";
+        else if (item.category === 'linux') fallbackIcon = "🐧";
+        else if (item.category === 'ppt') fallbackIcon = "📊";
+        else if (item.category === 'zip') fallbackIcon = "📦";
+        else if (item.category === 'pdf') fallbackIcon = "📄";
+        else if (item.category === 'opensource') fallbackIcon = "🐙";
+
+        // Logo Logic: Use image if provided, else emoji fallback
+        const logoHtml = item.image && item.image !== "" ? 
+            `<img src="${basePath + item.image}" alt="${item.title}" class="card-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+             <div class="category-icon fallback-icon" style="display:none;">${fallbackIcon}</div>` : 
+            `<div class="category-icon">${fallbackIcon}</div>`;
 
         // Handle link depth
         const absoluteLink = item.link.startsWith('http') ? item.link : basePath + item.link;
 
         card.innerHTML = `
             <div class="file-info">
-                <div class="category-icon" style="background: var(--glass-bg); padding: 10px; border-radius: 12px; font-size: 24px;">${icon}</div>
+                <div class="logo-wrapper">
+                    ${logoHtml}
+                </div>
                 <div style="overflow: hidden; flex: 1;">
                     <div class="file-badge">${item.category.toUpperCase()}</div>
                     <h3 class="card-title" style="margin-top: 8px; font-size: 1.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${item.title}">${item.title}</h3>
