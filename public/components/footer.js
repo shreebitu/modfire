@@ -9,10 +9,8 @@ class GlobalFooter extends HTMLElement {
         this.innerHTML = `
         <footer class="main-footer">
             <div class="footer-container">
-                <div class="footer-brand">
-                    <div class="footer-logo">SB</div>
-                    <div class="brand-name">SHREEBITU</div>
-                </div>
+                <a href="${rootPath}index.html" class="footer-brand">SHREEBITU</a>
+                
                 <div class="footer-links">
                     <a href="${rootPath}index.html">Home</a>
                     <a href="${rootPath}upload.html">Upload</a>
@@ -31,8 +29,8 @@ class GlobalFooter extends HTMLElement {
 
         <style>
             .main-footer {
-                padding: 80px 0 40px;
-                margin-top: 100px;
+                padding: 40px 0 30px;
+                margin-top: 60px;
                 border-top: 1px solid rgba(255, 255, 255, 0.05);
                 background: linear-gradient(to bottom, transparent, rgba(3, 7, 18, 0.8));
             }
@@ -46,40 +44,27 @@ class GlobalFooter extends HTMLElement {
                 text-align: center;
             }
             .footer-brand {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                margin-bottom: 40px;
-            }
-            .footer-logo {
-                width: 32px;
-                height: 32px;
-                background: linear-gradient(135deg, #6366f1, #a855f7);
-                border-radius: 8px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: white;
-                font-weight: 900;
-                font-size: 10px;
-            }
-            .brand-name {
                 font-size: 18px;
                 font-weight: 800;
                 letter-spacing: 2px;
                 color: #fff;
+                text-decoration: none;
+                margin-bottom: 24px;
+                background: linear-gradient(135deg, #6366f1, #a855f7);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
             }
             .footer-links {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 32px;
-                margin-bottom: 40px;
+                gap: 20px;
+                margin-bottom: 24px;
             }
             .footer-links a {
                 color: #94a3b8;
                 text-decoration: none;
-                font-size: 14px;
+                font-size: 13px;
                 font-weight: 500;
                 transition: color 0.3s ease;
             }
@@ -87,24 +72,28 @@ class GlobalFooter extends HTMLElement {
                 color: #6366f1;
             }
             .footer-divider {
-                width: 60px;
+                width: 40px;
                 height: 2px;
                 background: linear-gradient(to right, #6366f1, #a855f7);
-                margin-bottom: 40px;
+                margin-bottom: 24px;
                 border-radius: 2px;
-                opacity: 0.3;
+                opacity: 0.2;
             }
             .copyright {
                 color: #f8fafc;
-                font-size: 14px;
+                font-size: 13px;
                 font-weight: 600;
-                margin-bottom: 12px;
+                margin-bottom: 8px;
             }
             .tagline {
                 color: #64748b;
-                font-size: 12px;
+                font-size: 11px;
                 font-weight: 400;
                 letter-spacing: 0.05em;
+            }
+            @media (max-width: 768px) {
+                .footer-links { gap: 16px; flex-direction: column; }
+                .main-footer { margin-top: 40px; padding: 30px 0; }
             }
         </style>
         `;
