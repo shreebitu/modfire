@@ -1,4 +1,4 @@
-import { authenticate } from '../../utils/auth';
+import { authenticate } from '../../_shared/auth';
 
 export async function onRequestPut({ request, env, params }) {
     try {

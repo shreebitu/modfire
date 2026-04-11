@@ -57,29 +57,45 @@
             const password = document.getElementById('password').value;
 
             try {
+                // Client-side validation
+                if (password.length < 6) {
+                    throw new Error('Password must be at least 6 characters long.');
+                }
+
                 const res = await fetch('/api/signup', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password })
                 });
-                let data;
-                try {
-                    data = await res.json();
-                } catch (e) {
-                    throw new Error(`API Error (HTTP ${res.status}): Server did not return valid JSON. The /api/signup endpoint may not be detected yet. Check Cloudflare Pages deployment.`);
-                }
+
+                const isJson = res.headers.get('content-type')?.includes('application/json');
+                const data = isJson ? await res.json() : null;
 
                 if (res.ok) {
-                    window.location.href = 'dashboard.html';
+                    // Success!
+                    btn.innerHTML = 'Account Created! Redirecting...';
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1000);
                 } else {
-                    throw new Error(data.error || 'Failed to sign up');
+                    // Server error
+                    const errorText = data?.error || `Error ${res.status}: ${res.statusText}`;
+                    if (!isJson && res.status === 404) {
+                        throw new Error('API Endpoint not found. Cloudflare may still be deploying your backend. Please wait a minute and try again.');
+                    }
+                    throw new Error(errorText);
                 }
             } catch (err) {
                 errorMsg.textContent = err.message;
                 errorMsg.classList.remove('hidden');
-            } finally {
                 btn.innerHTML = 'Sign Up';
                 btn.disabled = false;
+            } finally {
+                // Stop loading if not redirecting
+                if (!errorMsg.classList.contains('hidden')) {
+                    btn.innerHTML = 'Sign Up';
+                    btn.disabled = false;
+                }
             }
         });
     </script>

@@ -1,4 +1,4 @@
-import { verifyJwt } from '../../utils/jwt';
+import { verifyJwt } from '../../_shared/jwt';
 
 export async function onRequestGet({ request, env, params }) {
     try {

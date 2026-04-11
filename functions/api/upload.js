@@ -1,4 +1,4 @@
-import { authenticate } from '../utils/auth';
+import { authenticate } from '../_shared/auth';
 
 export async function onRequestPost({ request, env }) {
     try {

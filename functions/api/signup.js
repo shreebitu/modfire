@@ -1,17 +1,17 @@
-// Fully self-contained signup function - no imports needed
-// Cloudflare Pages Functions cannot use relative imports between /functions files
+// Cloudflare Pages Function: Signup Handler
+// Path: /functions/api/signup.js -> routes to /api/signup
 
-// --- Inline crypto helper ---
+// --- Inline crypto helper for portability ---
 async function hashPassword(password) {
     const enc = new TextEncoder();
-    const pepper = "shreebitu-pepper-2026";
+    const pepper = "shreebitu-pepper-2026"; // Consistent with login
     const data = enc.encode(password + pepper);
     const hashBuffer = await crypto.subtle.digest('SHA-256', data);
     return Array.from(new Uint8Array(hashBuffer))
         .map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-// --- Inline JWT helper ---
+// --- Inline JWT helper for portability ---
 function bufferToBase64Url(buffer) {
     const bytes = new Uint8Array(buffer);
     let binary = '';
@@ -32,40 +32,45 @@ async function createJwt(payload, secret) {
     return `${header}.${body}.${sig}`;
 }
 
-// --- Main handler ---
+/**
+ * Handle POST /api/signup
+ */
 export async function onRequestPost(context) {
+    const headers = new Headers({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*", // Allow local development testing
+    });
+
     try {
-        // Safe JSON parse
+        // 1. Parse JSON Body
         let data;
         try {
             data = await context.request.json();
-        } catch {
-            return new Response(JSON.stringify({ error: "Invalid JSON body" }), {
-                status: 400,
-                headers: { "Content-Type": "application/json" }
-            });
+        } catch (e) {
+            return new Response(JSON.stringify({ error: "Invalid JSON in request body." }), { status: 400, headers });
         }
 
         const { email, password } = data;
 
-        // Validate
+        // 2. Validate Input
         if (!email || !password) {
-            return new Response(JSON.stringify({ error: "Email and password are required" }), {
-                status: 400,
-                headers: { "Content-Type": "application/json" }
-            });
+            return new Response(JSON.stringify({ error: "Email and password are required." }), { status: 400, headers });
         }
 
-        // Check DB binding
+        if (password.length < 6) {
+            return new Response(JSON.stringify({ error: "Password must be at least 6 characters long." }), { status: 400, headers });
+        }
+
+        // 3. Database Connection Check
         if (!context.env.DB) {
-            return new Response(JSON.stringify({ error: "Database not configured. Bind D1 as 'DB' in Cloudflare Pages settings." }), {
-                status: 500,
-                headers: { "Content-Type": "application/json" }
-            });
+            console.error("D1 Database binding 'DB' not found.");
+            return new Response(JSON.stringify({ error: "Database configuration error. Please bind D1 as 'DB'." }), { status: 500, headers });
         }
 
-        // Auto-create table if not exists (helps in local dev)
-        await context.env.DB.prepare(`
+        const db = context.env.DB;
+
+        // 4. Ensure Table Exists (Schema defined in schema.sql)
+        await db.prepare(`
             CREATE TABLE IF NOT EXISTS users (
                 id TEXT PRIMARY KEY,
                 email TEXT UNIQUE NOT NULL,
@@ -74,47 +79,53 @@ export async function onRequestPost(context) {
             )
         `).run();
 
-        // Check existing user
-        const existing = await context.env.DB.prepare(
-            "SELECT id FROM users WHERE email = ?"
-        ).bind(email).first();
-
+        // 5. Check if User Exists
+        const existing = await db.prepare("SELECT id FROM users WHERE email = ?").bind(email.toLowerCase()).first();
         if (existing) {
-            return new Response(JSON.stringify({ error: "Email already registered" }), {
-                status: 400,
-                headers: { "Content-Type": "application/json" }
-            });
+            return new Response(JSON.stringify({ error: "This email is already registered." }), { status: 409, headers });
         }
 
-        // Create user
+        // 6. Create New User
         const id = crypto.randomUUID();
         const hashedPassword = await hashPassword(password);
         const createdAt = Date.now();
 
-        await context.env.DB.prepare(
+        await db.prepare(
             "INSERT INTO users (id, email, password_hash, created_at) VALUES (?, ?, ?, ?)"
-        ).bind(id, email, hashedPassword, createdAt).run();
+        ).bind(id, email.toLowerCase(), hashedPassword, createdAt).run();
 
-        // Create JWT session
+        // 7. Generate Authentication Session (JWT)
         const jwtSecret = context.env.JWT_SECRET || "shreebitu-fallback-secret-2026";
         const token = await createJwt(
-            { userId: id, email, exp: Math.floor(Date.now() / 1000) + (86400 * 7) },
+            { userId: id, email: email.toLowerCase(), exp: Math.floor(Date.now() / 1000) + (86400 * 7) }, // 7 days
             jwtSecret
         );
 
-        const headers = new Headers();
-        headers.set("Content-Type", "application/json");
+        // 8. Set Secure Cookie
         headers.set("Set-Cookie", `session=${token}; HttpOnly; Secure; Path=/; SameSite=Strict; Max-Age=${86400 * 7}`);
 
-        return new Response(JSON.stringify({ success: true, message: "Account created successfully" }), {
-            status: 201,
-            headers
-        });
+        return new Response(JSON.stringify({ 
+            success: true, 
+            message: "Welcome to ShreeBitu! Your account has been created successfully." 
+        }), { status: 201, headers });
 
     } catch (err) {
-        return new Response(JSON.stringify({ error: err.message || "Internal server error" }), {
-            status: 500,
-            headers: { "Content-Type": "application/json" }
-        });
+        console.error("Signup error:", err);
+        return new Response(JSON.stringify({ error: "Internal Server Error: " + err.message }), { status: 500, headers });
     }
+}
+
+/**
+ * Handle OPTIONS (CORS preflight)
+ */
+export async function onRequestOptions() {
+    return new Response(null, {
+        status: 204,
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Max-Age": "86400",
+        }
+    });
 }
