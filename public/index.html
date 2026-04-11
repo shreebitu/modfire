@@ -108,106 +108,47 @@
     <script src="components/navbar.js"></script>
     <script src="components/footer.js"></script>
 
+    <script src="assets/js/dynamicLoader.js"></script>
     <script>
-        // Enhanced Fetching Logic
-        async function loadDynamicFiles() {
-            const repo = 'shreebitu/shreebitu.in';
-            const folders = ['apk', 'presentation', 'zip', 'pdf', 'files', 'windows', 'linux', 'github'];
-            const grid = document.getElementById('dynamicFileGrid');
+        async function initializeHome() {
             const loader = document.getElementById('loadingIndicator');
-
-            let allFiles = [];
-
-            for (let folder of folders) {
-                try {
-                    const res = await fetch(`https://api.github.com/repos/${repo}/contents/public/${folder}`);
-                    if (res.ok) {
-                        const data = await res.json();
-                        if (Array.isArray(data)) {
-                            // Add folder context to each file
-                            data.forEach(f => { f.category = folder; });
-                            allFiles = allFiles.concat(data);
-                        }
-                    }
-                } catch (err) { console.warn('Fetch error:', folder); }
-            }
+            
+            // Fetch all items from JSON files
+            const allItems = await DynamicLoader.fetchAll();
+            
+            // Sort by date (descending) and take top 6 for "Latest Uploads"
+            const latestItems = allItems
+                .sort((a, b) => new Date(b.date) - new Date(a.date))
+                .slice(0, 6);
 
             loader.style.display = 'none';
             
-            const validFiles = allFiles.filter(file => file.type === 'file' && !file.name.startsWith('.'));
-
-            if (validFiles.length === 0) {
-                grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 60px; border: 1px dashed var(--glass-border); border-radius: 20px; color: var(--text-secondary);">No files found in our library yet.</div>';
-                return;
-            }
-
-            // Render Cards
-            validFiles.forEach(file => {
-                const fileExt = file.name.split('.').pop().toLowerCase();
-                const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
-                let icon = "📄";
-                let categoryLabel = file.category.toUpperCase();
-                
-                if (file.category === 'apk') icon = "📱";
-                else if (file.category === 'windows' || fileExt === 'exe') icon = "🪟", categoryLabel = "WINDOWS";
-                else if (file.category === 'linux') icon = "🐧", categoryLabel = "LINUX";
-                else if (fileExt === 'pdf') icon = "📄", categoryLabel = "PDF";
-                else if (fileExt === 'zip' || fileExt === 'rar') icon = "📦", categoryLabel = "ARCHIVE";
-                else if (file.category === 'presentation' || fileExt === 'pptx') icon = "📊", categoryLabel = "PRESENTATION";
-
-                const card = document.createElement('div');
-                card.className = "glass-panel file-card searchable-card";
-                card.dataset.category = file.category;
-                card.innerHTML = `
-                    <div class="file-info">
-                        <div class="category-icon">${icon}</div>
-                        <div style="overflow: hidden;">
-                            <div class="file-badge">${categoryLabel}</div>
-                            <h3 class="card-title" style="margin-top: 8px; font-size: 1.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${file.name}">${file.name}</h3>
-                        </div>
-                    </div>
-                    
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                        <div class="file-size-badge">
-                            <span>📦 ${sizeMB} MB</span>
-                        </div>
-                        <div class="file-size-badge">
-                            <span>📅 Updated</span>
-                        </div>
-                    </div>
-
-                    <a href="${file.download_url}" target="_blank" class="btn-primary" style="width: 100%; justify-content: center; font-size: 14px;">Download Now</a>
-                `;
-                grid.appendChild(card);
-            });
+            // Render to grid
+            DynamicLoader.render(latestItems, 'dynamicFileGrid');
+            
+            // Setup Search
+            DynamicLoader.setupSearch('searchInput', 'dynamicFileGrid');
         }
 
         function filterCategory(cat) {
-            const cards = document.querySelectorAll('.searchable-card');
-            cards.forEach(card => {
-                if (cat === 'all' || card.dataset.category.includes(cat)) {
-                    card.style.display = '';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-            // Smooth scroll to explore
-            document.getElementById('explore').scrollIntoView({ behavior: 'smooth' });
+            // Redirect to category pages based on our new system
+            const mapping = {
+                'app': 'mobile.html',
+                'windows': 'windows.html',
+                'linux': 'linux.html',
+                'presentation': 'ppt.html',
+                'zip': 'zip.html',
+                'pdf': 'pdf.html',
+                'github': 'opensource.html'
+            };
+            if (mapping[cat]) {
+                window.location.href = mapping[cat];
+            }
         }
 
-        // Search Logic
-        const searchInput = document.getElementById('searchInput');
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            document.querySelectorAll('.searchable-card').forEach(card => {
-                const text = card.textContent.toLowerCase();
-                card.style.display = text.includes(query) ? '' : 'none';
-            });
-        });
-
-        loadDynamicFiles();
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', initializeHome);
     </script>
-    <script src="assets/js/appRegistry.js"></script>
 </body>
 
 </html>

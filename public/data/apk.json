@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Hapi - Modern UI Mod",
+        "image": "assets/images/placeholder.jpg",
+        "description": "Experience the next level of mobile productivity with Hapi modded environment.",
+        "link": "apk/hapi.html",
+        "date": "2026-04-11",
+        "size": "45 MB"
+    },
+    {
+        "title": "Twoyi Android Emulator",
+        "image": "assets/images/placeholder.jpg",
+        "description": "Run another Android OS inside your phone with Twoyi virtual environment.",
+        "link": "apk/twoyi.html",
+        "date": "2026-04-10",
+        "size": "320 MB"
+    },
+    {
+        "title": "VPhoneGaGa Pro",
+        "image": "https://play-lh.googleusercontent.com/f-7A_eE6v0c_v0S9n7n8n9",
+        "description": "High-speed virtual machine for Android with root and security features.",
+        "link": "apk/vphonegaga.html",
+        "date": "2026-04-09",
+        "size": "390 MB"
+    }
+]
