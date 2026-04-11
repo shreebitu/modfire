@@ -111,8 +111,8 @@
     <script>
         // Enhanced Fetching Logic
         async function loadDynamicFiles() {
-            const repo = 'shreebitu/modfire';
-            const folders = ['apk', 'presentation', 'zip', 'pdf', 'files', 'windows', 'linux'];
+            const repo = 'shreebitu/shreebitu.in';
+            const folders = ['apk', 'presentation', 'zip', 'pdf', 'files', 'windows', 'linux', 'github'];
             const grid = document.getElementById('dynamicFileGrid');
             const loader = document.getElementById('loadingIndicator');
 
@@ -120,7 +120,7 @@
 
             for (let folder of folders) {
                 try {
-                    const res = await fetch(`https://api.github.com/repos/${repo}/contents/${folder}`);
+                    const res = await fetch(`https://api.github.com/repos/${repo}/contents/public/${folder}`);
                     if (res.ok) {
                         const data = await res.json();
                         if (Array.isArray(data)) {
