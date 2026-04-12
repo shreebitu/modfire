@@ -98,7 +98,7 @@
 </head>
 
 <body
-    class="bg-[#0B0F19] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#111827] via-[#0B0F19] to-black text-gray-200 antialiased selection:bg-indigo-500/30">
+    class="bg-[#0B0F19] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#111827] via-[#0B0F19] to-black text-gray-200 antialiased selection:bg-indigo-500/30 overflow-x-hidden">
 
     <!-- BACKGROUND GLOW -->
     <div class="pointer-events-none fixed inset-0 z-0 flex justify-center">
@@ -156,38 +156,51 @@
                         </div>
                     </div>
 
+                <!-- Why Choose Section (Restructured) -->
+                <section class="pt-6 md:pt-10 space-y-6">
+                    <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3 px-2">
+                        <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z"></path>
+                        </svg>
+                        Why Choose SmartGaGa in 2025?
+                    </h2>
+                    
+                    <div class="flex flex-nowrap overflow-x-auto sm:grid sm:grid-cols-2 gap-4 pb-4 no-scrollbar snap-x snap-mandatory">
+                        <div class="group min-w-[280px] sm:min-w-0 flex-shrink-0 backdrop-blur-md bg-white/[0.03] border border-white/5 p-6 rounded-2xl hover:bg-white/[0.05] hover:border-indigo-500/30 transition-all duration-300 snap-center">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <span class="text-xl">🚀</span>
+                            </div>
+                            <h3 class="text-indigo-400 font-semibold text-lg mb-2">Optimized for Free Fire</h3>
+                            <p class="text-sm text-gray-400 leading-relaxed">SmartGaGa is legendary among FF players for its zero-lag performance and perfect key-mapping precision on low-end hardware.</p>
+                        </div>
+
+                        <div class="group min-w-[280px] sm:min-w-0 flex-shrink-0 backdrop-blur-md bg-white/[0.03] border border-white/5 p-6 rounded-2xl hover:bg-white/[0.05] hover:border-purple-500/30 transition-all duration-300 snap-center">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <span class="text-xl">⚙️</span>
+                            </div>
+                            <h3 class="text-purple-400 font-semibold text-lg mb-2">No VT Required</h3>
+                            <p class="text-sm text-gray-400 leading-relaxed">Unlike Bluestacks or Memu, SmartGaGa's Titan Engine allows it to run without CPU Virtualization Technology enabled.</p>
+                        </div>
+
+                        <div class="group min-w-[280px] sm:min-w-0 flex-shrink-0 backdrop-blur-md bg-white/[0.03] border border-white/5 p-6 rounded-2xl hover:bg-white/[0.05] hover:border-emerald-500/30 transition-all duration-300 snap-center">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <span class="text-xl">🪶</span>
+                            </div>
+                            <h3 class="text-emerald-400 font-semibold text-lg mb-2">Ultra Lightweight</h3>
+                            <p class="text-sm text-gray-400 leading-relaxed">With a setup size of just 202MB, it's one of the smallest and fastest emulators ever built for Windows.</p>
+                        </div>
+
+                        <div class="group min-w-[280px] sm:min-w-0 flex-shrink-0 backdrop-blur-md bg-white/[0.03] border border-white/5 p-6 rounded-2xl hover:bg-white/[0.05] hover:border-amber-500/30 transition-all duration-300 snap-center">
+                            <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <span class="text-xl">🎮</span>
+                            </div>
+                            <h3 class="text-amber-400 font-semibold text-lg mb-2">High FPS Mode</h3>
+                            <p class="text-sm text-gray-400 leading-relaxed">Turbo GPU technology unlocks stable 60+ FPS even on PC's with integrated graphics cards.</p>
+                        </div>
+                    </div>
+
                 <!-- UNIFIED CONTENT SECTION -->
                 <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 sm:p-10 md:p-12 space-y-16 md:space-y-20">
-                    
-                    <!-- Key Features Section -->
-                    <section>
-                        <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-                            <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z"></path>
-                            </svg>
-                            Why Choose SmartGaGa in 2025?
-                        </h2>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="space-y-3">
-                                <h3 class="text-indigo-400 font-semibold text-lg">Optimized for Free Fire</h3>
-                                <p class="text-sm text-gray-400 leading-relaxed">SmartGaGa is legendary among FF players for its zero-lag performance and perfect key-mapping precision on low-end hardware.</p>
-                            </div>
-                            <div class="space-y-3">
-                                <h3 class="text-purple-400 font-semibold text-lg">No VT Required</h3>
-                                <p class="text-sm text-gray-400 leading-relaxed">Unlike Bluestacks or Memu, SmartGaGa's Titan Engine allows it to run without CPU Virtualization Technology enabled.</p>
-                            </div>
-                            <div class="space-y-3">
-                                <h3 class="text-emerald-400 font-semibold text-lg">Ultra Lightweight</h3>
-                                <p class="text-sm text-gray-400 leading-relaxed">With a setup size of just 202MB, it's one of the smallest and fastest emulators ever built for Windows.</p>
-                            </div>
-                            <div class="space-y-3">
-                                <h3 class="text-amber-400 font-semibold text-lg">High FPS Mode</h3>
-                                <p class="text-sm text-gray-400 leading-relaxed">Turbo GPU technology unlocks stable 60+ FPS even on PC's with integrated graphics cards.</p>
-                            </div>
-                        </div>
-                    </section>
-
                     <!-- Installation Guide -->
                     <section class="pt-12 border-t border-white/5">
                         <h2 class="text-2xl font-bold text-white mb-8">How to Install SmartGaGa v4</h2>

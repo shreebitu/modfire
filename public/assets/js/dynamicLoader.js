@@ -76,48 +76,50 @@ const DynamicLoader = {
 
         // Determine fallback icon based on category
         let fallbackIcon = "📄";
-        if (item.category === 'apk') fallbackIcon = "📱";
-        else if (item.category === 'windows') fallbackIcon = "🪟";
-        else if (item.category === 'linux') fallbackIcon = "🐧";
-        else if (item.category === 'ppt') fallbackIcon = "📊";
-        else if (item.category === 'zip') fallbackIcon = "📦";
-        else if (item.category === 'pdf') fallbackIcon = "📄";
-        else if (item.category === 'opensource') fallbackIcon = "🐙";
+        let badgeColor = "rgba(99, 102, 241, 0.15)";
+        let badgeText = "#6366f1";
+        if (item.category === 'apk')       { fallbackIcon = "📱"; badgeColor = "rgba(34,197,94,0.15)"; badgeText = "#22c55e"; }
+        else if (item.category === 'windows') { fallbackIcon = "🪟"; badgeColor = "rgba(59,130,246,0.15)"; badgeText = "#3b82f6"; }
+        else if (item.category === 'linux')   { fallbackIcon = "🐧"; badgeColor = "rgba(251,191,36,0.15)"; badgeText = "#fbbf24"; }
+        else if (item.category === 'ppt')     { fallbackIcon = "📊"; badgeColor = "rgba(168,85,247,0.15)"; badgeText = "#a855f7"; }
+        else if (item.category === 'zip')     { fallbackIcon = "📦"; badgeColor = "rgba(234,179,8,0.15)"; badgeText = "#eab308"; }
+        else if (item.category === 'pdf')     { fallbackIcon = "📄"; badgeColor = "rgba(239,68,68,0.15)"; badgeText = "#ef4444"; }
+        else if (item.category === 'opensource') { fallbackIcon = "🐙"; badgeColor = "rgba(148,163,184,0.15)"; badgeText = "#94a3b8"; }
 
         // Logo Logic: Use image if provided, else emoji fallback
         const logoHtml = item.image && item.image !== "" ? 
             `<img src="${basePath + item.image}" alt="${item.title}" class="card-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-             <div class="category-icon fallback-icon" style="display:none;">${fallbackIcon}</div>` : 
-            `<div class="category-icon">${fallbackIcon}</div>`;
+             <div class="card-fallback-icon" style="display:none; font-size:28px; align-items:center; justify-content:center; width:100%; height:100%;">${fallbackIcon}</div>` : 
+            `<div style="font-size:28px; display:flex; align-items:center; justify-content:center; width:100%; height:100%;">${fallbackIcon}</div>`;
 
         // Handle link depth
         const absoluteLink = item.link.startsWith('http') ? item.link : basePath + item.link;
 
+        // Format date nicely
+        let displayDate = item.date || '';
+        if (displayDate) {
+            try {
+                displayDate = new Date(displayDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            } catch(e) {}
+        }
+
         card.innerHTML = `
-            <div class="file-info">
-                <div class="logo-wrapper">
-                    ${logoHtml}
-                </div>
-                <div style="overflow: hidden; flex: 1;">
-                    <div class="file-badge">${item.category.toUpperCase()}</div>
-                    <h3 class="card-title" style="margin-top: 8px; font-size: 1.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${item.title}">${item.title}</h3>
+            <div class="fc-header">
+                <div class="fc-logo-wrap">${logoHtml}</div>
+                <div class="fc-title-block">
+                    <span class="fc-badge" style="background:${badgeColor}; color:${badgeText};">${item.category.toUpperCase()}</span>
+                    <h3 class="fc-title" title="${item.title}">${item.title}</h3>
                 </div>
             </div>
-            
-            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px; line-clamp: 2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 40px;">
-                ${item.description}
-            </p>
-
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <div class="file-size-badge">
-                    <span>📦 ${item.size || 'N/A'}</span>
-                </div>
-                <div class="file-size-badge">
-                    <span>📅 ${item.date || 'Update'}</span>
-                </div>
+            <p class="fc-desc">${item.description}</p>
+            <div class="fc-meta">
+                <span class="fc-meta-pill">📦 ${item.size || 'N/A'}</span>
+                <span class="fc-meta-pill">🗓 ${displayDate || 'Latest'}</span>
             </div>
-
-            <a href="${absoluteLink}" class="btn-primary" style="width: 100%; justify-content: center; font-size: 14px; text-decoration: none;">Download Now</a>
+            <a href="${absoluteLink}" class="fc-btn">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                Download Now
+            </a>
         `;
         return card;
     },

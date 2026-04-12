@@ -4,12 +4,18 @@ class GlobalFooter extends HTMLElement {
     }
 
     connectedCallback() {
-        const rootPath = window.location.protocol === 'file:' ? (window.location.pathname.split('/').length - 2 > 0 ? '../' : './') : '/';
+        const subfolders = ['windows', 'apk', 'linux', 'presentation', 'zip', 'pdf', 'opensource', 'apk'];
+        const isSubfolder = subfolders.some(folder => window.location.pathname.toLowerCase().includes('/' + folder + '/') || window.location.pathname.toLowerCase().includes('\\' + folder + '\\'));
+        const depth = isSubfolder ? 1 : 0;
+        const rootPath = depth > 0 ? '../'.repeat(depth) : './';
 
         this.innerHTML = `
         <footer class="main-footer">
             <div class="footer-container">
-                <a href="${rootPath}index.html" class="footer-brand">SHREEBITU</a>
+                <a href="${rootPath}index.html" class="footer-brand">
+                    <img src="${rootPath}assets/images/logo.png" alt="Logo" class="footer-logo" onerror="this.style.display='none'">
+                    <span>SHREEBITU</span>
+                </a>
                 
                 <div class="footer-links">
                     <a href="${rootPath}index.html">Home</a>
@@ -35,7 +41,7 @@ class GlobalFooter extends HTMLElement {
                 background: linear-gradient(to bottom, transparent, rgba(3, 7, 18, 0.8));
             }
             .footer-container {
-                max-width: 1200px;
+                max-width: 1400px;
                 margin: 0 auto;
                 padding: 0 24px;
                 display: flex;
@@ -44,12 +50,28 @@ class GlobalFooter extends HTMLElement {
                 text-align: center;
             }
             .footer-brand {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+                text-decoration: none;
+                margin-bottom: 32px;
+                transition: transform 0.3s ease;
+            }
+            .footer-brand:hover {
+                transform: translateY(-3px);
+            }
+            .footer-logo {
+                width: 48px;
+                height: 48px;
+                object-fit: contain;
+                filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.3));
+            }
+            .footer-brand span {
                 font-size: 18px;
                 font-weight: 800;
                 letter-spacing: 2px;
                 color: #fff;
-                text-decoration: none;
-                margin-bottom: 24px;
                 background: linear-gradient(135deg, #6366f1, #a855f7);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
@@ -91,9 +113,29 @@ class GlobalFooter extends HTMLElement {
                 font-weight: 400;
                 letter-spacing: 0.05em;
             }
+            .main-footer *, .main-footer *:before, .main-footer *:after {
+                box-sizing: border-box;
+            }
             @media (max-width: 768px) {
-                .footer-links { gap: 16px; flex-direction: column; }
-                .main-footer { margin-top: 40px; padding: 30px 0; }
+                .footer-links { 
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    overflow-x: auto;
+                    max-width: 100%;
+                    gap: 20px;
+                    padding: 4px 24px 12px;
+                    justify-content: flex-start;
+                    scrollbar-width: none; 
+                    -ms-overflow-style: none;
+                    -webkit-overflow-scrolling: touch;
+                }
+                .footer-links::-webkit-scrollbar {
+                    display: none;
+                }
+                .main-footer { margin-top: 40px; padding: 40px 0; overflow-x: hidden; }
+                .footer-brand { margin-bottom: 24px; }
+                .copyright, .tagline { padding: 0 24px; text-align: center; }
             }
         </style>
         `;

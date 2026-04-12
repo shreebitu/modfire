@@ -4,14 +4,18 @@ class GlobalNavbar extends HTMLElement {
     }
 
     connectedCallback() {
-        const depth = window.location.pathname.split('/').length - 2;
-        const prefix = depth > 0 && !window.location.pathname.startsWith('/C:') ? '../'.repeat(depth) : './';
-        const rootPath = window.location.protocol === 'file:' ? prefix : '/';
+        const subfolders = ['windows', 'apk', 'linux', 'presentation', 'zip', 'pdf', 'opensource', 'apk'];
+        const isSubfolder = subfolders.some(folder => window.location.pathname.toLowerCase().includes('/' + folder + '/') || window.location.pathname.toLowerCase().includes('\\' + folder + '\\'));
+        const depth = isSubfolder ? 1 : 0;
+        const rootPath = depth > 0 ? '../'.repeat(depth) : './';
 
         this.innerHTML = `
         <header class="main-header">
             <div class="nav-container">
-                <a href="${rootPath}index.html" class="logo">SHREEBITU</a>
+                <a href="${rootPath}index.html" class="logo">
+                    <img src="${rootPath}assets/images/logo.png" alt="Logo" class="nav-icon" onerror="this.style.display='none'">
+                    <span>SHREEBITU</span>
+                </a>
                 
                 <nav class="nav-links" id="mainNav">
                     <a href="${rootPath}index.html" class="nav-link">Home</a>
@@ -32,6 +36,7 @@ class GlobalNavbar extends HTMLElement {
                 </button>
             </div>
             <div class="mobile-menu" id="mobileMenu">
+                <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
                 <nav class="mobile-nav">
                     <a href="${rootPath}index.html" class="mobile-link">Home</a>
                     <a href="${rootPath}explore.html" class="mobile-link">Explore</a>
@@ -43,6 +48,7 @@ class GlobalNavbar extends HTMLElement {
                     </div>
                 </nav>
             </div>
+            <div class="mobile-overlay" id="mobileOverlay"></div>
         </header>
 
         <style>
@@ -58,7 +64,7 @@ class GlobalNavbar extends HTMLElement {
                 align-items: center;
             }
             .nav-container {
-                max-width: 1200px;
+                max-width: 1400px;
                 width: 100%;
                 margin: 0 auto;
                 padding: 0 24px;
@@ -68,13 +74,31 @@ class GlobalNavbar extends HTMLElement {
                 position: relative;
             }
             .logo {
-                font-size: 24px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                text-decoration: none;
+                transition: transform 0.3s ease;
+                z-index: 1002;
+            }
+            .logo:hover {
+                transform: scale(1.02);
+            }
+            .nav-icon {
+                width: 42px;
+                height: 42px;
+                object-fit: contain;
+                filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.4));
+                border-radius: 10px;
+            }
+            .logo span {
+                font-size: 22px;
                 font-weight: 900;
                 letter-spacing: 2px;
                 background: linear-gradient(135deg, #6366f1, #a855f7);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
-                text-decoration: none;
+                display: inline-block;
             }
             .nav-links { display: flex; gap: 32px; }
             .nav-link {
@@ -139,47 +163,105 @@ class GlobalNavbar extends HTMLElement {
                 transition: all 0.3s ease;
             }
 
-            /* Mobile Menu */
+            /* Mobile Overlay */
+            .mobile-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 998;
+                backdrop-filter: blur(2px);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+            .mobile-overlay.active {
+                display: block;
+                opacity: 1;
+            }
+
+            /* Mobile Menu — slides in from LEFT using transform (no layout glitch) */
             .mobile-menu {
                 position: fixed;
                 top: 0;
-                right: -100%;
-                width: 100%;
+                left: 0;
+                width: min(300px, 85vw);
                 height: 100vh;
+                height: 100dvh;
                 background: rgba(3, 7, 18, 0.98);
-                backdrop-filter: blur(20px);
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                backdrop-filter: blur(24px);
+                border-right: 1px solid rgba(255, 255, 255, 0.08);
+                transform: translateX(-100%);
+                transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                will-change: transform;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding: 100px 32px 40px;
+                z-index: 999;
+                overflow-y: auto;
+            }
+            .mobile-menu.active { transform: translateX(0); }
+            .mobile-menu-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: rgba(255,255,255,0.08);
+                border: 1px solid rgba(255,255,255,0.1);
+                color: #fff;
+                font-size: 22px;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                cursor: pointer;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                z-index: 999;
+                transition: background 0.2s ease;
+                line-height: 1;
             }
-            .mobile-menu.active { right: 0; }
+            .mobile-menu-close:hover { background: rgba(99,102,241,0.3); }
             .mobile-nav {
                 display: flex;
                 flex-direction: column;
-                align-items: center;
-                gap: 32px;
+                align-items: flex-start;
+                gap: 8px;
                 width: 100%;
             }
             .mobile-link {
-                color: #fff;
+                color: #cbd5e1;
                 text-decoration: none;
-                font-size: 24px;
+                font-size: 18px;
                 font-weight: 600;
-                transition: color 0.3s ease;
+                padding: 12px 0;
+                width: 100%;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+                transition: color 0.2s ease, padding-left 0.2s ease;
             }
-            .mobile-link:hover { color: #6366f1; }
-            .mobile-auth { display: flex; flex-direction: column; gap: 16px; width: 200px; text-align: center; margin-top: 20px; }
+            .mobile-link:hover { color: #6366f1; padding-left: 8px; }
+            .mobile-auth {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                width: 100%;
+                margin-top: 24px;
+                padding-top: 16px;
+            }
+            .mobile-auth .btn-outline,
+            .mobile-auth .btn-primary-sm {
+                width: 100%;
+                text-align: center;
+                display: block;
+            }
 
             @media (max-width: 992px) {
                 .nav-links, .auth-group { display: none; }
                 .mobile-toggle { display: flex; }
             }
 
-            /* Animation when active */
+            /* Hamburger → X animation */
             .mobile-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-            .mobile-toggle.active span:nth-child(2) { opacity: 0; }
+            .mobile-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
             .mobile-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         </style>
         `;
@@ -187,10 +269,38 @@ class GlobalNavbar extends HTMLElement {
         // Toggle logic
         const toggle = this.querySelector('#mobileToggle');
         const menu = this.querySelector('#mobileMenu');
+        const overlay = this.querySelector('#mobileOverlay');
+        const closeBtn = this.querySelector('#mobileMenuClose');
+
+        const openMenu = () => {
+            toggle.classList.add('active');
+            menu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeMenu = () => {
+            toggle.classList.remove('active');
+            menu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
         toggle.addEventListener('click', () => {
-            toggle.classList.toggle('active');
-            menu.classList.toggle('active');
-            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+            menu.classList.contains('active') ? closeMenu() : openMenu();
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+        if (overlay) overlay.addEventListener('click', closeMenu);
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeMenu();
+        });
+
+        // Close menu on nav link click (mobile)
+        this.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', closeMenu);
         });
 
         // Run auth check
