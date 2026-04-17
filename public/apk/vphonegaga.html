@@ -496,15 +496,23 @@
                             <div
                                 class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl blur opacity-40 group-hover:opacity-75 transition-all duration-300 group-hover:scale-[1.02] group-active:scale-95">
                             </div>
-                            <button id="downloadBtn" onclick="startDownload()"
-                                class="relative w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg border border-white/10 py-4 rounded-xl font-bold transition-all duration-300 group-hover:scale-[1.02] group-active:scale-95 flex items-center justify-center gap-2">
-                                <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor"
+                            <a id="downloadBtn" href="https://archive.org/download/vphone-gaga-v-4.12.12-mod" target="_blank"
+                                class="relative w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg border border-white/10 py-3 sm:py-4 px-3 sm:px-6 rounded-xl font-bold transition-all duration-300 group-hover:scale-[1.02] group-active:scale-95 flex items-center justify-center gap-2 sm:gap-4">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 animate-bounce shrink-0" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                                 </svg>
-                                <span id="downloadBtnText">Download APK (390 MB)</span>
-                            </button>
+                                <div class="text-left flex flex-col justify-center min-w-0">
+                                    <span id="downloadBtnText" class="block text-sm sm:text-base leading-tight truncate">Download APK (390 MB)</span>
+                                    <div class="text-[9px] sm:text-[10px] text-indigo-200/80 font-medium flex items-center gap-1 sm:gap-1.5 mt-0.5 sm:mt-1 truncate">
+                                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white/70 shrink-0">
+                                            <path d="M12 2L2 9h20L12 2zm-8 8v8h2v-8H4zm4 0v8h2v-8H8zm4 0v8h2v-8h-2zm4 0v8h2v-8h-2zM2 19v2h20v-2H2z" />
+                                        </svg>
+                                        <span class="truncate">Hosted on archive.org servers</span>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
 
                         <a href="https://play.google.com/store/apps/details?id=com.yoyo.snake.rush&referrer=utm_source%3Dvphoneos_website"

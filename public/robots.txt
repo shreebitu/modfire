@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /view.html
+Disallow: /dashboard.html
+Disallow: /deskbord.html
 
 Sitemap: https://shreebitu.in/sitemap.xml
