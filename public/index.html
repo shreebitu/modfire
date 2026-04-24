@@ -119,10 +119,9 @@
             // Fetch all items from JSON files
             const allItems = await DynamicLoader.fetchAll();
 
-            // Sort by date (descending) and take top 6 for "Latest Uploads"
+            // Sort by date (descending) to show latest uploads first
             const latestItems = allItems
-                .sort((a, b) => new Date(b.date) - new Date(a.date))
-                .slice(0, 6);
+                .sort((a, b) => new Date(b.date) - new Date(a.date));
 
             loader.style.display = 'none';
 

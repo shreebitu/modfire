@@ -1,1 +1,66 @@
-﻿[]
+[
+    {
+        "title": "Ubuntu 26.04 LTS",
+        "image": "assets/images/ubuntu_logo.webp",
+        "description": "Download Ubuntu 26.04 LTS for your laptop, workstation, server, or IoT device with free security updates.",
+        "link": "linux/ubuntu.html",
+        "date": "2026-04-24",
+        "size": "5.9 GB"
+    },
+    {
+        "title": "Arch Linux",
+        "image": "assets/images/arch_logo.webp",
+        "description": "A lightweight and flexible Linux distribution that tries to Keep It Simple. Download the latest Arch Linux ISO.",
+        "link": "linux/archlinux.html",
+        "date": "2026-04-24",
+        "size": "1.4 GB"
+    },
+    {
+        "title": "Debian Linux",
+        "image": "assets/images/debian_logo.webp",
+        "description": "Download Debian, a free and open-source Linux distribution known for its rock-solid stability and massive software repository.",
+        "link": "linux/debian.html",
+        "date": "2026-04-24",
+        "size": "3.7 GB"
+    },
+    {
+        "title": "CentOS Stream",
+        "image": "assets/images/centos_logo.webp",
+        "description": "Download CentOS Stream, the continuous-delivery distribution that provides a clear path to contributing to future minor releases of RHEL.",
+        "link": "linux/centos.html",
+        "date": "2026-04-24",
+        "size": "9.2 GB"
+    },
+    {
+        "title": "Red Hat Enterprise Linux",
+        "image": "assets/images/rhel_logo.webp",
+        "description": "Discover RHEL, the world's leading enterprise Linux platform designed for hybrid cloud, Edge computing, and server deployments.",
+        "link": "linux/rhel.html",
+        "date": "2026-04-24",
+        "size": "N/A"
+    },
+    {
+        "title": "Gentoo Linux",
+        "image": "assets/images/gentoo_logo.webp",
+        "description": "Download Gentoo Linux, the highly customizable, source-based Linux distribution built on the Portage package management system.",
+        "link": "linux/gentoo.html",
+        "date": "2026-04-24",
+        "size": "400 MB"
+    },
+    {
+        "title": "Fedora Linux",
+        "image": "assets/images/fedora_logo.webp",
+        "description": "Free and Open Source platform. Download Fedora Linux for Workstation, Server, or IoT and stay on the cutting edge.",
+        "link": "linux/fedora.html",
+        "date": "2026-04-24",
+        "size": "2.1 GB"
+    },
+    {
+        "title": "Linux Mint",
+        "image": "assets/images/linuxmint_logo.webp",
+        "description": "From freedom came elegance. Download Linux Mint, one of the most popular desktop Linux distributions and used by millions of people.",
+        "link": "linux/linuxmint.html",
+        "date": "2026-04-24",
+        "size": "2.8 GB"
+    }
+]
