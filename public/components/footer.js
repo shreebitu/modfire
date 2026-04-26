@@ -12,14 +12,8 @@ class GlobalFooter extends HTMLElement {
         this.innerHTML = `
         <footer class="main-footer">
             <div class="footer-container">
-                <a href="${rootPath}index.html" class="footer-brand">
-                    <img src="${rootPath}assets/images/logo.png" alt="Logo" class="footer-logo" onerror="this.style.display='none'">
-                    <span>SHREEBITU</span>
-                </a>
-                
                 <div class="footer-links">
                     <a href="${rootPath}index.html">Home</a>
-                    <a href="${rootPath}upload.html">Upload</a>
                     <a href="${rootPath}explore.html">Explore</a>
                     <a href="${rootPath}about.html">About</a>
                     <a href="${rootPath}contact.html">Contact</a>
@@ -27,8 +21,8 @@ class GlobalFooter extends HTMLElement {
                 </div>
                 <div class="footer-divider"></div>
                 <div class="footer-info">
-                    <p class="copyright">© 2026 SHREEBITU — Premium Cloud Storage Solutions</p>
-                    <p class="tagline">Next-Gen Sharing • Community Powered • Professional Experience</p>
+                    <p class="copyright">&copy; 2026 SHREEBITU</p>
+                    <p class="tagline">Next-Gen Sharing &bull; Community Powered &bull; Professional Experience</p>
                 </div>
             </div>
         </footer>
@@ -48,33 +42,6 @@ class GlobalFooter extends HTMLElement {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-            }
-            .footer-brand {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 12px;
-                text-decoration: none;
-                margin-bottom: 32px;
-                transition: transform 0.3s ease;
-            }
-            .footer-brand:hover {
-                transform: translateY(-3px);
-            }
-            .footer-logo {
-                width: 48px;
-                height: 48px;
-                object-fit: contain;
-                filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.3));
-            }
-            .footer-brand span {
-                font-size: 18px;
-                font-weight: 800;
-                letter-spacing: 2px;
-                color: #fff;
-                background: linear-gradient(135deg, #6366f1, #a855f7);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
             }
             .footer-links {
                 display: flex;
@@ -134,7 +101,6 @@ class GlobalFooter extends HTMLElement {
                     display: none;
                 }
                 .main-footer { margin-top: 40px; padding: 40px 0; overflow-x: hidden; }
-                .footer-brand { margin-bottom: 24px; }
                 .copyright, .tagline { padding: 0 24px; text-align: center; }
             }
         </style>

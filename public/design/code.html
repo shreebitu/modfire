@@ -1,0 +1,579 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AppHub - Minimal App Store</title>
+    <!-- Standard SEO -->
+    <meta name="description" content="Download premium applications, OS distributions, and developer tools from ShreeBitu. Fast, free, and reliable file library.">
+    <meta name="keywords" content="ShreeBitu, Download Apps, Linux ISO, Windows Tools, Open Source Software, Bitu Talukdar">
+    <meta name="author" content="Bitu Talukdar">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="DESIGN - Code | ShreeBitu Library">
+    <meta property="og:description" content="Explore and download the latest software and files on ShreeBitu.">
+    <meta property="og:image" content="https://shreebitu.in/assets/images/og-image.png">
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#191c1e",
+                      "inverse-on-surface": "#eff1f3",
+                      "primary-container": "#0062ff",
+                      "outline-variant": "#c2c6d9",
+                      "on-secondary-container": "#5c647a",
+                      "surface-container": "#eceef0",
+                      "on-primary-fixed": "#00174b",
+                      "outline": "#737687",
+                      "surface-tint": "#0053da",
+                      "on-secondary": "#ffffff",
+                      "surface-dim": "#d8dadc",
+                      "on-error": "#ffffff",
+                      "secondary-fixed": "#dae2fd",
+                      "tertiary-container": "#c84000",
+                      "on-primary-container": "#f3f3ff",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "background": "#f7f9fb",
+                      "surface": "#f7f9fb",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "on-error-container": "#93000a",
+                      "primary": "#004cca",
+                      "on-surface-variant": "#424656",
+                      "surface-container-low": "#f2f4f6",
+                      "on-surface": "#191c1e",
+                      "surface-container-high": "#e6e8ea",
+                      "surface-variant": "#e0e3e5",
+                      "on-tertiary-fixed-variant": "#832700",
+                      "secondary-container": "#dae2fd",
+                      "inverse-surface": "#2d3133",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "secondary": "#565e74",
+                      "surface-container-highest": "#e0e3e5",
+                      "tertiary": "#9e3100",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-container": "#fff1ed",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed": "#131b2e",
+                      "on-tertiary-fixed": "#390c00",
+                      "inverse-primary": "#b4c5ff",
+                      "tertiary-fixed": "#ffdbcf",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#f7f9fb",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "primary-fixed": "#dbe1ff",
+                      "tertiary-fixed-dim": "#ffb59c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "unit": "8px",
+                      "gutter": "24px",
+                      "margin-page": "40px",
+                      "card-padding": "24px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Manrope"],
+                      "h1": ["Manrope"],
+                      "h2": ["Manrope"],
+                      "display": ["Manrope"],
+                      "body-md": ["Manrope"],
+                      "label-sm": ["Manrope"],
+                      "h3": ["Manrope"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "h1": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "h2": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "label-sm": ["13px", {"lineHeight": "1", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                      "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif !important; background-color: #f7f9fc !important; }
+        .sidebar { background-color: #ffffff; border-right: 1px solid #eef1f5; }
+        .main-scroll::-webkit-scrollbar { width: 6px; }
+        .main-scroll::-webkit-scrollbar-track { background: transparent; }
+        .main-scroll::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+        .main-scroll::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+    </style>
+
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ShreeBitu",
+      "url": "https://shreebitu.in/",
+      "author": {
+        "@type": "Person",
+        "name": "Bitu Talukdar"
+      },
+      "description": "Premium file library and application store."
+    }
+    </script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7668010130101569" crossorigin="anonymous"></script>
+</head>
+
+<body class="flex h-screen overflow-hidden text-[#1d1d1f]">
+
+<aside class="sidebar w-[260px] flex-shrink-0 flex flex-col h-full hidden md:flex z-20 shadow-[2px_0_10px_rgba(0,0,0,0.02)]">
+    <a href="../index.html" class="px-6 py-5 flex items-center gap-3 hover:bg-gray-50 transition cursor-pointer block border-b border-gray-50">
+        <div class="w-9 h-9 bg-[#1d4ed8] text-white flex items-center justify-center rounded-xl shadow-sm rotate-3">
+            <svg class="w-5 h-5 -rotate-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
+            </svg>
+        </div>
+        <div>
+           <div class="font-bold tracking-tight text-[17px] text-gray-900 leading-tight">ShreeBitu</div>
+           <div class="text-[11px] text-gray-500 font-medium">File Library</div>
+        </div>
+    </a>
+
+    <!-- Nav -->
+    <div class="px-4 py-2 flex-1">
+        <div class="text-[11px] text-gray-400 mb-4 px-3 font-semibold tracking-wider">LIBRARY</div>
+        
+        <nav class="space-y-1">
+            <a href="../index.html" id="nav-home" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>Home</a>
+            <a href="../explore.html" id="nav-explore" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>Explore Library</a>
+            <a href="../linux/index.html" id="nav-linux" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>Operating Systems</a>
+            <a href="../apk/index.html" id="nav-apk" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>Mobile Apps</a>
+            <a href="../opensource/index.html" id="nav-opensource" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>Open Source</a>
+            <a href="../presentation/presentation.html" id="nav-presentation" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>Presentations</a>
+        </nav>
+    
+    </div>
+    
+    <div class="mt-auto px-4 py-8 border-t border-gray-100 flex flex-col gap-1">
+        <a href="../dashboard.html" class="flex items-center gap-3 px-3 py-2 text-[14px] text-gray-500 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+            <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+            Dashboard
+        </a>
+    </div>
+</aside>
+
+<main class="flex-1 flex flex-col h-full bg-[#f8f9fa] relative z-10 w-full overflow-hidden">
+<!-- Top Nav -->
+    <header class="h-[64px] md:h-[72px] flex items-center justify-between px-4 lg:px-10 shrink-0 sticky top-0 bg-white z-30 border-b border-gray-100">
+        
+        <div class="flex items-center gap-2">
+            <button id="mobileMenuBtn" class="md:hidden text-gray-500 hover:text-[#0066cc] focus:outline-none p-1.5 shrink-0 bg-gray-50 rounded-lg">
+                <svg class="w-[22px] h-[22px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <a href="index.html" class="md:hidden font-bold tracking-tight text-[16px] text-[#0066cc] uppercase tracking-widest">SHREEBITU</a>
+            
+            <!-- Desktop Search (always visible on md+) -->
+            <div id="desktopSearchWrap" class="hidden md:flex items-center relative">
+                <svg class="w-4 h-4 text-gray-400 absolute left-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input type="text" id="searchInput" placeholder="Search..." class="bg-gray-50 text-[13px] text-gray-800 rounded-lg pl-9 pr-3 py-2 w-[140px] md:w-[180px] lg:w-[220px] outline-none focus:ring-2 focus:ring-[#0066cc]/30 focus:bg-white placeholder-gray-500 transition-all text-sm" />
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-2 md:gap-3">
+            <!-- Mobile Search Toggle Button -->
+            <button id="searchToggleBtn" class="md:hidden text-gray-500 hover:text-[#0066cc] p-2 shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </button>
+            
+            <!-- Mobile Search Dropdown (appears below header) -->
+            <div id="searchContainer" class="hidden absolute top-[72px] left-0 right-0 z-[200] bg-white border-b border-gray-100 p-3">
+                <div class="relative">
+                    <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input type="text" id="mobileSearchInput" placeholder="Search files, apps..." class="w-full bg-gray-50 text-[14px] text-gray-800 rounded-lg pl-9 pr-4 py-2.5 outline-none focus:ring-2 focus:ring-[#0066cc]/30 placeholder-gray-500" />
+                </div>
+                <div id="mobileSearchResults" class="mt-2 max-h-[60vh] overflow-y-auto"></div>
+            </div>
+            
+            <!-- Desktop Auth -->
+            <div class="hidden lg:flex items-center gap-2">
+                <a href="login.html" class="text-[13px] font-medium text-gray-600 hover:text-[#0066cc]">Log In</a>
+                <a href="signup.html" class="bg-[#0066cc] text-white px-3 py-1.5 rounded-lg text-[12px] font-medium hover:bg-[#0055aa]">Sign Up</a>
+            </div>
+            
+        </div>
+    </header>
+
+    <div class="flex-1 overflow-y-auto px-4 md:px-8 lg:px-10 pb-6 main-scroll text-[#1d1d1f]">
+        <div class="max-w-7xl mx-auto w-full pt-8">
+            <!-- WRAP CONTENT IN WHITE CARD -->
+            <div class="bg-white rounded-[16px] md:rounded-[24px] shadow-sm border border-gray-100/50 p-3 md:p-6 lg:p-10 relative overflow-hidden">
+
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 flex flex-col h-full py-6 sticky top-0">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-xl flex items-center justify-center text-gray-900">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+</div>
+<div>
+<h1 class="font-h2 text-body-md font-bold tracking-tight text-on-surface">AppHub</h1>
+<p class="font-label-sm text-on-secondary-container text-[11px]">Manage your apps</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<div class="mb-4">
+<p class="px-4 font-label-sm text-outline uppercase mb-2">Library</p>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-150 text-blue-600 dark:text-blue-400 font-bold border-r-2 border-blue-600 dark:border-blue-400 bg-blue-50/50 dark:bg-blue-900/10" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-body-md">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-150 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-white dark:hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined" data-icon="sports_esports">sports_esports</span>
+<span class="font-body-md">Games</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-150 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-white dark:hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined" data-icon="shutter_speed">shutter_speed</span>
+<span class="font-body-md">Productivity</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-150 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-white dark:hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-body-md">Social</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-150 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-white dark:hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+<span class="font-body-md">Utilities</span>
+</a>
+</div>
+</nav>
+<div class="px-4 pt-4 border-t border-slate-200 dark:border-slate-800 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-body-md">Help</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-8 py-3 w-full sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 font-manrope text-sm tracking-tight">
+<div class="flex items-center gap-6 flex-1">
+<div class="relative w-full max-w-xl">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full bg-surface-container-low border border-slate-200 rounded-lg py-2 pl-10 pr-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="Search for applications..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4 ml-6">
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden ml-2 ring-2 ring-white">
+<img class="w-full h-full object-cover" data-alt="close up headshot portrait of a smiling young professional man with short dark hair in a bright studio environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1bwsmonTY9OnEg-ZsgHimiQmDYSNjwaU6YQhyLuJIOInDgH2F3rZmMo3KP5F0twxCEODaXNOKtNeaTjYbarv13dm-_XCVxmBwDLRjeh1Kqa1MJmO75VmtSxIFGM_2zX8l7eXV_oTFsez5SIkKNm76r9o_XgzeArId1aWwld-yHQPu8gSHZoiENbyEElB7uD69rVm9vbTyR6Ka69sAYrELhsWPQKB6ePQFybg-97GOtxviseYp_pAcgX19oYYFCT20hnpGkElFrFI"/>
+</div>
+</div>
+</header>
+<div class="p-10 space-y-12 max-w-[1400px] mx-auto w-full">
+<!-- Featured App Hero -->
+<section>
+<div class="relative h-[400px] rounded-3xl overflow-hidden group shadow-lg border border-slate-200">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="abstract tech visualization with glowing neon lines flowing through a dark 3d space symbolizing digital connectivity and high speed data" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3YwX9Gm7ziZNjTatcuWYGaUgKt2hiU-aXKVYm5_g8S5CsKtnqJ4HzMSLhl0N1DN8AHkqOr0fYTu25Z9rKH15l8E4QGnNYKcD6485hwpRHst1-tmUk0ViDSlJqWaCUmJRMm1lO2DBcMZQ4KIM1XcVv9EWiXqWYtVcjUixfrdVAXIqRleb72fzhmzLwl8qkR_YRXqHEIxGpPr9Q9bX5GWV33pWVzrM8peTaUgIBoctkeDE0DxW0jVclFqmP8VXIWj8N3W-M1lOs3Pg"/>
+<div class="absolute inset-0 bg-gradient-to-r from-on-background/80 via-on-background/40 to-transparent"></div>
+<div class="relative h-full flex flex-col justify-center px-12 text-gray-900 max-w-2xl">
+<span class="inline-block px-3 py-1 bg-primary text-[11px] font-bold uppercase rounded-full mb-4 w-fit">Editor's Choice</span>
+<h2 class="font-display text-display mb-4">Flux Pro 2024</h2>
+<p class="font-body-lg mb-8 text-gray-900/80">Revolutionize your creative workflow with the next generation of AI-powered design tools. High-performance, minimal interface.</p>
+<div class="flex gap-4">
+<button class="bg-primary hover:bg-surface-tint text-gray-900 px-8 py-3 rounded-xl font-h3 transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                                    Install Now
+                                </button>
+<button class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-gray-900 border border-white/30 px-8 py-3 rounded-xl font-h3 transition-all">
+                                    Learn More
+                                </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Trending Now Section -->
+<section>
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="font-h2 text-h2 text-on-surface">Trending Now</h2>
+<p class="font-body-md text-on-secondary-container">Most downloaded this week</p>
+</div>
+<button class="text-primary font-label-sm hover:underline flex items-center gap-1">
+                            View All <span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- App Card 1 -->
+<div class="bg-surface-container-lowest border border-slate-200 rounded-2xl p-6 hover:shadow-xl hover:shadow-slate-200/50 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 rounded-2xl bg-indigo-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-indigo-600 text-3xl" data-icon="brush">brush</span>
+</div>
+<button class="w-10 h-10 rounded-full border border-slate-100 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+</button>
+</div>
+<h3 class="font-h3 text-h3 mb-1">SketchUp</h3>
+<p class="font-label-sm text-outline mb-4">Design &amp; Creativity</p>
+<div class="flex items-center justify-between px-4 sm:px-6 mt-auto">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-500 text-[18px]" data-icon="star" data-weight="fill">star</span>
+<span class="font-label-sm text-on-surface">4.9</span>
+</div>
+<span class="font-label-sm text-outline">124 MB</span>
+</div>
+</div>
+<!-- App Card 2 -->
+<div class="bg-surface-container-lowest border border-slate-200 rounded-2xl p-6 hover:shadow-xl hover:shadow-slate-200/50 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 rounded-2xl bg-emerald-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-600 text-3xl" data-icon="database">database</span>
+</div>
+<button class="w-10 h-10 rounded-full border border-slate-100 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+</button>
+</div>
+<h3 class="font-h3 text-h3 mb-1">DataVault</h3>
+<p class="font-label-sm text-outline mb-4">Security</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-500 text-[18px]" data-icon="star" data-weight="fill">star</span>
+<span class="font-label-sm text-on-surface">4.7</span>
+</div>
+<span class="font-label-sm text-outline">42 MB</span>
+</div>
+</div>
+<!-- App Card 3 -->
+<div class="bg-surface-container-lowest border border-slate-200 rounded-2xl p-6 hover:shadow-xl hover:shadow-slate-200/50 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-amber-600 text-3xl" data-icon="music_note">music_note</span>
+</div>
+<button class="w-10 h-10 rounded-full border border-slate-100 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+</button>
+</div>
+<h3 class="font-h3 text-h3 mb-1">BeatFlow</h3>
+<p class="font-label-sm text-outline mb-4">Entertainment</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-500 text-[18px]" data-icon="star" data-weight="fill">star</span>
+<span class="font-label-sm text-on-surface">4.8</span>
+</div>
+<span class="font-label-sm text-outline">18 MB</span>
+</div>
+</div>
+<!-- App Card 4 -->
+<div class="bg-surface-container-lowest border border-slate-200 rounded-2xl p-6 hover:shadow-xl hover:shadow-slate-200/50 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 rounded-2xl bg-rose-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-rose-600 text-3xl" data-icon="fitness_center">fitness_center</span>
+</div>
+<button class="w-10 h-10 rounded-full border border-slate-100 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+</button>
+</div>
+<h3 class="font-h3 text-h3 mb-1">ZenPulse</h3>
+<p class="font-label-sm text-outline mb-4">Health &amp; Fitness</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-500 text-[18px]" data-icon="star" data-weight="fill">star</span>
+<span class="font-label-sm text-on-surface">4.6</span>
+</div>
+<span class="font-label-sm text-outline">55 MB</span>
+</div>
+</div>
+</div>
+</section>
+<!-- New Releases Bento Section -->
+<section>
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="font-h2 text-h2 text-on-surface">New Releases</h2>
+<p class="font-body-md text-on-secondary-container">Fresh additions to the library</p>
+</div>
+</div>
+<div class="bento-grid">
+<!-- Main Feature Release -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-highest rounded-3xl p-8 flex flex-col md:flex-row gap-8 items-center border border-slate-200 group overflow-hidden relative">
+<div class="absolute -right-10 -bottom-10 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[300px]" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div class="w-32 h-32 md:w-48 md:h-48 rounded-[2rem] bg-white shadow-xl flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[80px] text-primary" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div class="flex-1 text-center md:text-left z-10">
+<h3 class="font-display text-h1 mb-2">Lumina AI</h3>
+<p class="font-body-md text-on-surface-variant mb-6 max-w-md">The most advanced photo enhancer ever built. Restore old photos and upscale images with one click.</p>
+<div class="flex flex-wrap justify-center md:justify-start gap-4">
+<div class="bg-white/80 backdrop-blur rounded-xl px-4 py-2 border border-slate-200">
+<p class="text-[10px] text-outline font-bold uppercase">Version</p>
+<p class="font-body-md font-bold">2.4.0</p>
+</div>
+<div class="bg-white/80 backdrop-blur rounded-xl px-4 py-2 border border-slate-200">
+<p class="text-[10px] text-outline font-bold uppercase">Size</p>
+<p class="font-body-md font-bold">482 MB</p>
+</div>
+</div>
+<button class="mt-8 bg-on-background text-gray-900 px-10 py-4 rounded-xl font-h3 hover:bg-slate-800 transition-all">Download Lumina</button>
+</div>
+</div>
+<!-- Side Bento Item 1 -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between hover:border-primary transition-colors">
+<div>
+<div class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</div>
+<h3 class="font-h2 text-h3 mb-2">CodePad</h3>
+<p class="font-body-md text-on-surface-variant">A minimalist IDE for the modern developer.</p>
+</div>
+<div class="mt-8 pt-6 border-t border-slate-100 flex justify-between items-center">
+<span class="font-label-sm text-outline">v1.2.5</span>
+<button class="text-primary font-bold">Get it</button>
+</div>
+</div>
+<!-- Side Bento Item 2 -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between hover:border-primary transition-colors">
+<div>
+<div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined" data-icon="cloud">cloud</span>
+</div>
+<h3 class="font-h2 text-h3 mb-2">SkySync</h3>
+<p class="font-body-md text-on-surface-variant">Seamless file synchronization across all devices.</p>
+</div>
+<div class="mt-8 pt-6 border-t border-slate-100 flex justify-between items-center">
+<span class="font-label-sm text-outline">v3.0.1</span>
+<button class="text-primary font-bold">Get it</button>
+</div>
+</div>
+<!-- Horizontal List Style -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-low rounded-3xl p-8 flex flex-col justify-center border border-slate-200">
+<h4 class="font-label-sm text-outline uppercase mb-6">Recommended for you</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-4 bg-white p-3 rounded-2xl border border-slate-100">
+<div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-slate-600" data-icon="mail">mail</span>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="font-h3 text-body-md truncate">AirMail Desktop</h5>
+<p class="font-label-sm text-outline truncate">Smart email organization</p>
+</div>
+<button class="bg-primary-container/10 text-primary-container px-4 py-2 rounded-lg font-label-sm font-bold">Update</button>
+</div>
+<div class="flex items-center gap-4 bg-white p-3 rounded-2xl border border-slate-100">
+<div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-slate-600" data-icon="calendar_month">calendar_month</span>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="font-h3 text-body-md truncate">TimeGraph</h5>
+<p class="font-label-sm text-outline truncate">Task visualization tool</p>
+</div>
+<button class="bg-primary-container/10 text-primary-container px-4 py-2 rounded-lg font-label-sm font-bold">Install</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+
+<script src="../assets/js/dynamicLoader.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const btn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.querySelector('aside');
+        if (btn && sidebar) {
+            let overlay = document.getElementById('sidebarOverlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.id = 'sidebarOverlay';
+                overlay.className = 'fixed inset-0 bg-black/60 z-[110] hidden backdrop-blur-md transition-opacity';
+                document.body.appendChild(overlay);
+            }
+            const toggle = (show) => {
+                if (show) {
+                    sidebar.classList.remove('hidden');
+                    sidebar.classList.add('fixed', 'inset-y-0', 'left-0', 'z-[120]', 'w-72', 'shadow-2xl');
+                    overlay.classList.remove('hidden');
+                } else {
+                    sidebar.classList.add('hidden');
+                    sidebar.classList.remove('fixed', 'inset-y-0', 'left-0', 'z-[120]', 'w-72', 'shadow-2xl');
+                    overlay.classList.add('hidden');
+                }
+            };
+            btn.addEventListener('click', () => toggle(true));
+            overlay.addEventListener('click', () => toggle(false));
+        }
+
+        // Mobile search toggle
+        const searchToggle = document.getElementById('searchToggleBtn');
+        const searchContainer = document.getElementById('searchContainer');
+        const mobileSearchInput = document.getElementById('mobileSearchInput');
+        if (searchToggle && searchContainer) {
+            searchToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                searchContainer.classList.toggle('hidden');
+                if (!searchContainer.classList.contains('hidden') && mobileSearchInput) {
+                    mobileSearchInput.focus();
+                }
+            });
+            document.addEventListener('click', function(e) {
+                if (!searchContainer.contains(e.target) && e.target !== searchToggle) {
+                    searchContainer.classList.add('hidden');
+                }
+            });
+        }
+    });
+</script>
+</body></html>

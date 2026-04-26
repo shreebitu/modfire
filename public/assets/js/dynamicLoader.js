@@ -70,56 +70,45 @@ const DynamicLoader = {
      */
     createCard(item) {
         const basePath = this.getBasePath();
-        const card = document.createElement('div');
-        card.className = "glass-panel file-card searchable-card";
+        const card = document.createElement('a');
+        
+        // Handle link depth
+        const absoluteLink = item.link && item.link.startsWith('http') ? item.link : (item.link ? basePath + item.link : '#');
+        
+        card.href = absoluteLink;
+        card.className = "app-card glow-hover block bg-white p-5 rounded-[20px] border border-gray-100 cursor-pointer shadow-sm relative group searchable-card";
         card.dataset.category = item.category;
 
-        // Determine fallback icon based on category
-        let fallbackIcon = "📄";
-        let badgeColor = "rgba(99, 102, 241, 0.15)";
-        let badgeText = "#6366f1";
-        if (item.category === 'apk')       { fallbackIcon = "📱"; badgeColor = "rgba(34,197,94,0.15)"; badgeText = "#22c55e"; }
-        else if (item.category === 'windows') { fallbackIcon = "🪟"; badgeColor = "rgba(59,130,246,0.15)"; badgeText = "#3b82f6"; }
-        else if (item.category === 'linux')   { fallbackIcon = "🐧"; badgeColor = "rgba(251,191,36,0.15)"; badgeText = "#fbbf24"; }
-        else if (item.category === 'ppt')     { fallbackIcon = "📊"; badgeColor = "rgba(168,85,247,0.15)"; badgeText = "#a855f7"; }
-        else if (item.category === 'zip')     { fallbackIcon = "📦"; badgeColor = "rgba(234,179,8,0.15)"; badgeText = "#eab308"; }
-        else if (item.category === 'pdf')     { fallbackIcon = "📄"; badgeColor = "rgba(239,68,68,0.15)"; badgeText = "#ef4444"; }
-        else if (item.category === 'opensource') { fallbackIcon = "🐙"; badgeColor = "rgba(148,163,184,0.15)"; badgeText = "#94a3b8"; }
-
-        // Logo Logic: Use image if provided, else emoji fallback
-        const logoHtml = item.image && item.image !== "" ? 
-            `<img src="${basePath + item.image}" alt="${item.title}" class="card-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-             <div class="card-fallback-icon" style="display:none; font-size:28px; align-items:center; justify-content:center; width:100%; height:100%;">${fallbackIcon}</div>` : 
-            `<div style="font-size:28px; display:flex; align-items:center; justify-content:center; width:100%; height:100%;">${fallbackIcon}</div>`;
-
-        // Handle link depth
-        const absoluteLink = item.link.startsWith('http') ? item.link : basePath + item.link;
-
-        // Format date nicely
-        let displayDate = item.date || '';
-        if (displayDate) {
-            try {
-                displayDate = new Date(displayDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-            } catch(e) {}
-        }
+        // Map categories to beautiful icons and colors
+        let iconCode = '📁';
+        let iconBg = 'bg-gray-50'; let iconTxt = 'text-gray-600'; let borderCol = 'border-gray-100';
+        
+        const cat = item.category.toLowerCase();
+        if(cat === 'apk' || cat === 'app') { iconCode = '📱'; iconBg = 'bg-green-50'; iconTxt = 'text-green-500'; borderCol = 'border-green-100'; }
+        else if(cat === 'linux') { iconCode = '🐧'; iconBg = 'bg-orange-50'; iconTxt = 'text-orange-500'; borderCol = 'border-orange-100'; }
+        else if(cat === 'windows') { iconCode = '🪟'; iconBg = 'bg-blue-50'; iconTxt = 'text-blue-500'; borderCol = 'border-blue-100'; }
+        else if(cat === 'pdf') { iconCode = '📄'; iconBg = 'bg-red-50'; iconTxt = 'text-red-500'; borderCol = 'border-red-100'; }
+        else if(cat === 'zip' || cat === 'archives') { iconCode = '📦'; iconBg = 'bg-yellow-50'; iconTxt = 'text-yellow-600'; borderCol = 'border-yellow-100'; }
+        else if(cat === 'ppt' || cat === 'presentation') { iconCode = '📊'; iconBg = 'bg-purple-50'; iconTxt = 'text-purple-500'; borderCol = 'border-purple-100'; }
+        else if(cat === 'opensource' || cat === 'github') { iconCode = '🐙'; iconBg = 'bg-slate-50'; iconTxt = 'text-slate-800'; borderCol = 'border-slate-100'; }
+        
+        let sizeDisplay = item.size ? item.size : (item.stars ? `⭐ ${item.stars}` : 'View details');
 
         card.innerHTML = `
-            <div class="fc-header">
-                <div class="fc-logo-wrap">${logoHtml}</div>
-                <div class="fc-title-block">
-                    <span class="fc-badge" style="background:${badgeColor}; color:${badgeText};">${item.category.toUpperCase()}</span>
-                    <h3 class="fc-title" title="${item.title}">${item.title}</h3>
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center ${iconTxt} text-2xl shadow-sm border ${borderCol} transition-colors">
+                    ${iconCode}
+                </div>
+                <div class="w-7 h-7 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:text-[#0066cc] group-hover:bg-[#0066cc]/10 transition z-10">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
                 </div>
             </div>
-            <p class="fc-desc">${item.description}</p>
-            <div class="fc-meta">
-                <span class="fc-meta-pill">📦 ${item.size || 'N/A'}</span>
-                <span class="fc-meta-pill">🗓 ${displayDate || 'Latest'}</span>
+            <h3 class="font-[600] text-[15px] text-gray-900 leading-tight truncate">${item.title}</h3>
+            <p class="text-[12px] text-gray-500 mb-4 mt-0.5 capitalize">${item.category}</p>
+            <div class="flex items-center justify-between text-[12px] font-medium mt-auto">
+                <span class="text-gray-400 flex items-center gap-1">${sizeDisplay}</span>
+                <span class="text-[#0066cc] font-semibold opacity-0 translate-x-[-10px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">Get it</span>
             </div>
-            <a href="${absoluteLink}" class="fc-btn">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                Download Now
-            </a>
         `;
         return card;
     },

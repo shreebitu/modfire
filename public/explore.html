@@ -1,234 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explore Files — ShreeBitu.in</title>
-  <meta name="description" content="Explore and discover files shared by the community on ShreeBitu.in.">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <style>
-    body {
-      font-family: 'Outfit', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Files — ShreeBitu.in</title>
+    <!-- Standard SEO -->
+    <meta name="description" content="Download premium applications, OS distributions, and developer tools from ShreeBitu. Fast, free, and reliable file library.">
+    <meta name="keywords" content="ShreeBitu, Download Apps, Linux ISO, Windows Tools, Open Source Software, Bitu Talukdar">
+    <meta name="author" content="Bitu Talukdar">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Explore | ShreeBitu Library">
+    <meta property="og:description" content="Explore and download the latest software and files on ShreeBitu.">
+    <meta property="og:image" content="https://shreebitu.in/assets/images/og-image.png">
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in {
-      animation: fadeInUp 0.6s ease-out forwards;
-    }
-
-    .fade-in-delay {
-      animation: fadeInUp 0.6s ease-out 0.15s forwards;
-      opacity: 0;
-    }
-
-    .fade-in-delay-2 {
-      animation: fadeInUp 0.6s ease-out 0.3s forwards;
-      opacity: 0;
-    }
-
-    .card-hover {
-      transition: all 0.3s ease;
-    }
-
-    .card-hover:hover {
-      transform: translateY(-4px);
-      border-color: #4f46e5;
-      box-shadow: 0 8px 30px rgba(79, 70, 229, 0.15);
-    }
-  </style>
-    <!-- Favicon -->
+    
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fc; }
+        .sidebar { background-color: #ffffff; border-right: 1px solid #eef1f5; }
+        .main-scroll::-webkit-scrollbar { width: 6px; }
+        .main-scroll::-webkit-scrollbar-track { background: transparent; }
+        .main-scroll::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+        .main-scroll::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+        
+        .filter-btn.active {
+            background-color: #0066cc;
+            color: white;
+            border-color: #0066cc;
+            box-shadow: 0 4px 10px rgba(0, 102, 204, 0.2);
+        }
+        .filter-btn {
+            background-color: white;
+            color: #4b5563;
+            border: 1px solid #e5e7eb;
+            transition: all 0.2s ease;
+        }
+        .filter-btn:hover:not(.active) {
+            border-color: #d1d5db;
+            background-color: #f9fafb;
+        }
+    
+        .glow-hover:hover {
+            box-shadow: 0 0 20px rgba(0, 102, 204, 0.15);
+            border-color: rgba(0, 102, 204, 0.3);
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ShreeBitu",
+      "url": "https://shreebitu.in/",
+      "author": {
+        "@type": "Person",
+        "name": "Bitu Talukdar"
+      },
+      "description": "Premium file library and application store."
+    }
+    </script>
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7668010130101569" crossorigin="anonymous"></script>
 </head>
+<body class="flex h-screen overflow-hidden text-[#1d1d1f]">
 
-<body
-  class="bg-[#0B0F19] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#111827] via-[#0B0F19] to-black text-gray-200 antialiased selection:bg-indigo-500/30 overflow-x-hidden">
+<!-- Sidebar -->
+<aside class="sidebar w-[260px] flex-shrink-0 flex flex-col h-full hidden md:flex z-20 shadow-[2px_0_10px_rgba(0,0,0,0.02)]">
+    <a href="index.html" class="px-6 py-5 flex items-center gap-3 hover:bg-gray-50 transition cursor-pointer block border-b border-gray-50">
+        <div class="w-9 h-9 bg-[#1d4ed8] text-white flex items-center justify-center rounded-xl shadow-sm rotate-3">
+            <svg class="w-5 h-5 -rotate-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
+            </svg>
+        </div>
+        <div>
+           <div class="font-bold tracking-tight text-[17px] text-gray-900 leading-tight">ShreeBitu</div>
+           <div class="text-[11px] text-gray-500 font-medium">File Library</div>
+        </div>
+    </a>
 
-  <!-- BACKGROUND GLOW -->
-  <div class="pointer-events-none fixed inset-0 z-0 flex justify-center">
-    <div class="w-[800px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px] -translate-y-1/2"></div>
-  </div>
-
-  <!-- HEADER -->
-  <global-navbar></global-navbar>
-
-  <!-- HERO -->
-  <section class="text-center py-10 md:py-16 px-4 md:px-6 fade-in">
-    <div class="max-w-3xl mx-auto">
-      <h1 class="text-3xl md:text-5xl font-bold text-white leading-tight">
-        Explore Files
-      </h1>
-      <p class="mt-3 md:mt-4 text-gray-400/90 text-base md:text-lg">
-        Discover files, apps, documents, and media shared by the community on ShreeBitu.in.
-      </p>
+    <!-- Nav -->
+    <div class="px-4 py-2 flex-1">
+        <div class="text-[11px] text-gray-400 mb-4 px-3 font-semibold tracking-wider">LIBRARY</div>
+        
+        <nav class="space-y-1">
+            <a href="index.html" id="nav-home" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>Home</a>
+            <a href="explore.html" id="nav-explore" class=" bg-[#ebf5ff] text-[#0066cc] font-medium flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>Explore Library</a>
+            <a href="linux/index.html" id="nav-linux" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>Operating Systems</a>
+            <a href="apk/index.html" id="nav-apk" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>Mobile Apps</a>
+            <a href="opensource/index.html" id="nav-opensource" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>Open Source</a>
+            <a href="presentation/presentation.html" id="nav-presentation" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>Presentations</a>
+        </nav>
+    
     </div>
-  </section>
-
-  <!-- SEARCH BAR -->
-  <section class="px-4 md:px-6 pb-8 md:pb-12 fade-in-delay">
-    <div class="max-w-3xl mx-auto">
-      <div class="relative">
-        <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" stroke="currentColor"
-          viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-        <input type="text" id="searchInput" placeholder="Search files by name or type..."
-          class="w-full backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-xl pl-12 pr-4 py-3.5 md:py-4 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-600 transition text-sm md:text-base">
-      </div>
-
-      <!-- CATEGORY FILTERS -->
-      <div class="flex flex-wrap gap-2 md:gap-3 mt-4 md:mt-6">
-        <button class="filter-btn bg-indigo-600 text-white px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-xs md:text-sm font-medium transition"
-          data-filter="all">All</button>
-        <button
-          class="filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-xs md:text-sm hover:border-indigo-600 hover:text-indigo-400 transition-colors duration-300"
-          data-filter="app">📱 Apps</button>
-        <button
-          class="filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-xs md:text-sm hover:border-indigo-600 hover:text-indigo-400 transition-colors duration-300"
-          data-filter="document">📄 Docs</button>
-        <button
-          class="filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-xs md:text-sm hover:border-indigo-600 hover:text-indigo-400 transition-colors duration-300"
-          data-filter="image">🖼️ Images</button>
-        <button
-          class="filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-xs md:text-sm hover:border-indigo-600 hover:text-indigo-400 transition-colors duration-300"
-          data-filter="media">🎬 Media</button>
-      </div>
+    
+    <div class="mt-auto px-4 py-8 border-t border-gray-100 flex flex-col gap-1">
+        <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2 text-[14px] text-gray-500 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+            <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+            Dashboard
+        </a>
     </div>
-  </section>
+</aside>
 
-  <!-- FILE GRID -->
-  <section class="px-4 md:px-6 pb-16 md:pb-20 fade-in-delay-2">
-    <div class="max-w-6xl mx-auto">
-
-      <div id="fileGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-
-        <!-- dynamic files loaded here -->
-
-      </div>
-
-      <!-- LOAD MORE -->
-      <div class="text-center mt-10 md:mt-12">
-        <button
-          class="border border-gray-700 hover:border-indigo-600 hover:text-white px-8 py-3 rounded-xl text-sm font-medium transition">
-          Load More Files
-        </button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <global-footer></global-footer>
-
-  <script>
-    fetch('/api/authcheck').then(r => r.json()).then(data => {
-        if (data.authenticated) {
-            document.getElementById('mainNav').innerHTML += `<a href="dashboard.html" class="hover:text-indigo-400 font-medium text-indigo-400">Dashboard</a>`;
-            document.getElementById('authButtons').innerHTML = `
-                <a href="upload.html" class="bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-2 rounded-lg text-sm font-medium transition hover:scale-105">Upload File</a>
-            `;
-        }
-    });
-
-    // Fetch and display public files
-    async function loadPublicFiles() {
-        const grid = document.getElementById('fileGrid');
-        try {
-            const res = await fetch('/api/public/files');
-            const data = await res.json();
+<!-- Main Area -->
+<main class="flex-1 flex flex-col h-full bg-[#f8f9fa] relative z-10 w-full overflow-hidden">
+    
+    <!-- Top Nav -->
+    <header class="h-[64px] md:h-[72px] flex items-center justify-between px-4 lg:px-10 shrink-0 sticky top-0 bg-white z-30 border-b border-gray-100 ">
+        
+        <div class="flex items-center gap-2">
+            <button id="mobileMenuBtn" class="md:hidden text-gray-500 hover:text-[#0066cc] focus:outline-none p-1.5 shrink-0 bg-gray-50 rounded-lg">
+                <svg class="w-[22px] h-[22px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <a href="index.html" class="md:hidden font-bold tracking-tight text-[16px] text-[#0066cc]" uppercase tracking-widest>SHREEBITU</a>
             
-            if (!data.success || data.files.length === 0) {
-                grid.innerHTML = '<p class="text-gray-400/90 col-span-full text-center py-6">No public files available.</p>';
-                return;
+            <!-- Desktop Search (always visible on md+) -->
+            <div id="desktopSearchWrap" class="hidden md:flex items-center relative">
+                <svg class="w-4 h-4 text-gray-400 absolute left-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input type="text" id="searchInput" placeholder="Search..." class="bg-gray-50 text-[13px] text-gray-800 rounded-lg pl-9 pr-3 py-2 w-[140px] md:w-[180px] lg:w-[220px] outline-none focus:ring-2 focus:ring-[#0066cc]/30 focus:bg-white placeholder-gray-500 transition-all text-sm" />
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-2 md:gap-3">
+            <!-- Mobile Search Toggle Button -->
+            <button id="searchToggleBtn" class="md:hidden text-gray-500 hover:text-[#0066cc] p-2 shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </button>
+            
+            <!-- Mobile Search Dropdown -->
+            <div id="searchContainer" class="hidden absolute top-[72px] left-0 right-0 z-[200] bg-white border-b border-gray-100 p-3">
+                <div class="relative">
+                    <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input type="text" id="mobileSearchInput" placeholder="Search files, apps..." class="w-full bg-gray-50 text-[14px] text-gray-800 rounded-lg pl-9 pr-4 py-2.5 outline-none focus:ring-2 focus:ring-[#0066cc]/30 placeholder-gray-500" />
+                </div>
+                <div id="mobileSearchResults" class="mt-2 max-h-[60vh] overflow-y-auto"></div>
+            </div>
+            
+            <!-- Desktop Auth -->
+            <div class="hidden lg:flex items-center gap-2">
+                <a href="login.html" class="text-[13px] font-medium text-gray-600 hover:text-[#0066cc]">Log In</a>
+                <a href="signup.html" class="bg-[#0066cc] text-white px-3 py-1.5 rounded-lg text-[12px] font-medium hover:bg-[#0055aa]">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Scrollable Content -->
+    <div class="flex-1 overflow-y-auto px-4 md:px-8 lg:px-10 pb-6 main-scroll">
+        
+        <div class="py-8">
+            <h1 class="text-[32px] font-bold text-gray-900 leading-tight tracking-tight">Explore Files</h1>
+            <p class="mt-2 text-gray-500 text-[14px]">Discover files, apps, documents, and media shared by the community.</p>
+        </div>
+
+        <!-- CATEGORY FILTERS -->
+        <div class="flex flex-wrap gap-3 mb-8">
+            <button class="filter-btn active px-5 py-2 rounded-full text-[13px] font-semibold bg-gray-100" data-filter="all">All Items</button>
+            <button class="filter-btn px-5 py-2 rounded-full text-[13px] font-semibold flex items-center gap-1.5" data-filter="apk">📱 Apps</button>
+            <button class="filter-btn px-5 py-2 rounded-full text-[13px] font-semibold flex items-center gap-1.5" data-filter="linux">🐧 Linux</button>
+            <button class="filter-btn px-5 py-2 rounded-full text-[13px] font-semibold flex items-center gap-1.5" data-filter="windows">🪟 Windows</button>
+            <button class="filter-btn px-5 py-2 rounded-full text-[13px] font-semibold flex items-center gap-1.5" data-filter="ppt">📊 Presentations</button>
+            <button class="filter-btn px-5 py-2 rounded-full text-[13px] font-semibold flex items-center gap-1.5" data-filter="pdf">📄 Documents</button>
+            <button class="filter-btn px-5 py-2 rounded-full text-[13px] font-semibold flex items-center gap-1.5" data-filter="opensource">🐙 Open Source</button>
+        </div>
+
+        <!-- FILE GRID -->
+        <div id="loadingIndicator" class="py-12 bg-white rounded-[24px] border border-gray-100 text-center shadow-sm mb-12">
+            <div class="spinner inline-block w-8 h-8 border-4 border-[#0066cc]/20 border-t-[#0066cc] rounded-full animate-spin"></div>
+            <p class="text-sm font-medium text-gray-500 mt-3">Syncing global library...</p>
+        </div>
+
+        <div id="fileGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <!-- Items loaded from JSON via JS -->
+        </div>
+
+        <!-- LOAD MORE -->
+        <div class="text-center mt-12 mb-8 hidden" id="loadMoreSection">
+            <button class="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 hover:text-black px-8 py-2.5 rounded-full text-[13px] font-semibold shadow-sm transition">
+                Load More Files
+            </button>
+        </div>
+
+    </div>
+
+    <script src="assets/js/dynamicLoader.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const btn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.querySelector('aside');
+        if (btn && sidebar) {
+            let overlay = document.getElementById('sidebarOverlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.id = 'sidebarOverlay';
+                overlay.className = 'fixed inset-0 bg-black/60 z-[110] hidden backdrop-blur-md transition-opacity';
+                document.body.appendChild(overlay);
             }
-
-            grid.innerHTML = '';
-            data.files.forEach(f => {
-                let icon = '📄'; let color = 'bg-indigo-600/20'; let typeCat = 'document';
-                if(f.file_type === 'apk') { icon = '📱'; color = 'bg-green-600/20'; typeCat = 'app'; }
-                if(f.file_type === 'zip') { icon = '📦'; color = 'bg-yellow-600/20'; typeCat = 'app'; }
-                if(f.file_type === 'github') { icon = '💻'; color = 'bg-gray-600/20'; typeCat = 'app'; }
-                if(f.file_type === 'ppt') { icon = '📊'; color = 'bg-purple-600/20'; typeCat = 'document'; }
-
-                let metadataStr = '{}';
-                try { metadataStr = JSON.parse(f.metadata); } catch(e){}
-
-                grid.innerHTML += `
-                <div class="card-hover glass-panel file-card searchable-card" data-type="${typeCat}">
-                  <div class="fc-header">
-                    <div class="fc-logo-wrap">
-                      <span style="font-size:24px;">${icon}</span>
-                    </div>
-                    <div class="fc-title-block">
-                      <span class="fc-badge" style="background:${color}; color:#a5b4fc;">${f.file_type.toUpperCase()}</span>
-                      <h3 class="fc-title" title="${f.file_name}">${f.file_name}</h3>
-                    </div>
-                  </div>
-                  <p class="fc-desc">${metadataStr.description || 'View details page for more info.'}</p>
-                  <div class="fc-meta">
-                    <span class="fc-meta-pill text-gray-400">🌐 Public</span>
-                  </div>
-                  <div style="display:flex; gap:8px;">
-                    <a href="view.html?id=${f.id}" style="flex:1; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:9px 12px; font-size:12px; font-weight:600; color:#cbd5e1; text-decoration:none; transition:all 0.2s;" onmouseover="this.style.borderColor='#6366f1'; this.style.color='#a5b4fc'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='#cbd5e1'">View</a>
-                    <a href="/api/download/${f.id}" class="fc-btn" style="flex:2; border-radius:10px; padding:9px 12px; font-size:12px;">
-                      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                      Download
-                    </a>
-                  </div>
-                </div>`;
-            });
-        } catch (e) {
-            console.error(e);
+            const toggle = (show) => {
+                if (show) {
+                    sidebar.classList.remove('hidden');
+                    sidebar.classList.add('fixed', 'inset-y-0', 'left-0', 'z-[120]', 'w-72', 'shadow-2xl');
+                    overlay.classList.remove('hidden');
+                } else {
+                    sidebar.classList.add('hidden');
+                    sidebar.classList.remove('fixed', 'inset-y-0', 'left-0', 'z-[120]', 'w-72', 'shadow-2xl');
+                    overlay.classList.add('hidden');
+                }
+            };
+            btn.addEventListener('click', () => toggle(true));
+            overlay.addEventListener('click', () => toggle(false));
         }
-    }
-    loadPublicFiles();
-    // Filter buttons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => {
-          b.className = 'filter-btn backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 text-gray-400/90 px-4 py-2 rounded-lg text-sm hover:border-indigo-600 hover:text-indigo-400 transition-colors duration-300';
-        });
-        btn.className = 'filter-btn bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition';
 
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('#fileGrid > div').forEach(card => {
-          if (filter === 'all' || card.dataset.type === filter) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
+        // Mobile search toggle
+        const searchToggle = document.getElementById('searchToggleBtn');
+        const searchContainer = document.getElementById('searchContainer');
+        const mobileSearchInput = document.getElementById('mobileSearchInput');
+        if (searchToggle && searchContainer) {
+            searchToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                searchContainer.classList.toggle('hidden');
+                if (!searchContainer.classList.contains('hidden') && mobileSearchInput) {
+                    mobileSearchInput.focus();
+                }
+            });
+            document.addEventListener('click', function(e) {
+                if (!searchContainer.contains(e.target) && e.target !== searchToggle) {
+                    searchContainer.classList.add('hidden');
+                }
+            });
+        }
+
+        // --- DYNAMIC LOADER INTEGRATION ---
+        
+        let allItems = [];
+        
+        const loadExploreData = async () => {
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const fileGrid = document.getElementById('fileGrid');
+            
+            try {
+                // Fetch data using the global DynamicLoader
+                allItems = await window.DynamicLoader.fetchAll();
+                
+                // Hide loading spinner
+                if (loadingIndicator) loadingIndicator.style.display = 'none';
+                
+                // Render items
+                window.DynamicLoader.render(allItems, 'fileGrid');
+                
+                // Setup search and filtering
+                setupSearchAndFilter();
+                
+            } catch (error) {
+                console.error("Failed to load library items:", error);
+                if (loadingIndicator) {
+                    loadingIndicator.innerHTML = '<p class="text-red-500 font-medium">Failed to load library items. Please try again.</p>';
+                }
+            }
+        };
+        
+        const setupSearchAndFilter = () => {
+             const searchInput = document.getElementById('searchInput');
+             const mobSearchInput = document.getElementById('mobileSearchInput');
+             const filterBtns = document.querySelectorAll('.filter-btn');
+             const cards = document.querySelectorAll('#fileGrid .app-card');
+             
+             let currentFilter = 'all';
+             let currentQuery = '';
+             
+             const updateVisibility = () => {
+                 let visibleCount = 0;
+                 cards.forEach(card => {
+                     const text = card.textContent.toLowerCase();
+                     const matchesFilter = currentFilter === 'all' || card.dataset.category === currentFilter;
+                     
+                     // Allow empty query to match everything
+                     const matchesSearch = !currentQuery || text.includes(currentQuery); 
+                     
+                     if (matchesFilter && matchesSearch) {
+                         card.style.display = '';
+                         visibleCount++;
+                     } else {
+                         card.style.display = 'none';
+                     }
+                 });
+                 
+                 // Show no results message if needed
+                 const fileGrid = document.getElementById('fileGrid');
+                 let noResults = document.getElementById('noResultsMsg');
+                 
+                 if (visibleCount === 0) {
+                     if (!noResults) {
+                         noResults = document.createElement('div');
+                         noResults.id = 'noResultsMsg';
+                         noResults.className = 'col-span-1 sm:col-span-2 lg:col-span-3 xl:col-span-4 text-center py-12 text-gray-500';
+                         fileGrid.appendChild(noResults);
+                     }
+                     noResults.innerHTML = `No items found matching "${currentQuery}" in this category.`;
+                     noResults.style.display = 'block';
+                 } else if (noResults) {
+                     noResults.style.display = 'none';
+                 }
+             };
+             
+             const handleSearch = (e) => {
+                 currentQuery = e.target.value.toLowerCase();
+                 updateVisibility();
+             };
+             
+             if (searchInput) searchInput.addEventListener('input', handleSearch);
+             if (mobSearchInput) mobSearchInput.addEventListener('input', handleSearch);
+             
+             filterBtns.forEach(btn => {
+                 btn.addEventListener('click', () => {
+                     // Update button states
+                     filterBtns.forEach(b => {
+                         b.classList.remove('active');
+                         // Make sure bg-gray-100 on "All Items" doesn't clash
+                         if (b.classList.contains('bg-gray-100')) {
+                            // Leave it, our CSS .active overrides it
+                         }
+                     });
+                     
+                     btn.classList.add('active');
+                     currentFilter = btn.dataset.filter;
+                     updateVisibility();
+                 });
+             });
+        };
+        
+        // Execute data fetch
+        loadExploreData();
     });
-
-    // Search
-    document.getElementById('searchInput').addEventListener('input', (e) => {
-      const q = e.target.value.toLowerCase();
-      document.querySelectorAll('#fileGrid > div').forEach(card => {
-        const text = card.textContent.toLowerCase();
-        card.style.display = text.includes(q) ? '' : 'none';
-      });
-    });
-  </script>
-
-  <script src="components/navbar.js"></script>
-  <script src="components/footer.js"></script>
-</body>
-
+</script>
+</body></html>
 </html>

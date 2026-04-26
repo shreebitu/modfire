@@ -45,26 +45,142 @@
     <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7668010130101569" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif !important; background-color: #f7f9fc !important; }
+        .sidebar { background-color: #ffffff; border-right: 1px solid #eef1f5; }
+        .main-scroll::-webkit-scrollbar { width: 6px; }
+        .main-scroll::-webkit-scrollbar-track { background: transparent; }
+        .main-scroll::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+        .main-scroll::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+    </style>
+
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ShreeBitu",
+      "url": "https://shreebitu.in/",
+      "author": {
+        "@type": "Person",
+        "name": "Bitu Talukdar"
+      },
+      "description": "Premium file library and application store."
+    }
+    </script>
+
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://shreebitu.in/assets/images/og-image.png">
 </head>
 
-<body class="bg-[#0B0F19] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#0f1728] via-[#0B0F19] to-black text-gray-200 antialiased selection:bg-orange-500/30">
 
-    <!-- BACKGROUND GLOW -->
-    <div class="pointer-events-none fixed inset-0 z-0 flex justify-center">
-        <div class="w-[800px] h-[500px] bg-orange-600/8 rounded-full blur-[120px] -translate-y-1/2"></div>
+<body class="flex h-screen overflow-hidden text-[#1d1d1f]">
+
+<aside class="sidebar w-[260px] flex-shrink-0 flex flex-col h-full hidden md:flex z-20 shadow-[2px_0_10px_rgba(0,0,0,0.02)]">
+    <a href="../index.html" class="px-6 py-5 flex items-center gap-3 hover:bg-gray-50 transition cursor-pointer block border-b border-gray-50">
+        <div class="w-9 h-9 bg-[#1d4ed8] text-white flex items-center justify-center rounded-xl shadow-sm rotate-3">
+            <svg class="w-5 h-5 -rotate-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
+            </svg>
+        </div>
+        <div>
+           <div class="font-bold tracking-tight text-[17px] text-gray-900 leading-tight">ShreeBitu</div>
+           <div class="text-[11px] text-gray-500 font-medium">File Library</div>
+        </div>
+    </a>
+
+    <!-- Nav -->
+    <div class="px-4 py-2 flex-1">
+        <div class="text-[11px] text-gray-400 mb-4 px-3 font-semibold tracking-wider">LIBRARY</div>
+        
+        <nav class="space-y-1">
+            <a href="../index.html" id="nav-home" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>Home</a>
+            <a href="../explore.html" id="nav-explore" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>Explore Library</a>
+            <a href="../linux/index.html" id="nav-linux" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>Operating Systems</a>
+            <a href="../apk/index.html" id="nav-apk" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>Mobile Apps</a>
+            <a href="../opensource/index.html" id="nav-opensource" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>Open Source</a>
+            <a href="../presentation/presentation.html" id="nav-presentation" class=" bg-[#ebf5ff] text-[#0066cc] font-medium flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>Presentations</a>
+        </nav>
+    
     </div>
+    
+    <div class="mt-auto px-4 py-8 border-t border-gray-100 flex flex-col gap-1">
+        <a href="../dashboard.html" class="flex items-center gap-3 px-3 py-2 text-[14px] text-gray-500 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+            <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+            Dashboard
+        </a>
+    </div>
+</aside>
 
-    <!-- ===================== HEADER ===================== -->
-    <global-navbar></global-navbar>
+<main class="flex-1 flex flex-col h-full bg-[#f8f9fa] relative z-10 w-full overflow-hidden">
+<!-- Top Nav -->
+    <header class="h-[64px] md:h-[72px] flex items-center justify-between px-4 lg:px-10 shrink-0 sticky top-0 bg-white z-30 border-b border-gray-100">
+        
+        <div class="flex items-center gap-2">
+            <button id="mobileMenuBtn" class="md:hidden text-gray-500 hover:text-[#0066cc] focus:outline-none p-1.5 shrink-0 bg-gray-50 rounded-lg">
+                <svg class="w-[22px] h-[22px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <a href="index.html" class="md:hidden font-bold tracking-tight text-[16px] text-[#0066cc] uppercase tracking-widest">SHREEBITU</a>
+            
+            <!-- Desktop Search (always visible on md+) -->
+            <div id="desktopSearchWrap" class="hidden md:flex items-center relative">
+                <svg class="w-4 h-4 text-gray-400 absolute left-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input type="text" id="searchInput" placeholder="Search..." class="bg-gray-50 text-[13px] text-gray-800 rounded-lg pl-9 pr-3 py-2 w-[140px] md:w-[180px] lg:w-[220px] outline-none focus:ring-2 focus:ring-[#0066cc]/30 focus:bg-white placeholder-gray-500 transition-all text-sm" />
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-2 md:gap-3">
+            <!-- Mobile Search Toggle Button -->
+            <button id="searchToggleBtn" class="md:hidden text-gray-500 hover:text-[#0066cc] p-2 shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </button>
+            
+            <!-- Mobile Search Dropdown (appears below header) -->
+            <div id="searchContainer" class="hidden absolute top-[72px] left-0 right-0 z-[200] bg-white border-b border-gray-100 p-3">
+                <div class="relative">
+                    <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input type="text" id="mobileSearchInput" placeholder="Search files, apps..." class="w-full bg-gray-50 text-[14px] text-gray-800 rounded-lg pl-9 pr-4 py-2.5 outline-none focus:ring-2 focus:ring-[#0066cc]/30 placeholder-gray-500" />
+                </div>
+                <div id="mobileSearchResults" class="mt-2 max-h-[60vh] overflow-y-auto"></div>
+            </div>
+            
+            <!-- Desktop Auth -->
+            <div class="hidden lg:flex items-center gap-2">
+                <a href="login.html" class="text-[13px] font-medium text-gray-600 hover:text-[#0066cc]">Log In</a>
+                <a href="signup.html" class="bg-[#0066cc] text-white px-3 py-1.5 rounded-lg text-[12px] font-medium hover:bg-[#0055aa]">Sign Up</a>
+            </div>
+            
+        </div>
+    </header>
+
+    <div class="flex-1 overflow-y-auto px-4 md:px-8 lg:px-10 pb-6 main-scroll text-[#1d1d1f]">
+        <div class="max-w-7xl mx-auto w-full pt-8">
+            <!-- WRAP CONTENT IN WHITE CARD -->
+            <div class="bg-white rounded-[16px] md:rounded-[24px] shadow-sm border border-gray-100/50 p-3 md:p-6 lg:p-10 relative overflow-hidden">
+
 
     <!-- ===================== MAIN ===================== -->
     <main class="relative z-10 w-full max-w-[1400px] mx-auto px-4 md:px-8 pt-4 md:pt-8 pb-12">
 
         <!-- Breadcrumb -->
-        <div class="text-sm text-gray-400/90 mb-6 fade-in">
+        <div class="text-sm text-gray-500/90 mb-6 fade-in">
             <a href="../explore.html" class="hover:text-orange-400 transition">Presentations</a>
-            <span class="mx-2">â€º</span>
-            <span class="text-white">Gene Transfer Methods</span>
+            <span class="mx-2">"º</span>
+            <span class="text-gray-900">Gene Transfer Methods</span>
         </div>
 
         <!-- 2-column layout -->
@@ -74,7 +190,7 @@
             <div class="lg:col-span-8 space-y-6 fade-in">
 
                 <!-- â”€â”€ File Identity Card â”€â”€ -->
-                <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-5 md:p-8 relative overflow-hidden">
+                <div class="backdrop-blur-md bg-gray-50/50 border border-gray-200 shadow-2xl shadow-black/50 rounded-2xl p-5 md:p-8 relative overflow-hidden">
                     <div class="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
                     <div class="flex flex-row items-start md:items-center gap-5">
@@ -82,25 +198,25 @@
                         <!-- PPT Icon -->
                         <div class="ppt-float w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center flex-shrink-0 relative"
                             style="background: linear-gradient(135deg, #c2410c, #ea580c, #f97316);">
-                            <svg class="w-10 h-10 md:w-12 md:h-12 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-10 h-10 md:w-12 md:h-12 text-gray-900 drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 13h5v1.5H8V13zm0-3h8v1.5H8V10zm0 6h5v1.5H8V16z"/>
                             </svg>
-                            <div class="absolute -bottom-1 -right-1 bg-orange-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md shadow">PPTX</div>
+                            <div class="absolute -bottom-1 -right-1 bg-orange-500 text-gray-900 text-[9px] font-bold px-1.5 py-0.5 rounded-md shadow">PPTX</div>
                         </div>
 
                         <div class="flex-1 min-w-0">
                             <div class="flex flex-wrap items-center gap-2 mb-2">
-                                <h1 class="text-xl md:text-2xl font-bold text-white leading-tight">Gene Transfer Methods</h1>
+                                <h1 class="text-xl md:text-2xl font-bold text-gray-900 leading-tight">Gene Transfer Methods</h1>
                                 <span class="bg-orange-500/20 text-orange-400 border border-orange-500/20 text-xs px-2.5 py-1 rounded-full font-semibold">Presentation</span>
                                 <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 text-xs px-2.5 py-1 rounded-full font-semibold">Free</span>
                             </div>
                             <p class="text-orange-400 font-medium mb-3">Biology Â· Genetic Engineering Â· Academic PPT</p>
-                            <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs sm:text-sm text-gray-400/90">
-                                <span class="flex items-center gap-1 bg-white/5 px-2 py-1 rounded-md">ðŸ“Š PowerPoint</span>
-                                <span class="hidden sm:inline text-gray-600">â€¢</span>
-                                <span class="flex items-center gap-1 bg-white/5 px-2 py-1 rounded-md">~36 KB</span>
-                                <span class="hidden sm:inline text-gray-600">â€¢</span>
-                                <span class="font-bold text-white bg-orange-500/10 border border-orange-500/20 px-2 py-1 rounded-md">.pptx</span>
+                            <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs sm:text-sm text-gray-500/90">
+                                <span class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded-md">ðŸ“Š PowerPoint</span>
+                                <span class="hidden sm:inline text-gray-600">"¢</span>
+                                <span class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded-md">~36 KB</span>
+                                <span class="hidden sm:inline text-gray-600">"¢</span>
+                                <span class="font-bold text-gray-900 bg-orange-500/10 border border-orange-500/20 px-2 py-1 rounded-md">.pptx</span>
                             </div>
                         </div>
                     </div>
@@ -113,41 +229,41 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
-                            <h2 class="text-lg font-bold text-white">About This Presentation</h2>
+                            <h2 class="text-lg font-bold text-gray-900">About This Presentation</h2>
                         </div>
 
-                        <p class="text-gray-300 leading-relaxed text-sm mb-4">
-                            A comprehensive presentation on <span class="text-orange-300 font-medium">Gene Transfer Methods</span> â€” covering both physical and biological techniques used in modern genetic engineering. Ideal for students, educators, and researchers in biotechnology, molecular biology, and plant sciences.
+                        <p class="text-gray-600 leading-relaxed text-sm mb-4">
+                            A comprehensive presentation on <span class="text-orange-300 font-medium">Gene Transfer Methods</span> — covering both physical and biological techniques used in modern genetic engineering. Ideal for students, educators, and researchers in biotechnology, molecular biology, and plant sciences.
                         </p>
-                        <p class="text-gray-400 leading-relaxed text-sm">
+                        <p class="text-gray-500 leading-relaxed text-sm">
                             The slides cover fundamental concepts with clear diagrams, comparisons, and real-world applications. Suitable for college-level biology and biotech courses.
                         </p>
                     </div>
 
                     <!-- Quick stats bar -->
                     <div class="mt-6 grid grid-cols-3 gap-3">
-                        <div class="bg-white/[0.03] border border-white/5 rounded-xl p-3 text-center">
-                            <div class="text-xl font-bold text-white">6+</div>
+                        <div class="bg-white/[0.03] border border-gray-200 rounded-xl p-3 text-center">
+                            <div class="text-xl font-bold text-gray-900">6+</div>
                             <div class="text-xs text-gray-500 mt-1">Methods Covered</div>
                         </div>
-                        <div class="bg-white/[0.03] border border-white/5 rounded-xl p-3 text-center">
-                            <div class="text-xl font-bold text-white">Free</div>
+                        <div class="bg-white/[0.03] border border-gray-200 rounded-xl p-3 text-center">
+                            <div class="text-xl font-bold text-gray-900">Free</div>
                             <div class="text-xs text-gray-500 mt-1">No Sign-up</div>
                         </div>
-                        <div class="bg-white/[0.03] border border-white/5 rounded-xl p-3 text-center">
-                            <div class="text-xl font-bold text-white">PPTX</div>
+                        <div class="bg-white/[0.03] border border-gray-200 rounded-xl p-3 text-center">
+                            <div class="text-xl font-bold text-gray-900">PPTX</div>
                             <div class="text-xs text-gray-500 mt-1">Editable Format</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- â”€â”€ Topics Covered â”€â”€ -->
-                <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 md:p-8 relative overflow-hidden group">
+                <div class="backdrop-blur-md bg-gray-50/50 border border-gray-200 shadow-2xl shadow-black/50 rounded-2xl p-6 md:p-8 relative overflow-hidden group">
                     <div class="absolute -right-12 -top-12 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-colors"></div>
                     <div class="flex items-center justify-between mb-7">
                         <div>
-                            <h2 class="text-xl font-bold text-white leading-none mb-2">Topics Covered</h2>
-                            <p class="text-orange-400/80 text-xs font-semibold uppercase tracking-wider">Gene Transfer Methods â€” Slide Breakdown</p>
+                            <h2 class="text-xl font-bold text-gray-900 leading-none mb-2">Topics Covered</h2>
+                            <p class="text-orange-400/80 text-xs font-semibold uppercase tracking-wider">Gene Transfer Methods — Slide Breakdown</p>
                         </div>
                     </div>
 
@@ -157,8 +273,8 @@
                                 <span class="text-lg">ðŸ§«</span>
                             </div>
                             <div>
-                                <h4 class="text-sm font-semibold text-white/90 mb-1">Agrobacterium-mediated Transfer</h4>
-                                <p class="text-xs text-gray-400 leading-relaxed">The most common method for plant gene transfer. Uses Ti plasmid to integrate foreign DNA into the host plant genome naturally.</p>
+                                <h4 class="text-sm font-semibold text-gray-900/90 mb-1">Agrobacterium-mediated Transfer</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">The most common method for plant gene transfer. Uses Ti plasmid to integrate foreign DNA into the host plant genome naturally.</p>
                             </div>
                         </div>
 
@@ -167,8 +283,8 @@
                                 <span class="text-lg">ðŸ’¥</span>
                             </div>
                             <div>
-                                <h4 class="text-sm font-semibold text-white/90 mb-1">Biolistics (Gene Gun)</h4>
-                                <p class="text-xs text-gray-400 leading-relaxed">High-velocity microprojectiles coated with DNA are shot into cells. Effective for transforming chloroplasts and plant cells that resist Agrobacterium.</p>
+                                <h4 class="text-sm font-semibold text-gray-900/90 mb-1">Biolistics (Gene Gun)</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">High-velocity microprojectiles coated with DNA are shot into cells. Effective for transforming chloroplasts and plant cells that resist Agrobacterium.</p>
                             </div>
                         </div>
 
@@ -177,8 +293,8 @@
                                 <span class="text-lg">âš¡</span>
                             </div>
                             <div>
-                                <h4 class="text-sm font-semibold text-white/90 mb-1">Electroporation</h4>
-                                <p class="text-xs text-gray-400 leading-relaxed">Electric pulses create temporary pores in cell membranes allowing DNA to enter. Widely used in microbial and mammalian cell transformation.</p>
+                                <h4 class="text-sm font-semibold text-gray-900/90 mb-1">Electroporation</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">Electric pulses create temporary pores in cell membranes allowing DNA to enter. Widely used in microbial and mammalian cell transformation.</p>
                             </div>
                         </div>
 
@@ -187,8 +303,8 @@
                                 <span class="text-lg">ðŸ’‰</span>
                             </div>
                             <div>
-                                <h4 class="text-sm font-semibold text-white/90 mb-1">Microinjection</h4>
-                                <p class="text-xs text-gray-400 leading-relaxed">DNA is directly injected into the nucleus using a fine glass needle. Precise but low throughput â€” commonly used for animal embryo transformation.</p>
+                                <h4 class="text-sm font-semibold text-gray-900/90 mb-1">Microinjection</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">DNA is directly injected into the nucleus using a fine glass needle. Precise but low throughput — commonly used for animal embryo transformation.</p>
                             </div>
                         </div>
 
@@ -197,8 +313,8 @@
                                 <span class="text-lg">ðŸ¦ </span>
                             </div>
                             <div>
-                                <h4 class="text-sm font-semibold text-white/90 mb-1">Viral Vectors</h4>
-                                <p class="text-xs text-gray-400 leading-relaxed">Modified viruses carry and deliver genetic material into host cells. Used extensively in gene therapy and mammalian cell research.</p>
+                                <h4 class="text-sm font-semibold text-gray-900/90 mb-1">Viral Vectors</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">Modified viruses carry and deliver genetic material into host cells. Used extensively in gene therapy and mammalian cell research.</p>
                             </div>
                         </div>
 
@@ -207,16 +323,16 @@
                                 <span class="text-lg">ðŸ§¬</span>
                             </div>
                             <div>
-                                <h4 class="text-sm font-semibold text-white/90 mb-1">Chemical Methods (CaClâ‚‚ & PEG)</h4>
-                                <p class="text-xs text-gray-400 leading-relaxed">Chemical agents like calcium chloride and polyethylene glycol increase cell membrane permeability for DNA uptake. Simple and cost-effective for bacteria.</p>
+                                <h4 class="text-sm font-semibold text-gray-900/90 mb-1">Chemical Methods (CaClâ‚‚ & PEG)</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">Chemical agents like calcium chloride and polyethylene glycol increase cell membrane permeability for DNA uptake. Simple and cost-effective for bacteria.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- â”€â”€ Slide Preview (Visual) â”€â”€ -->
-                <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 md:p-8">
-                    <h2 class="text-lg font-bold text-white mb-5 flex items-center gap-2">
+                <div class="backdrop-blur-md bg-gray-50/50 border border-gray-200 shadow-2xl shadow-black/50 rounded-2xl p-6 md:p-8">
+                    <h2 class="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
                         <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                         </svg>
@@ -248,7 +364,7 @@
                         <!-- Slide 3 -->
                         <div class="slide-preview rounded-xl p-4 aspect-video flex flex-col justify-between border border-indigo-500/20 cursor-pointer hover:border-indigo-400/50 hover:scale-[1.02] transition-all">
                             <div class="flex gap-2 h-full">
-                                <div class="w-1/2 bg-white/5 rounded-lg p-1.5 space-y-1">
+                                <div class="w-1/2 bg-gray-100 rounded-lg p-1.5 space-y-1">
                                     <div class="w-full h-1 bg-white/20 rounded"></div>
                                     <div class="w-4/5 h-1 bg-white/15 rounded"></div>
                                     <div class="w-3/4 h-1 bg-white/15 rounded"></div>
@@ -302,27 +418,27 @@
                             <p class="text-[10px] text-indigo-300/70 font-medium">Conclusion</p>
                         </div>
                     </div>
-                    <p class="text-xs text-gray-600 mt-3 text-center">Preview only â€” download for full slides</p>
+                    <p class="text-xs text-gray-600 mt-3 text-center">Preview only — download for full slides</p>
                 </div>
 
                 <!-- â”€â”€ Suitable For â”€â”€ -->
-                <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 md:p-8">
-                    <h2 class="text-lg font-bold text-white mb-5">Who Is This For?</h2>
+                <div class="backdrop-blur-md bg-gray-50/50 border border-gray-200 shadow-2xl shadow-black/50 rounded-2xl p-6 md:p-8">
+                    <h2 class="text-lg font-bold text-gray-900 mb-5">Who Is This For?</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <div class="bg-white/[0.03] border border-white/5 rounded-xl p-4 text-center">
+                        <div class="bg-white/[0.03] border border-gray-200 rounded-xl p-4 text-center">
                             <div class="text-3xl mb-2">ðŸŽ“</div>
-                            <h4 class="text-sm font-semibold text-white mb-1">Students</h4>
-                            <p class="text-xs text-gray-400">B.Sc / M.Sc Biology, Biotechnology & Genetic Engineering students</p>
+                            <h4 class="text-sm font-semibold text-gray-900 mb-1">Students</h4>
+                            <p class="text-xs text-gray-500">B.Sc / M.Sc Biology, Biotechnology & Genetic Engineering students</p>
                         </div>
-                        <div class="bg-white/[0.03] border border-white/5 rounded-xl p-4 text-center">
-                            <div class="text-3xl mb-2">ðŸ§‘â€ðŸ«</div>
-                            <h4 class="text-sm font-semibold text-white mb-1">Teachers</h4>
-                            <p class="text-xs text-gray-400">Ready-to-use slides for classroom lectures on gene transfer</p>
+                        <div class="bg-white/[0.03] border border-gray-200 rounded-xl p-4 text-center">
+                            <div class="text-3xl mb-2">ðŸ§‘"ðŸ«</div>
+                            <h4 class="text-sm font-semibold text-gray-900 mb-1">Teachers</h4>
+                            <p class="text-xs text-gray-500">Ready-to-use slides for classroom lectures on gene transfer</p>
                         </div>
-                        <div class="bg-white/[0.03] border border-white/5 rounded-xl p-4 text-center">
+                        <div class="bg-white/[0.03] border border-gray-200 rounded-xl p-4 text-center">
                             <div class="text-3xl mb-2">ðŸ”¬</div>
-                            <h4 class="text-sm font-semibold text-white mb-1">Researchers</h4>
-                            <p class="text-xs text-gray-400">Quick reference and lab presentation starter template</p>
+                            <h4 class="text-sm font-semibold text-gray-900 mb-1">Researchers</h4>
+                            <p class="text-xs text-gray-500">Quick reference and lab presentation starter template</p>
                         </div>
                     </div>
                 </div>
@@ -336,15 +452,15 @@
                 <div class="backdrop-blur-md text-center border shadow-2xl rounded-2xl p-6"
                     style="background: linear-gradient(135deg, rgba(194,65,12,0.08), rgba(234,88,12,0.05)); border-color: rgba(234,88,12,0.25); box-shadow: 0 25px 50px rgba(234,88,12,0.08);">
                     <div class="text-5xl mb-3">ðŸ“Š</div>
-                    <h3 class="text-white font-bold text-xl mb-1">Download PPT</h3>
-                    <p class="text-gray-400/90 text-xs mb-1">Gene Transfer Methods Presentation</p>
+                    <h3 class="text-gray-900 font-bold text-xl mb-1">Download PPT</h3>
+                    <p class="text-gray-500/90 text-xs mb-1">Gene Transfer Methods Presentation</p>
                     <p class="text-orange-400 text-xs font-semibold mb-6">PPTX Â· ~36 KB Â· Editable</p>
 
                     <div class="space-y-3">
                         <div class="relative group cursor-pointer">
                             <div class="absolute -inset-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl blur opacity-40 group-hover:opacity-75 transition-all duration-300"></div>
                             <a href="vimg/Gene_Transfer_Methods_Presentation.pptx" download="Gene_Transfer_Methods_ShreeBitu.pptx"
-                                class="relative w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 border border-white/10 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-white no-underline hover:scale-[1.02] group-active:scale-95">
+                                class="relative w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 border border-gray-300 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-gray-900 no-underline hover:scale-[1.02] group-active:scale-95">
                                 <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                                 </svg>
@@ -353,49 +469,49 @@
                         </div>
 
                         <button onclick="navigator.clipboard.writeText(window.location.href); this.textContent='âœ“ Copied!'; setTimeout(()=> this.textContent='Share this Page', 2000)"
-                            class="w-full bg-[#1A1F2E] hover:bg-[#252B3D] border border-white/10 py-3.5 rounded-xl font-medium transition-all hover:scale-[1.02] flex items-center justify-center gap-2 shadow-lg text-sm">
+                            class="w-full bg-[#1A1F2E] hover:bg-[#252B3D] border border-gray-300 py-3.5 rounded-xl font-medium transition-all hover:scale-[1.02] flex items-center justify-center gap-2 shadow-lg text-sm">
                             ðŸ”— Share this Page
                         </button>
                     </div>
 
                     <!-- Safety notice -->
-                    <div class="mt-5 flex items-center gap-2 text-xs text-gray-500 bg-white/[0.03] border border-white/5 rounded-xl p-3">
+                    <div class="mt-5 flex items-center gap-2 text-xs text-gray-500 bg-white/[0.03] border border-gray-200 rounded-xl p-3">
                         <svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                         </svg>
-                        <span>Safe direct download â€” No ads, no signup, no redirects.</span>
+                        <span>Safe direct download — No ads, no signup, no redirects.</span>
                     </div>
                 </div>
 
                 <!-- File Details -->
-                <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-xl rounded-2xl p-6 text-sm">
-                    <h3 class="font-semibold text-white mb-4 border-b border-white/5 pb-2">File Details</h3>
+                <div class="backdrop-blur-md bg-gray-50/50 border border-gray-200 shadow-xl rounded-2xl p-6 text-sm">
+                    <h3 class="font-semibold text-gray-900 mb-4 border-b border-gray-200 pb-2">File Details</h3>
                     <div class="space-y-3.5">
-                        <div class="flex justify-between items-center text-gray-400/90 gap-4">
+                        <div class="flex justify-between items-center text-gray-500/90 gap-4">
                             <span class="shrink-0">File Name:</span>
-                            <span class="text-white text-right text-xs font-mono truncate">Gene_Transfer_Methods.pptx</span>
+                            <span class="text-gray-900 text-right text-xs font-mono truncate">Gene_Transfer_Methods.pptx</span>
                         </div>
-                        <div class="flex justify-between items-center text-gray-400/90 gap-4">
+                        <div class="flex justify-between items-center text-gray-500/90 gap-4">
                             <span class="shrink-0">File Type:</span>
-                            <span class="text-white text-right">PowerPoint (.pptx)</span>
+                            <span class="text-gray-900 text-right">PowerPoint (.pptx)</span>
                         </div>
-                        <div class="flex justify-between items-center text-gray-400/90 gap-4">
+                        <div class="flex justify-between items-center text-gray-500/90 gap-4">
                             <span class="shrink-0">File Size:</span>
-                            <span class="text-white text-right">~36 KB</span>
+                            <span class="text-gray-900 text-right">~36 KB</span>
                         </div>
-                        <div class="flex justify-between items-center text-gray-400/90 gap-4">
+                        <div class="flex justify-between items-center text-gray-500/90 gap-4">
                             <span class="shrink-0">Category:</span>
-                            <span class="text-white text-right">Biology / Genetics</span>
+                            <span class="text-gray-900 text-right">Biology / Genetics</span>
                         </div>
-                        <div class="flex justify-between items-center text-gray-400/90 gap-4">
+                        <div class="flex justify-between items-center text-gray-500/90 gap-4">
                             <span class="shrink-0">Language:</span>
-                            <span class="text-white text-right">English</span>
+                            <span class="text-gray-900 text-right">English</span>
                         </div>
-                        <div class="flex justify-between items-center text-gray-400/90 gap-4">
+                        <div class="flex justify-between items-center text-gray-500/90 gap-4">
                             <span class="shrink-0">Compatible:</span>
-                            <span class="text-white text-right text-xs">MS PowerPoint, Google Slides, LibreOffice</span>
+                            <span class="text-gray-900 text-right text-xs">MS PowerPoint, Google Slides, LibreOffice</span>
                         </div>
-                        <div class="flex justify-between items-center text-gray-400/90 gap-4 pt-2 border-t border-white/5">
+                        <div class="flex justify-between items-center text-gray-500/90 gap-4 pt-2 border-t border-gray-200">
                             <span class="shrink-0">Price:</span>
                             <span class="text-emerald-400 font-semibold bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded text-xs">FREE</span>
                         </div>
@@ -403,27 +519,27 @@
                 </div>
 
                 <!-- Open With -->
-                <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-xl rounded-2xl p-5 text-sm">
-                    <h3 class="font-semibold text-white mb-4 text-sm">Open With</h3>
+                <div class="backdrop-blur-md bg-gray-50/50 border border-gray-200 shadow-xl rounded-2xl p-5 text-sm">
+                    <h3 class="font-semibold text-gray-900 mb-4 text-sm">Open With</h3>
                     <div class="space-y-2.5">
-                        <div class="flex items-center gap-3 p-2.5 bg-white/[0.03] border border-white/5 rounded-xl">
+                        <div class="flex items-center gap-3 p-2.5 bg-white/[0.03] border border-gray-200 rounded-xl">
                             <span class="text-xl">ðŸ“˜</span>
                             <div>
-                                <p class="text-white text-xs font-semibold">Microsoft PowerPoint</p>
+                                <p class="text-gray-900 text-xs font-semibold">Microsoft PowerPoint</p>
                                 <p class="text-gray-500 text-[11px]">Best compatibility + editing</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-3 p-2.5 bg-white/[0.03] border border-white/5 rounded-xl">
+                        <div class="flex items-center gap-3 p-2.5 bg-white/[0.03] border border-gray-200 rounded-xl">
                             <span class="text-xl">ðŸŸ¡</span>
                             <div>
-                                <p class="text-white text-xs font-semibold">Google Slides</p>
+                                <p class="text-gray-900 text-xs font-semibold">Google Slides</p>
                                 <p class="text-gray-500 text-[11px]">Free Â· Open in browser</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-3 p-2.5 bg-white/[0.03] border border-white/5 rounded-xl">
+                        <div class="flex items-center gap-3 p-2.5 bg-white/[0.03] border border-gray-200 rounded-xl">
                             <span class="text-xl">ðŸ”“</span>
                             <div>
-                                <p class="text-white text-xs font-semibold">LibreOffice Impress</p>
+                                <p class="text-gray-900 text-xs font-semibold">LibreOffice Impress</p>
                                 <p class="text-gray-500 text-[11px]">Free & open source</p>
                             </div>
                         </div>
@@ -435,11 +551,53 @@
         </div>
     </main>
 
-    <!-- ===================== FOOTER ===================== -->
-    <global-footer></global-footer>
+<script src="../assets/js/dynamicLoader.js"></script>
 
-  <script src="../components/navbar.js"></script>
-  <script src="../components/footer.js"></script>
-</body>
-</html>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const btn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.querySelector('aside');
+        if (btn && sidebar) {
+            let overlay = document.getElementById('sidebarOverlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.id = 'sidebarOverlay';
+                overlay.className = 'fixed inset-0 bg-black/60 z-[110] hidden backdrop-blur-md transition-opacity';
+                document.body.appendChild(overlay);
+            }
+            const toggle = (show) => {
+                if (show) {
+                    sidebar.classList.remove('hidden');
+                    sidebar.classList.add('fixed', 'inset-y-0', 'left-0', 'z-[120]', 'w-72', 'shadow-2xl');
+                    overlay.classList.remove('hidden');
+                } else {
+                    sidebar.classList.add('hidden');
+                    sidebar.classList.remove('fixed', 'inset-y-0', 'left-0', 'z-[120]', 'w-72', 'shadow-2xl');
+                    overlay.classList.add('hidden');
+                }
+            };
+            btn.addEventListener('click', () => toggle(true));
+            overlay.addEventListener('click', () => toggle(false));
+        }
 
+        // Mobile search toggle
+        const searchToggle = document.getElementById('searchToggleBtn');
+        const searchContainer = document.getElementById('searchContainer');
+        const mobileSearchInput = document.getElementById('mobileSearchInput');
+        if (searchToggle && searchContainer) {
+            searchToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                searchContainer.classList.toggle('hidden');
+                if (!searchContainer.classList.contains('hidden') && mobileSearchInput) {
+                    mobileSearchInput.focus();
+                }
+            });
+            document.addEventListener('click', function(e) {
+                if (!searchContainer.contains(e.target) && e.target !== searchToggle) {
+                    searchContainer.classList.add('hidden');
+                }
+            });
+        }
+    });
+</script>
+</body></html>

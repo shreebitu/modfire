@@ -637,21 +637,9 @@ h3 {
     }
 }
 
-/* Smoother Utilities */
+/* Smooth webkit prefix for Safari */
 .glass-panel {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-radius: 20px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.glass-panel:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(99, 102, 241, 0.4);
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 input,

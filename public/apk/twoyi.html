@@ -1,87 +1,47 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Twoyi APK Download - Lightweight Android Container App</title>
+    <title>Download Twoyi - Free Virtual Environment</title>
     <meta name="description"
-        content="Download Twoyi APK, a lightweight Android container that runs a nearly complete Android system as a normal app. No root required, supports Android 8.1 to 12.">
+        content="Free download of Twoyi. Experience the next level of mobile productivity with Twoyi modded environment. Simple, fast, and secure.">
     <meta name="keywords"
-        content="Twoyi, Twoyi APK, Android Container, Virtual Android, Xposed, LSPosed, Root without root, Android Emulator, ShreeBitu">
+        content="Twoyi download, free APK, Terminal Emulator, Virtual Environment, Coding on Mobile, ShreeBitu">
     <meta name="author" content="ShreeBitu">
-    <link rel="canonical" href="https://shreebitu.in/apk/twoyi.html">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://shreebitu.in/apk/twoyi.html">
-    <meta property="og:title" content="Twoyi APK Download - Lightweight Android Container">
-    <meta property="og:description"
-        content="Run a nearly complete Android system as a normal app. No root required. Supports Xposed, LSPosed, and Magisk modules.">
-    <meta property="og:image" content="https://shreebitu.in/apk/vimg/twoyi.png">
+    <link rel="canonical" href="https://shreebitu.in/apk/Twoyi.html">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://shreebitu.in/apk/twoyi.html">
-    <meta property="twitter:title" content="Twoyi APK Download - Lightweight Android Container">
-    <meta property="twitter:description"
-        content="Run a nearly complete Android system as a normal app. No root required. Supports Xposed, LSPosed, and Magisk modules.">
-    <meta property="twitter:image" content="https://shreebitu.in/apk/vimg/twoyi.png">
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Twoyi",
-      "operatingSystem": "Android",
-      "applicationCategory": "UtilitiesApplication",
-      "softwareVersion": "0.5.4",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.6",
-        "ratingCount": "1900"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      }
-    }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     <style>
         body {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Inter', sans-serif !important;
+            background-color: #f4f6f8 !important;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .sidebar {
+            background-color: #ffffff;
+            border-right: 1px solid #eef1f5;
         }
 
-        .fade-in {
-            animation: fadeInUp 0.6s ease-out forwards;
+        .main-scroll::-webkit-scrollbar {
+            width: 6px;
         }
 
-        .fade-in-delay {
-            animation: fadeInUp 0.6s ease-out 0.2s forwards;
-            opacity: 0;
+        .main-scroll::-webkit-scrollbar-track {
+            background: transparent;
         }
 
-        @keyframes shimmer {
-            100% {
-                transform: translateX(300%);
-            }
+        .main-scroll::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 10px;
+        }
+
+        .main-scroll::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
         }
 
         .no-scrollbar::-webkit-scrollbar {
@@ -92,522 +52,411 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        /* Classic styling for download page */
+        .page-bg {
+            background-color: #f2f5f8;
+        }
+
+        .card-white {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        .btn-download {
+            background-color: #10b981;
+            /* Emerald green like classic download sites */
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2), 0 2px 4px -1px rgba(16, 185, 129, 0.1);
+        }
+
+        .btn-download:hover {
+            background-color: #059669;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 8px -1px rgba(16, 185, 129, 0.3);
+        }
+
+        .tab-active {
+            border-bottom: 2px solid #3b82f6;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .tab-inactive {
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .tab-inactive:hover {
+            color: #3b82f6;
+        }
     </style>
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7668010130101569" crossorigin="anonymous"></script>
 </head>
 
-<body
-    class="bg-[#0B0F19] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#0f1723] via-[#0B0F19] to-black text-gray-200 antialiased selection:bg-cyan-500/30">
 
-    <!-- BACKGROUND GLOW -->
-    <div class="pointer-events-none fixed inset-0 z-0 flex justify-center">
-        <div class="w-[800px] h-[500px] bg-cyan-600/10 rounded-full blur-[120px] -translate-y-1/2"></div>
-    </div>
+<body class="flex h-screen overflow-hidden text-[#1e293b]">
 
-    <!-- ================= HEADER ================= -->
-    <global-navbar></global-navbar>
+    <aside
+        class="sidebar w-[260px] flex-shrink-0 flex flex-col h-full hidden md:flex z-20 shadow-[2px_0_10px_rgba(0,0,0,0.02)]">
+        <a href="../index.html"
+            class="px-6 py-5 flex items-center gap-3 hover:bg-gray-50 transition cursor-pointer block border-b border-gray-50">
+            <div class="w-9 h-9 bg-[#2563eb] text-white flex items-center justify-center rounded-xl shadow-sm rotate-3">
+                <svg class="w-5 h-5 -rotate-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
+                </svg>
+            </div>
+            <div>
+                <div class="font-bold tracking-tight text-[17px] text-gray-900 leading-tight">SHREEBITU</div>
+                <div class="text-[11px] text-gray-500 font-medium tracking-wide">SOFTWARE CATALOG</div>
+            </div>
+        </a>
 
-    <!-- ================= APP HERO CONTENT ================= -->
-    <main class="relative z-10 w-full max-w-[1400px] mx-auto px-2 md:px-8 pt-2 md:pt-6 pb-6 md:pb-12">
+        <!-- Nav -->
+        <div class="px-4 py-2 flex-1 mt-2">
+            <div class="text-[11px] text-gray-400 mb-3 px-3 font-semibold tracking-wider">PLATFORMS</div>
 
-        <!-- Breadcrumbs -->
-        <div class="text-sm text-gray-400/90 mb-3 md:mb-6 fade-in">
-            <a href="../explore.html" class="hover:text-cyan-400 transition">Apps</a>
-            <span class="mx-2">â€º</span>
-            <span class="text-white">Twoyi</span>
+            <nav class="space-y-1">
+                <a href="../index.html"
+                    class="flex items-center gap-3 px-3 py-2.5 text-[13px] text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors">
+                    <svg class="w-[18px] h-[18px] text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                    </svg>Home</a>
+                <a href="../windows/index.html"
+                    class="flex items-center gap-3 px-3 py-2.5 text-[13px] text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors">
+                    <svg class="w-[18px] h-[18px] text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801" />
+                    </svg>Windows Files</a>
+                <a href="../apk/index.html"
+                    class="bg-blue-50 text-blue-700 font-medium flex items-center gap-3 px-3 py-2.5 text-[13px] rounded-lg transition-colors border border-blue-100">
+                    <svg class="w-[18px] h-[18px] text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>Android (APK)</a>
+                <a href="../linux/index.html"
+                    class="flex items-center gap-3 px-3 py-2.5 text-[13px] text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors">
+                    <svg class="w-[18px] h-[18px] text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M11.996 22.18c-3.7.838-5.918-.291-5.918-.291-.703-.314-1.282-1.391-1.282-1.391-1.579-2.072-.888-4.708-.888-4.708.577-3.327 3.39-4.836 3.39-4.836 2.05-1.077 4.195-1.127 5.176-1.127h.057c.983 0 3.126.05 5.176 1.127 0 0 2.813 1.509 3.39 4.836 0 0 .69 2.636-.888 4.708 0 0-.58 1.077-1.282 1.391 0 0-2.218 1.129-5.918.29z" />
+                    </svg>Linux Tools</a>
+                <a href="../explore.html"
+                    class="flex items-center gap-3 px-3 py-2.5 text-[13px] text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors">
+                    <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                    </svg>Full Directory</a>
+            </nav>
         </div>
+    </aside>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+    <main class="flex-1 flex flex-col h-full bg-[#f4f6f8] relative z-10 w-full overflow-hidden">
+        <!-- Top Nav -->
+        <header
+            class="h-[64px] bg-white border-b border-gray-200 flex items-center justify-between px-4 lg:px-8 shrink-0 z-30 shadow-sm">
 
-            <!-- LEFT SIDEBAR: MENU & CATEGORIES -->
-            <div class="hidden lg:block lg:col-span-3 space-y-6 fade-in sticky top-24">
+            <div class="flex items-center gap-3">
+                <button id="mobileMenuBtn"
+                    class="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none p-2 rounded-md hover:bg-gray-100">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                <a href="../index.html"
+                    class="md:hidden font-bold tracking-tight text-[18px] text-gray-900">SHREEBITU</a>
 
-                <!-- Menu -->
-                <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl rounded-2xl p-5">
-                    <h3 class="text-white font-bold mb-4 uppercase tracking-wider text-xs border-b border-white/5 pb-2">
-                        Menu</h3>
-                    <ul class="space-y-2">
-                        <li><a href="../index.html"
-                                class="flex items-center gap-3 text-sm text-gray-400 hover:text-cyan-400 hover:bg-white/[0.02] p-2 rounded-lg transition"><svg
-                                    class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                                    </path>
-                                </svg> Home</a></li>
-                        <li><a href="../explore.html"
-                                class="flex items-center gap-3 text-sm text-cyan-400 bg-cyan-500/10 p-2 rounded-lg transition"><svg
-                                    class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                </svg> Explore Apps</a></li>
-                        <li><a href="../upload.html"
-                                class="flex items-center gap-3 text-sm text-gray-400 hover:text-cyan-400 hover:bg-white/[0.02] p-2 rounded-lg transition"><svg
-                                    class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
-                                </svg> Upload File</a></li>
-                    </ul>
+                <!-- Standard Desktop Search -->
+                <div id="desktopSearchWrap" class="hidden md:flex items-center relative ml-2">
+                    <input type="text" id="searchInput" placeholder="Search for programs..."
+                        class="bg-gray-100 border border-transparent text-[14px] text-gray-900 rounded-md pl-10 pr-4 py-2 w-[280px] outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-all shadow-inner" />
+                    <svg class="w-4 h-4 text-gray-500 absolute left-3.5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
                 </div>
-
-                <!-- Categories -->
-                <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl rounded-2xl p-5">
-                    <h3 class="text-white font-bold mb-4 uppercase tracking-wider text-xs border-b border-white/5 pb-2">
-                        Categories</h3>
-                    <ul class="space-y-2">
-                        <li><button
-                                class="w-full flex items-center justify-between text-sm text-gray-400 hover:text-cyan-400 hover:bg-white/[0.02] p-2 rounded-lg transition"><span>ðŸ“±
-                                    Apps</span> <span
-                                    class="text-xs bg-white/5 px-2 py-0.5 rounded text-gray-500">125</span></button>
-                        </li>
-                        <li><button
-                                class="w-full flex items-center justify-between text-sm text-gray-400 hover:text-cyan-400 hover:bg-white/[0.02] p-2 rounded-lg transition"><span>ðŸŽ®
-                                    Games</span> <span
-                                    class="text-xs bg-white/5 px-2 py-0.5 rounded text-gray-500">84</span></button></li>
-                        <li><button
-                                class="w-full flex items-center justify-between text-sm text-gray-400 hover:text-cyan-400 hover:bg-white/[0.02] p-2 rounded-lg transition"><span>ðŸ“„
-                                    Documents</span> <span
-                                    class="text-xs bg-white/5 px-2 py-0.5 rounded text-gray-500">42</span></button></li>
-                        <li><button
-                                class="w-full flex items-center justify-between text-sm text-gray-400 hover:text-cyan-400 hover:bg-white/[0.02] p-2 rounded-lg transition"><span>ðŸ”¥
-                                    Tools</span> <span
-                                    class="text-xs bg-white/5 px-2 py-0.5 rounded text-gray-500">29</span></button></li>
-                    </ul>
-                </div>
-
             </div>
 
-            <!-- MIDDLE COLUMN: APP DETAILS -->
-            <div class="lg:col-span-6 space-y-4 md:space-y-8 fade-in">
-
-                <!-- Main Identity Card -->
-                <div
-                    class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-3 md:p-6 lg:p-8 relative overflow-hidden">
-                    <!-- Glass glare effect -->
-                    <div
-                        class="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-white/20 to-transparent">
-                    </div>
-
-                    <div class="flex flex-row items-start md:items-center gap-4 md:gap-6">
-                        <img id="appLogo" src="../assets/images/twoyi.png" alt="Twoyi Application Logo"
-                            class="w-20 h-20 md:w-24 md:h-24 object-contain rounded-2xl shadow-lg shadow-black/40 ring-1 ring-white/10 p-2 bg-white/5 transition-opacity duration-500 flex-shrink-0">
-
-                        <div class="flex-1 min-w-0">
-                            <div class="flex flex-wrap items-center gap-2 mb-2">
-                                <h1 id="appTitle" class="text-xl sm:text-2xl md:text-3xl font-bold text-white truncate">
-                                    Twoyi</h1>
-                                <span
-                                    class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 text-xs px-2.5 py-1 rounded-full flex items-center gap-1 font-semibold">
-                                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    Open Source
-                                </span>
-                                <span
-                                    class="bg-cyan-500/20 text-cyan-400 border border-cyan-500/20 text-xs px-2.5 py-1 rounded-full font-semibold">
-                                    No Root Required
-                                </span>
-                            </div>
-                            <p class="text-cyan-400 font-medium mb-3">Lightweight Android Container on Android</p>
-
-                            <div
-                                class="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs sm:text-sm text-gray-400/90 mt-1">
-                                <span class="flex items-center gap-1 bg-white/5 px-2 py-1 rounded-md">â­ 4.6 (1.9k
-                                    stars)</span>
-                                <span class="hidden sm:inline text-gray-600">â€¢</span>
-                                <span class="flex items-center gap-1 bg-white/5 px-2 py-1 rounded-md">Android 8.1 â€“
-                                    12</span>
-                                <span class="hidden sm:inline text-gray-600">â€¢</span>
-                                <span
-                                    class="font-bold text-white bg-cyan-500/10 border border-cyan-500/20 px-2 py-1 rounded-md">~45
-                                    MB</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Description -->
-                    <div class="mt-8">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-lg font-bold text-white tracking-wide">About This App</h3>
-                        </div>
-
-                        <p class="text-gray-300 leading-relaxed text-sm mb-5">
-                            Twoyi is a <span class="text-cyan-300 font-medium">lightweight Android container</span>
-                            that runs a nearly complete Android system as a normal app â€” no root, no bootloader unlock
-                            needed. Made with â¤ï¸Ž by <span class="text-white font-semibold">weishu</span>.
-                        </p>
-
-                        <ul class="space-y-3 text-sm text-gray-400/90 mb-6">
-                            <li class="flex items-start gap-3">
-                                <div
-                                    class="w-5 h-5 rounded bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                                Use TaichiÂ·Yang, Xposed, EdXposed & LSPosed without unlocking the bootloader.
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div
-                                    class="w-5 h-5 rounded bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                                Use root access on non-rooted devices with a few Magisk modules.
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div
-                                    class="w-5 h-5 rounded bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                                Boots in under 3 seconds. Fully isolated from your main system.
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div
-                                    class="w-5 h-5 rounded bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                                Virtualize HAL layer â€” implement virtual camera, virtual sensors and more.
-                            </li>
-                        </ul>
-
-                        <div
-                            class="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 px-3 py-1.5 rounded-lg text-xs font-medium text-cyan-300">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            MPL-2.0 Open Source License â€” 100% Transparent & Community-driven
-                        </div>
-                    </div>
-
-                    <!-- GitHub Banner -->
-                    <div
-                        class="mt-6 flex items-center gap-4 bg-white/[0.03] border border-white/10 p-4 rounded-xl text-gray-300 text-sm">
-                        <svg class="w-8 h-8 flex-shrink-0 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                        </svg>
-                        <div>
-                            <p class="font-bold text-white mb-0.5">Open Source on GitHub</p>
-                            <p>1,900+ Stars Â· 295 Forks Â· Java & Rust Â· MPL-2.0 License</p>
-                        </div>
-                        <a href="https://github.com/twoyi/twoyi" target="_blank" rel="noopener"
-                            class="ml-auto shrink-0 bg-white/10 hover:bg-white/20 border border-white/10 px-3 py-1.5 rounded-lg text-xs font-semibold transition">View
-                            Repo â†’</a>
-                    </div>
+            <div class="flex items-center gap-4">
+                <div class="hidden lg:flex items-center gap-3">
+                    <a href="../login.html" class="text-[13px] font-semibold text-gray-600 hover:text-blue-600">Log
+                        In</a>
+                    <a href="../signup.html"
+                        class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-1.5 rounded-md text-[13px] font-semibold shadow-sm transition-all">Sign
+                        Up</a>
                 </div>
-
-                <!-- What's New -->
-                <div
-                    class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-6 lg:p-8 relative overflow-hidden group">
-                    <!-- Decorative element -->
-                    <div
-                        class="absolute -right-12 -top-12 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition-colors">
-                    </div>
-
-                    <div class="flex items-center justify-between mb-8">
-                        <div>
-                            <h3 class="text-xl font-bold text-white leading-none mb-2">What's New</h3>
-                            <p class="text-cyan-400/80 text-xs font-semibold uppercase tracking-wider">Version 0.5.4
-                                â€¢ Mar 2022</p>
-                        </div>
-                        <span
-                            class="bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-[10px] px-2 py-0.5 rounded-md font-bold uppercase tracking-tighter">Latest
-                            Release</span>
-                    </div>
-
-                    <div class="grid gap-6">
-                        <!-- Item 1 -->
-                        <div class="flex items-start gap-4 group/item">
-                            <div
-                                class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center shrink-0 group-hover/item:bg-cyan-500/20 transition-all duration-300">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                </svg>
-                            </div>
-                            <div class="space-y-1">
-                                <h4 class="text-sm font-semibold text-white/90">Ultra-Fast Boot</h4>
-                                <p class="text-xs text-gray-400 leading-relaxed">Twoyi boots in under 3 seconds (after
-                                    initial setup), making it one of the fastest Android containers available.</p>
-                            </div>
-                        </div>
-
-                        <!-- Item 2 -->
-                        <div class="flex items-start gap-4 group/item">
-                            <div
-                                class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center shrink-0 group-hover/item:bg-purple-500/20 transition-all duration-300">
-                                <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                                    </path>
-                                </svg>
-                            </div>
-                            <div class="space-y-1">
-                                <h4 class="text-sm font-semibold text-white/90">Xposed & LSPosed Support</h4>
-                                <p class="text-xs text-gray-400 leading-relaxed">Use powerful Xposed modules without
-                                    touching your main system or unlocking the bootloader.</p>
-                            </div>
-                        </div>
-
-                        <!-- Item 3 -->
-                        <div class="flex items-start gap-4 group/item">
-                            <div
-                                class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 group-hover/item:bg-emerald-500/20 transition-all duration-300">
-                                <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z">
-                                    </path>
-                                </svg>
-                            </div>
-                            <div class="space-y-1">
-                                <h4 class="text-sm font-semibold text-white/90">Magisk Module Support</h4>
-                                <p class="text-xs text-gray-400 leading-relaxed">Use select Magisk modules inside the
-                                    container. Root without rooting your real device.</p>
-                            </div>
-                        </div>
-
-                        <!-- Item 4 -->
-                        <div class="flex items-start gap-4 group/item">
-                            <div
-                                class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0 group-hover/item:bg-amber-500/20 transition-all duration-300">
-                                <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                                </svg>
-                            </div>
-                            <div class="space-y-1">
-                                <h4 class="text-sm font-semibold text-white/90">HAL Virtualization</h4>
-                                <p class="text-xs text-gray-400 leading-relaxed">Implement virtual camera, sensors and
-                                    other system components through open-source HAL layer customization.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Related Apps -->
-                <div class="mt-8 pt-8 border-t border-white/5">
-                    <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
-                            </path>
-                        </svg>
-                        Similar Apps you might like
-                    </h3>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <!-- VPhoneGaGa -->
-                        <a href="vphonegaga.html"
-                            class="backdrop-blur-md bg-white/[0.02] border border-white/5 hover:border-indigo-500/50 hover:bg-white/[0.04] transition-all rounded-xl p-4 cursor-pointer group">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-10 h-10 bg-indigo-500/20 rounded-lg flex items-center justify-center text-xl shadow-inner group-hover:scale-105 transition-transform">
-                                    ðŸ“±</div>
-                                <div>
-                                    <h4
-                                        class="text-white font-semibold text-sm group-hover:text-indigo-300 transition-colors">
-                                        VPhoneGaGa</h4>
-                                    <p class="text-gray-500 text-xs text-indigo-400/80">Virtual Android Machine</p>
-                                </div>
-                            </div>
-                        </a>
-
-                        <!-- VMOS Pro -->
-                        <div
-                            class="backdrop-blur-md bg-white/[0.02] border border-white/5 hover:border-purple-500/50 hover:bg-white/[0.04] transition-all rounded-xl p-4 cursor-pointer group">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center text-xl shadow-inner group-hover:scale-105 transition-transform">
-                                    ðŸ”¥</div>
-                                <div>
-                                    <h4
-                                        class="text-white font-semibold text-sm group-hover:text-purple-300 transition-colors">
-                                        VMOS Pro</h4>
-                                    <p class="text-gray-500 text-xs text-purple-400/80">Rooted Emulator</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- X8Sandbox -->
-                        <div
-                            class="backdrop-blur-md bg-white/[0.02] border border-white/5 hover:border-emerald-500/50 hover:bg-white/[0.04] transition-all rounded-xl p-4 cursor-pointer group">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center text-xl shadow-inner group-hover:scale-105 transition-transform">
-                                    âš¡</div>
-                                <div>
-                                    <h4
-                                        class="text-white font-semibold text-sm group-hover:text-emerald-300 transition-colors">
-                                        X8Sandbox</h4>
-                                    <p class="text-gray-500 text-xs text-emerald-400/80">Game Sandbox</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+        </header>
 
-            <!-- RIGHT COLUMN: DOWNLOAD CARD & INFO -->
-            <div class="lg:col-span-3 space-y-6 fade-in-delay lg:sticky lg:top-24">
+        <!-- CONTENT SCROLL CONTAINER -->
+        <div class="flex-1 overflow-y-auto main-scroll page-bg relative">
+            <div class="max-w-[1300px] mr-auto ml-0 px-2 sm:px-3 lg:px-4 py-0 pb-0">
 
-                <div
-                    class="backdrop-blur-md bg-cyan-600/5 text-center border border-cyan-500/20 shadow-2xl shadow-cyan-600/10 rounded-2xl p-6">
-
-                    <h3 class="text-white font-bold text-xl mb-4">Ready to Download?</h3>
-                    <p class="text-gray-400/90 text-sm mb-8">Direct link from GitHub Releases Â· v0.5.4 Official.</p>
-
-                    <!-- Main Download -->
-                    <div class="space-y-4 min-h-[60px] flex flex-col justify-center">
-                        <div class="relative group cursor-pointer">
-                            <div
-                                class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl blur opacity-40 group-hover:opacity-75 transition-all duration-300 group-hover:scale-[1.02] group-active:scale-95">
-                            </div>
-                            <a href="https://github.com/twoyi/twoyi/releases/tag/0.5.4" target="_blank"
-                                rel="noopener"
-                                class="relative w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 shadow-lg border border-white/10 py-4 rounded-xl font-bold transition-all duration-300 group-hover:scale-[1.02] group-active:scale-95 flex items-center justify-center gap-2 text-white no-underline">
-                                <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                                </svg>
-                                <span>Download APK (~45 MB)</span>
+                <!-- Breadcrumbs -->
+                <nav class="flex text-[12px] font-medium text-gray-500 mb-3 mt-1 px-1" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center space-x-1 md:space-x-2 bg-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-gray-200 shadow-[0_1px_2px_rgba(0,0,0,0.03)] w-max max-w-full overflow-hidden">
+                        <li class="inline-flex items-center">
+                            <a href="../index.html" class="inline-flex items-center gap-1.5 text-gray-500 hover:text-blue-600 transition-colors">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                                Home
                             </a>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
+                                <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                <a href="index.html" class="ml-1 sm:ml-2 text-gray-500 hover:text-blue-600 transition-colors">Android</a>
+                            </div>
+                        </li>
+
+                        <li aria-current="page">
+                            <div class="flex items-center">
+                                <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                <span class="ml-1 sm:ml-2 text-blue-600 font-bold">Twoyi</span>
+                            </div>
+                        </li>
+                    </ol>
+                </nav>
+
+                <!-- Top Hero App Header (White Card) -->
+                <div
+                    class="card-white p-3 sm:p-4 flex flex-row items-start gap-3 sm:gap-4 bg-white mb-2">
+                    <!-- App Icon -->
+                    <div
+                        class="w-16 h-16 sm:w-24 sm:h-24 rounded-[16px] bg-white border border-gray-200 shadow-sm p-1.5 sm:p-2 flex-shrink-0 flex items-center justify-center relative">
+                        <img src="../assets/images/twoyi.png" alt="Twoyi Icon" class="w-full h-full object-contain">
+                        <div class="absolute -bottom-1.5 -right-1.5 sm:-bottom-2 sm:-right-2 bg-green-500 text-white rounded-full p-0.5 sm:p-1 border-2 border-white"
+                            title="Verified Safe">
+                            <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
                         </div>
-
-                        <a href="https://github.com/twoyi/twoyi" target="_blank" rel="noopener"
-                            class="w-full bg-[#1A1F2E] hover:bg-[#252B3D] border border-white/10 py-4 rounded-xl font-bold transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 shadow-lg group">
-                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                            </svg>
-                            <span>View on GitHub</span>
-                        </a>
-
                     </div>
 
-                    <div class="flex items-center justify-center gap-2 my-6">
-                        <div class="h-px bg-white/5 flex-1"></div>
-                        <span class="text-xs text-gray-500 uppercase tracking-widest font-semibold">Or use</span>
-                        <div class="h-px bg-white/5 flex-1"></div>
+                    <!-- Info block -->
+                    <div class="flex-1 text-left flex flex-col justify-center w-full pt-0.5 sm:pt-0 overflow-hidden">
+                        <h1 class="text-xl sm:text-4xl font-bold text-gray-900 mb-0.5 sm:mb-2 font-inter tracking-tight leading-tight">Twoyi
+                        </h1>
+                        <h2 class="text-[13px] sm:text-[18px] text-gray-600 font-normal mb-1.5 sm:mb-3 leading-snug truncate sm:whitespace-normal">Lightweight Android Container on Android</h2>
+
+                        <div
+                            class="flex flex-wrap items-center justify-start gap-y-1 sm:gap-y-2 gap-x-2 sm:gap-x-4 text-[11px] sm:text-[13px] text-gray-500">
+                            <span class="flex items-center gap-1.5 font-medium text-gray-700">
+                                <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                weishu
+                            </span>
+                            <span class="w-1 h-1 bg-gray-300 rounded-full hidden sm:block"></span>
+                            <span class="flex items-center gap-1">
+                                <span class="text-yellow-500">â˜…â˜…â˜…â˜…â˜…</span>
+                                <span class="text-gray-400 ml-1">(4.8/5)</span>
+                            </span>
+                            <span class="w-1 h-1 bg-gray-300 rounded-full hidden sm:block"></span>
+                            <span class="bg-gray-100 px-2 py-0.5 rounded text-gray-600 font-medium">Free</span>
+                            <span class="w-1 h-1 bg-gray-300 rounded-full hidden sm:block"></span>
+                            <span class="text-gray-500">English</span>
+                        </div>
                     </div>
 
-                    <!-- Mirror Links -->
-                    <div class="space-y-3">
-                        <button
-                            class="w-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-cyan-400 transition-colors py-2.5 rounded-lg text-sm text-gray-300 font-medium flex items-center justify-center gap-2">
-                            <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 12h14M12 5l7 7-7 7"></path>
-                            </svg>
-                            Mirror Link 1 (Mega)
-                        </button>
-                        <button
-                            class="w-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-cyan-400 transition-colors py-2.5 rounded-lg text-sm text-gray-300 font-medium flex items-center justify-center gap-2">
-                            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 12h14M12 5l7 7-7 7"></path>
-                            </svg>
-                            Mirror Link 2 (Google Drive)
-                        </button>
+                    <!-- Mobile Download Action -->
+                    <div class="md:hidden flex-shrink-0 flex items-center justify-center self-center pl-1 pr-1">
+                        <a href="#downloadSection" class="bg-[#059669] hover:bg-[#047857] text-white font-bold py-1.5 px-5 rounded-[20px] text-[13px] shadow-sm transition-transform active:scale-95 leading-none">Install</a>
                     </div>
 
+                    <!-- Simple Metric -->
+                    <div
+                        class="hidden lg:flex flex-col items-center justify-center border-l border-gray-100 pl-6 ml-2 h-full">
+                        <div class="text-[12px] text-gray-400 uppercase font-semibold tracking-wide mb-1">Downloads
+                        </div>
+                        <div class="text-2xl font-bold text-gray-800">10K+</div>
+                        <div class="text-[12px] text-green-600 font-medium mt-1">â†‘ Trending</div>
+                    </div>
                 </div>
 
-                <!-- Info Table -->
-                <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-xl rounded-2xl p-6 text-sm">
-                    <h3 class="font-semibold text-white mb-4 border-b border-white/5 pb-2">Specifications & Details
-                    </h3>
-                    <div class="space-y-4">
-                        <div class="flex justify-between items-center text-gray-400/90 overflow-hidden gap-4">
-                            <span class="shrink-0">Developer:</span>
-                            <span class="text-white text-right">weishu (tiann)</span>
+                <div class="flex flex-col lg:flex-row gap-2">
+                    <!-- Left Main Content Area -->
+                    <div class="w-full lg:w-[68%] flex flex-col gap-2">
+
+                        <!-- Content Card -->
+                        <div class="card-white overflow-hidden">
+
+                            <!-- Tabs -->
+                            <div class="flex border-b border-gray-200 bg-gray-50/50 px-4 pt-2">
+                                <button class="px-5 py-3 text-[14px] tab-active">Description</button>
+                                <button class="px-5 py-3 text-[14px] tab-inactive">Technical Details</button>
+                                <button class="px-5 py-3 text-[14px] tab-inactive">Revisions</button>
+                            </div>
+
+                            <!-- Body -->
+                            <div class="p-6 sm:p-8">
+                                <h3 class="text-xl font-bold text-gray-900 mb-4">What is Twoyi?</h3>
+
+                                <div class="prose prose-sm sm:prose max-w-none text-gray-600">
+                                    <p class="mb-4">
+                                        <strong>Twoyi</strong> is a lightweight Android container that runs a nearly complete Android system as a normal app — no root, no bootloader unlock needed. Made with ❤️ by weishu.
+                                    </p>
+                                    <p class="mb-5">
+                                        It allows you to use Taichi·Yang, Xposed, EdXposed & LSPosed without unlocking the bootloader. Boots in under 3 seconds!
+                                    </p>
+
+                                    <h4 class="text-[17px] font-bold text-gray-900 mt-6 mb-3">Key Features</h4>
+                                    <ul class="space-y-2 mb-6 list-disc pl-5">
+                                        <li><strong>Ultra-Fast Boot:</strong> Twoyi boots in under 3 seconds (after initial setup).</li>
+                                        <li><strong>No Bootloader Unlock:</strong> Use Xposed frameworks without unlocking.</li>
+                                        <li><strong>Root Features:</strong> Use root access on non-rooted devices safely.</li>
+                                        <li><strong>Virtual HAL:</strong> Implement virtual camera and virtual sensors easily.</li>
+                                    </ul>
+
+                                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-md mt-6">
+                                        <p class="text-[13px] text-blue-800 m-0"><strong>Note:</strong> Twoyi is
+                                            open source. Make sure you enable virtualization for the best performance.</p>
+                                            installation from unknown sources to install this APK.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex justify-between items-center text-gray-400/90 overflow-hidden gap-4">
-                            <span class="shrink-0">OS Requirement:</span>
-                            <span class="text-white text-right">Android 8.1 â€“ 12</span>
+                    </div>
+                    <!-- Right Sticky Sidebar for Downloads -->
+                    <div class="w-full lg:w-[32%]">
+                        <div class="sticky top-6 flex flex-col gap-2">
+                        
+                            <!-- Primary Download Card -->
+                            <div class="card-white p-3 scroll-mt-20" id="downloadSection">
+
+                            <!-- Download Box -->
+                            <div class="text-center mb-5">
+                                <div class="text-gray-900 font-bold text-[18px] mb-2 border-b border-gray-100 pb-2">
+                                    Download Twoyi</div>
+                                <div class="text-[13px] text-gray-500 mb-4">Version Latest Official for Android</div>
+
+                                <a href="https://github.com/weishu/Twoyi/releases/latest" target="_blank" rel="noopener"
+                                    class="btn-download block w-full py-3.5 px-4 rounded-lg font-bold text-[16px] text-center transition-all flex flex-col items-center justify-center">
+                                    <span class="flex items-center gap-2">
+                                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                                        </svg>
+                                        Free Download
+                                    </span>
+                                </a>
+
+                                <div class="text-[11px] text-gray-400 mt-3 flex items-center justify-center gap-1">
+                                    <svg class="w-3 h-3 text-green-500" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                        </path>
+                                    </svg>
+                                    Always available from secure servers
+                                </div>
+                            </div>
+
+                            <!-- File Information Table -->
+                            <div class="bg-gray-50 rounded-lg border border-gray-100 p-4">
+                                <h4
+                                    class="text-[12px] font-bold text-gray-800 uppercase tracking-widest mb-3 border-b border-gray-200 pb-2">
+                                    File Information</h4>
+                                <ul class="text-[13px] space-y-2.5">
+                                    <li class="flex justify-between border-b border-gray-200/60 pb-1.5"><span
+                                            class="text-gray-500">File Size</span><span
+                                            class="font-medium text-gray-900 text-right">~ 45 MB</span></li>
+                                    <li class="flex justify-between border-b border-gray-200/60 pb-1.5"><span
+                                            class="text-gray-500">OS</span><span
+                                            class="font-medium text-gray-900 text-right">Android 8.0+</span></li>
+                                    <li class="flex justify-between border-b border-gray-200/60 pb-1.5"><span
+                                            class="text-gray-500">Language</span><span
+                                            class="font-medium text-gray-900 text-right">English</span></li>
+                                    <li class="flex justify-between border-b border-gray-200/60 pb-1.5"><span
+                                            class="text-gray-500">License</span><span
+                                            class="font-medium text-green-600 text-right">Free / Open Source</span></li>
+                                    <li class="flex justify-between py-0.5"><span
+                                            class="text-gray-500">Developer</span><span
+                                            class="font-medium text-blue-600 text-right">weishu</span></li>
+                                </ul>
+                            </div>
+
                         </div>
-                        <div class="flex justify-between items-center text-gray-400/90 overflow-hidden gap-4">
-                            <span class="shrink-0">Root Access:</span>
-                            <span class="text-white text-right">Not required</span>
+
+                        <!-- Alternate Versions / Related Apps -->
+                        <div class="card-white p-3 border-t-4 border-t-blue-500">
+                            <h4 class="text-[15px] font-bold text-gray-900 mb-4">Alternatives</h4>
+
+                            <div class="space-y-4">
+                                <a href="hapi.html"
+                                    class="flex gap-3 items-center group cursor-pointer hover:bg-gray-50 p-1 -mx-1 rounded transition">
+                                    <img src="../assets/images/hapi.png""
+                                        class="w-10 h-10 rounded-md border border-gray-200 shadow-sm" alt="Twoyi">
+                                    <div>
+                                        <h5 class="text-[13px] font-bold text-blue-600 group-hover:underline">Twoyi</h5>
+                                        <p class="text-[11px] text-gray-500">Terminal Environment</p>
+                                    </div>
+                                </a>
+                                <a href="vphonegaga.html"
+                                    class="flex gap-3 items-center group cursor-pointer hover:bg-gray-50 p-1 -mx-1 rounded transition">
+                                    <img src="../assets/images/vphonegaga_logo.webp"
+                                        class="w-10 h-10 rounded-md border border-gray-200 shadow-sm" alt="VPhoneGaGa">
+                                    <div>
+                                        <h5 class="text-[13px] font-bold text-blue-600 group-hover:underline">VPhoneGaGa
+                                        </h5>
+                                        <p class="text-[11px] text-gray-500">Virtual Machine OS</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                        <div class="flex justify-between gap-4 text-gray-400/90">
-                            <span class="shrink-0">Primary Use:</span>
-                            <span class="text-white text-right text-xs">Xposed modules, security research, HAL
-                                virtualization</span>
-                        </div>
-                        <div class="flex justify-between items-center text-gray-400/90 overflow-hidden gap-4">
-                            <span class="shrink-0">Latest Version:</span>
-                            <span class="text-white text-right">v0.5.4 (Mar 2022)</span>
-                        </div>
-                        <div class="flex justify-between items-center text-gray-400/90 overflow-hidden gap-4">
-                            <span class="shrink-0">Price:</span>
-                            <span class="text-white text-right">Free & Open Source</span>
-                        </div>
-                        <div
-                            class="flex justify-between items-center text-gray-400/90 overflow-hidden gap-4 pt-2 border-t border-white/5">
-                            <span class="shrink-0">Architecture:</span>
-                            <span class="text-white text-right">arm64-v8a</span>
-                        </div>
-                        <div class="flex justify-between items-center text-gray-400/90 overflow-hidden gap-4">
-                            <span class="shrink-0">Language:</span>
-                            <span class="text-white text-right text-xs font-mono">Java 89.5% Â· Rust 10.1%</span>
-                        </div>
-                        <div class="flex justify-between items-center text-gray-400/90 overflow-hidden gap-4">
-                            <span class="shrink-0">License:</span>
-                            <span class="text-white text-right text-xs font-mono">MPL-2.0</span>
-                        </div>
-                        <div class="flex justify-between items-center text-gray-400/90 overflow-hidden gap-4">
-                            <span class="shrink-0">Status:</span>
-                            <span
-                                class="text-amber-400 text-right text-xs font-semibold bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded">Discontinued</span>
-                        </div>
+                    </div>
                     </div>
                 </div>
 
             </div>
 
+            <!-- Standard Footer -->
+            <footer class="bg-white border-t border-gray-200 py-4 mt-4">
+                <div
+                    class="max-w-[1100px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] text-gray-500">
+                    <div>&copy; 2026 SHREEBITU Catalog. All rights reserved.</div>
+                    <div class="flex gap-4">
+                        <a href="#" class="hover:text-gray-900">Privacy Policy</a>
+                        <a href="#" class="hover:text-gray-900">Terms of Use</a>
+                        <a href="#" class="hover:text-gray-900">DMCA</a>
+                    </div>
+                </div>
+            </footer>
         </div>
     </main>
 
-    <!-- ================= FOOTER ================= -->
-    <global-footer></global-footer>
-
-  <script src="../components/navbar.js"></script>
-  <script src="../components/footer.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const btn = document.getElementById('mobileMenuBtn');
+            const sidebar = document.querySelector('aside');
+            if (btn && sidebar) {
+                let overlay = document.getElementById('sidebarOverlay');
+                if (!overlay) {
+                    overlay = document.createElement('div');
+                    overlay.id = 'sidebarOverlay';
+                    overlay.className = 'fixed inset-0 bg-black/60 z-[110] hidden backdrop-blur-sm transition-opacity';
+                    document.body.appendChild(overlay);
+                }
+                const toggle = (show) => {
+                    if (show) {
+                        sidebar.classList.remove('hidden');
+                        sidebar.classList.add('fixed', 'inset-y-0', 'left-0', 'z-[120]', 'w-72', 'shadow-2xl');
+                        overlay.classList.remove('hidden');
+                    } else {
+                        sidebar.classList.add('hidden');
+                        sidebar.classList.remove('fixed', 'inset-y-0', 'left-0', 'z-[120]', 'w-72', 'shadow-2xl');
+                        overlay.classList.add('hidden');
+                    }
+                };
+                btn.addEventListener('click', () => toggle(true));
+                overlay.addEventListener('click', () => toggle(false));
+            }
+        });
+    </script>
 </body>
 
 </html>
-

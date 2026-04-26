@@ -1,107 +1,424 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linux Mint Download</title>
-    <meta name="description"
-        content="From freedom came elegance. Download Linux Mint, one of the most popular desktop Linux distributions and used by millions of people.">
-    <meta name="keywords"
-        content="Linux Mint, Download Linux Mint, Linux OS, Cinnamon, MATE, XFCE">
-    <meta name="author" content="ShreeBitu">
-    <link rel="canonical" href="https://shreebitu.in/linux/linuxmint.html">
-
+    <title>Linux Mint 21 Download - AppHub OS Store</title>
+    <!-- Standard SEO -->
+    <meta name="description" content="Download premium applications, OS distributions, and developer tools from ShreeBitu. Fast, free, and reliable file library.">
+    <meta name="keywords" content="ShreeBitu, Download Apps, Linux ISO, Windows Tools, Open Source Software, Bitu Talukdar">
+    <meta name="author" content="Bitu Talukdar">
+    
+    <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://shreebitu.in/linux/linuxmint.html">
-    <meta property="og:title" content="Linux Mint Download">
-    <meta property="og:description"
-        content="From freedom came elegance. Download Linux Mint, one of the most popular desktop Linux distributions and used by millions of people.">
+    <meta property="og:title" content="LINUX - Linux Mint 21 | ShreeBitu Library">
+    <meta property="og:description" content="Explore and download the latest software and files on ShreeBitu.">
+    <meta property="og:image" content="https://shreebitu.in/assets/images/og-image.png">
 
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Outfit', sans-serif; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        .fade-in { animation: fadeInUp 0.6s ease-out forwards; }
-        .fade-in-delay { animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fc; }
+        .sidebar { background-color: #ffffff; border-right: 1px solid #eef1f5; }
+        .hero-bg {
+            background-color: #0b1120;
+            background-image: 
+                radial-gradient(ellipse at top right, rgba(14, 165, 233, 0.15), transparent 50%),
+                radial-gradient(ellipse at bottom left, rgba(59, 130, 246, 0.15), transparent 50%);
+            position: relative;
+            z-index: 1;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 20%; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.4), transparent);
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.8);
+            transform: rotate(-2deg);
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            bottom: 30%; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+            transform: rotate(1deg);
+        }
+        .hero-lines {
+            position: absolute; inset: 0; opacity: 0.3;
+            background-image: repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255,255,255,0.03) 1px, rgba(255,255,255,0.03) 2px);
+            background-size: 100% 4px;
+        }
+        .app-card {
+            transition: all 0.2s ease-in-out;
+        }
+        .app-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+        /* Custom Scrollbar */
+        .main-scroll::-webkit-scrollbar { width: 6px; }
+        .main-scroll::-webkit-scrollbar-track { background: transparent; }
+        .main-scroll::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+        .main-scroll::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
     </style>
-    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ShreeBitu",
+      "url": "https://shreebitu.in/",
+      "author": {
+        "@type": "Person",
+        "name": "Bitu Talukdar"
+      },
+      "description": "Premium file library and application store."
+    }
+    </script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7668010130101569" crossorigin="anonymous"></script>
 </head>
+<body class="flex h-screen overflow-hidden text-[#1d1d1f]">
 
-<body class="bg-[#0B0F19] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#111827] via-[#0B0F19] to-black text-gray-200 antialiased selection:bg-emerald-500/30">
+<!-- Sidebar -->
+<aside class="sidebar w-[260px] flex-shrink-0 flex flex-col h-full hidden md:flex z-20 shadow-[2px_0_10px_rgba(0,0,0,0.02)]">
+    <!-- Logo -->
+    <a href="../index.html" class="px-6 py-5 flex items-center gap-3 hover:bg-gray-50 transition cursor-pointer block border-b border-gray-50">
+        <div class="w-9 h-9 bg-[#1d4ed8] text-white flex items-center justify-center rounded-xl shadow-sm rotate-3">
+            <svg class="w-5 h-5 -rotate-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
+            </svg>
+        </div>
+        <div>
+           <div class="font-bold tracking-tight text-[17px] text-gray-900 leading-tight">ShreeBitu</div>
+           <div class="text-[11px] text-gray-500 font-medium">File Library</div>
+        </div>
+    </a>
 
-    <div class="pointer-events-none fixed inset-0 z-0 flex justify-center">
-        <div class="w-[800px] h-[500px] bg-emerald-600/10 rounded-full blur-[120px] -translate-y-1/2"></div>
+    <!-- Nav -->
+    <div class="px-4 py-2 flex-1">
+        <div class="text-[11px] text-gray-400 mb-4 px-3 font-semibold tracking-wider">LIBRARY</div>
+        
+        <nav class="space-y-1">
+            <a href="../index.html" id="nav-home" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>Home</a>
+            <a href="../explore.html" id="nav-explore" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>Explore Library</a>
+            <a href="../linux/index.html" id="nav-linux" class=" bg-[#ebf5ff] text-[#0066cc] font-medium flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>Operating Systems</a>
+            <a href="../apk/index.html" id="nav-apk" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>Mobile Apps</a>
+            <a href="../opensource/index.html" id="nav-opensource" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>Open Source</a>
+            <a href="../presentation/presentation.html" id="nav-presentation" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>Presentations</a>
+        </nav>
+    
     </div>
+    
+    <div class="mt-auto px-4 py-8 border-t border-gray-100 flex flex-col gap-1">
+        <a href="#" class="flex items-center gap-3 px-3 py-2 text-[14px] text-gray-500 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+            <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            Help
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2 text-[14px] text-gray-500 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+            <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
+            Logout
+        </a>
+    </div>
+</aside>
 
-    <!-- ================= HEADER ================= -->
-    <global-navbar></global-navbar>
-
-    <main class="relative z-10 w-full max-w-[1400px] mx-auto px-2 md:px-8 pt-2 md:pt-6 pb-6 md:pb-12">
-        <div class="text-sm text-gray-400/90 mb-3 md:mb-6 fade-in">
-            <a href="../explore.html" class="hover:text-emerald-400 transition">Operating Systems</a>
-            <span class="mx-2">›</span>
-            <span class="text-white">Linux Mint</span>
+<!-- Main Area -->
+<main class="flex-1 flex flex-col h-full bg-[#f8f9fa] relative z-10 w-full overflow-hidden">
+    
+    <!-- Top Nav -->
+    <header class="h-[64px] md:h-[72px] flex items-center justify-between px-4 sm:px-6 px-6 lg:px-10 shrink-0 sticky top-0 bg-[#f8f9fa]/90 backdrop-blur z-30 border-b border-transparent transition-all">
+        <div class="relative w-full max-w-[400px]">
+            <svg class="w-[18px] h-[18px] text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input type="text" placeholder="Search for applications..." class="w-full bg-[#eef1f4] text-[13px] text-gray-800 rounded-lg pl-11 pr-4 py-2.5 outline-none focus:ring-2 focus:ring-[#0066cc]/30 focus:bg-white placeholder-gray-500 transition-all shadow-sm" />
         </div>
+        <div class="flex items-center gap-3 md:gap-5 ml-2 md:ml-4">
+            <a href="../login.html" class="hidden lg:block text-[12px] md:text-[13px] font-semibold text-gray-600 hover:text-gray-900 transition flex-shrink-0 px-1">Log In</a>
+            <a href="../signup.html" class="hidden lg:block bg-[#0066cc] text-white px-3 md:px-4 py-1.5 md:py-2 rounded-[8px] text-[12px] md:text-[13px] font-semibold shadow-sm hover:bg-[#005bb5] transition flex-shrink-0">Sign Up</a>
+        </div>
+    </header>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-            <div class="hidden lg:block lg:col-span-3 space-y-6 fade-in sticky top-24">
-                <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl rounded-2xl p-5">
-                    <h3 class="text-white font-bold mb-4 uppercase tracking-wider text-xs border-b border-white/5 pb-2">Menu</h3>
-                    <ul class="space-y-2">
-                        <li><a href="../index.html" class="flex items-center gap-3 text-sm text-gray-400 hover:text-emerald-400 p-2 rounded-lg transition">🏠 Home</a></li>
-                    </ul>
+    <!-- Scrollable Content -->
+    <div class="flex-1 overflow-y-auto px-4 md:px-8 lg:px-10 pb-6 main-scroll">
+        
+        <!-- Hero Section -->
+        <div class="hero-bg w-full rounded-[24px] shadow-[0_15px_40px_-15px_rgba(34,211,238,0.3)] mt-2 overflow-hidden flex flex-col justify-end p-6 sm:p-10 lg:p-12 lg:p-12 relative min-h-[300px] lg:min-h-[360px]">
+            <div class="hero-lines z-0"></div>
+            <div class="absolute w-[400px] h-[400px] bg-cyan-500/20 blur-[100px] top-[-100px] right-[-100px] rounded-full z-0"></div>
+            
+            <div class="relative z-10 max-w-2xl">
+                <span class="bg-[#0066cc] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-5 inline-block shadow-sm">Editor's Choice</span>
+                <h1 class="text-[24px] sm:text-[32px] lg:text-[44px] font-bold text-white mb-4 tracking-tight">Mint "Virginia"</h1>
+                <p class="text-gray-300 text-sm md:text-[15px] leading-relaxed mb-8 max-w-[500px] font-light">
+                    Modern, elegant and comfortable. One of the best communities for home users transitioning from Windows.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://linuxmint.com/download.php" class="bg-[#0066cc] hover:bg-[#005bb5] text-white rounded-lg px-7 py-3 text-[14px] font-semibold flex items-center gap-2 transition-all shadow-md hover:shadow-lg">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                        Cinnamon Edition
+                    </a>
+                    <a href="https://linuxmint.com/download.php" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg px-7 py-3 text-[14px] font-semibold transition-all backdrop-blur-sm">XFCE Edition</a>
                 </div>
             </div>
+        </div>
 
-            <div class="lg:col-span-6 space-y-4 md:space-y-8 fade-in">
-                <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl shadow-black/50 rounded-2xl p-3 md:p-6 lg:p-8 relative overflow-hidden">
-                    <div class="flex flex-row items-start md:items-center gap-4 md:gap-6">
-                        <div class="w-20 h-20 md:w-24 md:h-24 rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center bg-emerald-600/10 flex-shrink-0">
-                             <span class="text-4xl">🍃</span>
+        <!-- Trending Now -->
+        <section class="mt-12">
+            <div class="flex items-end justify-between mb-5">
+                <div>
+                    <h2 class="text-[22px] font-bold text-gray-900 tracking-tight">Trending Now</h2>
+                    <p class="text-[13px] text-gray-500 mt-0.5">Most downloaded this week</p>
+                </div>
+                <a href="../explore.html" class="text-[13px] text-[#0066cc] font-medium hover:underline flex items-center gap-1 group">
+                    <span>View All</span>
+                    <svg class="w-3.5 h-3.5 text-[#0066cc] group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <!-- Ubuntu -->
+                <a href="ubuntu.html" class="app-card block bg-white p-5 rounded-[20px] border border-gray-100 cursor-pointer shadow-[0_2px_10px_rgba(0,0,0,0.02)] relative group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center text-orange-500 shadow-sm border border-orange-100 transition-colors group-hover:bg-orange-100">
+                             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.836 17.518a2.531 2.531 0 1 1 0-5.061 2.531 2.531 0 0 1 0 5.061zm1.266-4.66a3.815 3.815 0 0 0-1.637.382c-.87-.803-2.102-1.353-3.465-1.55v-2.02a3.805 3.805 0 0 0 1.258-2.825A3.79 3.79 0 0 0 11.517 3.1a3.804 3.804 0 0 0-3.722 3.745c0 1.135.503 2.152 1.3 2.846v2.016c-1.37.195-2.613.75-3.483 1.558a3.784 3.784 0 0 0-1.633-.377 3.79 3.79 0 0 0-3.797 3.797 3.79 3.79 0 0 0 3.797 3.798A3.79 3.79 0 0 0 7.37 16.9a8.623 8.623 0 0 0 4.63 1.341 8.623 8.623 0 0 0 4.63-1.341 3.79 3.79 0 0 0 3.393 3.585 3.79 3.79 0 0 0 3.798-3.798 3.79 3.79 0 0 0-4.719-3.629z"/></svg>
                         </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex flex-wrap items-center gap-2 mb-2">
-                                <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-white truncate">Linux Mint</h1>
-                            </div>
-                            <p class="text-emerald-400 font-medium mb-3">From freedom came elegance.</p>
-                            <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs sm:text-sm text-gray-400/90 mt-1">
-                                <span class="bg-white/5 px-2 py-1 rounded-md">⭐ <span class="text-white font-medium">4.9</span></span>
-                                <span class="font-bold text-white bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded-md">2.8 GB ISO</span>
-                            </div>
+                        <div class="w-7 h-7 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:text-[#0066cc] group-hover:bg-[#0066cc]/10 transition z-10">
+                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
                         </div>
                     </div>
+                    <h3 class="font-[600] text-[15px] text-gray-900 leading-tight">Ubuntu Linux</h3>
+                    <p class="text-[12px] text-gray-500 mb-4 mt-0.5">Desktop OS</p>
+                    <div class="flex items-center justify-between text-[12px] font-medium mt-auto">
+                        <span class="flex items-center gap-1 text-[#f59e0b]"><svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg> 4.9</span>
+                        <span class="text-gray-400">5.9 GB</span>
+                    </div>
+                </a>
 
-                    <div class="mt-8">
-                        <h3 class="text-lg font-bold text-white mb-4">About Linux Mint</h3>
-                        <p class="text-gray-300 text-sm mb-5">
-                            The purpose of Linux Mint is to produce a modern, elegant, and comfortable operating system which is both powerful and easy to use. It works out of the box with full multimedia support. 
+                <!-- Debian -->
+                <a href="debian.html" class="app-card block bg-white p-5 rounded-[20px] border border-gray-100 cursor-pointer shadow-[0_2px_10px_rgba(0,0,0,0.02)] relative group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center text-red-600 shadow-sm border border-red-100 transition-colors group-hover:bg-red-100">
+                             <span class="font-bold text-lg font-serif italic text-red-600">D</span>
+                        </div>
+                        <div class="w-7 h-7 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:text-[#0066cc] group-hover:bg-[#0066cc]/10 transition z-10">
+                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                        </div>
+                    </div>
+                    <h3 class="font-[600] text-[15px] text-gray-900 leading-tight">Debian 12</h3>
+                    <p class="text-[12px] text-gray-500 mb-4 mt-0.5">Server OS</p>
+                    <div class="flex items-center justify-between text-[12px] font-medium mt-auto">
+                        <span class="flex items-center gap-1 text-[#f59e0b]"><svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg> 4.7</span>
+                        <span class="text-gray-400">3.8 GB</span>
+                    </div>
+                </a>
+                
+                <!-- Fedora -->
+                <a href="fedora.html" class="app-card block bg-white p-5 rounded-[20px] border border-gray-100 cursor-pointer shadow-[0_2px_10px_rgba(0,0,0,0.02)] relative group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shadow-sm border border-blue-100 transition-colors group-hover:bg-blue-100">
+                             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.802 15.006c-1.393 0-2.434-1.042-2.434-2.435s1.041-2.435 2.434-2.435c1.393 0 2.435 1.042 2.435 2.435s-1.042 2.435-2.435 2.435zm3.72-4.996c-.368 0-.668-.299-.668-.667v-3.34h-5.011c-1.104 0-1.996.892-1.996 1.996v3.34h-1.668V7.994c0-2.023 1.644-3.667 3.667-3.667h5.01V2.658h1.666v6.68z"/></svg>
+                        </div>
+                        <div class="w-7 h-7 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:text-[#0066cc] group-hover:bg-[#0066cc]/10 transition z-10">
+                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                        </div>
+                    </div>
+                    <h3 class="font-[600] text-[15px] text-gray-900 leading-tight">Fedora 40</h3>
+                    <p class="text-[12px] text-gray-500 mb-4 mt-0.5">Developer OS</p>
+                    <div class="flex items-center justify-between text-[12px] font-medium mt-auto">
+                        <span class="flex items-center gap-1 text-[#f59e0b]"><svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg> 4.8</span>
+                        <span class="text-gray-400">2.1 GB</span>
+                    </div>
+                </a>
+
+                <!-- Mint -->
+                <a href="linuxmint.html" class="app-card block bg-white p-5 rounded-[20px] border border-gray-100 cursor-pointer shadow-[0_2px_10px_rgba(0,0,0,0.02)] relative group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 shadow-sm border border-emerald-100 transition-colors group-hover:bg-emerald-100">
+                             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+                        </div>
+                        <div class="w-7 h-7 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:text-[#0066cc] group-hover:bg-[#0066cc]/10 transition z-10">
+                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                        </div>
+                    </div>
+                    <h3 class="font-[600] text-[15px] text-gray-900 leading-tight">Linux Mint</h3>
+                    <p class="text-[12px] text-gray-500 mb-4 mt-0.5">Desktop OS</p>
+                    <div class="flex items-center justify-between text-[12px] font-medium mt-auto">
+                        <span class="flex items-center gap-1 text-[#f59e0b]"><svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg> 4.6</span>
+                        <span class="text-gray-400">2.8 GB</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+        
+        <!-- New Releases -->
+        <section class="mt-12">
+            <div class="mb-5">
+                <h2 class="text-[22px] font-bold text-gray-900 tracking-tight">New Releases</h2>
+                <p class="text-[13px] text-gray-500 mt-0.5">Fresh additions to the library</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-4">
+                <!-- Large featured -->
+                <div class="lg:col-span-8 bg-[#e8eced] rounded-[24px] p-6 sm:p-10 lg:p-12 lg:p-10 relative overflow-hidden flex flex-col md:flex-row items-center gap-10 shadow-sm border border-gray-200/50 hover:shadow-md transition">
+                    <!-- Decorative star pattern -->
+                    <div class="absolute right-[-40px] bottom-[-40px] top-0 opacity-[0.03] pointer-events-none w-1/2 flex items-center justify-center">
+                        <svg class="w-full h-full" viewBox="0 0 100 100" fill="currentColor">
+                            <path d="M50 0 L55 45 L100 50 L55 55 L50 100 L45 55 L0 50 L45 45 Z" />
+                        </svg>
+                    </div>
+                    
+                    <!-- Icon -->
+                    <div class="w-40 h-40 lg:w-[200px] lg:h-[200px] bg-white rounded-[32px] shadow-[0_15px_30px_rgba(0,0,0,0.08)] shrink-0 flex items-center justify-center relative z-10 p-6">
+                        <div class="relative w-full h-full bg-[#0066cc]/5 rounded-[16px] flex items-center justify-center border border-[#0066cc]/10 text-[#0066cc]">
+                            <!-- Four sparkles -->
+                            <svg class="w-16 h-16 relative z-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0l2 8 8 2-8 2-2 8-2-8-8-2 8-2z"/><path d="M4 4l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" class="opacity-50"/><path d="M20 20l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" class="opacity-50"/><path d="M20 4l1 2 2 1-2 1-1 2-1-2-2-1 2-1z" class="opacity-30"/></svg>
+                        </div>
+                    </div>
+                    
+                    <div class="z-10 flex-1 text-center md:text-left">
+                        <h3 class="text-[28px] font-bold text-gray-900 mb-3 tracking-tight">Archinstall UI</h3>
+                        <p class="text-gray-600 text-[14px] leading-relaxed mb-6">
+                            The most advanced graphical installer ever built for Arch Linux. Configure partitions, packages, and desktop environments with one click.
                         </p>
+                        <div class="flex justify-center md:justify-start gap-4 mb-8">
+                            <div class="bg-white px-4 py-2 rounded-xl text-center shadow-sm border border-gray-100">
+                                <div class="text-[9px] font-bold text-gray-500 mb-0.5 tracking-wider">VERSION</div>
+                                <div class="font-bold text-gray-900 text-[13px]">2.4.0</div>
+                            </div>
+                            <div class="bg-white px-4 py-2 rounded-xl text-center shadow-sm border border-gray-100">
+                                <div class="text-[9px] font-bold text-gray-500 mb-0.5 tracking-wider">SIZE</div>
+                                <div class="font-bold text-gray-900 text-[13px]">48 MB</div>
+                            </div>
+                        </div>
+                        <button class="bg-[#1d1d1f] text-white px-8 py-3.5 rounded-xl text-[14px] font-[600] hover:bg-black transition-all shadow-[0_5px_15px_rgba(29,29,31,0.2)] hover:shadow-[0_8px_20px_rgba(29,29,31,0.3)]">
+                            Download Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right side cards -->
+                <div class="lg:col-span-4 flex flex-col gap-6">
+                    <!-- Top small card -->
+                    <div class="app-card bg-white rounded-[24px] p-6 shadow-sm border border-gray-100 flex-1 flex flex-col relative overflow-hidden group">
+                        <div class="w-12 h-12 bg-orange-50 text-[#f97316] rounded-[14px] flex items-center justify-center mb-5 shrink-0 border border-orange-100/50">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-[18px]">GNOME Console</h3>
+                        <p class="text-[13px] text-gray-500 mt-2 mb-6 max-w-[200px] leading-relaxed">
+                            A minimalist terminal emulator for the modern developer.
+                        </p>
+                        <div class="mt-auto flex items-center justify-between border-t border-gray-100 pt-5">
+                            <span class="text-[12px] text-gray-400 font-medium">v1.2.5</span>
+                            <button class="text-[#0066cc] font-semibold text-[14px] hover:text-[#005bb5] transition bg-blue-50/50 px-4 py-1.5 rounded-full hover:bg-blue-50">Get it</button>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="lg:col-span-3 space-y-6 fade-in-delay lg:sticky lg:top-24">
-                <div class="backdrop-blur-md bg-emerald-600/5 text-center border border-emerald-500/20 shadow-2xl rounded-2xl p-6">
-                    <h3 class="text-white font-bold text-xl mb-4">Direct Downloads</h3>
-                    <p class="text-gray-400/90 text-sm mb-6">Get Linux Mint with Cinnamon.</p>
-
-                    <div class="space-y-4">
-                        <a href="https://linuxmint.com/download.php" target="_blank" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 border border-white/10 py-4 rounded-xl font-bold transition flex items-center justify-center gap-2 hover:opacity-90">
-                            Download Cinnamon Ed.
-                        </a>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6 pb-6">
+                <!-- Smaller featured card -->
+                <div class="lg:col-span-6 bg-white rounded-[24px] p-6 shadow-sm border border-gray-100 flex items-center gap-5 app-card">
+                    <div class="w-14 h-14 bg-[#ebf5ff] text-[#0066cc] rounded-[16px] flex items-center justify-center shrink-0 border border-blue-100/50">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>
+                    </div>
+                    <div class="flex-1 min-w-0 pr-4">
+                        <h3 class="font-bold text-gray-900 text-[16px]">Nextcloud</h3>
+                        <p class="text-[13px] text-gray-500 mt-1 truncate">Seamless file synchronization across all devices.</p>
+                    </div>
+                    <div class="flex flex-col items-end gap-2 justify-between h-full pt-1">
+                        <span class="text-[11px] text-gray-400 font-medium">v3.0.1</span>
+                        <button class="text-[#0066cc] font-semibold text-[13px] bg-[#ebf5ff] px-4 py-1.5 rounded-full hover:bg-[#dbeafe] transition-colors shadow-sm">Get it</button>
+                    </div>
+                </div>
+                
+                <!-- List recommendations -->
+                <div class="lg:col-span-6 bg-[#f1f3f5] rounded-[24px] p-6">
+                    <h3 class="text-[11px] font-[600] text-gray-500 tracking-wider mb-5 uppercase px-1">RECOMMENDED FOR YOU</h3>
+                    <div class="space-y-3">
+                        <div class="bg-white rounded-[16px] p-3.5 flex items-center gap-4 shadow-sm border border-gray-100 hover:shadow-md transition">
+                            <div class="w-12 h-12 bg-gray-50 text-gray-600 rounded-[12px] border border-gray-100 flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-[600] text-[14px] text-gray-900">Thunderbird Mail</div>
+                                <div class="text-[12px] text-gray-500 mt-0.5">Smart email organization</div>
+                            </div>
+                            <button class="bg-[#ebf5ff] text-[#0066cc] hover:bg-[#dbeafe] px-5 py-2 rounded-xl text-[13px] font-[600] transition-colors ml-2 shadow-sm">Update</button>
+                        </div>
+                        
+                        <div class="bg-white rounded-[16px] p-3.5 flex items-center gap-4 shadow-sm border border-gray-100 hover:shadow-md transition">
+                            <div class="w-12 h-12 bg-gray-50 text-gray-600 rounded-[12px] border border-gray-100 flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-[600] text-[14px] text-gray-900">System Monitor</div>
+                                <div class="text-[12px] text-gray-500 mt-0.5">Task visualization tool</div>
+                            </div>
+                            <button class="bg-[#eef1f5] text-gray-700 hover:bg-[#e2e6eb] px-5 py-2 rounded-xl text-[13px] font-[600] transition-colors ml-2">Install</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
-    <global-footer></global-footer>
-    <script src="../scripts/autosync.js"></script>
-    <script src="../components/navbar.js"></script>
-    <script src="../components/footer.js"></script>
-</body>
-</html>
+        </section>
+        
+    </div>
+</main>
+
+<script src="../assets/js/dynamicLoader.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const btn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.querySelector('aside');
+        if (btn && sidebar) {
+            let overlay = document.getElementById('sidebarOverlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.id = 'sidebarOverlay';
+                overlay.className = 'fixed inset-0 bg-black/60 z-[110] hidden backdrop-blur-md transition-opacity';
+                document.body.appendChild(overlay);
+            }
+            const toggle = (show) => {
+                if (show) {
+                    sidebar.classList.remove('hidden');
+                    sidebar.classList.add('fixed', 'inset-y-0', 'left-0', 'z-[120]', 'w-72', 'shadow-2xl');
+                    overlay.classList.remove('hidden');
+                } else {
+                    sidebar.classList.add('hidden');
+                    sidebar.classList.remove('fixed', 'inset-y-0', 'left-0', 'z-[120]', 'w-72', 'shadow-2xl');
+                    overlay.classList.add('hidden');
+                }
+            };
+            btn.addEventListener('click', () => toggle(true));
+            overlay.addEventListener('click', () => toggle(false));
+        }
+
+        // Mobile search toggle
+        const searchToggle = document.getElementById('searchToggleBtn');
+        const searchContainer = document.getElementById('searchContainer');
+        const mobileSearchInput = document.getElementById('mobileSearchInput');
+        if (searchToggle && searchContainer) {
+            searchToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                searchContainer.classList.toggle('hidden');
+                if (!searchContainer.classList.contains('hidden') && mobileSearchInput) {
+                    mobileSearchInput.focus();
+                }
+            });
+            document.addEventListener('click', function(e) {
+                if (!searchContainer.contains(e.target) && e.target !== searchToggle) {
+                    searchContainer.classList.add('hidden');
+                }
+            });
+        }
+    });
+</script>
+</body></html>

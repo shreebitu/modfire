@@ -1,10 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>View Component — ShreeBitu.in</title>
+    <!-- Standard SEO -->
+    <meta name="description" content="Download premium applications, OS distributions, and developer tools from ShreeBitu. Fast, free, and reliable file library.">
+    <meta name="keywords" content="ShreeBitu, Download Apps, Linux ISO, Windows Tools, Open Source Software, Bitu Talukdar">
+    <meta name="author" content="Bitu Talukdar">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="View | ShreeBitu Library">
+    <meta property="og:description" content="Explore and download the latest software and files on ShreeBitu.">
+    <meta property="og:image" content="https://shreebitu.in/assets/images/og-image.png">
+
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <style>
@@ -19,162 +30,181 @@
     <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7668010130101569" crossorigin="anonymous"></script>
-</head>
-<body class="bg-[#0B0F19] text-gray-200 antialiased min-h-screen flex flex-col pt-16">
 
-  <!-- HEADER -->
-  <global-navbar></global-navbar>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif !important; background-color: #f7f9fc !important; }
+        .sidebar { background-color: #ffffff; border-right: 1px solid #eef1f5; }
+        .main-scroll::-webkit-scrollbar { width: 6px; }
+        .main-scroll::-webkit-scrollbar-track { background: transparent; }
+        .main-scroll::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+        .main-scroll::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+    </style>
+
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ShreeBitu",
+      "url": "https://shreebitu.in/",
+      "author": {
+        "@type": "Person",
+        "name": "Bitu Talukdar"
+      },
+      "description": "Premium file library and application store."
+    }
+    </script>
+</head>
+
+<body class="flex h-screen overflow-hidden text-[#1d1d1f]">
+
+<aside class="sidebar w-[260px] flex-shrink-0 flex flex-col h-full hidden md:flex z-20 shadow-[2px_0_10px_rgba(0,0,0,0.02)]">
+    <a href="index.html" class="px-6 py-5 flex items-center gap-3 hover:bg-gray-50 transition cursor-pointer block border-b border-gray-50">
+        <div class="w-9 h-9 bg-[#1d4ed8] text-white flex items-center justify-center rounded-xl shadow-sm rotate-3">
+            <svg class="w-5 h-5 -rotate-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
+            </svg>
+        </div>
+        <div>
+           <div class="font-bold tracking-tight text-[17px] text-gray-900 leading-tight">ShreeBitu</div>
+           <div class="text-[11px] text-gray-500 font-medium">File Library</div>
+        </div>
+    </a>
+
+    <!-- Nav -->
+    <div class="px-4 py-2 flex-1">
+        <div class="text-[11px] text-gray-400 mb-4 px-3 font-semibold tracking-wider">LIBRARY</div>
+        
+        <nav class="space-y-1">
+            <a href="index.html" id="nav-home" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>Home</a>
+            <a href="explore.html" id="nav-explore" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>Explore Library</a>
+            <a href="linux/index.html" id="nav-linux" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>Operating Systems</a>
+            <a href="apk/index.html" id="nav-apk" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>Mobile Apps</a>
+            <a href="opensource/index.html" id="nav-opensource" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>Open Source</a>
+            <a href="presentation/presentation.html" id="nav-presentation" class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>Presentations</a>
+        </nav>
+    
+    </div>
+    
+    <div class="mt-auto px-4 py-8 border-t border-gray-100 flex flex-col gap-1">
+        <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2 text-[14px] text-gray-500 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+            <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+            Dashboard
+        </a>
+    </div>
+</aside>
+
+<main class="flex-1 flex flex-col h-full bg-[#f8f9fa] relative z-10 w-full overflow-hidden">
+<!-- Top Nav -->
+    <header class="h-[64px] md:h-[72px] flex items-center justify-between px-4 lg:px-10 shrink-0 sticky top-0 bg-white z-30 border-b border-gray-100">
+        
+        <div class="flex items-center gap-2">
+            <button id="mobileMenuBtn" class="md:hidden text-gray-500 hover:text-[#0066cc] focus:outline-none p-1.5 shrink-0 bg-gray-50 rounded-lg">
+                <svg class="w-[22px] h-[22px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <a href="index.html" class="md:hidden font-bold tracking-tight text-[16px] text-[#0066cc] uppercase tracking-widest">SHREEBITU</a>
+            
+            <!-- Desktop Search (always visible on md+) -->
+            <div id="desktopSearchWrap" class="hidden md:flex items-center relative">
+                <svg class="w-4 h-4 text-gray-400 absolute left-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input type="text" id="searchInput" placeholder="Search..." class="bg-gray-50 text-[13px] text-gray-800 rounded-lg pl-9 pr-3 py-2 w-[140px] md:w-[180px] lg:w-[220px] outline-none focus:ring-2 focus:ring-[#0066cc]/30 focus:bg-white placeholder-gray-500 transition-all text-sm" />
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-2 md:gap-3">
+            <!-- Mobile Search Toggle Button -->
+            <button id="searchToggleBtn" class="md:hidden text-gray-500 hover:text-[#0066cc] p-2 shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </button>
+            
+            <!-- Mobile Search Dropdown (appears below header) -->
+            <div id="searchContainer" class="hidden absolute top-[72px] left-0 right-0 z-[200] bg-white border-b border-gray-100 p-3">
+                <div class="relative">
+                    <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input type="text" id="mobileSearchInput" placeholder="Search files, apps..." class="w-full bg-gray-50 text-[14px] text-gray-800 rounded-lg pl-9 pr-4 py-2.5 outline-none focus:ring-2 focus:ring-[#0066cc]/30 placeholder-gray-500" />
+                </div>
+                <div id="mobileSearchResults" class="mt-2 max-h-[60vh] overflow-y-auto"></div>
+            </div>
+            
+            <!-- Desktop Auth -->
+            <div class="hidden lg:flex items-center gap-2">
+                <a href="login.html" class="text-[13px] font-medium text-gray-600 hover:text-[#0066cc]">Log In</a>
+                <a href="signup.html" class="bg-[#0066cc] text-white px-3 py-1.5 rounded-lg text-[12px] font-medium hover:bg-[#0055aa]">Sign Up</a>
+            </div>
+            
+        </div>
+    </header>
+
+    <div class="flex-1 overflow-y-auto px-4 md:px-8 lg:px-10 pb-6 main-scroll text-[#1d1d1f]">
+        <div class="max-w-7xl mx-auto w-full pt-8">
+            <!-- WRAP CONTENT IN WHITE CARD -->
+            <div class="bg-white rounded-[16px] md:rounded-[24px] shadow-sm border border-gray-100/50 p-3 md:p-6 lg:p-10 relative overflow-hidden">
+
 
   <main id="templateContainer" class="flex-grow max-w-5xl mx-auto w-full px-6 py-12 flex justify-center items-center">
-      <div class="text-center text-gray-400 animate-pulse">Loading content...</div>
+      <div class="text-center text-gray-500 animate-pulse">Loading content...</div>
   </main>
 
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const fileId = urlParams.get('id');
+<script src="assets/js/dynamicLoader.js"></script>
 
-    async function loadFile() {
-        if (!fileId) {
-            document.getElementById('templateContainer').innerHTML = `<div class="text-red-400">No File ID provided.</div>`;
-            return;
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const btn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.querySelector('aside');
+        if (btn && sidebar) {
+            let overlay = document.getElementById('sidebarOverlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.id = 'sidebarOverlay';
+                overlay.className = 'fixed inset-0 bg-black/60 z-[110] hidden backdrop-blur-md transition-opacity';
+                document.body.appendChild(overlay);
+            }
+            const toggle = (show) => {
+                if (show) {
+                    sidebar.classList.remove('hidden');
+                    sidebar.classList.add('fixed', 'inset-y-0', 'left-0', 'z-[120]', 'w-72', 'shadow-2xl');
+                    overlay.classList.remove('hidden');
+                } else {
+                    sidebar.classList.add('hidden');
+                    sidebar.classList.remove('fixed', 'inset-y-0', 'left-0', 'z-[120]', 'w-72', 'shadow-2xl');
+                    overlay.classList.add('hidden');
+                }
+            };
+            btn.addEventListener('click', () => toggle(true));
+            overlay.addEventListener('click', () => toggle(false));
         }
 
-        try {
-            const res = await fetch(`/api/view/${fileId}`);
-            const data = await res.json();
-            
-            if (!data.success) throw new Error(data.error);
-
-            renderTemplate(data.file);
-
-        } catch (err) {
-            document.getElementById('templateContainer').innerHTML = `
-                <div class="text-center">
-                    <h2 class="text-4xl font-bold text-white mb-4">Error</h2>
-                    <p class="text-red-400">${err.message}</p>
-                    <a href="explore.html" class="text-indigo-400 hover:underline mt-4 inline-block">Return to Explore</a>
-                </div>
-            `;
+        // Mobile search toggle
+        const searchToggle = document.getElementById('searchToggleBtn');
+        const searchContainer = document.getElementById('searchContainer');
+        const mobileSearchInput = document.getElementById('mobileSearchInput');
+        if (searchToggle && searchContainer) {
+            searchToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                searchContainer.classList.toggle('hidden');
+                if (!searchContainer.classList.contains('hidden') && mobileSearchInput) {
+                    mobileSearchInput.focus();
+                }
+            });
+            document.addEventListener('click', function(e) {
+                if (!searchContainer.contains(e.target) && e.target !== searchToggle) {
+                    searchContainer.classList.add('hidden');
+                }
+            });
         }
-    }
-
-    function renderTemplate(file) {
-        const container = document.getElementById('templateContainer');
-        container.classList.remove('items-center'); // Allow children to flow naturally top-down
-        
-        let meta = {};
-        try { meta = JSON.parse(file.metadata); } catch(e){}
-
-        const downloadPath = `/api/download/${file.id}`;
-        const uploaderBlock = `<div class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between text-sm text-gray-500">
-            <span>Uploaded by ${file.uploader_email}</span>
-            <span>${new Date(file.created_at).toLocaleDateString()}</span>
-        </div>`;
-
-        let html = '';
-
-        if (file.file_type === 'ppt' || file.file_type === 'zip') {
-            const icon = file.file_type === 'ppt' ? '📊' : '📦';
-            const color = file.file_type === 'ppt' ? 'bg-purple-600/20 text-purple-400' : 'bg-yellow-600/20 text-yellow-500';
-            
-            html = `
-            <div class="w-full max-w-3xl mx-auto backdrop-blur-md bg-white/[0.02] border border-white/5 shadow-2xl rounded-3xl p-8 md:p-12 fade-in relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-8 opacity-10 text-9xl pointer-events-none">${icon}</div>
-                <div class="w-20 h-20 ${color} rounded-2xl flex items-center justify-center text-4xl mb-6">${icon}</div>
-                
-                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">${file.file_name}</h1>
-                <div class="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs font-bold rounded uppercase tracking-wider mb-6">${file.file_type}</div>
-                
-                <p class="text-gray-400 text-lg leading-relaxed mb-10 min-h-[100px]">${meta.description || 'No description provided.'}</p>
-                
-                <div class="flex gap-4">
-                    <a href="${downloadPath}" class="bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-4 rounded-xl font-semibold text-white shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:scale-105 transition active:scale-95 flex items-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        Download File
-                    </a>
-                </div>
-                ${uploaderBlock}
-            </div>`;
-        } 
-        else if (file.file_type === 'apk') {
-            html = `
-            <div class="w-full max-w-4xl mx-auto fade-in">
-                <div class="flex flex-col md:flex-row gap-8 items-start mb-10 backdrop-blur-md bg-white/[0.02] border border-white/5 rounded-3xl p-8 relative overflow-hidden">
-                    <div class="w-32 h-32 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center text-6xl shadow-[0_0_30px_rgba(52,211,153,0.3)] flex-shrink-0">📱</div>
-                    
-                    <div class="flex-grow z-10">
-                        <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">${file.file_name}</h1>
-                        <p class="text-green-400 font-medium mb-4">Version: ${meta.version || '1.0.0'} • Developer: ${meta.developer || 'Unknown'}</p>
-                        
-                        <div class="flex gap-4 mt-6">
-                            <a href="${downloadPath}" class="bg-white text-green-600 px-8 py-3 rounded-xl font-bold shadow-lg hover:bg-gray-100 transition hover:scale-105 active:scale-95 flex items-center gap-2">
-                                Download APK
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="md:col-span-2 backdrop-blur-md bg-white/[0.02] border border-white/5 rounded-3xl p-8">
-                        <h2 class="text-xl font-bold text-white mb-4 border-b border-white/10 pb-2">Description & Notes</h2>
-                        <p class="text-gray-400 leading-relaxed whitespace-pre-wrap">${meta.description || 'No description provided.'}</p>
-                    </div>
-                    
-                    <div class="backdrop-blur-md bg-white/[0.02] border border-white/5 rounded-3xl p-8 h-fit">
-                        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">App Details</h3>
-                        <div class="space-y-4 text-sm">
-                            <div class="flex justify-between"><span class="text-gray-400">File Type</span><span class="text-white">Android APK</span></div>
-                            <div class="flex justify-between"><span class="text-gray-400">Uploader</span><span class="text-white truncate max-w-[120px]">${file.uploader_email}</span></div>
-                            <div class="flex justify-between"><span class="text-gray-400">Updated</span><span class="text-white">${new Date(file.created_at).toLocaleDateString()}</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>`;
-        }
-        else if (file.file_type === 'github') {
-            html = `
-            <div class="w-full max-w-4xl mx-auto fade-in backdrop-blur-md bg-white/[0.02] border border-white/5 rounded-3xl overflow-hidden shadow-2xl">
-                <!-- Header part -->
-                <div class="bg-gray-900/50 p-8 md:p-12 border-b border-white/5">
-                    <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center text-3xl mb-6">💻</div>
-                    <h1 class="text-4xl font-bold text-white mb-2">${file.file_name}</h1>
-                    <div class="flex flex-wrap gap-2 mt-4 text-xs font-semibold py-1">
-                        ${(meta.stack || 'Development').split(',').map(s => `<span class="px-3 py-1 bg-white/10 rounded-full text-indigo-300 border border-white/5">${s.trim()}</span>`).join('')}
-                    </div>
-                </div>
-                
-                <!-- Body -->
-                <div class="p-8 md:p-12">
-                    <h2 class="text-xl font-bold text-white mb-4">About the Project</h2>
-                    <p class="text-gray-400 leading-relaxed mb-8 whitespace-pre-wrap">${meta.description || 'No description provided.'}</p>
-                    
-                    <div class="flex gap-4">
-                        <a href="${meta.repo || '#'}" target="_blank" class="bg-white text-gray-900 px-6 py-3 rounded-lg font-bold shadow hover:bg-gray-100 transition hover:scale-105 flex items-center gap-2">
-                           <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.285 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> 
-                           View on GitHub
-                        </a>
-                        ${file.r2_key ? `<a href="${downloadPath}" class="border border-white/20 px-6 py-3 rounded-lg font-semibold hover:bg-white/5 transition flex items-center gap-2 text-white">Download Code</a>` : ''}
-                    </div>
-                </div>
-                ${uploaderBlock}
-            </div>`;
-        } else {
-            // Fallback purely minimal View
-             html = `
-            <div class="w-full max-w-2xl mx-auto backdrop-blur-md bg-white/[0.02] border border-white/5 shadow rounded-2xl p-8 text-center fade-in">
-                <h1 class="text-3xl font-bold text-white mb-2">${file.file_name}</h1>
-                <p class="text-gray-500 mb-8">${file.file_type.toUpperCase()}</p>
-                <a href="${downloadPath}" class="bg-indigo-600 px-6 py-3 rounded-xl font-semibold text-white">Download</a>
-            </div>`;
-        }
-
-        container.innerHTML = html;
-    }
-
-    loadFile();
-  </script>
-
-  <script src="components/navbar.js"></script>
-  <script src="components/footer.js"></script>
-</body>
-</html>
+    });
+</script>
+</body></html>
