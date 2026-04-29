@@ -4,3 +4,8 @@ node_modules/
 
 # Local config - only for local dev, not for Cloudflare Pages production
 wrangler.toml
+
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
