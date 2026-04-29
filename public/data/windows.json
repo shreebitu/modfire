@@ -1,5 +1,13 @@
 [
     {
+        "title": "Macro Gamer (v2.7.5)",
+        "image": "windows/img/macrogamer.png",
+        "description": "Powerful software for creating, managing, and executing macros for gaming and productivity.",
+        "link": "windows/macrogamer.html",
+        "date": "2026-04-29",
+        "size": "2.1 MB"
+    },
+    {
         "title": "SmartGaGa v4 Super Lite (2025)",
         "image": "windows/img/smartgaga.png",
         "description": "Ultra lightweight fan-made Android emulator optimized for Free Fire and low-end PCs.",

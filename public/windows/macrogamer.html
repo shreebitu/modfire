@@ -49,55 +49,13 @@
       }
     }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style>
-        body {
-            font-family: 'Outfit', sans-serif;
-        }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        .fade-in-delay {
-            animation: fadeInUp 0.6s ease-out 0.2s forwards;
-            opacity: 0;
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://shreebitu.in/assets/images/shreebitu-logo.png">
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7668010130101569"
-        crossorigin="anonymous"></script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif !important;
-            background-color: #f7f9fc !important;
+            background-color: #f4f6f8 !important;
         }
 
         .sidebar {
@@ -121,512 +79,825 @@
         .main-scroll::-webkit-scrollbar-thumb:hover {
             background: #9ca3af;
         }
-    </style>
 
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .page-bg {
+            background-color: #f2f5f8;
+        }
+
+        .card-white {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        .btn-download {
+            background-color: #10b981;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2), 0 2px 4px -1px rgba(16, 185, 129, 0.1);
+        }
+
+        .btn-download:hover {
+            background-color: #059669;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 8px -1px rgba(16, 185, 129, 0.3);
+        }
+
+        .tab-active {
+            border-bottom: 2px solid #3b82f6;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .tab-inactive {
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .tab-inactive:hover {
+            color: #3b82f6;
+        }
+    </style>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logo.png">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7668010130101569"
+        crossorigin="anonymous"></script>
 </head>
 
 
-<body class="flex h-screen overflow-hidden text-[#1d1d1f]">
+<body class="flex h-screen overflow-hidden text-[#1e293b]">
 
     <aside
         class="sidebar w-[260px] flex-shrink-0 flex flex-col h-full hidden md:flex z-20 shadow-[2px_0_10px_rgba(0,0,0,0.02)]">
         <a href="../index.html"
             class="px-6 py-5 flex items-center gap-3 hover:bg-gray-50 transition cursor-pointer block border-b border-gray-50">
-            <div class="w-9 h-9 bg-[#1d4ed8] text-white flex items-center justify-center rounded-xl shadow-sm rotate-3">
+            <div class="w-9 h-9 bg-[#2563eb] text-white flex items-center justify-center rounded-xl shadow-sm rotate-3">
                 <svg class="w-5 h-5 -rotate-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
                 </svg>
             </div>
             <div>
-                <div class="font-bold tracking-tight text-[17px] text-gray-900 leading-tight">ShreeBitu</div>
-                <div class="text-[11px] text-gray-500 font-medium">File Library</div>
+                <div class="font-bold tracking-tight text-[17px] text-gray-900 leading-tight">SHREEBITU</div>
+                <div class="text-[11px] text-gray-500 font-medium tracking-wide">SOFTWARE CATALOG</div>
             </div>
         </a>
 
-        <!-- Nav -->
-        <div class="px-4 py-2 flex-1">
-            <div class="text-[11px] text-gray-400 mb-4 px-3 font-semibold tracking-wider">LIBRARY</div>
-
+        <div class="px-4 py-2 flex-1 mt-2">
+            <div class="text-[11px] text-gray-400 mb-3 px-3 font-semibold tracking-wider">PLATFORMS</div>
             <nav class="space-y-1">
-                <a href="../index.html" id="nav-home"
-                    class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <a href="../index.html"
+                    class="flex items-center gap-3 px-3 py-2.5 text-[13px] text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors">
                     <svg class="w-[18px] h-[18px] text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
                     </svg>Home</a>
-                <a href="../explore.html" id="nav-explore"
-                    class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
-                    <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                        stroke-width="2">
+                <a href="../windows/index.html"
+                    class="bg-blue-50 text-blue-700 font-medium flex items-center gap-3 px-3 py-2.5 text-[13px] rounded-lg transition-colors border border-blue-100">
+                    <svg class="w-[18px] h-[18px] text-blue-600" viewBox="0 0 24 24" fill="currentColor">
                         <path
-                            d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                    </svg>Explore Library</a>
-                <a href="../linux/index.html" id="nav-linux"
-                    class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
-                    <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                        stroke-width="2">
-                        <path
-                            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                    </svg>Operating Systems</a>
-                <a href="../apk/index.html" id="nav-apk"
-                    class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                            d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801" />
+                    </svg>Windows Files</a>
+                <a href="../apk/index.html"
+                    class="flex items-center gap-3 px-3 py-2.5 text-[13px] text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors">
                     <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         stroke-width="2">
                         <path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                    </svg>Mobile Apps</a>
-                <a href="../opensource/index.html" id="nav-opensource"
-                    class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
-                    <svg class="w-[18px] h-[18px] text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                    </svg>Android (APK)</a>
+                <a href="../linux/index.html"
+                    class="flex items-center gap-3 px-3 py-2.5 text-[13px] text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors">
+                    <svg class="w-[18px] h-[18px] text-gray-400" viewBox="0 0 24 24" fill="currentColor">
                         <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>Open Source</a>
-                <a href="../presentation/presentation.html" id="nav-presentation"
-                    class="flex items-center gap-3 px-3 py-2.5 text-[14px] text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                            d="M11.996 22.18c-3.7.838-5.918-.291-5.918-.291-.703-.314-1.282-1.391-1.282-1.391-1.579-2.072-.888-4.708-.888-4.708.577-3.327 3.39-4.836 3.39-4.836 2.05-1.077 4.195-1.127 5.176-1.127h.057c.983 0 3.126.05 5.176 1.127 0 0 2.813 1.509 3.39 4.836 0 0 .69 2.636-.888 4.708 0 0-.58 1.077-1.282 1.391 0 0-2.218 1.129-5.918.29z" />
+                    </svg>Linux Tools</a>
+                <a href="../explore.html"
+                    class="flex items-center gap-3 px-3 py-2.5 text-[13px] text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors">
                     <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         stroke-width="2">
-                        <path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-                    </svg>Presentations</a>
+                        <path d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                    </svg>Full Directory</a>
             </nav>
-
         </div>
 
-        <div class="mt-auto px-4 py-8 border-t border-gray-100 flex flex-col gap-1">
-            <a href="../dashboard.html"
-                class="flex items-center gap-3 px-3 py-2 text-[14px] text-gray-500 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors font-medium">
-                <svg class="w-[18px] h-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        <div class="mt-auto px-4 py-4 border-t border-gray-100 flex flex-col gap-1">
+            <div class="text-[10px] text-gray-400 px-3 mb-2 font-bold uppercase tracking-widest">Support</div>
+            <a href="../about.html"
+                class="flex items-center gap-3 px-3 py-2 text-[13px] text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                About Us
+            </a>
+            <a href="../privacy.html"
+                class="flex items-center gap-3 px-3 py-2 text-[13px] text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                     stroke-width="2">
                     <path
-                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
-                Dashboard
+                Privacy Policy
             </a>
         </div>
     </aside>
 
-    <main class="flex-1 flex flex-col h-full bg-[#f8f9fa] relative z-10 w-full overflow-hidden">
+    <main class="flex-1 flex flex-col h-full bg-[#f4f6f8] relative z-10 w-full overflow-hidden">
         <!-- Top Nav -->
         <header
-            class="h-[64px] md:h-[72px] flex items-center justify-between px-4 lg:px-10 shrink-0 sticky top-0 bg-white z-30 border-b border-gray-100">
+            class="h-[64px] bg-white border-b border-gray-200 flex items-center justify-between px-4 lg:px-8 shrink-0 z-30 shadow-sm">
 
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-3">
                 <button id="mobileMenuBtn"
-                    class="md:hidden text-gray-500 hover:text-[#0066cc] focus:outline-none p-1.5 shrink-0 bg-gray-50 rounded-lg">
-                    <svg class="w-[22px] h-[22px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    class="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none p-2 rounded-md hover:bg-gray-100">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
-                <a href="index.html"
-                    class="md:hidden font-bold tracking-tight text-[16px] text-[#0066cc] uppercase tracking-widest">SHREEBITU</a>
+                <a href="../index.html"
+                    class="md:hidden font-bold tracking-tight text-[18px] text-gray-900">SHREEBITU</a>
 
-                <!-- Desktop Search (always visible on md+) -->
-                <div id="desktopSearchWrap" class="hidden md:flex items-center relative">
-                    <svg class="w-4 h-4 text-gray-400 absolute left-3" fill="none" viewBox="0 0 24 24"
+                <div id="desktopSearchWrap" class="hidden md:flex items-center relative ml-2">
+                    <input type="text" id="searchInput" placeholder="Search for programs..."
+                        class="bg-gray-100 border border-transparent text-[14px] text-gray-900 rounded-md pl-10 pr-4 py-2 w-[280px] outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-all shadow-inner" />
+                    <svg class="w-4 h-4 text-gray-500 absolute left-3.5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2">
-                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
-                    <input type="text" id="searchInput" placeholder="Search..."
-                        class="bg-gray-50 text-[13px] text-gray-800 rounded-lg pl-9 pr-3 py-2 w-[140px] md:w-[180px] lg:w-[220px] outline-none focus:ring-2 focus:ring-[#0066cc]/30 focus:bg-white placeholder-gray-500 transition-all text-sm" />
                 </div>
             </div>
 
-            <div class="flex items-center gap-2 md:gap-3">
-                <!-- Mobile Search Toggle Button -->
-                <button id="searchToggleBtn" class="md:hidden text-gray-500 hover:text-[#0066cc] p-2 shrink-0">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                </button>
-
-                <!-- Mobile Search Dropdown (appears below header) -->
-                <div id="searchContainer"
-                    class="hidden absolute top-[72px] left-0 right-0 z-[200] bg-white border-b border-gray-100 p-3">
-                    <div class="relative">
-                        <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
-                        <input type="text" id="mobileSearchInput" placeholder="Search files, apps..."
-                            class="w-full bg-gray-50 text-[14px] text-gray-800 rounded-lg pl-9 pr-4 py-2.5 outline-none focus:ring-2 focus:ring-[#0066cc]/30 placeholder-gray-500" />
-                    </div>
-                    <div id="mobileSearchResults" class="mt-2 max-h-[60vh] overflow-y-auto"></div>
-                </div>
-
-                <!-- Desktop Auth -->
-                <div class="hidden lg:flex items-center gap-2">
-                    <a href="login.html" class="text-[13px] font-medium text-gray-600 hover:text-[#0066cc]">Log In</a>
-                    <a href="signup.html"
-                        class="bg-[#0066cc] text-white px-3 py-1.5 rounded-lg text-[12px] font-medium hover:bg-[#0055aa]">Sign
+            <div class="flex items-center gap-4">
+                <div class="hidden lg:flex items-center gap-3">
+                    <a href="../login.html" class="text-[13px] font-semibold text-gray-600 hover:text-blue-600">Log
+                        In</a>
+                    <a href="../signup.html"
+                        class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-1.5 rounded-md text-[13px] font-semibold shadow-sm transition-all">Sign
                         Up</a>
                 </div>
-
             </div>
         </header>
 
-        <div class="flex-1 overflow-y-auto px-4 md:px-8 lg:px-10 pb-6 main-scroll text-[#1d1d1f]">
-            <div class="max-w-7xl mx-auto w-full pt-8">
-                <!-- WRAP CONTENT IN WHITE CARD -->
-                <div
-                    class="bg-white rounded-[16px] md:rounded-[24px] shadow-sm border border-gray-100/50 p-3 md:p-6 lg:p-10 relative overflow-hidden">
+        <!-- CONTENT SCROLL CONTAINER -->
+        <div class="flex-1 overflow-y-auto overflow-x-hidden main-scroll page-bg relative">
+            <div class="max-w-[1300px] mr-auto ml-0 px-2 sm:px-3 lg:px-4 py-4">
 
+                <!-- Breadcrumbs -->
+                <nav class="flex text-[12px] font-medium text-gray-500 mb-4 px-1" aria-label="Breadcrumb">
+                    <ol
+                        class="inline-flex items-center space-x-1 md:space-x-2 bg-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-gray-200 shadow-[0_1px_2px_rgba(0,0,0,0.03)] w-max max-w-full overflow-hidden">
+                        <li class="inline-flex items-center">
+                            <a href="../index.html"
+                                class="inline-flex items-center gap-1.5 text-gray-500 hover:text-blue-600 transition-colors">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+                                    </path>
+                                </svg>
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
+                                <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <a href="index.html"
+                                    class="ml-1 sm:ml-2 text-gray-500 hover:text-blue-600 transition-colors">Windows</a>
+                            </div>
+                        </li>
+                        <li aria-current="page">
+                            <div class="flex items-center">
+                                <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="ml-1 sm:ml-2 text-blue-600 font-bold">Macro Gamer</span>
+                            </div>
+                        </li>
+                    </ol>
+                </nav>
 
-                    <!-- ================= APP HERO CONTENT ================= -->
-                    <main class="relative z-10 w-full max-w-[1400px] mx-auto px-1 md:px-4 pt-1 md:pt-6 pb-4 md:pb-10">
-
-                        <!-- Breadcrumbs -->
-                        <div class="text-sm text-gray-500/90 mb-3 md:mb-6 fade-in">
-                            <a href="../explore.html" class="hover:text-orange-400 transition">Apps</a>
-                            <span class="mx-2">�</span>
-                            <span class="text-gray-900">Macro Gamer</span>
+                <!-- Hero Card -->
+                <div class="card-white p-3 sm:p-4 bg-white mb-4 flex flex-col">
+                    <div class="flex flex-row items-start gap-3 sm:gap-4">
+                        <div class="relative flex-shrink-0">
+                            <div
+                                class="w-20 h-20 sm:w-24 sm:h-24 rounded-[16px] bg-white border border-gray-200 shadow-sm flex items-center justify-center overflow-hidden">
+                                <img src="img/macrogamer.png" alt="Macro Gamer Icon"
+                                    class="w-full h-full object-contain">
+                            </div>
+                            <div class="absolute -bottom-1.5 -right-1.5 sm:-bottom-2 sm:-right-2 bg-green-500 text-white rounded-full p-0.5 sm:p-1 border-2 border-white z-10"
+                                title="Verified Safe">
+                                <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
                         </div>
 
-                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+                        <div class="flex-1 min-w-0 text-left flex flex-col justify-center pt-0.5 sm:pt-0 overflow-hidden">
+                            <h1 class="text-xl sm:text-3xl font-bold text-gray-900 mb-0.5 sm:mb-2 tracking-tight leading-tight">
+                                Macro Gamer for PC
+                            </h1>
+                            <div class="flex flex-wrap items-center gap-2 mb-3">
+                                <span class="bg-blue-600/10 text-blue-600 border border-blue-600/20 text-[11px] px-2.5 py-1 rounded-full font-bold flex items-center gap-1.5 uppercase tracking-wide">
+                                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801"/></svg>
+                                    Windows App
+                                </span>
+                                <span class="bg-orange-500/10 text-orange-600 border border-orange-500/20 text-[11px] px-2.5 py-1 rounded-full font-semibold">v2.7.5 Stable</span>
+                            </div>
+                            <h2 class="text-[14px] sm:text-[17px] text-gray-500 font-medium leading-none">Official Build by itoday</h2>
+                            </div>
+                        </div>
 
-                            <!-- MIDDLE COLUMN: APP DETAILS -->
-                            <div class="lg:col-span-8 space-y-4 md:space-y-8 fade-in">
+                        <div class="md:hidden flex-shrink-0 flex items-center justify-center self-center pl-1 pr-1">
+                            <a href="#downloadSection"
+                                class="bg-[#059669] hover:bg-[#047857] text-white font-bold py-1.5 px-5 rounded-[20px] text-[13px] shadow-sm transition-transform active:scale-95 leading-none">Download</a>
+                        </div>
+                    </div>
 
-                                <!-- Main Identity Card -->
-                                <div
-                                    class="backdrop-blur-md bg-gray-50/50 border border-gray-200 shadow-2xl shadow-black/50 rounded-2xl p-4 md:p-6 lg:p-8 relative overflow-hidden">
-                                    <div
-                                        class="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-white/20 to-transparent">
-                                    </div>
+                    <div class="mt-3 pt-3 border-t border-gray-50 flex flex-wrap items-center justify-start gap-x-2 sm:gap-x-4 gap-y-1.5 text-[11px] sm:text-[13px] text-gray-500">
+                        <div class="flex items-center gap-1 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">
+                            <span class="font-bold text-gray-900">4.8</span>
+                            <svg class="w-3 h-3 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                        </div>
+                        <span class="text-gray-200 hidden sm:block">|</span>
+                        <div class="flex items-center gap-1">
+                            <span class="text-gray-400">Size:</span>
+                            <span class="font-semibold text-gray-700">45 MB</span>
+                        </div>
+                        <span class="text-gray-200">|</span>
+                        <div class="flex items-center gap-1">
+                            <span class="text-gray-400">Platform:</span>
+                            <span class="text-blue-600 font-semibold">Windows PC</span>
+                        </div>
+                    </div>
+                </div>
 
-                                    <div class="flex flex-row items-start md:items-center gap-4 md:gap-6">
-                                        <img id="appLogo" src="img/macrogamer.png" alt="Macro Gamer Logo"
-                                            class="w-20 h-20 md:w-32 md:h-32 object-cover rounded-2xl shadow-lg shadow-black/40 ring-1 ring-white/10 transition-all duration-500 hover:scale-105 flex-shrink-0">
+                <div class="flex flex-col lg:flex-row gap-4">
+                    <!-- Left Content -->
+                    <div class="w-full lg:w-[68%] flex flex-col gap-4 lg:order-1">
+                        <div class="card-white overflow-hidden">
+                            <div class="flex border-b border-gray-200 bg-gray-50/50 px-2 sm:px-4 pt-2 overflow-x-auto no-scrollbar">
+                                <button onclick="switchTab('description')" id="tab-description" class="px-5 py-3 text-[14px] font-medium border-b-2 border-blue-600 text-blue-600 transition-colors">Description</button>
+                                <button onclick="switchTab('installation')" id="tab-installation" class="px-5 py-3 text-[14px] font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 transition-colors">Installation</button>
+                                <button onclick="switchTab('trust')" id="tab-trust" class="px-5 py-3 text-[14px] font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 transition-colors">Trust & Safety</button>
+                                <button onclick="switchTab('changelog')" id="tab-changelog" class="px-5 py-3 text-[14px] font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 transition-colors">Changelog</button>
+                            </div>
 
-                                        <div class="flex-1 min-w-0">
-                                            <div class="flex flex-wrap items-center gap-2 mb-2">
-                                                <h1 id="appTitle"
-                                                    class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 truncate">
-                                                    Macro Gamer for PC</h1>
-                                                <span
-                                                    class="bg-orange-500/20 text-orange-400 border border-orange-500/20 text-[10px] px-2.5 py-1 rounded-full flex items-center gap-1 font-semibold whitespace-nowrap">
-                                                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path
-                                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                    </svg>
-                                                    v2.7.5 Latest
-                                                </span>
-                                            </div>
-                                            <p class="text-orange-400 font-medium mb-3">Developed by itoday</p>
-
-                                            <div
-                                                class="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs sm:text-sm text-gray-500/90 mt-1">
-                                                <span class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded-md">?
-                                                    4.8 (15k+ reviews)</span>
-                                                <span class="hidden sm:inline text-gray-600">�</span>
-                                                <span
-                                                    class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded-md">Windows
-                                                    7/8.1/10/11</span>
-                                                <span class="hidden sm:inline text-gray-600">�</span>
-                                                <span
-                                                    class="font-bold text-gray-900 bg-orange-500/10 border border-orange-500/20 px-2 py-1 rounded-md">Utility</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Description & Overview Section -->
-                                <section
-                                    class="backdrop-blur-md bg-gray-50/50 border border-gray-200 shadow-xl rounded-2xl p-5 sm:p-6 md:p-8">
-                                    <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">Overview</h2>
-                                    <p class="text-gray-600 leading-relaxed text-sm md:text-base text-justify">
-                                        Macro Gamer is a versatile and advanced macro automation application explicitly
-                                        built for PC users. Carefully designed by <strong>itoday</strong>, this software
-                                        enables you to seamlessly create, manage, and execute complex macros�which are
-                                        essentially sequences of predefined commands. By automating highly repetitive
-                                        events and actions, Macro Gamer serves as an essential tool for boosting speed
-                                        and efficiency in both competitive gaming and routine productivity tasks.
+                            <div class="p-4 sm:p-8">
+                                <div id="content-description" class="tab-content block">
+                                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                        <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
+                                        Why Macro Gamer?
+                                    </h3>
+                                    <p class="text-gray-600 mb-8 leading-relaxed text-[15px]">
+                                        Are you tired of doing the same repetitive clicks and keystrokes in your favorite games or daily workflow? <strong>Macro Gamer</strong> is a powerful, lightweight automation tool for Windows designed to bridge the gap between simple recorders and complex scripting engines. Unlike generic tools, it offers the precision required for high-stakes gaming while remaining simple enough for anyone to use. Whether you're looking to dominate a leaderboard or automate a tedious data-entry task, Macro Gamer gives you the absolute control you need.
                                     </p>
-                                </section>
 
-                                <!-- Core Features Section -->
-                                <section class="pt-2 md:pt-6 space-y-4 md:space-y-6">
-                                    <h2
-                                        class="text-xl md:text-2xl font-bold text-gray-900 flex items-center gap-3 px-2">
-                                        <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M13 10V3L4 14h7v7l9-11h-7z">
-                                            </path>
-                                        </svg>
-                                        Core Features of Macro Gamer
-                                    </h2>
-
-                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <div
-                                            class="group backdrop-blur-md bg-white/[0.03] border border-gray-200 p-4 md:p-6 rounded-2xl hover:bg-white/[0.05] hover:border-orange-500/30 transition-all duration-300">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                                <span class="text-xl">??</span>
+                                    <h3 class="text-lg font-bold text-gray-900 mb-4">Core Capabilities</h3>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+                                        <div class="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-blue-100 transition-colors">
+                                            <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-3">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                             </div>
-                                            <h3 class="text-orange-400 font-semibold text-lg mb-2">Record Complex
-                                                Sequences</h3>
-                                            <p class="text-sm text-gray-500 leading-relaxed">Accurately capture explicit
-                                                mouse click events and keyboard presses simultaneously to construct
-                                                intricate macro sequences flawlessly.</p>
+                                            <h4 class="font-bold text-gray-900 text-sm mb-1">Live Input Capture</h4>
+                                            <p class="text-[12px] text-gray-500 leading-relaxed">Record your mouse clicks and keyboard presses in real-time as you perform them.</p>
                                         </div>
-
-                                        <div
-                                            class="group backdrop-blur-md bg-white/[0.03] border border-gray-200 p-4 md:p-6 rounded-2xl hover:bg-white/[0.05] hover:border-blue-500/30 transition-all duration-300">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                                <span class="text-xl">??</span>
+                                        <div class="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-blue-100 transition-colors">
+                                            <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center mb-3">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                                             </div>
-                                            <h3 class="text-blue-400 font-semibold text-lg mb-2">Custom Key Bindings
-                                            </h3>
-                                            <p class="text-sm text-gray-500 leading-relaxed">Easily assign your recorded
-                                                macro actions to specific keyboard keys or mouse buttons, drastically
-                                                optimizing your gaming and work setups.</p>
+                                            <h4 class="font-bold text-gray-900 text-sm mb-1">Custom Bindings</h4>
+                                            <p class="text-[12px] text-gray-500 leading-relaxed">Assign complex macros to any key or mouse button for instant, one-tap execution.</p>
                                         </div>
-
-                                        <div
-                                            class="group backdrop-blur-md bg-white/[0.03] border border-gray-200 p-4 md:p-6 rounded-2xl hover:bg-white/[0.05] hover:border-emerald-500/30 transition-all duration-300">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                                <span class="text-xl">??</span>
+                                        <div class="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-blue-100 transition-colors">
+                                            <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center mb-3">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
                                             </div>
-                                            <h3 class="text-emerald-400 font-semibold text-lg mb-2">Continuous Looping
-                                                Mode</h3>
-                                            <p class="text-sm text-gray-500 leading-relaxed">Execute macros continuously
-                                                without interruption as long as the assigned button is held down. Great
-                                                for rapid-fire techniques or intense grinding.</p>
+                                            <h4 class="font-bold text-gray-900 text-sm mb-1">Infinite Looping</h4>
+                                            <p class="text-[12px] text-gray-500 leading-relaxed">Keep your actions repeating seamlessly as long as you hold down your assigned hotkey.</p>
                                         </div>
-
-                                        <div
-                                            class="group backdrop-blur-md bg-white/[0.03] border border-gray-200 p-4 md:p-6 rounded-2xl hover:bg-white/[0.05] hover:border-purple-500/30 transition-all duration-300">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                                <span class="text-xl">???</span>
+                                        <div class="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-blue-100 transition-colors">
+                                            <div class="w-10 h-10 bg-orange-50 text-orange-600 rounded-lg flex items-center justify-center mb-3">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                                             </div>
-                                            <h3 class="text-purple-400 font-semibold text-lg mb-2">Precise Mouse
-                                                Playback</h3>
-                                            <p class="text-sm text-gray-500 leading-relaxed">Replay physical mouse
-                                                movements and specific clicking patterns with exact precision to
-                                                automate repetitive cursor transitions.</p>
+                                            <h4 class="font-bold text-gray-900 text-sm mb-1">Exact Playback</h4>
+                                            <p class="text-[12px] text-gray-500 leading-relaxed">Replay mouse movements and clicks with 1:1 accuracy, exactly as they were recorded.</p>
                                         </div>
-
-                                        <div
-                                            class="group backdrop-blur-md bg-white/[0.03] border border-gray-200 p-4 md:p-6 rounded-2xl hover:bg-white/[0.05] hover:border-cyan-500/30 transition-all duration-300">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                                <span class="text-xl">??</span>
+                                        <div class="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-blue-100 transition-colors">
+                                            <div class="w-10 h-10 bg-rose-50 text-rose-600 rounded-lg flex items-center justify-center mb-3">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
                                             </div>
-                                            <h3 class="text-cyan-400 font-semibold text-lg mb-2">Profile Backup &
-                                                Sharing</h3>
-                                            <p class="text-sm text-gray-500 leading-relaxed">Seamlessly extract or back
-                                                up your customized macro settings locally, and effortlessly export your
-                                                profiles to share them with other users.</p>
-                                        </div>
-
-                                        <div
-                                            class="group backdrop-blur-md bg-white/[0.03] border border-gray-200 p-4 md:p-6 rounded-2xl hover:bg-white/[0.05] hover:border-rose-500/30 transition-all duration-300">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-rose-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                                <span class="text-xl">??</span>
-                                            </div>
-                                            <h3 class="text-rose-400 font-semibold text-lg mb-2">Advanced Remapping &
-                                                Delays</h3>
-                                            <p class="text-sm text-gray-500 leading-relaxed">Rapidly reconfigure
-                                                keystrokes, define precise delay times between click events, rename your
-                                                active macros, and personalize hardware inputs safely.</p>
+                                            <h4 class="font-bold text-gray-900 text-sm mb-1">Profile Sharing</h4>
+                                            <p class="text-[12px] text-gray-500 leading-relaxed">Create, save, and export your macro configurations to share them with other gamers.</p>
                                         </div>
                                     </div>
-                                </section>
 
-                                <!-- Alternatives Section -->
-                                <section class="pt-6 md:pt-10">
-                                    <h2 class="text-xl font-bold text-gray-900 mb-6">Alternative Auto Clickers & Macro
-                                        Programs</h2>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                        <a href="javascript:void(0)"
-                                            class="backdrop-blur-md bg-white/[0.05] border border-gray-300 p-5 rounded-xl hover:bg-indigo-500/10 transition-all group">
-                                            <h3
-                                                class="text-gray-900 font-semibold flex items-center gap-2 group-hover:text-indigo-400">
-                                                TG Macro <svg
-                                                    class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
-                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                                                </svg></h3>
-                                            <p class="text-xs text-gray-500 mt-2 leading-relaxed">The most advanced and
-                                                lightweight keyboard/mouse clicker engineered specifically for Windows
-                                                7/8.1/10/11 environments.</p>
-                                        </a>
-                                        <a href="javascript:void(0)"
-                                            class="backdrop-blur-md bg-white/[0.05] border border-gray-300 p-5 rounded-xl hover:bg-emerald-500/10 transition-all group">
-                                            <h3
-                                                class="text-gray-900 font-semibold flex items-center gap-2 group-hover:text-emerald-400">
-                                                OP Auto Clicker <svg
-                                                    class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
-                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                                                </svg></h3>
-                                            <p class="text-xs text-gray-500 mt-2 leading-relaxed">Boost your CPS far
-                                                beyond human thresholds. Versions 3.0 and 4.0 available for extremely
-                                                fast, automated clicks.</p>
-                                        </a>
-                                        <a href="javascript:void(0)"
-                                            class="backdrop-blur-md bg-white/[0.05] border border-gray-300 p-5 rounded-xl hover:bg-amber-500/10 transition-all group">
-                                            <h3
-                                                class="text-gray-900 font-semibold flex items-center gap-2 group-hover:text-amber-400">
-                                                Speed AutoClicker 2024 <svg
-                                                    class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
-                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                                                </svg></h3>
-                                            <p class="text-xs text-gray-500 mt-2 leading-relaxed">Experience
-                                                lightning-fast localized custom clicking, delay definitions, and
-                                                high-performance looping configurations.</p>
-                                        </a>
+                                    <h3 class="text-lg font-bold text-gray-900 mb-4">Advanced Pro-Gaming Features</h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+                                        <div class="flex gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                                            <div class="text-blue-600 pt-1">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            </div>
+                                            <div>
+                                                <h5 class="font-bold text-gray-900 text-[14px]">Millisecond Precision</h5>
+                                                <p class="text-[12px] text-gray-500 leading-relaxed">Adjust input delays down to the millisecond for frame-perfect execution in competitive play.</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                                            <div class="text-purple-600 pt-1">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.172-1.172a4 4 0 115.656 5.656L15 13.586V17"></path></svg>
+                                            </div>
+                                            <div>
+                                                <h5 class="font-bold text-gray-900 text-[14px]">Visual Pixel Events</h5>
+                                                <p class="text-[12px] text-gray-500 leading-relaxed">Set macros to trigger or wait based on specific RGB pixel color changes on your screen.</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                                            <div class="text-emerald-600 pt-1">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                            </div>
+                                            <div>
+                                                <h5 class="font-bold text-gray-900 text-[14px]">Manual Key Logic</h5>
+                                                <p class="text-[12px] text-gray-500 leading-relaxed">Full control over "Key Down" and "Key Up" events, allowing for complex multi-key combinations.</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                                            <div class="text-orange-600 pt-1">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                                            </div>
+                                            <div>
+                                                <h5 class="font-bold text-gray-900 text-[14px]">Advanced Remapping</h5>
+                                                <p class="text-[12px] text-gray-500 leading-relaxed">Easily remap your entire keyboard layout to better suit your gaming preferences.</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </section>
-                            </div>
 
-                            <!-- RIGHT SIDEBAR COLUMN -->
-                            <div class="lg:col-span-4 space-y-6 fade-in-delay lg:sticky lg:top-24">
-                                <div
-                                    class="backdrop-blur-md bg-orange-600/5 text-center border border-orange-500/20 shadow-2xl rounded-2xl p-6">
-                                    <h3 class="text-gray-900 font-bold text-xl mb-4">Download Macro Gamer</h3>
-                                    <p class="text-gray-500/90 text-xs mb-8">Official v2.7.5 PC Release</p>
+                                    <h3 class="text-lg font-bold text-gray-900 mb-4">Maximum Productivity</h3>
+                                    <div class="p-6 rounded-2xl bg-gray-900 text-white shadow-xl mb-8">
+                                        <div class="flex flex-col md:flex-row gap-8 items-center">
+                                            <div class="flex-1">
+                                                <h5 class="text-xl font-bold mb-3">Work Smarter, Not Harder</h5>
+                                                <p class="text-gray-400 text-[13px] leading-relaxed mb-4">Macro Gamer isn't just for gaming. Automate repetitive office tasks, data entry, or software testing with an intuitive editor that requires zero coding knowledge.</p>
+                                                <ul class="space-y-2 text-[12px] text-gray-300">
+                                                    <li class="flex items-center gap-2">
+                                                        <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                                        Visual, easy-to-use Macro Editor
+                                                    </li>
+                                                    <li class="flex items-center gap-2">
+                                                        <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                                        Editable INI profile format for power users
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="w-full md:w-1/3 bg-gray-800 rounded-xl p-4 border border-gray-700">
+                                                <div class="text-[11px] font-mono text-emerald-400">
+                                                    [Macro_Example]<br>
+                                                    Key_Delay=15ms<br>
+                                                    Action=Keyboard_Press<br>
+                                                    Key=F12<br>
+                                                    Loop=True
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                    <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2 mt-12 pt-6 border-t border-gray-100">
+                                        <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
+                                        Technical Verification
+                                    </h3>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                                        <div class="bg-gray-900 rounded-xl p-4 font-mono text-[11px] text-gray-300 shadow-lg border border-gray-800">
+                                            <div class="flex items-center gap-2 mb-3 border-b border-gray-800 pb-2">
+                                                <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                                                <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                                                <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                                                <span class="ml-2 text-gray-500 text-[10px]">Setup MSI Hash</span>
+                                            </div>
+                                            <p class="text-blue-400 mb-1">> certutil -hashfile MacroGamer_v275_Setup.msi SHA1</p>
+                                            <p class="text-white">SHA1: a9f931e9f7c8a7964d19af9b5f938c2dbfcb44e4</p>
+                                        </div>
+                                        
+                                        <div class="bg-gray-900 rounded-xl p-4 font-mono text-[11px] text-gray-300 shadow-lg border border-gray-800">
+                                            <div class="flex items-center gap-2 mb-3 border-b border-gray-800 pb-2">
+                                                <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                                                <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                                                <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                                                <span class="ml-2 text-gray-500 text-[10px]">Source ZIP Hash</span>
+                                            </div>
+                                            <p class="text-blue-400 mb-1">> certutil -hashfile MacroGamer_v275_Source.zip SHA1</p>
+                                            <p class="text-white">SHA1: 8056ad22af11affdc1e9911394900c04d8378a1f</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-blue-50 border border-blue-100 rounded-xl p-4 mb-10 flex gap-4">
+                                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex-shrink-0 flex items-center justify-center">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-blue-900 text-sm mb-1">What is this?</h4>
+                                            <p class="text-blue-800/80 text-[12px] leading-relaxed">
+                                                A hash is a digital fingerprint used to verify the <b>integrity</b> of a file. Use the command lines above in your Windows Terminal to check your downloaded file. <b>Only install MacroGamer if the hash matches exactly.</b>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                                        <span class="w-1.5 h-6 bg-purple-600 rounded-full"></span>
+                                        Troubleshooting & FAQ
+                                    </h3>
+                                    
+                                    <div class="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+                                        <div class="bg-purple-600 px-6 py-3">
+                                            <h4 class="text-white font-bold text-[15px] flex items-center gap-2">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                Macros not saving?
+                                            </h4>
+                                        </div>
+                                        <div class="p-6">
+                                            <p class="text-gray-600 text-[13px] mb-6 leading-relaxed">
+                                                By default, macros are saved to the installation directory: <code class="bg-gray-100 px-2 py-0.5 rounded text-red-500 font-mono text-[12px]">/Program Files (x86)/MacroGamer</code>. This requires administrative <b>Write Permissions</b> which modern Windows accounts often restrict.
+                                            </p>
+                                            
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                <div class="relative pl-10">
+                                                    <div class="absolute left-0 top-0 w-8 h-8 bg-green-50 text-green-600 rounded-lg flex items-center justify-center font-bold text-xs border border-green-100">01</div>
+                                                    <h5 class="font-bold text-gray-900 text-[13px] mb-1">Recommended Fix</h5>
+                                                    <p class="text-[12px] text-gray-500">Create and save your MacroGamer profiles in your <b>Documents</b> folder or on the <b>Desktop</b>.</p>
+                                                </div>
+                                                <div class="relative pl-10">
+                                                    <div class="absolute left-0 top-0 w-8 h-8 bg-gray-50 text-gray-600 rounded-lg flex items-center justify-center font-bold text-xs border border-gray-100">02</div>
+                                                    <h5 class="font-bold text-gray-900 text-[13px] mb-1">Alternative Fix</h5>
+                                                    <p class="text-[12px] text-gray-500">Right-click the shortcut and choose <b>Run as administrator</b>. (Use only if Solution 1 fails).</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="content-installation" class="tab-content hidden">
+                                    <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                                        <span class="w-1.5 h-6 bg-green-600 rounded-full"></span>
+                                        How to Install
+                                    </h3>
                                     <div class="space-y-4">
-                                        <a href="javascript:void(0)"
-                                            class="relative w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 shadow-lg border border-gray-300 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 group hover:scale-[1.02] active:scale-95">
-                                            <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
-                                                </path>
-                                            </svg>
-                                            <span>Download Setup (.msi)</span>
-                                        </a>
-
-                                        <div class="mt-6 pt-6 border-t border-gray-200 space-y-3 text-left">
-                                            <div class="flex justify-between text-[11px] text-gray-500">
-                                                <span>File Name:</span>
-                                                <span class="text-gray-600">MacroGamer_2.7.5.msi</span>
+                                        <div class="flex gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100 items-start">
+                                            <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex-shrink-0 flex items-center justify-center font-bold text-sm">1</div>
+                                            <div>
+                                                <h4 class="font-bold text-gray-900 text-sm mb-1">Download Installer</h4>
+                                                <p class="text-[13px] text-gray-500">Click the download button on the right to get the <b>MacroGamer_2.7.5.msi</b> file.</p>
                                             </div>
-                                            <div class="flex justify-between text-[11px] text-gray-500">
-                                                <span>Platform:</span>
-                                                <span class="text-gray-600">Windows PC</span>
+                                        </div>
+                                        <div class="flex gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100 items-start">
+                                            <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex-shrink-0 flex items-center justify-center font-bold text-sm">2</div>
+                                            <div>
+                                                <h4 class="font-bold text-gray-900 text-sm mb-1">Run Setup</h4>
+                                                <p class="text-[13px] text-gray-500">Double-click the MSI file and follow the Windows installation wizard steps.</p>
                                             </div>
-                                            <div class="flex justify-between text-[11px] text-gray-500">
-                                                <span>Author:</span>
-                                                <span class="text-gray-600">itoday</span>
+                                        </div>
+                                        <div class="flex gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100 items-start">
+                                            <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex-shrink-0 flex items-center justify-center font-bold text-sm">3</div>
+                                            <div>
+                                                <h4 class="font-bold text-gray-900 text-sm mb-1">Launch App</h4>
+                                                <p class="text-[13px] text-gray-500">Open Macro Gamer from your desktop or start menu and start recording.</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- System Requirements Card -->
-                                <div
-                                    class="backdrop-blur-md bg-gray-50/50 border border-gray-200 shadow-xl rounded-2xl p-6 text-sm">
-                                    <h3
-                                        class="font-semibold text-gray-900 mb-4 border-b border-gray-200 pb-2 uppercase tracking-tighter text-xs">
-                                        System Requirements</h3>
-                                    <div class="space-y-3">
-                                        <div class="flex justify-between items-center text-gray-500 gap-4">
-                                            <span class="shrink-0 text-xs">OS:</span>
-                                            <span class="text-gray-900 text-right font-medium">Win 7 / 8.1 / 10 /
-                                                11</span>
+                                <div id="content-trust" class="tab-content hidden">
+                                    <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                                        <span class="w-1.5 h-6 bg-emerald-600 rounded-full"></span>
+                                        Trust & Safety
+                                    </h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="p-4 rounded-xl border border-emerald-100 bg-emerald-50/30 flex gap-4 items-center">
+                                            <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-gray-900 text-sm">Virus Free</h4>
+                                                <p class="text-[12px] text-gray-500">Scanned by multiple antiviruses and verified safe.</p>
+                                            </div>
                                         </div>
-                                        <div class="flex justify-between items-center text-gray-500 gap-4">
-                                            <span class="shrink-0 text-xs">RAM:</span>
-                                            <span class="text-gray-900 text-right font-medium">512 MB (Minimum)</span>
-                                        </div>
-                                        <div class="flex justify-between items-center text-gray-500 gap-4">
-                                            <span class="shrink-0 text-xs">CPU:</span>
-                                            <span class="text-gray-900 text-right font-medium">Intel / AMD
-                                                Default</span>
-                                        </div>
-                                        <div class="flex justify-between items-center text-gray-500 gap-4">
-                                            <span class="shrink-0 text-xs">Storage:</span>
-                                            <span class="text-gray-900 text-right font-medium">20 MB Free Space</span>
+                                        <div class="p-4 rounded-xl border border-blue-100 bg-blue-50/30 flex gap-4 items-center">
+                                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-1.197-3.69c-1.969-2.535-3.15-5.694-3.15-9.131 0-3.033.917-5.855 2.491-8.192M21 8c0 2.102-.453 4.099-1.264 5.903M14.851 4.898c1.331.868 2.467 2.066 3.313 3.46"></path></svg>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-gray-900 text-sm">Official Release</h4>
+                                                <p class="text-[12px] text-gray-500">Downloaded directly from itoday's official sources.</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Technical Details Table -->
-                                <div
-                                    class="backdrop-blur-md bg-gray-50/50 border border-gray-200 shadow-xl rounded-2xl p-6 text-sm">
-                                    <h3
-                                        class="font-semibold text-gray-900 mb-4 border-b border-gray-200 pb-2 uppercase tracking-tighter text-xs">
-                                        Technical Details</h3>
-                                    <div class="space-y-3">
-                                        <div class="flex justify-between items-center text-gray-500/90 gap-4">
-                                            <span class="shrink-0 text-xs">Developer:</span>
-                                            <span class="text-gray-900 text-right font-medium">itoday</span>
+                                <!-- Changelog Tab -->
+                                <div id="content-changelog" class="tab-content hidden">
+                                    <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                                        <span class="w-1.5 h-6 bg-orange-600 rounded-full"></span>
+                                        Change Log
+                                    </h3>
+                                    <div class="space-y-6">
+                                        <!-- Version 2.7.5 -->
+                                        <div class="border-l-2 border-orange-500 pl-4 py-1">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <h4 class="font-bold text-gray-900">Version 2.7.5</h4>
+                                                <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">June 22, 2007</span>
+                                            </div>
+                                            <ul class="list-disc list-inside text-[13px] text-gray-600 space-y-1">
+                                                <li>Fixed Run/Stop hotkey from staying after it was changed.</li>
+                                                <li>Inserting key and mouse events are in the right order now.</li>
+                                                <li>Fixed issue when deleting a delay below another delay.</li>
+                                                <li>Fixed repeat radio button from being checked on creating new.</li>
+                                            </ul>
                                         </div>
-                                        <div class="flex justify-between items-center text-gray-500/90 gap-4">
-                                            <span class="shrink-0 text-xs">Architecture:</span>
-                                            <span class="text-gray-900 text-right font-medium">32-bit & 64-bit
-                                                Compatible</span>
+
+                                        <!-- Version 2.7.0 -->
+                                        <div class="border-l-2 border-gray-200 pl-4 py-1">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <h4 class="font-bold text-gray-900">Version 2.7.0</h4>
+                                                <span class="text-xs text-gray-500">June 1, 2007</span>
+                                            </div>
+                                            <ul class="list-disc list-inside text-[13px] text-gray-600 space-y-1">
+                                                <li>Added ability to pause macro until a certain pixel on screen changes (Pixel Event).</li>
+                                                <li>Fixed issue with saving long macros.</li>
+                                                <li>Fixed issue with mouse movement adding extra 10ms delay.</li>
+                                                <li>Improved "Stop" button functionality during playback.</li>
+                                                <li>Recorded mouse moves playback at exact same speed.</li>
+                                            </ul>
                                         </div>
-                                        <div class="flex justify-between items-center text-gray-500/90 gap-4">
-                                            <span class="shrink-0 text-xs">Category:</span>
-                                            <span class="text-gray-900 text-right font-medium">Productivity /
-                                                Utility</span>
+
+                                        <!-- Version 2.6.5 -->
+                                        <div class="border-l-2 border-gray-200 pl-4 py-1">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <h4 class="font-bold text-gray-900">Version 2.6.5</h4>
+                                                <span class="text-xs text-gray-500">May 22, 2007</span>
+                                            </div>
+                                            <ul class="list-disc list-inside text-[13px] text-gray-600 space-y-1">
+                                                <li>Added support for combination keybinds (ALT+H, CTRL+{F4}, etc).</li>
+                                                <li>Keybinds now shown in 'View Keybinds' window.</li>
+                                                <li>Fixed possible crash during macro loading.</li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Version 2.6.0 -->
+                                        <div class="border-l-2 border-gray-200 pl-4 py-1">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <h4 class="font-bold text-gray-900">Version 2.6.0</h4>
+                                                <span class="text-xs text-gray-500">May 21, 2007</span>
+                                            </div>
+                                            <ul class="list-disc list-inside text-[13px] text-gray-600 space-y-1">
+                                                <li>Added mouse wheel recording.</li>
+                                                <li>Added option to record click position.</li>
+                                                <li>Added option to repeat macro until hotkey pressed.</li>
+                                                <li>Fixed double click bug.</li>
+                                                <li>Faster saving and opening of macros.</li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Version 2.5.0 -->
+                                        <div class="border-l-2 border-gray-200 pl-4 py-1">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <h4 class="font-bold text-gray-900">Version 2.5.0</h4>
+                                                <span class="text-xs text-gray-500">May 16, 2007</span>
+                                            </div>
+                                            <ul class="list-disc list-inside text-[13px] text-gray-600 space-y-1">
+                                                <li>Added mouse recording (movement and button clicks).</li>
+                                                <li>Re-wrote string comparisons using regular expressions.</li>
+                                                <li>Resized macro editor interface for easier use.</li>
+                                                <li>Added statusbar to editor window with saving progress.</li>
+                                                <li>Fixed timing issue on playback for consistent speed.</li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Version 2.1.5 -->
+                                        <div class="border-l-2 border-gray-200 pl-4 py-1">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <h4 class="font-bold text-gray-900">Version 2.1.5</h4>
+                                                <span class="text-xs text-gray-500">May 10, 2007</span>
+                                            </div>
+                                            <ul class="list-disc list-inside text-[13px] text-gray-600 space-y-1">
+                                                <li>Fixed long delay in macro causing inactivity.</li>
+                                                <li>Added Regular expressions in several areas.</li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Version 2.1.2 -->
+                                        <div class="border-l-2 border-gray-200 pl-4 py-1">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <h4 class="font-bold text-gray-900">Version 2.1.2</h4>
+                                                <span class="text-xs text-gray-500">May 9, 2007</span>
+                                            </div>
+                                            <ul class="list-disc list-inside text-[13px] text-gray-600 space-y-1">
+                                                <li>Fixed playback after run/stop hotkey pressed.</li>
+                                                <li>Added hotkey to start/stop recording while in game.</li>
+                                                <li>Added sound notification for recording start/stop.</li>
+                                                <li>Major increase on recording performance and accuracy.</li>
+                                                <li>Added loading message for macros into Editor.</li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Version 1.9.8 -->
+                                        <div class="border-l-2 border-gray-200 pl-4 py-1">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <h4 class="font-bold text-gray-900">Version 1.9.8</h4>
+                                                <span class="text-xs text-gray-500">May 8, 2007</span>
+                                            </div>
+                                            <ul class="list-disc list-inside text-[13px] text-gray-600 space-y-1">
+                                                <li>Keyboard recording using event driven keyboard hook.</li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Version 1.9.2 -->
+                                        <div class="border-l-2 border-gray-200 pl-4 py-1">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <h4 class="font-bold text-gray-900">Version 1.9.2</h4>
+                                                <span class="text-xs text-gray-500">May 6, 2007</span>
+                                            </div>
+                                            <ul class="list-disc list-inside text-[13px] text-gray-600 space-y-1">
+                                                <li>Initial release.</li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Next on List -->
+                                        <div class="mt-8 bg-blue-50 p-4 rounded-xl border border-blue-100">
+                                            <h4 class="font-bold text-blue-900 mb-3 flex items-center gap-2">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                                                Upcoming Features
+                                            </h4>
+                                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1.5 text-[12px] text-blue-800">
+                                                <li class="flex items-center gap-2">? Add "From" pixel event</li>
+                                                <li class="flex items-center gap-2">? Target windows into focus</li>
+                                                <li class="flex items-center gap-2">? Insert existing macros</li>
+                                                <li class="flex items-center gap-2">? Recording pause functionality</li>
+                                                <li class="flex items-center gap-2">? Comment functionality</li>
+                                                <li class="flex items-center gap-2">? Macro sorting & re-ordering</li>
+                                                <li class="flex items-center gap-2">? Bind to mouse buttons</li>
+                                                <li class="flex items-center gap-2">? Random delay feature</li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </main>
 
-                    <script src="../assets/js/dynamicLoader.js"></script>
+                        <!-- Alternatives -->
+                        <div class="card-white p-6">
+                            <h3 class="text-lg font-bold text-gray-900 mb-4">Alternatives</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <a href="javascript:void(0)" class="p-4 rounded-xl border border-gray-100 hover:bg-gray-50 transition">
+                                    <h4 class="font-bold text-blue-600 text-sm">TG Macro</h4>
+                                    <p class="text-[11px] text-gray-500 mt-1">Advanced lightweight clicker for Windows.</p>
+                                </a>
+                                <a href="javascript:void(0)" class="p-4 rounded-xl border border-gray-100 hover:bg-gray-50 transition">
+                                    <h4 class="font-bold text-blue-600 text-sm">OP Auto Clicker</h4>
+                                    <p class="text-[11px] text-gray-500 mt-1">Popular and simple to use auto-clicking tool.</p>
+                                </a>
+                                <a href="javascript:void(0)" class="p-4 rounded-xl border border-gray-100 hover:bg-gray-50 transition">
+                                    <h4 class="font-bold text-blue-600 text-sm">Speed AutoClicker</h4>
+                                    <p class="text-[11px] text-gray-500 mt-1">High-performance custom clicking patterns.</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-                    <script>
-                        document.addEventListener("DOMContentLoaded", function () {
-                            const btn = document.getElementById('mobileMenuBtn');
-                            const sidebar = document.querySelector('aside');
-                            if (btn && sidebar) {
-                                let overlay = document.getElementById('sidebarOverlay');
-                                if (!overlay) {
-                                    overlay = document.createElement('div');
-                                    overlay.id = 'sidebarOverlay';
-                                    overlay.className = 'fixed inset-0 bg-black/60 z-[110] hidden backdrop-blur-md transition-opacity';
-                                    document.body.appendChild(overlay);
-                                }
-                                const toggle = (show) => {
-                                    if (show) {
-                                        sidebar.classList.remove('hidden');
-                                        sidebar.classList.add('fixed', 'inset-y-0', 'left-0', 'z-[120]', 'w-72', 'shadow-2xl');
-                                        overlay.classList.remove('hidden');
-                                    } else {
-                                        sidebar.classList.add('hidden');
-                                        sidebar.classList.remove('fixed', 'inset-y-0', 'left-0', 'z-[120]', 'w-72', 'shadow-2xl');
-                                        overlay.classList.add('hidden');
-                                    }
-                                };
-                                btn.addEventListener('click', () => toggle(true));
-                                overlay.addEventListener('click', () => toggle(false));
-                            }
+                    <!-- Right Sidebar -->
+                    <div class="w-full lg:w-[32%] lg:order-2">
+                        <div class="sticky top-6 flex flex-col gap-4">
+                            <!-- Download Card -->
+                            <div class="card-white p-5 scroll-mt-20" id="downloadSection">
+                                <div class="text-center mb-5">
+                                    <div class="text-gray-900 font-bold text-[18px] mb-2 border-b border-gray-100 pb-2">
+                                        Download Macro Gamer</div>
+                                    <div class="text-[13px] text-gray-500 mb-4">Version 2.7.5 - Windows PC</div>
 
-                            // Mobile search toggle
-                            const searchToggle = document.getElementById('searchToggleBtn');
-                            const searchContainer = document.getElementById('searchContainer');
-                            const mobileSearchInput = document.getElementById('mobileSearchInput');
-                            if (searchToggle && searchContainer) {
-                                searchToggle.addEventListener('click', function (e) {
-                                    e.stopPropagation();
-                                    searchContainer.classList.toggle('hidden');
-                                    if (!searchContainer.classList.contains('hidden') && mobileSearchInput) {
-                                        mobileSearchInput.focus();
-                                    }
-                                });
-                                document.addEventListener('click', function (e) {
-                                    if (!searchContainer.contains(e.target) && e.target !== searchToggle) {
-                                        searchContainer.classList.add('hidden');
-                                    }
-                                });
-                            }
-                        });
-                    </script>
+                                    <a href="javascript:void(0)"
+                                        onclick="startDownload('MacroGamer_2.7.5.msi')"
+                                        id="downloadBtn"
+                                        class="btn-download block w-full py-3.5 px-4 rounded-lg font-bold text-[16px] text-center transition-all flex flex-col items-center justify-center">
+                                        <span id="btnText" class="flex items-center gap-2">
+                                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                                            </svg>
+                                            Free Download
+                                        </span>
+                                    </a>
+                                    <div class="text-[11px] text-gray-400 mt-3">Always available from secure servers</div>
+                                </div>
+
+                                <div class="bg-gray-50 rounded-lg border border-gray-100 p-4">
+                                    <h4 class="text-[12px] font-bold text-gray-800 uppercase tracking-widest mb-3 border-b border-gray-200 pb-2">File Info</h4>
+                                    <ul class="text-[13px] space-y-2.5">
+                                        <li class="flex justify-between border-b border-gray-200/60 pb-1.5"><span class="text-gray-500">Size</span><span class="font-medium text-gray-900">45 MB</span></li>
+                                        <li class="flex justify-between border-b border-gray-200/60 pb-1.5"><span class="text-gray-500">Platform</span><span class="font-medium text-gray-900">Win 7+</span></li>
+                                        <li class="flex justify-between border-b border-gray-200/60 pb-1.5"><span class="text-gray-500">Developer</span><span class="font-medium text-blue-600">itoday</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Requirements Card -->
+                            <div class="card-white p-5">
+                                <h4 class="text-[14px] font-bold text-gray-900 mb-4 uppercase tracking-tighter">System Requirements</h4>
+                                <ul class="text-[13px] space-y-3">
+                                    <li class="flex justify-between"><span class="text-gray-500">OS:</span><span class="font-medium">Windows 7/8/10/11</span></li>
+                                    <li class="flex justify-between"><span class="text-gray-500">RAM:</span><span class="font-medium">512 MB</span></li>
+                                    <li class="flex justify-between"><span class="text-gray-500">Disk:</span><span class="font-medium">20 MB Free</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const btn = document.getElementById('mobileMenuBtn');
+            const sidebar = document.querySelector('aside');
+            if (btn && sidebar) {
+                let overlay = document.getElementById('sidebarOverlay');
+                if (!overlay) {
+                    overlay = document.createElement('div');
+                    overlay.id = 'sidebarOverlay';
+                    overlay.className = 'fixed inset-0 bg-black/60 z-[110] hidden backdrop-blur-md transition-opacity';
+                    document.body.appendChild(overlay);
+                }
+                const toggle = (show) => {
+                    if (show) {
+                        sidebar.classList.remove('hidden');
+                        sidebar.classList.add('fixed', 'inset-y-0', 'left-0', 'z-[120]', 'w-72', 'shadow-2xl');
+                        overlay.classList.remove('hidden');
+                    } else {
+                        sidebar.classList.add('hidden');
+                        sidebar.classList.remove('fixed', 'inset-y-0', 'left-0', 'z-[120]', 'w-72', 'shadow-2xl');
+                        overlay.classList.add('hidden');
+                    }
+                };
+                btn.addEventListener('click', () => toggle(true));
+                overlay.addEventListener('click', () => toggle(false));
+            }
+        });
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('block');
+            });
+            document.querySelectorAll('[id^="tab-"]').forEach(button => {
+                button.classList.remove('border-blue-600', 'text-blue-600');
+                button.classList.add('border-transparent', 'text-gray-500');
+            });
+            document.getElementById('content-' + tabName).classList.remove('hidden');
+            document.getElementById('content-' + tabName).classList.add('block');
+            document.getElementById('tab-' + tabName).classList.add('border-blue-600', 'text-blue-600');
+            document.getElementById('tab-' + tabName).classList.remove('border-transparent', 'text-gray-500');
+        }
+
+        function startDownload(url) {
+            const btn = document.getElementById('downloadBtn');
+            const btnText = document.getElementById('btnText');
+            let timeLeft = 5;
+            btn.style.pointerEvents = 'none';
+            btn.classList.add('relative', 'overflow-hidden');
+            const progress = document.createElement('div');
+            progress.className = 'absolute bottom-0 left-0 h-1 bg-white/30 transition-all duration-1000 ease-linear';
+            progress.style.width = '0%';
+            btn.appendChild(progress);
+            const timer = setInterval(() => {
+                timeLeft--;
+                progress.style.width = `${(5 - timeLeft) * 20}%`;
+                btnText.innerHTML = `<div class="flex items-center gap-3"><svg class="w-5 h-5 animate-spin" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span>Preparing File (${timeLeft}s)</span></div>`;
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    btnText.innerHTML = `<span class="flex items-center gap-2"><svg class="w-5 h-5 animate-bounce" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>Downloading...</span>`;
+                    setTimeout(() => { window.location.href = url; }, 500);
+                }
+            }, 1000);
+        }
+    </script>
 </body>
 
 </html>

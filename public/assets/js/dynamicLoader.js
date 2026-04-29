@@ -79,7 +79,7 @@ const DynamicLoader = {
         card.className = "app-card glow-hover block bg-white p-5 rounded-[20px] border border-gray-100 cursor-pointer shadow-sm relative group searchable-card";
         card.dataset.category = item.category;
 
-        // Map categories to beautiful icons and colors
+        // Map categories to beautiful icons and colors (Fallback)
         let iconCode = '📁';
         let iconBg = 'bg-gray-50'; let iconTxt = 'text-gray-600'; let borderCol = 'border-gray-100';
         
@@ -92,12 +92,19 @@ const DynamicLoader = {
         else if(cat === 'ppt' || cat === 'presentation') { iconCode = '📊'; iconBg = 'bg-purple-50'; iconTxt = 'text-purple-500'; borderCol = 'border-purple-100'; }
         else if(cat === 'opensource' || cat === 'github') { iconCode = '🐙'; iconBg = 'bg-slate-50'; iconTxt = 'text-slate-800'; borderCol = 'border-slate-100'; }
         
+        // Use image if available, else fallback to iconCode
+        let iconContent = iconCode;
+        if (item.image) {
+            const imagePath = item.image.startsWith('http') ? item.image : basePath + item.image;
+            iconContent = `<img src="${imagePath}" alt="${item.title}" class="w-full h-full object-contain p-1 transition-transform group-hover:scale-110">`;
+        }
+
         let sizeDisplay = item.size ? item.size : (item.stars ? `⭐ ${item.stars}` : 'View details');
 
         card.innerHTML = `
             <div class="flex justify-between items-start mb-4">
-                <div class="w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center ${iconTxt} text-2xl shadow-sm border ${borderCol} transition-colors">
-                    ${iconCode}
+                <div class="w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center ${iconTxt} text-2xl shadow-sm border ${borderCol} transition-colors overflow-hidden">
+                    ${iconContent}
                 </div>
                 <div class="w-7 h-7 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:text-[#0066cc] group-hover:bg-[#0066cc]/10 transition z-10">
                     <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
