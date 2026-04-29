@@ -76,45 +76,44 @@ const DynamicLoader = {
         const absoluteLink = item.link && item.link.startsWith('http') ? item.link : (item.link ? basePath + item.link : '#');
         
         card.href = absoluteLink;
-        card.className = "app-card glow-hover block bg-white p-5 rounded-[20px] border border-gray-100 cursor-pointer shadow-sm relative group searchable-card";
+        card.className = "group block bg-white p-2 rounded-2xl border border-gray-100 hover:border-blue-200 hover:bg-gray-50 transition-all duration-200 searchable-card";
         card.dataset.category = item.category;
 
         // Map categories to beautiful icons and colors (Fallback)
         let iconCode = '📁';
-        let iconBg = 'bg-gray-50'; let iconTxt = 'text-gray-600'; let borderCol = 'border-gray-100';
+        let iconBg = 'bg-gray-100'; let iconTxt = 'text-gray-600';
         
         const cat = item.category.toLowerCase();
-        if(cat === 'apk' || cat === 'app') { iconCode = '📱'; iconBg = 'bg-green-50'; iconTxt = 'text-green-500'; borderCol = 'border-green-100'; }
-        else if(cat === 'linux') { iconCode = '🐧'; iconBg = 'bg-orange-50'; iconTxt = 'text-orange-500'; borderCol = 'border-orange-100'; }
-        else if(cat === 'windows') { iconCode = '🪟'; iconBg = 'bg-blue-50'; iconTxt = 'text-blue-500'; borderCol = 'border-blue-100'; }
-        else if(cat === 'pdf') { iconCode = '📄'; iconBg = 'bg-red-50'; iconTxt = 'text-red-500'; borderCol = 'border-red-100'; }
-        else if(cat === 'zip' || cat === 'archives') { iconCode = '📦'; iconBg = 'bg-yellow-50'; iconTxt = 'text-yellow-600'; borderCol = 'border-yellow-100'; }
-        else if(cat === 'ppt' || cat === 'presentation') { iconCode = '📊'; iconBg = 'bg-purple-50'; iconTxt = 'text-purple-500'; borderCol = 'border-purple-100'; }
-        else if(cat === 'opensource' || cat === 'github') { iconCode = '🐙'; iconBg = 'bg-slate-50'; iconTxt = 'text-slate-800'; borderCol = 'border-slate-100'; }
+        if(cat === 'apk' || cat === 'app') { iconCode = '📱'; iconBg = 'bg-green-100'; iconTxt = 'text-green-600'; }
+        else if(cat === 'linux') { iconCode = '🐧'; iconBg = 'bg-orange-100'; iconTxt = 'text-orange-600'; }
+        else if(cat === 'windows') { iconCode = '🪟'; iconBg = 'bg-blue-100'; iconTxt = 'text-blue-600'; }
+        else if(cat === 'pdf') { iconCode = '📄'; iconBg = 'bg-red-100'; iconTxt = 'text-red-600'; }
+        else if(cat === 'zip' || cat === 'archives') { iconCode = '📦'; iconBg = 'bg-yellow-100'; iconTxt = 'text-yellow-700'; }
+        else if(cat === 'ppt' || cat === 'presentation') { iconCode = '📊'; iconBg = 'bg-purple-100'; iconTxt = 'text-purple-600'; }
+        else if(cat === 'opensource' || cat === 'github') { iconCode = '🐙'; iconBg = 'bg-slate-100'; iconTxt = 'text-slate-800'; }
         
         // Use image if available, else fallback to iconCode
-        let iconContent = iconCode;
+        let iconContent = `<span class="${iconTxt} text-3xl font-bold">${iconCode}</span>`;
         if (item.image) {
             const imagePath = item.image.startsWith('http') ? item.image : basePath + item.image;
-            iconContent = `<img src="${imagePath}" alt="${item.title}" class="w-full h-full object-contain p-1 transition-transform group-hover:scale-110">`;
+            iconContent = `<img src="${imagePath}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-300">`;
         }
 
-        let sizeDisplay = item.size ? item.size : (item.stars ? `⭐ ${item.stars}` : 'View details');
+        let subtext = item.category.toUpperCase();
+        if (item.size) subtext = item.size;
+        else if (item.stars) subtext = `★ ${item.stars}`;
 
         card.innerHTML = `
-            <div class="flex justify-between items-start mb-4">
-                <div class="w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center ${iconTxt} text-2xl shadow-sm border ${borderCol} transition-colors overflow-hidden">
-                    ${iconContent}
-                </div>
-                <div class="w-7 h-7 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:text-[#0066cc] group-hover:bg-[#0066cc]/10 transition z-10">
-                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                </div>
+            <div class="relative aspect-square w-full rounded-[22%] overflow-hidden mb-2 bg-gray-50 flex items-center justify-center border border-gray-200 group-hover:border-blue-400/50 group-hover:shadow-md transition-all duration-300">
+                ${iconContent}
             </div>
-            <h3 class="font-[600] text-[15px] text-gray-900 leading-tight truncate">${item.title}</h3>
-            <p class="text-[12px] text-gray-500 mb-4 mt-0.5 capitalize">${item.category}</p>
-            <div class="flex items-center justify-between text-[12px] font-medium mt-auto">
-                <span class="text-gray-400 flex items-center gap-1">${sizeDisplay}</span>
-                <span class="text-[#0066cc] font-semibold opacity-0 translate-x-[-10px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">Get it</span>
+            <div class="px-0.5">
+                <h3 class="font-semibold text-[13px] text-gray-900 leading-[1.2] mb-0.5 overflow-hidden group-hover:text-blue-600 transition-colors" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; min-height: 2.4em;">
+                    ${item.title}
+                </h3>
+                <div class="flex items-center gap-1.5 opacity-70">
+                    <p class="text-[10px] text-gray-500 font-medium truncate">${subtext}</p>
+                </div>
             </div>
         `;
         return card;
