@@ -15,14 +15,16 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://shreebitu.in/apk/hapi.html">
     <meta property="og:title" content="Download HAPI APK for Android - Latest Official (2026) | ShreeBitu">
-    <meta property="og:description" content="Experience a fast, secure, and advanced mobile terminal and virtual environment for coding. Download HAPI official latest version now.">
+    <meta property="og:description"
+        content="Experience a fast, secure, and advanced mobile terminal and virtual environment for coding. Download HAPI official latest version now.">
     <meta property="og:image" content="https://shreebitu.in/assets/images/shreebitu-logo.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://shreebitu.in/apk/hapi.html">
     <meta property="twitter:title" content="Download HAPI APK for Android - Latest Official | ShreeBitu">
-    <meta property="twitter:description" content="Official HAPI APK download for Android. Best virtual environment for mobile developers.">
+    <meta property="twitter:description"
+        content="Official HAPI APK download for Android. Best virtual environment for mobile developers.">
     <meta property="twitter:image" content="https://shreebitu.in/assets/images/shreebitu-logo.png">
 
     <link rel="canonical" href="https://shreebitu.in/apk/hapi.html">
@@ -93,21 +95,115 @@
         }
 
         .tab-active {
-            border-bottom: 2px solid #3b82f6;
-            color: #1e293b;
-            font-weight: 600;
+            background-color: #eff6ff;
+            color: #2563eb;
+            border-bottom: 2px solid #2563eb;
+            font-weight: 700;
         }
 
         .tab-inactive {
             color: #64748b;
             font-weight: 500;
+            border-bottom: 2px solid transparent;
         }
 
         .tab-inactive:hover {
-            color: #3b82f6;
+            color: #2563eb;
+            background-color: #f8fafc;
         }
     </style>
-    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link rel="icon" id="dynamic-favicon" type="image/png" href="../assets/images/hapi.png">
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            // Custom Video Controller Logic
+            const video = document.getElementById('demoVideo');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const centerPlayBtn = document.getElementById('centerPlayBtn');
+            const playIcon = document.getElementById('playIcon');
+            const pauseIcon = document.getElementById('pauseIcon');
+            const muteBtn = document.getElementById('muteBtn');
+            const unmuteIcon = document.getElementById('unmuteIcon');
+            const muteIcon = document.getElementById('muteIcon');
+            const progressBar = document.getElementById('progressBar');
+            const progressContainer = document.getElementById('progressContainer');
+            const videoTime = document.getElementById('videoTime');
+            const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+            if (video) {
+                function togglePlay() {
+                    if (video.paused) {
+                        video.play().catch(err => console.error("Video play failed:", err));
+                        playIcon.classList.add('hidden');
+                        pauseIcon.classList.remove('hidden');
+                        centerPlayBtn.classList.add('opacity-0', 'scale-150');
+                        setTimeout(() => centerPlayBtn.classList.add('hidden'), 300);
+                    } else {
+                        video.pause();
+                        playIcon.classList.remove('hidden');
+                        pauseIcon.classList.add('hidden');
+                        centerPlayBtn.classList.remove('hidden');
+                        setTimeout(() => centerPlayBtn.classList.remove('opacity-0', 'scale-150'), 10);
+                    }
+                }
+
+                function formatTime(seconds) {
+                    if (isNaN(seconds)) return "00:00";
+                    const minutes = Math.floor(seconds / 60);
+                    seconds = Math.floor(seconds % 60);
+                    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }
+
+                playPauseBtn.addEventListener('click', togglePlay);
+                centerPlayBtn.addEventListener('click', togglePlay);
+                video.addEventListener('click', togglePlay);
+
+                video.addEventListener('timeupdate', () => {
+                    const percentage = (video.currentTime / video.duration) * 100;
+                    progressBar.style.width = percentage + '%';
+                    videoTime.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+                });
+
+                progressContainer.addEventListener('click', (e) => {
+                    const rect = progressContainer.getBoundingClientRect();
+                    const pos = (e.clientX - rect.left) / rect.width;
+                    video.currentTime = pos * video.duration;
+                });
+
+                muteBtn.addEventListener('click', () => {
+                    video.muted = !video.muted;
+                    unmuteIcon.classList.toggle('hidden');
+                    muteIcon.classList.toggle('hidden');
+                });
+
+                fullscreenBtn.addEventListener('click', () => {
+                    if (video.requestFullscreen) video.requestFullscreen();
+                    else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+                    else if (video.msRequestFullscreen) video.msRequestFullscreen();
+                });
+
+                video.addEventListener('loadedmetadata', () => {
+                    videoTime.textContent = `00:00 / ${formatTime(video.duration)}`;
+                });
+            }
+
+            // Dynamic Favicon Logic
+            const img = new Image();
+            img.src = '../assets/images/hapi.png';
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = 128;
+                canvas.height = 128;
+                const ctx = canvas.getContext('2d');
+                ctx.beginPath();
+                ctx.arc(64, 64, 64, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.clip();
+                ctx.drawImage(img, 0, 0, 128, 128);
+                const link = document.getElementById('dynamic-favicon');
+                link.href = canvas.toDataURL('image/png');
+            };
+        });
+    </script>
 </head>
 
 
@@ -169,12 +265,21 @@
         <!-- Sidebar Footer -->
         <div class="mt-auto px-4 py-4 border-t border-gray-100 flex flex-col gap-1">
             <div class="text-[10px] text-gray-400 px-3 mb-2 font-bold uppercase tracking-widest">Support</div>
-            <a href="../about.html" class="flex items-center gap-3 px-3 py-2 text-[13px] text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors font-medium">
-                <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <a href="../about.html"
+                class="flex items-center gap-3 px-3 py-2 text-[13px] text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
                 About Us
             </a>
-            <a href="../privacy.html" class="flex items-center gap-3 px-3 py-2 text-[13px] text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors font-medium">
-                <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+            <a href="../privacy.html"
+                class="flex items-center gap-3 px-3 py-2 text-[13px] text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors font-medium">
+                <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
                 Privacy Policy
             </a>
         </div>
@@ -225,23 +330,38 @@
 
                 <!-- Breadcrumbs -->
                 <nav class="flex text-[12px] font-medium text-gray-500 mb-3 mt-1 px-1" aria-label="Breadcrumb">
-                    <ol class="inline-flex items-center space-x-1 md:space-x-2 bg-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-gray-200 shadow-[0_1px_2px_rgba(0,0,0,0.03)] w-max max-w-full overflow-hidden">
+                    <ol
+                        class="inline-flex items-center space-x-1 md:space-x-2 bg-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-gray-200 shadow-[0_1px_2px_rgba(0,0,0,0.03)] w-max max-w-full overflow-hidden">
                         <li class="inline-flex items-center">
-                            <a href="../index.html" class="inline-flex items-center gap-1.5 text-gray-500 hover:text-blue-600 transition-colors">
-                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                            <a href="../index.html"
+                                class="inline-flex items-center gap-1.5 text-gray-500 hover:text-blue-600 transition-colors">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+                                    </path>
+                                </svg>
                                 Home
                             </a>
                         </li>
                         <li>
                             <div class="flex items-center">
-                                <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-                                <a href="index.html" class="ml-1 sm:ml-2 text-gray-500 hover:text-blue-600 transition-colors">Android</a>
+                                <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <a href="index.html"
+                                    class="ml-1 sm:ml-2 text-gray-500 hover:text-blue-600 transition-colors">Android</a>
                             </div>
                         </li>
 
                         <li aria-current="page">
                             <div class="flex items-center">
-                                <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
                                 <span class="ml-1 sm:ml-2 text-blue-600 font-bold">HAPI</span>
                             </div>
                         </li>
@@ -249,18 +369,19 @@
                 </nav>
 
                 <!-- Top Hero App Header (White Card) -->
-                <div
-                    class="card-white p-3 sm:p-4 bg-white mb-2 flex flex-col">
+                <div class="card-white p-3 sm:p-4 bg-white mb-2 flex flex-col">
                     <div class="flex flex-row items-start gap-3 sm:gap-4">
                         <!-- App Icon -->
                         <div class="relative flex-shrink-0">
                             <div
                                 class="w-20 h-20 sm:w-24 sm:h-24 rounded-[16px] bg-white border border-gray-200 shadow-sm flex items-center justify-center overflow-hidden">
-                                <img src="../assets/images/hapi.png" alt="HAPI Icon" class="w-full h-full object-contain">
+                                <img src="../assets/images/hapi.png" alt="HAPI Icon"
+                                    class="w-full h-full object-contain">
                             </div>
                             <div class="absolute -bottom-1.5 -right-1.5 sm:-bottom-2 sm:-right-2 bg-green-500 text-white rounded-full p-0.5 sm:p-1 border-2 border-white z-10"
                                 title="Verified Safe">
-                                <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
                                         d="M5 13l4 4L19 7"></path>
                                 </svg>
@@ -269,54 +390,176 @@
 
                         <!-- Info block -->
                         <div class="flex-1 min-w-0 text-left flex flex-col justify-center pt-0.5 sm:pt-0">
-                            <h1 class="text-xl sm:text-4xl font-bold text-gray-900 mb-0.5 sm:mb-2 font-inter tracking-tight leading-tight">HAPI
+                            <h1
+                                class="text-2xl sm:text-4xl font-bold text-gray-900 mb-1 sm:mb-2 font-inter tracking-tight leading-tight">
+                                HAPI
                             </h1>
-                            <h2 class="text-[13px] sm:text-[18px] text-gray-600 font-normal mb-1 sm:mb-3 leading-snug truncate sm:whitespace-normal">Seamless Virtual Terminal
-                                & Coding Environment for Android</h2>
+                            <h2 class="text-[14px] sm:text-[18px] text-gray-600 font-medium mb-1 sm:mb-3 leading-snug">
+                                Control your local AI agents from anywhere — Phone, Web, or Telegram.</h2>
                         </div>
 
                         <!-- Mobile Download Action -->
                         <div class="md:hidden flex-shrink-0 flex items-center justify-center self-center pl-1 pr-1">
-                            <a href="#downloadSection" class="bg-[#059669] hover:bg-[#047857] text-white font-bold py-1.5 px-5 rounded-[20px] text-[13px] shadow-sm transition-transform active:scale-95 leading-none">Install</a>
+                            <a href="#downloadSection"
+                                class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold py-2.5 px-6 rounded-full text-[14px] shadow-lg shadow-emerald-500/20 transition-all active:scale-95 leading-none">Install</a>
                         </div>
                     </div>
 
-                    <!-- Metrics bar (NOW BELOW LOGO/TITLE) -->
-                    <div class="mt-3 pt-3 border-t border-gray-50 flex flex-wrap items-center justify-start gap-x-2 sm:gap-x-4 gap-y-1.5 text-[11px] sm:text-[13px] text-gray-500">
+                    <!-- Metrics bar -->
+                    <div
+                        class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-start gap-4 sm:gap-6 text-[12px] sm:text-[13px] text-gray-500 overflow-x-auto no-scrollbar whitespace-nowrap">
                         <!-- Rating -->
-                        <div class="flex items-center gap-1 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">
-                            <span class="font-bold text-gray-900">4.8</span>
-                            <svg class="w-3 h-3 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <div
+                            class="flex items-center gap-1.5 bg-yellow-50 px-2 py-1 rounded-lg border border-yellow-100 flex-shrink-0">
+                            <span class="font-bold text-yellow-700">4.8</span>
+                            <svg class="w-3.5 h-3.5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                </path>
+                            </svg>
                         </div>
-                        <span class="text-gray-200 hidden sm:block">|</span>
+
                         <!-- Size -->
-                        <div class="flex items-center gap-1">
-                            <span class="text-gray-400">Size:</span>
-                            <span class="font-semibold text-gray-700">45 MB</span>
+                        <div class="flex flex-col flex-shrink-0">
+                            <span
+                                class="text-[10px] text-gray-400 uppercase font-bold tracking-wider leading-none mb-1">Size</span>
+                            <span class="font-bold text-gray-800">45 MB</span>
                         </div>
-                        <span class="text-gray-200">|</span>
+
                         <!-- Developer -->
-                        <div class="flex items-center gap-1">
-                            <span class="text-gray-400">By:</span>
-                            <span class="text-blue-600 font-semibold hover:underline cursor-pointer">tiann</span>
+                        <div class="flex flex-col flex-shrink-0 border-l border-gray-200 pl-4 sm:pl-6">
+                            <span
+                                class="text-[10px] text-gray-400 uppercase font-bold tracking-wider leading-none mb-1">Developer</span>
+                            <a href="https://github.com/tiann" target="_blank"
+                                class="text-blue-600 font-bold hover:underline">tiann</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="flex flex-col lg:flex-row gap-2">
+                    <!-- Right Sticky Sidebar for Downloads -->
+                    <div class="w-full lg:w-[32%] lg:order-2">
+                        <div class="sticky top-6 flex flex-col gap-2">
+
+                            <!-- Primary Download Card -->
+                            <div class="card-white p-3 scroll-mt-20" id="downloadSection">
+
+                                <!-- Download Box -->
+                                <div class="text-center mb-5">
+                                    <div class="text-gray-900 font-bold text-[18px] mb-2 border-b border-gray-100 pb-2">
+                                        Download HAPI</div>
+                                    <div class="text-[13px] text-gray-500 mb-4">Version Latest Official for Android
+                                    </div>
+
+                                    <a href="javascript:void(0)"
+                                        onclick="startDownload('https://github.com/tiann/hapi/releases/latest')"
+                                        id="downloadBtn"
+                                        class="btn-download block w-full py-3.5 px-4 rounded-lg font-bold text-[16px] text-center transition-all flex flex-col items-center justify-center">
+                                        <span id="btnText" class="flex items-center gap-2">
+                                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                                            </svg>
+                                            Free Download
+                                        </span>
+                                    </a>
+
+                                    <div class="text-[11px] text-gray-400 mt-3 flex items-center justify-center gap-1">
+                                        <svg class="w-3 h-3 text-green-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                            </path>
+                                        </svg>
+                                        Always available from secure servers
+                                    </div>
+                                </div>
+
+                                <!-- File Information Table -->
+                                <div class="bg-gray-50 rounded-lg border border-gray-100 p-4">
+                                    <h4
+                                        class="text-[12px] font-bold text-gray-800 uppercase tracking-widest mb-3 border-b border-gray-200 pb-2">
+                                        File Information</h4>
+                                    <ul class="text-[13px] space-y-2.5">
+                                        <li class="flex justify-between border-b border-gray-200/60 pb-1.5"><span
+                                                class="text-gray-500">File Size</span><span
+                                                class="font-medium text-gray-900 text-right">~ 45 MB</span></li>
+                                        <li class="flex justify-between border-b border-gray-200/60 pb-1.5"><span
+                                                class="text-gray-500">OS</span><span
+                                                class="font-medium text-gray-900 text-right">Android 8.0+</span></li>
+                                        <li class="flex justify-between border-b border-gray-200/60 pb-1.5"><span
+                                                class="text-gray-500">Language</span><span
+                                                class="font-medium text-gray-900 text-right">English</span></li>
+                                        <li class="flex justify-between border-b border-gray-200/60 pb-1.5"><span
+                                                class="text-gray-500">License</span><span
+                                                class="font-medium text-green-600 text-right">Free / Open Source</span>
+                                        </li>
+                                        <li class="flex justify-between py-0.5"><span
+                                                class="text-gray-500">Developer</span><span
+                                                class="font-medium text-blue-600 text-right">tiann</span></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+
+                            <!-- Alternate Versions / Related Apps -->
+                            <div class="card-white p-3 border-t-4 border-t-blue-500">
+                                <h4 class="text-[15px] font-bold text-gray-900 mb-4">Alternatives</h4>
+
+                                <div class="space-y-4">
+                                    <a href="twoyi.html"
+                                        class="flex gap-3 items-center group cursor-pointer hover:bg-gray-50 p-1 -mx-1 rounded transition">
+                                        <img src="../assets/images/twoyi.png"
+                                            class="w-10 h-10 rounded-md border border-gray-200 shadow-sm" alt="Twoyi">
+                                        <div>
+                                            <h5 class="text-[13px] font-bold text-blue-600 group-hover:underline">Twoyi
+                                            </h5>
+                                            <p class="text-[11px] text-gray-500">Android Container Engine</p>
+                                        </div>
+                                    </a>
+                                    <a href="vphonegaga.html"
+                                        class="flex gap-3 items-center group cursor-pointer hover:bg-gray-50 p-1 -mx-1 rounded transition">
+                                        <img src="../assets/images/vphonegaga_logo.webp"
+                                            class="w-10 h-10 rounded-md border border-gray-200 shadow-sm"
+                                            alt="VPhoneGaGa">
+                                        <div>
+                                            <h5 class="text-[13px] font-bold text-blue-600 group-hover:underline">
+                                                VPhoneGaGa
+                                            </h5>
+                                            <p class="text-[11px] text-gray-500">Virtual Machine OS</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Left Main Content Area -->
-                    <div class="w-full lg:w-[68%] flex flex-col gap-2">
+                    <div class="w-full lg:w-[68%] flex flex-col gap-2 lg:order-1">
 
                         <!-- Content Card -->
                         <div class="card-white overflow-hidden">
 
                             <!-- Tabs -->
-                            <div class="flex border-b border-gray-200 bg-gray-50/50 px-2 sm:px-4 pt-2 overflow-x-auto no-scrollbar">
-                                <button onclick="switchTab('description')" id="tab-description" class="px-5 py-3 text-[14px] font-medium transition-colors border-b-2 border-blue-600 text-blue-600">Description</button>
-                                <button onclick="switchTab('installation')" id="tab-installation" class="px-5 py-3 text-[14px] font-medium transition-colors border-b-2 border-transparent text-gray-500 hover:text-gray-700">Installation</button>
-                                <button onclick="switchTab('trust')" id="tab-trust" class="px-5 py-3 text-[14px] font-medium transition-colors border-b-2 border-transparent text-gray-500 hover:text-gray-700">Trust & Safety</button>
+                            <div
+                                class="flex border-b border-gray-200 bg-white px-2 sm:px-4 pt-2 overflow-x-auto no-scrollbar sticky top-0 z-40 backdrop-blur-md bg-white/90">
+                                <button onclick="switchTab('description')" id="tab-description"
+                                    class="px-5 py-3 text-[13px] sm:text-[14px] transition-all whitespace-nowrap tab-active">Overview</button>
+                                <button onclick="switchTab('howitworks')" id="tab-howitworks"
+                                    class="px-5 py-3 text-[13px] sm:text-[14px] transition-all whitespace-nowrap tab-inactive">How
+                                    it Works</button>
+                                <button onclick="switchTab('installation')" id="tab-installation"
+                                    class="px-5 py-3 text-[13px] sm:text-[14px] transition-all whitespace-nowrap tab-inactive">Setup
+                                    Guide</button>
+                                <button onclick="switchTab('cursor')" id="tab-cursor"
+                                    class="px-5 py-3 text-[13px] sm:text-[14px] transition-all whitespace-nowrap tab-inactive">Cursor
+                                    Agent</button>
+                                <button onclick="switchTab('voice')" id="tab-voice"
+                                    class="px-5 py-3 text-[13px] sm:text-[14px] transition-all whitespace-nowrap tab-inactive">Voice
+                                    Assistant</button>
+                                <button onclick="switchTab('trust')" id="tab-trust"
+                                    class="px-5 py-3 text-[13px] sm:text-[14px] transition-all whitespace-nowrap tab-inactive">Safety</button>
                             </div>
-    
+
                             <!-- Body -->
                             <div class="p-4 sm:p-8">
                                 <!-- Description Tab -->
@@ -325,150 +568,780 @@
                                         <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
                                         What is HAPI?
                                     </h3>
-    
+
                                     <div class="prose prose-sm sm:prose max-w-none text-gray-600">
                                         <p class="mb-6 leading-relaxed">
-                                            <strong>HAPI</strong> is a highly optimized, beautifully designed terminal environment and sandbox utility app. Whether you are running complex shell scripts, managing a local server, or "vibe-coding" from your phone, HAPI provides a robust Linux-based backend right on your mobile device.
+                                            <strong>HAPI</strong> is like a smart remote control for your AI. It lets
+                                            you run powerful tools like <b>Claude Code, Gemini, or OpenCode</b> on your
+                                            computer, but gives you the power to control them from your phone or any
+                                            browser. If you're a developer who wants to stay connected to your work
+                                            without being glued to your desk, HAPI is your new best friend.
                                         </p>
-                                        
+
                                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                                            <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-blue-200 transition-colors">
-                                                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-3">
-                                                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                            <div
+                                                class="p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-blue-200 transition-colors">
+                                                <div
+                                                    class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-3">
+                                                    👋
                                                 </div>
-                                                <h4 class="font-bold text-gray-900 mb-1">Blazing Fast</h4>
-                                                <p class="text-[13px] text-gray-500">Highly optimized backend ensures tools run without lag on any device.</p>
+                                                <h4 class="font-bold text-gray-900 mb-1">Seamless Handoff</h4>
+                                                <p class="text-[13px] text-gray-500">Start on your PC, finish on your
+                                                    phone. No restarts, no losing your place.</p>
                                             </div>
-                                            <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-blue-200 transition-colors">
-                                                <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-3">
-                                                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                                            <div
+                                                class="p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-blue-200 transition-colors">
+                                                <div
+                                                    class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-3">
+                                                    📱
                                                 </div>
-                                                <h4 class="font-bold text-gray-900 mb-1">Safe Sandbox</h4>
-                                                <p class="text-[13px] text-gray-500">Operates entirely isolated from your host files preventing accidental damage.</p>
+                                                <h4 class="font-bold text-gray-900 mb-1">Approve on the Go</h4>
+                                                <p class="text-[13px] text-gray-500">Step away for coffee? Approve AI
+                                                    requests from your phone with one tap.</p>
                                             </div>
-                                            <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-blue-200 transition-colors">
-                                                <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-3">
-                                                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                                            <div
+                                                class="p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-blue-200 transition-colors">
+                                                <div
+                                                    class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-3">
+                                                    🤖
                                                 </div>
-                                                <h4 class="font-bold text-gray-900 mb-1">No Root</h4>
-                                                <p class="text-[13px] text-gray-500">Performs advanced functions without breaking your device warranty.</p>
+                                                <h4 class="font-bold text-gray-900 mb-1">Your AI, Your Choice</h4>
+                                                <p class="text-[13px] text-gray-500">Works with Claude, Gemini, and
+                                                    more. One app to rule them all.</p>
                                             </div>
-                                            <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-blue-200 transition-colors">
-                                                <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mb-3">
-                                                    <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                                            <div
+                                                class="p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-blue-200 transition-colors">
+                                                <div
+                                                    class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mb-3">
+                                                    🎙️
                                                 </div>
-                                                <h4 class="font-bold text-gray-900 mb-1">Extensible</h4>
-                                                <p class="text-[13px] text-gray-500">Supports custom plugins and modules easily installable via CLI.</p>
+                                                <h4 class="font-bold text-gray-900 mb-1">Voice Control</h4>
+                                                <p class="text-[13px] text-gray-500">Talk to your AI hands-free. Just
+                                                    tell it what to do next.</p>
                                             </div>
                                         </div>
-    
+
                                         <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-md mt-6">
-                                            <p class="text-[13px] text-blue-800 m-0"><strong>Note:</strong> HAPI is regularly updated by the open-source community. Make sure to allow installation from unknown sources to install this APK.</p>
+                                            <p class="text-[13px] text-blue-800 m-0"><strong>Pro Tip:</strong> You can
+                                                browse your entire project from the web just by running
+                                                <code>hapi runner start --workspace-root &lt;path&gt;</code>. It makes
+                                                managing your code sessions super easy!</p>
+                                        </div>
+
+                                        <!-- Video Demo Section -->
+                                        <div class="mt-8 mb-10">
+                                            <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                                <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
+                                                See HAPI in Action
+                                            </h4>
+                                            
+                                            <div class="relative group rounded-2xl overflow-hidden bg-black shadow-2xl aspect-video border border-gray-200">
+                                                <!-- Video Element -->
+                                                <video id="demoVideo" class="w-full h-full cursor-pointer" playsinline webkit-playsinline>
+                                                    <source src="../videos/hapidemo.mp4" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>
+
+                                                <!-- Custom Controls Overlay -->
+                                                <div id="videoControls" class="absolute inset-0 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 sm:p-6">
+                                                    
+                                                    <!-- Progress Bar -->
+                                                    <div class="w-full h-1 bg-gray-600/50 rounded-full mb-4 cursor-pointer relative" id="progressContainer">
+                                                        <div id="progressBar" class="absolute top-0 left-0 h-full bg-blue-500 rounded-full w-0 transition-all duration-100"></div>
+                                                    </div>
+
+                                                    <div class="flex items-center justify-between">
+                                                        <div class="flex items-center gap-4">
+                                                            <!-- Play/Pause Button -->
+                                                            <button id="playPauseBtn" class="text-white hover:text-blue-400 transition-colors">
+                                                                <svg id="playIcon" class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                                                <svg id="pauseIcon" class="w-8 h-8 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                                            </button>
+                                                            
+                                                            <!-- Time -->
+                                                            <span class="text-white text-xs font-mono" id="videoTime">00:00 / 00:00</span>
+                                                        </div>
+
+                                                        <div class="flex items-center gap-4">
+                                                            <!-- Mute Button -->
+                                                            <button id="muteBtn" class="text-white hover:text-blue-400 transition-colors">
+                                                                <svg id="unmuteIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                                                                <svg id="muteIcon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                                                            </button>
+
+                                                            <!-- Fullscreen Button -->
+                                                            <button id="fullscreenBtn" class="text-white hover:text-blue-400 transition-colors">
+                                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Big Center Play Button (Visible when paused) -->
+                                                <button id="centerPlayBtn" class="absolute inset-0 m-auto w-20 h-20 bg-blue-600/90 text-white rounded-full flex items-center justify-center shadow-2xl transform transition-all hover:scale-110 active:scale-95 group-hover:opacity-100 opacity-80 z-10">
+                                                    <svg class="w-10 h-10 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- FAQ Section -->
+                                        <div class="mt-12 pt-10 border-t border-gray-100">
+                                            <h3 class="text-xl font-bold text-gray-900 mb-8 text-center">Frequently
+                                                Asked Questions</h3>
+
+                                            <div class="space-y-6">
+                                                <!-- Category: General -->
+                                                <div>
+                                                    <h4
+                                                        class="text-[11px] font-bold text-blue-600 uppercase tracking-widest mb-4">
+                                                        The Basics</h4>
+                                                    <div class="space-y-4">
+                                                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                                                            <p class="font-bold text-gray-900 text-[14px] mb-1">What
+                                                                exactly is HAPI?</p>
+                                                            <p class="text-[13px] text-gray-500 leading-relaxed">Think
+                                                                of it as a remote control for your AI agents. You run
+                                                                the heavy work on your computer, but HAPI lets you talk
+                                                                to it, see what it's doing, and approve actions from
+                                                                your phone—anywhere you go.</p>
+                                                        </div>
+                                                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                                                            <p class="font-bold text-gray-900 text-[14px] mb-1">Is it
+                                                                really free?</p>
+                                                            <p class="text-[13px] text-gray-500 leading-relaxed">Yep!
+                                                                HAPI is 100% open source and free to use forever.</p>
+                                                        </div>
+                                                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                                                            <p class="font-bold text-gray-900 text-[14px] mb-1">Why the
+                                                                name "HAPI"?</p>
+                                                            <p class="text-[13px] text-gray-500 leading-relaxed">It's a
+                                                                play on the word "Happy". We believe AI coding should be
+                                                                a happy, flexible experience that doesn't keep you glued
+                                                                to your desk.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Category: Usage -->
+                                                <div>
+                                                    <h4
+                                                        class="text-[11px] font-bold text-emerald-600 uppercase tracking-widest mb-4 mt-8">
+                                                        Using HAPI</h4>
+                                                    <div class="space-y-4">
+                                                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                                                            <p class="font-bold text-gray-900 text-[14px] mb-1">How do I
+                                                                approve permissions remotely?</p>
+                                                            <p class="text-[13px] text-gray-500 leading-relaxed">When
+                                                                your agent wants to edit a file, you'll get a
+                                                                notification on your phone. Just open the HAPI app, see
+                                                                the request, and tap "Approve". It's that simple.</p>
+                                                        </div>
+                                                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                                                            <p class="font-bold text-gray-900 text-[14px] mb-1">Can I
+                                                                use voice commands?</p>
+                                                            <p class="text-[13px] text-gray-500 leading-relaxed">
+                                                                Absolutely. If you have an ElevenLabs key, you can hit
+                                                                the microphone button and literally talk to your code.
+                                                                "Hey Claude, refactor this function" works like a charm.
+                                                            </p>
+                                                        </div>
+                                                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                                                            <p class="font-bold text-gray-900 text-[14px] mb-1">Does it
+                                                                support Windows terminal?</p>
+                                                            <p class="text-[13px] text-gray-500 leading-relaxed">Remote
+                                                                terminal access works on macOS and Linux. Windows
+                                                                support is coming soon as the underlying tech matures!
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Category: Security -->
+                                                <div>
+                                                    <h4
+                                                        class="text-[11px] font-bold text-purple-600 uppercase tracking-widest mb-4 mt-8">
+                                                        Safety & Privacy</h4>
+                                                    <div class="space-y-4">
+                                                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                                                            <p class="font-bold text-gray-900 text-[14px] mb-1">Is my
+                                                                code private?</p>
+                                                            <p class="text-[13px] text-gray-500 leading-relaxed">100%.
+                                                                HAPI is local-first, meaning your data stays on your
+                                                                machine. We don't upload your code to any servers.</p>
+                                                        </div>
+                                                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                                                            <p class="font-bold text-gray-900 text-[14px] mb-1">How
+                                                                secure is the connection?</p>
+                                                            <p class="text-[13px] text-gray-500 leading-relaxed">The
+                                                                relay uses <b>WireGuard + TLS</b> for end-to-end
+                                                                encryption. Your data is encrypted directly from your
+                                                                phone to your computer.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Comparison Table -->
+                                                <div
+                                                    class="mt-10 overflow-hidden rounded-2xl border border-gray-100 bg-white">
+                                                    <table class="w-full text-left text-[13px]">
+                                                        <thead>
+                                                            <tr class="bg-gray-50 border-b border-gray-100">
+                                                                <th class="px-4 py-3 font-bold text-gray-900">Feature
+                                                                </th>
+                                                                <th class="px-4 py-3 font-bold text-gray-900">Claude
+                                                                    Code</th>
+                                                                <th class="px-4 py-3 font-bold text-blue-600">HAPI +
+                                                                    Agent</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="divide-y divide-gray-50">
+                                                            <tr>
+                                                                <td class="px-4 py-3 text-gray-600">Remote Access</td>
+                                                                <td class="px-4 py-3 text-red-500">No</td>
+                                                                <td class="px-4 py-3 text-emerald-500 font-bold">Yes
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="px-4 py-3 text-gray-600">Mobile Control</td>
+                                                                <td class="px-4 py-3 text-red-500">No</td>
+                                                                <td class="px-4 py-3 text-emerald-500 font-bold">Yes
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="px-4 py-3 text-gray-600">Voice Control</td>
+                                                                <td class="px-4 py-3 text-red-500">No</td>
+                                                                <td class="px-4 py-3 text-emerald-500 font-bold">Yes
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="px-4 py-3 text-gray-600">Session Persistence
+                                                                </td>
+                                                                <td class="px-4 py-3 text-gray-400">Limited</td>
+                                                                <td class="px-4 py-3 text-emerald-500 font-bold">Always
+                                                                    On</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-    
+
+                                <!-- How it Works Tab -->
+                                <div id="content-howitworks" class="tab-content hidden">
+                                    <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                                        <span class="w-1.5 h-6 bg-indigo-600 rounded-full"></span>
+                                        How HAPI Works
+                                    </h3>
+                                    <div class="prose prose-sm max-w-none text-gray-600">
+                                        <p class="mb-4 leading-relaxed">HAPI consists of three interconnected components
+                                            that work together to provide remote AI agent control.</p>
+
+                                        <pre
+                                            class="bg-gray-900 text-emerald-400 p-4 rounded-xl text-[12px] leading-tight overflow-x-auto font-mono mb-6">
+┌─────────────────────────────────────────────────────┐
+│              Your Machine (Local or Hub Host)       │
+│                                                     │
+│   ┌──────────────┐         ┌──────────────┐         │
+│   │              │         │              │         │
+│   │   HAPI CLI   │&lt;───────&gt;│  HAPI Hub    │         │
+│   │              │ Socket  │              │         │
+│   │  + AI Agent  │   .IO   │  + SQLite    │         │
+│   │              │         │  + REST API  │         │
+│   └──────────────┘         └──────┬───────┘         │
+│                                   │                 │
+└───────────────────────────────────┼─────────────────┘
+                                    │
+                          ┌─────────▼─────────┐
+                          │  Relay / Tunnel   │
+                          │  WireGuard + TLS  │
+                          └─────────┬─────────┘
+                                    │
+┌───────────────────────────────────┼─────────────────┐
+│               Remote Access       │                 │
+│                                   │                 │
+│         ┌─────────────────────────┼──────────┐      │
+│         │                         ▼          │      │
+│         │    ┌──────────────┐           ┌────┴────┐ │
+│         │    │  Telegram    │           │  Web    │ │
+│         │    │  Mini App    │           │  App    │ │
+│         │    └──────────────┘           └─────────┘ │
+│         └────────────────────────────────────┘      │
+└─────────────────────────────────────────────────────┘</pre>
+
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                            <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                                                <h4 class="font-bold text-gray-900 mb-2">🔄 Permission Flow</h4>
+                                                <ol class="text-[13px] space-y-2 list-decimal ml-4">
+                                                    <li>AI agent requests tool permission</li>
+                                                    <li>CLI sends request to Hub</li>
+                                                    <li>Hub notifies you via Phone/Telegram</li>
+                                                    <li>You approve on your phone</li>
+                                                    <li>Hub relays decision to CLI</li>
+                                                </ol>
+                                            </div>
+                                            <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                                                <h4 class="font-bold text-gray-900 mb-2">🚀 Message Flow</h4>
+                                                <ol class="text-[13px] space-y-2 list-decimal ml-4">
+                                                    <li>You send message from phone</li>
+                                                    <li>Hub receives and emits to CLI</li>
+                                                    <li>CLI passes to AI Agent</li>
+                                                    <li>Agent processes and streams back</li>
+                                                    <li>Hub pushes live updates to you</li>
+                                                </ol>
+                                            </div>
+                                        </div>
+
+                                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                                            <h4 class="font-bold text-blue-900 mb-2">Local vs Remote Modes</h4>
+                                            <p class="text-[13px] text-blue-800 leading-relaxed">
+                                                HAPI's defining feature is the ability to seamlessly hand off control.
+                                                When you're at your desk, use the <b>Local Mode</b> (Terminal) for
+                                                native speed. When you step away, <b>Remote Mode</b> (Phone) takes over
+                                                automatically without losing session state.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Cursor Agent Tab -->
+                                <div id="content-cursor" class="tab-content hidden">
+                                    <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                                        <span class="w-1.5 h-6 bg-blue-500 rounded-full"></span>
+                                        Cursor Agent Setup
+                                    </h3>
+
+                                    <div class="prose prose-sm max-w-none text-gray-600 space-y-8">
+                                        <p class="leading-relaxed">HAPI supports <b>Cursor Agent CLI</b> for running
+                                            Cursor's AI coding agent with full remote control via web and phone.</p>
+
+                                        <!-- Prerequisites -->
+                                        <section>
+                                            <h4 class="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                                                🛠️ Prerequisites
+                                            </h4>
+                                            <p class="text-[14px] mb-3">Install the Cursor Agent CLI first:</p>
+                                            <div
+                                                class="bg-gray-900 rounded-xl p-4 font-mono text-[13px] text-gray-300 space-y-3 mb-3">
+                                                <div>
+                                                    <span class="text-gray-500 italic block mb-1"># macOS / Linux</span>
+                                                    <code
+                                                        class="text-emerald-400">curl https://cursor.com/install -fsS | bash</code>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-500 italic block mb-1"># Windows
+                                                        (PowerShell)</span>
+                                                    <code
+                                                        class="text-emerald-400">irm 'https://cursor.com/install?win32=true' | iex</code>
+                                                </div>
+                                            </div>
+                                            <p class="text-[13px] text-gray-500">Verify it's working: <code
+                                                    class="bg-gray-100 px-1.5 py-0.5 rounded text-indigo-600">agent --version</code>
+                                            </p>
+                                        </section>
+
+                                        <!-- Usage -->
+                                        <section>
+                                            <h4 class="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                                                🚀 Usage Commands
+                                            </h4>
+                                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                                <div class="p-3 bg-gray-50 border border-gray-100 rounded-lg">
+                                                    <code
+                                                        class="text-indigo-600 font-bold block mb-1">hapi cursor</code>
+                                                    <span class="text-[12px] text-gray-500">Start new agent
+                                                        session</span>
+                                                </div>
+                                                <div class="p-3 bg-gray-50 border border-gray-100 rounded-lg">
+                                                    <code
+                                                        class="text-indigo-600 font-bold block mb-1">hapi cursor --continue</code>
+                                                    <span class="text-[12px] text-gray-500">Resume most recent
+                                                        chat</span>
+                                                </div>
+                                                <div class="p-3 bg-gray-50 border border-gray-100 rounded-lg">
+                                                    <code
+                                                        class="text-indigo-600 font-bold block mb-1">hapi cursor --mode plan</code>
+                                                    <span class="text-[12px] text-gray-500">Start in Plan mode</span>
+                                                </div>
+                                                <div class="p-3 bg-gray-50 border border-gray-100 rounded-lg">
+                                                    <code
+                                                        class="text-indigo-600 font-bold block mb-1">hapi cursor --yolo</code>
+                                                    <span class="text-[12px] text-gray-500">Bypass approval
+                                                        prompts</span>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <!-- Permission Modes -->
+                                        <section>
+                                            <h4 class="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                                                ⚖️ Permission Modes
+                                            </h4>
+                                            <div class="overflow-hidden rounded-xl border border-gray-100">
+                                                <table class="w-full text-left text-[13px]">
+                                                    <thead class="bg-gray-50 border-b border-gray-100">
+                                                        <tr>
+                                                            <th class="px-4 py-2 font-bold text-gray-700">Mode</th>
+                                                            <th class="px-4 py-2 font-bold text-gray-700">Description
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="divide-y divide-gray-50">
+                                                        <tr>
+                                                            <td class="px-4 py-2 font-mono text-indigo-600">default</td>
+                                                            <td class="px-4 py-2">Standard agent behavior</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-4 py-2 font-mono text-indigo-600">plan</td>
+                                                            <td class="px-4 py-2">Plan mode - design before coding</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-4 py-2 font-mono text-indigo-600">ask</td>
+                                                            <td class="px-4 py-2">Explore code without edits</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-4 py-2 font-mono text-indigo-600">yolo</td>
+                                                            <td class="px-4 py-2">Bypass all approval prompts</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <p class="text-[12px] text-gray-500 mt-2 italic">Tip: You can change the
+                                                mode from the web UI during a live session.</p>
+                                        </section>
+
+                                        <!-- Local vs Remote -->
+                                        <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div class="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                                                <h5 class="font-bold text-blue-900 text-sm mb-2">🏠 Local Mode</h5>
+                                                <p class="text-[12px] text-blue-700 leading-relaxed">Run from your
+                                                    terminal. Full interactive experience with instant keyboard
+                                                    feedback.</p>
+                                            </div>
+                                            <div class="p-4 bg-indigo-50 rounded-xl border border-indigo-100">
+                                                <h5 class="font-bold text-indigo-900 text-sm mb-2">🌍 Remote Mode</h5>
+                                                <p class="text-[12px] text-indigo-700 leading-relaxed">Spawn from
+                                                    web/phone. Uses <code>--trust</code> to run tools via secure
+                                                    background processes.</p>
+                                            </div>
+                                        </section>
+
+                                        <!-- Limitations & Integration -->
+                                        <div
+                                            class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-gray-100">
+                                            <div>
+                                                <h5 class="font-bold text-gray-900 text-sm mb-2">⚠️ Limitations</h5>
+                                                <ul class="text-[12px] text-gray-500 space-y-1 list-disc ml-4">
+                                                    <li>Remote mode uses <code>--trust</code> (no per-request approval)
+                                                    </li>
+                                                    <li>Use <code>agent ls</code> to find previous Chat IDs for manual
+                                                        resume</li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <h5 class="font-bold text-gray-900 text-sm mb-2">🔗 Integration</h5>
+                                                <ul class="text-[12px] text-gray-500 space-y-1 list-disc ml-4">
+                                                    <li>Monitor live activity in Web & Telegram</li>
+                                                    <li>Messages queue automatically when switching modes</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Voice Assistant Tab -->
+                                <div id="content-voice" class="tab-content hidden">
+                                    <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                                        <span class="w-1.5 h-6 bg-pink-500 rounded-full"></span>
+                                        Voice Assistant Guide
+                                    </h3>
+                                    <div class="prose prose-sm max-w-none text-gray-600">
+                                        <p class="mb-4 leading-relaxed">Powered by <b>ElevenLabs Conversational AI</b>,
+                                            the voice assistant lets you talk to your AI agent hands-free.</p>
+
+                                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                                            <div class="p-4 bg-pink-50 rounded-xl border border-pink-100 text-center">
+                                                <div class="text-2xl mb-1">🎙️</div>
+                                                <div class="font-bold text-pink-900 text-sm">Talk</div>
+                                                <div class="text-[11px] text-pink-700">Give instructions via voice</div>
+                                            </div>
+                                            <div class="p-4 bg-pink-50 rounded-xl border border-pink-100 text-center">
+                                                <div class="text-2xl mb-1">✅</div>
+                                                <div class="font-bold text-pink-900 text-sm">Approve</div>
+                                                <div class="text-[11px] text-pink-700">Say "Yes" or "No" to tools</div>
+                                            </div>
+                                            <div class="p-4 bg-pink-50 rounded-xl border border-pink-100 text-center">
+                                                <div class="text-2xl mb-1">🔊</div>
+                                                <div class="font-bold text-pink-900 text-sm">Monitor</div>
+                                                <div class="text-[11px] text-pink-700">Hear task updates live</div>
+                                            </div>
+                                        </div>
+
+                                        <h4 class="font-bold text-gray-900 mb-2">Setup Instructions</h4>
+                                        <ol class="text-[13px] space-y-4 list-decimal ml-4 mb-6">
+                                            <li>Get an API Key from <a href="https://elevenlabs.io" target="_blank"
+                                                    class="text-blue-600 hover:underline">elevenlabs.io</a></li>
+                                            <li>Set the environment variable:
+                                                <div
+                                                    class="bg-gray-900 rounded-lg p-3 font-mono text-[12px] text-emerald-400 mt-2">
+                                                    export ELEVENLABS_API_KEY="your-api-key"
+                                                </div>
+                                            </li>
+                                            <li>Start the hub with <code>hapi hub --relay</code></li>
+                                            <li>In the web app, click the <b>microphone button</b> to start talking!
+                                            </li>
+                                        </ol>
+
+                                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                                            <h4 class="font-bold text-gray-900 text-sm mb-2">Voice Commands Example</h4>
+                                            <ul class="text-[12px] space-y-2 italic text-gray-500">
+                                                <li>"Ask Claude to refactor the auth module"</li>
+                                                <li>"Go ahead and run the tests" (Approve)</li>
+                                                <li>"No, don't delete that file" (Deny)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <!-- Trust & Safety Tab -->
                                 <div id="content-trust" class="tab-content hidden">
                                     <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                                         <span class="w-1.5 h-6 bg-emerald-600 rounded-full"></span>
                                         Security & Verification
                                     </h3>
-                                    
+
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div class="p-4 rounded-xl border border-emerald-100 bg-emerald-50/30 flex gap-4 items-center">
-                                            <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                        <div
+                                            class="p-4 rounded-xl border border-emerald-100 bg-emerald-50/30 flex gap-4 items-center">
+                                            <div
+                                                class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                                    </path>
+                                                </svg>
                                             </div>
                                             <div>
                                                 <h4 class="font-bold text-gray-900 text-sm">Play Protect Verified</h4>
-                                                <p class="text-[12px] text-gray-500">Scanned and verified safe from harmful malware.</p>
+                                                <p class="text-[12px] text-gray-500">Scanned and verified safe from
+                                                    harmful malware.</p>
                                             </div>
                                         </div>
-    
-                                        <div class="p-4 rounded-xl border border-blue-100 bg-blue-50/30 flex gap-4 items-center">
-                                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-1.197-3.69c-1.969-2.535-3.15-5.694-3.15-9.131 0-3.033.917-5.855 2.491-8.192M21 8c0 2.102-.453 4.099-1.264 5.903M14.851 4.898c1.331.868 2.467 2.066 3.313 3.46"></path></svg>
+
+                                        <div
+                                            class="p-4 rounded-xl border border-blue-100 bg-blue-50/30 flex gap-4 items-center">
+                                            <div
+                                                class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-1.197-3.69c-1.969-2.535-3.15-5.694-3.15-9.131 0-3.033.917-5.855 2.491-8.192M21 8c0 2.102-.453 4.099-1.264 5.903M14.851 4.898c1.331.868 2.467 2.066 3.313 3.46">
+                                                    </path>
+                                                </svg>
                                             </div>
                                             <div>
                                                 <h4 class="font-bold text-gray-900 text-sm">Official Signature</h4>
-                                                <p class="text-[12px] text-gray-500">File hash matches original developer release.</p>
+                                                <p class="text-[12px] text-gray-500">File hash matches original
+                                                    developer release.</p>
                                             </div>
                                         </div>
-    
-                                        <div class="p-4 rounded-xl border border-purple-100 bg-purple-50/30 flex gap-4 items-center">
-                                            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+
+                                        <div
+                                            class="p-4 rounded-xl border border-purple-100 bg-purple-50/30 flex gap-4 items-center">
+                                            <div
+                                                class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                                </svg>
                                             </div>
                                             <div>
                                                 <h4 class="font-bold text-gray-900 text-sm">No Ads / Tracking</h4>
-                                                <p class="text-[12px] text-gray-500">Clean user experience with zero hidden scripts.</p>
+                                                <p class="text-[12px] text-gray-500">Clean user experience with zero
+                                                    hidden scripts.</p>
                                             </div>
                                         </div>
-    
-                                        <div class="p-4 rounded-xl border border-gray-100 bg-gray-50/50 flex gap-4 items-center scale-95 opacity-80">
-                                            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+
+                                        <div
+                                            class="p-4 rounded-xl border border-gray-100 bg-gray-50/50 flex gap-4 items-center scale-95 opacity-80">
+                                            <div
+                                                class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                </svg>
                                             </div>
                                             <div>
                                                 <h4 class="font-bold text-gray-900 text-sm">Community Trusted</h4>
-                                                <p class="text-[12px] text-gray-500">Manually tested by ShreeBitu for performance.</p>
+                                                <p class="text-[12px] text-gray-500">Manually tested by ShreeBitu for
+                                                    performance.</p>
                                             </div>
                                         </div>
                                     </div>
-    
-                                    <div class="mt-6 p-4 rounded-lg bg-gray-900 text-white flex items-center justify-between">
+
+                                    <div
+                                        class="mt-6 p-4 rounded-lg bg-gray-900 text-white flex items-center justify-between">
                                         <div class="flex items-center gap-3">
                                             <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                                            <span class="text-sm font-medium">All systems green. APK is safe to install.</span>
+                                            <span class="text-sm font-medium">All systems green. APK is safe to
+                                                install.</span>
                                         </div>
-                                        <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
                                     </div>
                                 </div>
-    
+
                                 <!-- Installation Tab -->
                                 <div id="content-installation" class="tab-content hidden">
                                     <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                                         <span class="w-1.5 h-6 bg-green-600 rounded-full"></span>
-                                        How to Install
+                                        Full Setup Guide
                                     </h3>
-                                    
-                                    <div class="space-y-4">
-                                        <div class="flex gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100 items-start">
-                                            <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex-shrink-0 flex items-center justify-center font-bold text-sm shadow-sm">1</div>
-                                            <div>
-                                                <h4 class="font-bold text-gray-900 text-sm mb-1">Enable Unknown Sources</h4>
-                                                <p class="text-[13px] text-gray-500 leading-relaxed">Go to your mobile <b>Settings > Security</b> or <b>Privacy</b> and toggle on the "Install from Unknown Sources" option.</p>
+
+                                    <!-- Architecture -->
+                                    <div class="mb-10 p-6 bg-gray-50 rounded-2xl border border-gray-100">
+                                        <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                            🏗️ Architecture
+                                        </h4>
+                                        <pre
+                                            class="bg-gray-900 text-emerald-400 p-4 rounded-xl text-[12px] leading-tight overflow-x-auto font-mono">
+┌─────────────────────────────────────────────────────┐
+│              Your Machine                           │
+│                                                     │
+│  ┌─────────┐    Socket.IO    ┌─────────────┐       │
+│  │  CLI    │&lt;───────────────&gt;│    Hub      │       │
+│  │+ Agent  │                 │  + SQLite   │       │
+│  └─────────┘                 └──────┬──────┘       │
+│       ▲                             │ SSE          │
+│       │ spawn                       ▼              │
+│  ┌────┴────┐                 ┌─────────────┐       │
+│  │ Runner  │&lt;────RPC────────&gt;│   Web App   │       │
+│  │(Background)│              └─────────────┘       │
+│  └─────────┘                                       │
+└─────────────────────────────────────────────────────┘
+                    │
+           [Tunnel / Public URL]
+                    │
+              ┌─────▼─────┐
+              │ Phone/Web │
+              └───────────┘</pre>
+                                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+                                            <div class="text-[13px]">
+                                                <span class="font-bold text-indigo-600 block mb-1">CLI (Required)</span>
+                                                Wraps AI agents (Claude/Gemini/etc) and runs sessions.
+                                            </div>
+                                            <div class="text-[13px]">
+                                                <span class="font-bold text-indigo-600 block mb-1">Hub (Required)</span>
+                                                Central coordinator for persistence and remote access.
+                                            </div>
+                                            <div class="text-[13px]">
+                                                <span class="font-bold text-indigo-600 block mb-1">Runner
+                                                    (Optional)</span>
+                                                Background service for remote session spawning.
                                             </div>
                                         </div>
-    
-                                        <div class="flex gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100 items-start">
-                                            <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex-shrink-0 flex items-center justify-center font-bold text-sm shadow-sm">2</div>
-                                            <div>
-                                                <h4 class="font-bold text-gray-900 text-sm mb-1">Download the APK</h4>
-                                                <p class="text-[13px] text-gray-500 leading-relaxed">Click the <b>Free Download</b> button on the sidebar (or bottom on mobile) to save the latest APK file to your device.</p>
+                                    </div>
+
+                                    <div class="space-y-8">
+                                        <!-- Step 1: Prerequisites -->
+                                        <div>
+                                            <h4 class="font-bold text-gray-900 mb-3 ml-1">1. Prerequisites</h4>
+                                            <p class="text-[14px] text-gray-600 mb-4">Ensure you have one of these AI
+                                                agents installed on your machine:</p>
+                                            <div
+                                                class="bg-gray-900 rounded-xl p-4 font-mono text-[13px] text-gray-400 space-y-3">
+                                                <div><span class="text-gray-600"># For Claude Code:</span> <code
+                                                        class="text-indigo-400">claude --version</code></div>
+                                                <div><span class="text-gray-600"># For Gemini CLI:</span> <code
+                                                        class="text-indigo-400">gemini --version</code></div>
+                                                <div><span class="text-gray-600"># For OpenCode CLI:</span> <code
+                                                        class="text-indigo-400">opencode --version</code></div>
                                             </div>
                                         </div>
-    
-                                        <div class="flex gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100 items-start">
-                                            <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex-shrink-0 flex items-center justify-center font-bold text-sm shadow-sm">3</div>
-                                            <div>
-                                                <h4 class="font-bold text-gray-900 text-sm mb-1">Begin Installation</h4>
-                                                <p class="text-[13px] text-gray-500 leading-relaxed">Open your <b>File Manager</b>, go to the <b>Downloads</b> folder, and tap on the HAPI APK for Android to start the installation.</p>
+
+                                        <!-- Step 2: Install CLI -->
+                                        <div>
+                                            <h4 class="font-bold text-gray-900 mb-3 ml-1">2. Install the CLI</h4>
+                                            <div class="bg-gray-900 rounded-xl p-4 font-mono text-[13px] text-gray-300">
+                                                <code
+                                                    class="text-emerald-400">npm install -g @twsxtd/hapi --registry=https://registry.npmjs.org</code>
+                                            </div>
+                                            <p class="text-[12px] text-gray-500 mt-2 italic px-1">Note: Use the official
+                                                npm registry for global installs to ensure platform packages sync
+                                                correctly.</p>
+                                        </div>
+
+                                        <!-- Step 3: Hub Setup -->
+                                        <div>
+                                            <h4 class="font-bold text-gray-900 mb-3 ml-1">3. Hub Setup (Choose your way)
+                                            </h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="p-4 bg-indigo-50 border border-indigo-100 rounded-xl">
+                                                    <span class="font-bold text-indigo-700 text-sm block mb-2">Public
+                                                        Relay (Recommended)</span>
+                                                    <code
+                                                        class="bg-indigo-900 text-white p-2 rounded block text-xs mb-2">hapi hub --relay</code>
+                                                    <p class="text-[12px] text-indigo-600 leading-snug">Displays a QR
+                                                        code for instant phone access. Fully E2E encrypted via WireGuard
+                                                        + TLS.</p>
+                                                </div>
+                                                <div class="p-4 bg-gray-50 border border-gray-200 rounded-xl">
+                                                    <span class="font-bold text-gray-700 text-sm block mb-2">Local
+                                                        Only</span>
+                                                    <code
+                                                        class="bg-gray-800 text-white p-2 rounded block text-xs mb-2">hapi hub</code>
+                                                    <p class="text-[12px] text-gray-500 leading-snug">Listens on
+                                                        http://localhost:3006. Perfect for desktop use without remote
+                                                        access.</p>
+                                                </div>
                                             </div>
                                         </div>
-    
-                                        <div class="flex gap-4 p-4 rounded-xl bg-green-50/50 border border-green-100 items-start">
-                                            <div class="w-8 h-8 bg-green-600 text-white rounded-lg flex-shrink-0 flex items-center justify-center font-bold text-sm shadow-sm">4</div>
+
+                                        <!-- Advanced: Runner & Background -->
+                                        <div class="pt-6 border-t border-gray-100">
+                                            <h4 class="font-bold text-gray-900 mb-4 ml-1">4. Background Runner
+                                                (Optional)</h4>
+                                            <p class="text-[14px] text-gray-600 mb-4">Run as a service to spawn sessions
+                                                from your phone without keeping a terminal open:</p>
+                                            <div
+                                                class="bg-gray-900 rounded-xl p-4 font-mono text-[13px] text-gray-300 space-y-1">
+                                                <code class="text-emerald-400 block">hapi runner start</code>
+                                                <code class="text-emerald-400 block">hapi runner status</code>
+                                            </div>
+                                        </div>
+
+                                        <!-- Advanced: Telegram & Voice -->
+                                        <div
+                                            class="pt-6 border-t border-gray-100 grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div>
-                                                <h4 class="font-bold text-gray-900 text-sm mb-1">Launch HAPI</h4>
-                                                <p class="text-[13px] text-gray-500 leading-relaxed">Once installed, tap <b>Open</b> and grand necessary permissions to start using your mobile terminal environment.</p>
+                                                <h5 class="font-bold text-gray-800 text-sm mb-2">📱 Telegram Mini App
+                                                </h5>
+                                                <p class="text-[12px] text-gray-500 mb-3 leading-relaxed">Set your
+                                                    <code>TELEGRAM_BOT_TOKEN</code> and <code>HAPI_PUBLIC_URL</code>,
+                                                    then message your bot with <code>/start</code>.</p>
+                                            </div>
+                                            <div>
+                                                <h5 class="font-bold text-gray-800 text-sm mb-2">🎙️ Voice Assistant
+                                                </h5>
+                                                <p class="text-[12px] text-gray-500 mb-3 leading-relaxed">Enable
+                                                    hands-free control by setting your <code>ELEVENLABS_API_KEY</code>
+                                                    before starting the hub.</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <script>
                                 function switchTab(tabName) {
                                     // Hide all content
@@ -478,16 +1351,16 @@
                                     });
                                     // Update buttons
                                     document.querySelectorAll('[id^="tab-"]').forEach(button => {
-                                        button.classList.remove('border-blue-600', 'text-blue-600');
-                                        button.classList.add('border-transparent', 'text-gray-500');
+                                        button.classList.remove('tab-active');
+                                        button.classList.add('tab-inactive');
                                     });
-                                    
+
                                     // Show active content
                                     document.getElementById('content-' + tabName).classList.remove('hidden');
                                     document.getElementById('content-' + tabName).classList.add('block');
                                     // Highlight active button
-                                    document.getElementById('tab-' + tabName).classList.add('border-blue-600', 'text-blue-600');
-                                    document.getElementById('tab-' + tabName).classList.remove('border-transparent', 'text-gray-500');
+                                    document.getElementById('tab-' + tabName).classList.add('tab-active');
+                                    document.getElementById('tab-' + tabName).classList.remove('tab-inactive');
                                 }
 
                                 function startDownload(url) {
@@ -495,20 +1368,20 @@
                                     const btnText = document.getElementById('btnText');
                                     const originalContent = btnText.innerHTML;
                                     let timeLeft = 5;
-                                    
+
                                     btn.style.pointerEvents = 'none';
                                     btn.classList.add('relative', 'overflow-hidden');
-                                    
+
                                     // Add progress bar element
                                     const progress = document.createElement('div');
                                     progress.className = 'absolute bottom-0 left-0 h-1 bg-white/30 transition-all duration-1000 ease-linear';
                                     progress.style.width = '0%';
                                     btn.appendChild(progress);
-                                    
+
                                     const timer = setInterval(() => {
                                         timeLeft--;
                                         progress.style.width = `${(5 - timeLeft) * 20}%`;
-                                        
+
                                         btnText.innerHTML = `
                                             <div class="flex items-center gap-3">
                                                 <svg class="w-5 h-5 animate-spin" viewBox="0 0 24 24">
@@ -517,7 +1390,7 @@
                                                 </svg>
                                                 <span>Preparing File (${timeLeft}s)</span>
                                             </div>`;
-                                        
+
                                         if (timeLeft <= 0) {
                                             clearInterval(timer);
                                             btnText.innerHTML = `
@@ -525,111 +1398,23 @@
                                                     <svg class="w-5 h-5 animate-bounce" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                                     Downloading Now...
                                                 </span>`;
-                                            
+
                                             setTimeout(() => {
                                                 window.location.href = url;
                                                 setTimeout(() => {
                                                     btnText.innerHTML = originalContent;
                                                     btn.style.pointerEvents = 'auto';
-                                                    if(btn.contains(progress)) btn.removeChild(progress);
+                                                    if (btn.contains(progress)) btn.removeChild(progress);
                                                 }, 3000);
                                             }, 500);
                                         }
                                     }, 1000);
-                                    
+
                                     // Initial progress
                                     setTimeout(() => progress.style.width = '20%', 50);
                                 }
                             </script>
                         </div>
-                    </div>
-                    <!-- Right Sticky Sidebar for Downloads -->
-                    <div class="w-full lg:w-[32%]">
-                        <div class="sticky top-6 flex flex-col gap-2">
-                        
-                            <!-- Primary Download Card -->
-                            <div class="card-white p-3 scroll-mt-20" id="downloadSection">
-
-                            <!-- Download Box -->
-                            <div class="text-center mb-5">
-                                <div class="text-gray-900 font-bold text-[18px] mb-2 border-b border-gray-100 pb-2">
-                                    Download HAPI</div>
-                                <div class="text-[13px] text-gray-500 mb-4">Version Latest Official for Android</div>
-
-                                <a href="javascript:void(0)" onclick="startDownload('https://github.com/tiann/hapi/releases/latest')" id="downloadBtn"
-                                    class="btn-download block w-full py-3.5 px-4 rounded-lg font-bold text-[16px] text-center transition-all flex flex-col items-center justify-center">
-                                    <span id="btnText" class="flex items-center gap-2">
-                                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
-                                        </svg>
-                                        Free Download
-                                    </span>
-                                </a>
-
-                                <div class="text-[11px] text-gray-400 mt-3 flex items-center justify-center gap-1">
-                                    <svg class="w-3 h-3 text-green-500" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                                        </path>
-                                    </svg>
-                                    Always available from secure servers
-                                </div>
-                            </div>
-
-                            <!-- File Information Table -->
-                            <div class="bg-gray-50 rounded-lg border border-gray-100 p-4">
-                                <h4
-                                    class="text-[12px] font-bold text-gray-800 uppercase tracking-widest mb-3 border-b border-gray-200 pb-2">
-                                    File Information</h4>
-                                <ul class="text-[13px] space-y-2.5">
-                                    <li class="flex justify-between border-b border-gray-200/60 pb-1.5"><span
-                                            class="text-gray-500">File Size</span><span
-                                            class="font-medium text-gray-900 text-right">~ 45 MB</span></li>
-                                    <li class="flex justify-between border-b border-gray-200/60 pb-1.5"><span
-                                            class="text-gray-500">OS</span><span
-                                            class="font-medium text-gray-900 text-right">Android 8.0+</span></li>
-                                    <li class="flex justify-between border-b border-gray-200/60 pb-1.5"><span
-                                            class="text-gray-500">Language</span><span
-                                            class="font-medium text-gray-900 text-right">English</span></li>
-                                    <li class="flex justify-between border-b border-gray-200/60 pb-1.5"><span
-                                            class="text-gray-500">License</span><span
-                                            class="font-medium text-green-600 text-right">Free / Open Source</span></li>
-                                    <li class="flex justify-between py-0.5"><span
-                                            class="text-gray-500">Developer</span><span
-                                            class="font-medium text-blue-600 text-right">tiann</span></li>
-                                </ul>
-                            </div>
-
-                        </div>
-
-                        <!-- Alternate Versions / Related Apps -->
-                        <div class="card-white p-3 border-t-4 border-t-blue-500">
-                            <h4 class="text-[15px] font-bold text-gray-900 mb-4">Alternatives</h4>
-
-                            <div class="space-y-4">
-                                <a href="twoyi.html"
-                                    class="flex gap-3 items-center group cursor-pointer hover:bg-gray-50 p-1 -mx-1 rounded transition">
-                                    <img src="../assets/images/twoyi.png"
-                                        class="w-10 h-10 rounded-md border border-gray-200 shadow-sm" alt="Twoyi">
-                                    <div>
-                                        <h5 class="text-[13px] font-bold text-blue-600 group-hover:underline">Twoyi</h5>
-                                        <p class="text-[11px] text-gray-500">Android Container Engine</p>
-                                    </div>
-                                </a>
-                                <a href="vphonegaga.html"
-                                    class="flex gap-3 items-center group cursor-pointer hover:bg-gray-50 p-1 -mx-1 rounded transition">
-                                    <img src="../assets/images/vphonegaga_logo.webp"
-                                        class="w-10 h-10 rounded-md border border-gray-200 shadow-sm" alt="VPhoneGaGa">
-                                    <div>
-                                        <h5 class="text-[13px] font-bold text-blue-600 group-hover:underline">VPhoneGaGa
-                                        </h5>
-                                        <p class="text-[11px] text-gray-500">Virtual Machine OS</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                     </div>
                 </div>
 
