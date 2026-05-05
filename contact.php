@@ -1,6 +1,5 @@
 <?php
-require_once 'config.php';
-require_once 'db.php';
+require_once 'includes/init.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,8 +51,8 @@ require_once 'db.php';
         ?>
 
         <!-- Content Container -->
-        <div class="flex-1 overflow-y-auto px-4 md:px-8 lg:px-10 pb-20 main-scroll">
-            <div class="max-w-4xl mx-auto mt-12 md:mt-16">
+        <div class="flex-1 overflow-y-auto main-scroll">
+            <div class="max-w-4xl mx-auto mt-12 md:mt-16 px-4 md:px-8 lg:px-10 pb-20">
                 
                 <div class="text-center mb-16">
                     <h1 class="text-4xl md:text-6xl font-black text-slate-900 tracking-tight mb-6">Get in Touch</h1>
@@ -107,6 +106,7 @@ require_once 'db.php';
                     <div class="absolute -left-20 -top-20 w-80 h-80 bg-blue-500/10 rounded-full blur-[100px]"></div>
                 </div>
             </div>
+            <?php include 'includes/footer.php'; ?>
         </div>
     </main>
 

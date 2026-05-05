@@ -1,6 +1,5 @@
 <?php
-require_once '../config.php';
-require_once '../db.php';
+require_once '../includes/init.php';
 
 if (!isLoggedIn()) {
     redirect('../auth/login.php');
@@ -251,7 +250,7 @@ if (!$stmtUser->fetch()) {
                                                 <div class="flex items-center gap-4">
                                                     <div
                                                         class="w-12 h-12 rounded-xl bg-white border border-gray-200 shadow-sm flex items-center justify-center flex-shrink-0 overflow-hidden">
-                                                        <img src="../<?php echo htmlspecialchars($app['logo']); ?>" alt="Logo"
+                                                        <img src="<?php echo $base_url . htmlspecialchars($app['logo']); ?>" alt="Logo"
                                                             class="w-full h-full object-cover">
                                                     </div>
                                                     <div>

@@ -1,47 +1,70 @@
 <?php
-require_once 'config.php';
-require_once 'db.php';
+/**
+ * ============================================================
+ * REPORT CONTENT PAGE
+ * ============================================================
+ * Purpose: Allows logged-in users to report problematic apps
+ *          (broken links, malware, copyright issues, etc.)
+ * Input:   GET: id (app to report)
+ *          POST: app_id, reason, csrf_token, submit_report
+ * Output:  Success confirmation or error message
+ * Security: Login required, CSRF protected, rate-limited (5/hour)
+ * Connects to: includes/init.php, apps table, reports table
+ * ============================================================
+ */
+require_once 'includes/init.php';
 
+// ── Authentication Gate: Only logged-in users can report ──
 if (!isLoggedIn()) {
     redirect('auth/login.php');
 }
 
+// ── Get the app ID from either GET (initial load) or POST (form submission) ──
 $app_id = isset($_GET['id']) ? (int)$_GET['id'] : (isset($_POST['app_id']) ? (int)$_POST['app_id'] : 0);
 
+// Validate the app ID
 if ($app_id <= 0) {
     die("Invalid application ID.");
 }
 
-// Fetch app info
+// ── Fetch app info to display the name in the form ──
 $stmt = $pdo->prepare("SELECT name FROM apps WHERE id = ?");
 $stmt->execute([$app_id]);
 $app = $stmt->fetch();
 
+// If app doesn't exist, show error
 if (!$app) {
     die("Application not found.");
 }
 
+// Initialize state variables
 $success = false;
 $error = '';
 
+// ── Handle Report Form Submission ──
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_report'])) {
+    // Step 1: Verify CSRF token
     verifyCsrfToken($_POST['csrf_token'] ?? '');
 
+    // Step 2: Sanitize the reason input
     $reason = sanitizeInput($_POST['reason'] ?? '');
     $user_id = $_SESSION['user_id'];
 
+    // Step 3: Validate that a reason was provided
     if (empty($reason)) {
         $error = "Please specify a reason for reporting.";
     } else {
-        // Rate limiting for reports (max 5 per hour)
+        // Step 4: Rate limiting — prevent spam reports (max 5 per hour per user)
         $stmt = $pdo->prepare("SELECT COUNT(*) FROM reports WHERE user_id = ? AND created_at >= DATE_SUB(NOW(), INTERVAL 1 HOUR)");
         $stmt->execute([$user_id]);
         if ($stmt->fetchColumn() >= 5) {
             $error = "You have reached the limit of 5 reports per hour. Please try again later.";
         } else {
+            // Step 5: Insert the report into the database
             $stmt = $pdo->prepare("INSERT INTO reports (app_id, user_id, reason) VALUES (?, ?, ?)");
             if ($stmt->execute([$app_id, $user_id, $reason])) {
                 $success = true;
+                // Log the report action for audit trail
                 logActivity('report_app', "Reported application: " . $app['name']);
             } else {
                 $error = "Failed to submit report. Please try again.";
@@ -75,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_report'])) {
                 </div>
                 <h1 class="text-2xl font-black text-slate-900 mb-3 tracking-tight">Report Submitted</h1>
                 <p class="text-slate-500 leading-relaxed mb-8">Thank you for helping us keep ShreeBitu safe. Our team will review your report shortly.</p>
-                <a href="app.php?id=<?php echo $app_id; ?>" class="w-full bg-indigo-900 text-white py-4 rounded-2xl font-bold text-sm uppercase tracking-widest hover:bg-indigo-800 transition-all shadow-lg shadow-indigo-100 inline-block text-center">Return to App</a>
+                <a href="post.php?slug=<?php echo urlencode($app_slug ?? ''); ?>" class="w-full bg-indigo-900 text-white py-4 rounded-2xl font-bold text-sm uppercase tracking-widest hover:bg-indigo-800 transition-all shadow-lg shadow-indigo-100 inline-block text-center">Return to App</a>
             </div>
         <?php else: ?>
             <div class="mb-8">
@@ -108,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_report'])) {
                 </div>
 
                 <button type="submit" name="submit_report" class="w-full bg-red-600 text-white py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-red-700 transition-all shadow-lg shadow-red-100 active:scale-95">Submit Report</button>
-                <a href="app.php?id=<?php echo $app_id; ?>" class="w-full text-center block text-slate-400 font-bold text-xs uppercase tracking-widest hover:text-slate-600 transition-colors py-2">Cancel</a>
+                <a href="<?php echo $base_url; ?>" class="w-full text-center block text-slate-400 font-bold text-xs uppercase tracking-widest hover:text-slate-600 transition-colors py-2">Cancel</a>
             </form>
         <?php endif; ?>
     </div>

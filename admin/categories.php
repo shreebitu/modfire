@@ -1,6 +1,5 @@
 <?php
-require_once '../config.php';
-require_once '../db.php';
+require_once '../includes/init.php';
 
 if (!isAdmin()) {
     redirect('../auth/login.php');
@@ -146,7 +145,8 @@ $reportsCount = $pdo->query("SELECT COUNT(*) FROM reports WHERE status = 'pendin
             <!-- Category List -->
             <div class="lg:col-span-2">
                 <div class="card-white overflow-hidden">
-                    <table class="w-full text-left">
+                    <div class="overflow-x-auto w-full">
+                        <table class="w-full text-left whitespace-nowrap min-w-[500px]">
                         <thead>
                             <tr class="bg-slate-50/50 border-b border-slate-100">
                                 <th class="px-6 py-4 text-[11px] font-black text-slate-500 uppercase tracking-wider">Icon</th>
@@ -183,6 +183,7 @@ $reportsCount = $pdo->query("SELECT COUNT(*) FROM reports WHERE status = 'pendin
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
 

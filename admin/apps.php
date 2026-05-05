@@ -1,6 +1,5 @@
 <?php
-require_once '../config.php';
-require_once '../db.php';
+require_once '../includes/init.php';
 
 if (!isAdmin()) {
     redirect('../auth/login.php');
@@ -61,9 +60,8 @@ if (isset($_GET['delete'])) {
 
 // Fetch apps
 $status_filter = isset($_GET['status']) ? $_GET['status'] : 'all';
-$query = "SELECT apps.*, users.username, categories.name as category_name FROM apps 
-          JOIN users ON apps.user_id = users.id
-          LEFT JOIN categories ON apps.category_id = categories.id";
+$query = "SELECT apps.*, users.username FROM apps 
+          JOIN users ON apps.user_id = users.id";
 if ($status_filter !== 'all') {
     $query .= " WHERE apps.status = " . $pdo->quote($status_filter);
 }
@@ -139,7 +137,8 @@ $reportsCount = $pdo->query("SELECT COUNT(*) FROM reports WHERE status = 'pendin
             </div>
 
             <div class="card-white overflow-hidden">
-                <table class="w-full text-left">
+                <div class="overflow-x-auto w-full">
+                    <table class="w-full text-left whitespace-nowrap min-w-[800px]">
                     <thead>
                         <tr class="bg-slate-50/50 border-b border-slate-100">
                             <th class="px-6 py-4 w-10">
@@ -171,9 +170,13 @@ $reportsCount = $pdo->query("SELECT COUNT(*) FROM reports WHERE status = 'pendin
                                         <div class="w-11 h-11 rounded-2xl bg-white border border-slate-200 p-1.5 flex-shrink-0 shadow-sm">
                                             <?php 
                                             $logo_path = $app['logo'];
-                                            $logo_src = (strpos($logo_path, 'http') === 0) ? $logo_path : '../' . $logo_path;
+                                            if (strpos($logo_path, 'http') !== 0) {
+                                                $logo_path = ltrim(str_replace('../', '', $logo_path), '/');
+                                                $logo_path = $base_url . $logo_path;
+                                            }
+                                            $logo_src = $logo_path;
                                             ?>
-                                            <img src="<?php echo htmlspecialchars($logo_src); ?>" class="w-full h-full object-contain">
+                                            <img src="<?php echo htmlspecialchars($logo_src); ?>" onerror="this.src='<?php echo $base_url; ?>assets/images/logo.png';" class="w-full h-full object-contain">
                                         </div>
                                         <div>
                                             <p class="text-sm font-bold text-slate-900"><?php echo htmlspecialchars($app['name']); ?></p>
@@ -208,8 +211,9 @@ $reportsCount = $pdo->query("SELECT COUNT(*) FROM reports WHERE status = 'pendin
                                 </td>
                             </tr>
                         <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </form>
     </div>

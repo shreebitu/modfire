@@ -1,6 +1,5 @@
 <?php
-require_once '../config.php';
-require_once '../db.php';
+require_once '../includes/init.php';
 
 if (!isLoggedIn()) {
     redirect('../auth/login.php');
@@ -231,12 +230,19 @@ $categories = $stmt->fetchAll();
                     <div class="flex flex-col md:flex-row gap-10 items-center md:items-start text-center md:text-left">
                         <!-- Logo Upload -->
                         <div class="w-40 h-40 md:w-48 md:h-48 rounded-[48px] bg-slate-50 border-2 border-dashed border-slate-200 flex items-center justify-center overflow-hidden shadow-sm flex-shrink-0 relative group hover:border-indigo-600 hover:bg-indigo-50 transition-all cursor-pointer">
-                            <img src="../<?php echo htmlspecialchars($app['logo']); ?>" alt="Logo" class="w-full h-full object-cover opacity-60 group-hover:opacity-30 transition-opacity">
+                            <?php 
+                            $logo_preview = $app['logo'];
+                            if (strpos($logo_preview, 'http') !== 0) {
+                                $logo_preview = ltrim(str_replace('../', '', $logo_preview), '/');
+                                $logo_preview = $base_url . $logo_preview;
+                            }
+                            ?>
+                            <img src="<?php echo htmlspecialchars($logo_preview); ?>" id="logo-preview-img" onerror="this.src='<?php echo $base_url; ?>assets/images/logo.png';" alt="Logo" class="w-full h-full object-cover opacity-60 group-hover:opacity-30 transition-opacity">
                             <div class="absolute inset-0 flex flex-col items-center justify-center text-slate-500 group-hover:text-indigo-600 transition-colors">
                                 <span class="material-symbols-outlined text-4xl">add_photo_alternate</span>
                                 <span class="text-[10px] font-black uppercase tracking-[0.2em] mt-2">New Logo</span>
                             </div>
-                            <input type="file" name="logo" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                            <input type="file" name="logo" accept="image/*" onchange="previewLogo(this)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
                         </div>
 
                         <div class="flex-1 w-full">
@@ -375,6 +381,16 @@ $categories = $stmt->fetchAll();
 </main>
 
 <script>
+    function previewLogo(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('logo-preview-img').src = e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
         const btn = document.getElementById('mobileMenuBtn');
         const sidebar = document.getElementById('mobileSidebar');

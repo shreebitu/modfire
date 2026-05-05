@@ -1,62 +1,78 @@
 <?php
-require_once 'config.php';
-require_once 'db.php';
-
 /**
- * Handle Download Requests with Robust Error Handling
+ * ============================================================
+ * DOWNLOAD HANDLER
+ * ============================================================
+ * Purpose: Processes download requests for apps.
+ *          Validates the app, checks authorization, increments
+ *          download counters, logs the download, then redirects
+ *          the user to the actual file URL.
+ *
+ * Input:   GET: id (app ID to download)
+ * Output:  302 redirect to the file URL, or styled error page
+ * Connects to: includes/init.php, apps table, downloads_log table
+ * ============================================================
  */
+require_once 'includes/init.php';
 
 try {
-    // 1. Validate ID
+    // ── Step 1: Validate the app ID from the URL ──
+    // Cast to integer to prevent any injection; reject if <= 0
     $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
     if ($id <= 0) {
         throw new Exception("Invalid application request.");
     }
 
-    // 2. Fetch the app metadata
+    // ── Step 2: Fetch the app's download link and status from database ──
+    // Only retrieve the columns we need for performance
     $stmt = $pdo->prepare("SELECT name, apk_link, status FROM apps WHERE id = ?");
     $stmt->execute([$id]);
     $app = $stmt->fetch();
 
-    // 3. Check if app exists
+    // ── Step 3: Check if the app exists in the database ──
     if (!$app) {
         throw new Exception("The application you are looking for does not exist.");
     }
 
-    // 4. Check if approved (allow owner/admin to download for testing)
+    // ── Step 4: Authorization check ──
+    // Approved apps: anyone can download
+    // Pending/rejected apps: only the owner or admins can download (for testing)
     $is_authorized = ($app['status'] === 'approved') || isAdmin() || (isLoggedIn() && isOwner($id));
     if (!$is_authorized) {
         throw new Exception("This application is currently pending review and is not available for download.");
     }
 
-    // 5. Validate Download Link
+    // ── Step 5: Validate the download link exists ──
     $redirect_url = $app['apk_link'];
     if (empty($redirect_url)) {
         throw new Exception("Download link is currently unavailable for this application.");
     }
 
-    // 6. Process Statistics (Silent fail to ensure download continues)
+    // ── Step 6: Track download statistics ──
+    // Wrapped in try/catch so stats failures don't block the download
     try {
-        // Increment download count
+        // Increment the download counter on the apps table
         $updateStmt = $pdo->prepare("UPDATE apps SET downloads = downloads + 1 WHERE id = ?");
         $updateStmt->execute([$id]);
 
-        // Log the download session
+        // Insert a detailed download log entry (IP + browser for analytics)
         $logStmt = $pdo->prepare("INSERT INTO downloads_log (app_id, ip_address, user_agent) VALUES (?, ?, ?)");
         $logStmt->execute([$id, $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0', $_SERVER['HTTP_USER_AGENT'] ?? 'Unknown']);
         
+        // Record in the activity log for audit trail
         logActivity('download', "Downloaded application: " . $app['name']);
     } catch (PDOException $e) {
-        // Log error to server but don't stop the user from downloading
+        // Log the error server-side but never block the user's download
         error_log("Download stats error: " . $e->getMessage());
     }
 
-    // 7. Redirect to file
+    // ── Step 7: Redirect the user to the actual file URL ──
+    // If the link is a relative path (local file), prepend the base URL
     if (strpos($redirect_url, 'http') !== 0) {
-        // Handle local paths
         $redirect_url = $base_url . ltrim($redirect_url, '/');
     }
 
+    // Send the browser to the download URL
     header("Location: " . $redirect_url);
     exit();
 

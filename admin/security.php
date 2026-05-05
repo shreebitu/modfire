@@ -1,6 +1,5 @@
 <?php
-require_once '../config.php';
-require_once '../db.php';
+require_once '../includes/init.php';
 
 if (!isAdmin()) {
     redirect('../auth/login.php');

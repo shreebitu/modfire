@@ -2,10 +2,10 @@
 $breadcrumb_html = $breadcrumb_html ?? '';
 ?>
 <header class="h-16 header-blur flex items-center justify-between px-6 lg:px-8 shrink-0 z-30 sticky top-0 bg-white">
-    <div class="flex items-center gap-4 flex-1">
+    <div class="flex items-center gap-1 md:gap-4 flex-1">
         <button id="mobileMenuBtn"
-            class="md:hidden text-slate-600 hover:text-indigo-700 focus:outline-none p-2 rounded-xl hover:bg-slate-100 transition-colors">
-            <span class="material-symbols-outlined text-[30px]">menu</span>
+            class="md:hidden text-slate-900 focus:outline-none transition-colors">
+            <span class="material-symbols-outlined text-[32px]">menu</span>
         </button>
         <div class="hidden md:flex items-center gap-2 text-sm text-slate-500">
             <?php if ($breadcrumb_html): ?>
@@ -21,7 +21,7 @@ $breadcrumb_html = $breadcrumb_html ?? '';
         </div>
 
         <div class="flex md:hidden items-center">
-            <h1 class="text-2xl font-black leading-none flex items-center">
+            <h1 class="text-xl sm:text-2xl font-black leading-none flex items-center">
                 <span class="text-indigo-950">MOD</span>
                 <span class="text-orange-600">FIRE</span>
             </h1>
@@ -99,9 +99,9 @@ $breadcrumb_html = $breadcrumb_html ?? '';
             </div>
         <?php else: ?>
             <a href="<?php echo $base_url; ?>auth/login.php"
-                class="text-sm font-bold text-slate-600 hover:text-indigo-600 px-3 py-2 transition-colors">Login</a>
+                class="text-[12px] sm:text-sm font-bold text-slate-600 hover:text-indigo-600 px-2 sm:px-3 py-2 transition-colors">Login</a>
             <a href="<?php echo $base_url; ?>auth/register.php"
-                class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-xl text-sm font-bold shadow-lg shadow-indigo-200 transition-all active:scale-95">Sign
+                class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 sm:px-5 py-2 rounded-xl text-[12px] sm:text-sm font-bold shadow-lg shadow-indigo-200 transition-all active:scale-95 whitespace-nowrap">Sign
                 Up</a>
         <?php endif; ?>
     </div>

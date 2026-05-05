@@ -1,9 +1,17 @@
 <?php
-require_once 'config.php';
-require_once 'db.php';
-
-$category = ''; // For sidebar highlighting
-
+/**
+ * ============================================================
+ * CUSTOM 404 ERROR PAGE
+ * ============================================================
+ * Purpose: Displays a styled error page when a user navigates to
+ *          a URL that doesn't exist. Routed here via .htaccess.
+ * Output:  HTTP 404 status code + styled error UI
+ * ============================================================
+ */
+require_once 'includes/init.php';
+// Set the HTTP response code to 404 so search engines don't index this page
+http_response_code(404);
+$category = ''; // For sidebar highlighting (no category on error page)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +24,7 @@ $category = ''; // For sidebar highlighting
     <base href="<?php echo $base_url; ?>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
     <link rel="icon" type="image/png" href="<?php echo isset($assets_url) ? $assets_url : ''; ?>images/logo.png">
     
     <style>

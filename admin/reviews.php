@@ -1,6 +1,5 @@
 <?php
-require_once '../config.php';
-require_once '../db.php';
+require_once '../includes/init.php';
 
 if (!isAdmin()) {
     redirect('../auth/login.php');
@@ -92,17 +91,18 @@ $reportsCount = $pdo->query("SELECT COUNT(*) FROM reports WHERE status = 'pendin
             <?php endif; ?>
 
             <div class="card-white overflow-hidden">
-                <table class="w-full text-left">
-                    <thead>
-                        <tr class="bg-slate-50/50 border-b border-slate-100">
-                            <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">User</th>
-                            <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Application</th>
-                            <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Rating</th>
-                            <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Comment</th>
-                            <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Date</th>
-                            <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Action</th>
-                        </tr>
-                    </thead>
+                <div class="overflow-x-auto w-full">
+                    <table class="w-full text-left whitespace-nowrap min-w-[800px]">
+                        <thead>
+                            <tr class="bg-slate-50/50 border-b border-slate-100">
+                                <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">User</th>
+                                <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Application</th>
+                                <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Rating</th>
+                                <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Comment</th>
+                                <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Date</th>
+                                <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Action</th>
+                            </tr>
+                        </thead>
                     <tbody class="divide-y divide-slate-50">
                         <?php if (empty($reviews)): ?>
                             <tr>

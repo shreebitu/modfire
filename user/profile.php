@@ -1,6 +1,5 @@
 <?php
-require_once '../config.php';
-require_once '../db.php';
+require_once '../includes/init.php';
 
 if (!isLoggedIn()) {
     redirect('../auth/login.php');
@@ -94,70 +93,7 @@ $total_favs = $favCount->fetchColumn();
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet">
     <link rel="icon" type="image/png" href="<?php echo $assets_url; ?>images/logo.png">
-    <style>
-        :root {
-            --primary: #1f108e;
-            --primary-light: #eef2ff;
-            --slate-50: #f8fafc;
-            --slate-100: #f1f5f9;
-            --slate-200: #e2e8f0;
-            --slate-500: #64748b;
-            --slate-600: #475569;
-            --slate-900: #0f172a;
-        }
 
-        body {
-            font-family: 'Inter', sans-serif !important;
-            background-color: #f7f9fb !important;
-            color: #1e293b;
-        }
-
-        .sidebar-overlay.open {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .nav-item {
-            transition: all 0.2s;
-            font-weight: 500;
-            font-size: 14px;
-            color: var(--slate-600);
-        }
-
-        .nav-item:hover {
-            background-color: var(--slate-100);
-            color: var(--primary);
-        }
-
-        .nav-item.active {
-            background-color: #ffffff;
-            color: var(--primary);
-            border-right: 3px solid var(--primary);
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-        }
-
-        .header-blur {
-            background: #ffffff !important;
-            border-bottom: 1px solid var(--slate-200);
-        }
-
-        .material-symbols-outlined {
-            font-size: 20px;
-        }
-
-        .main-scroll::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        .main-scroll::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .main-scroll::-webkit-scrollbar-thumb {
-            background: #e2e8f0;
-            border-radius: 10px;
-        }
-    </style>
 </head>
 
 <body class="flex h-screen overflow-hidden text-[#1d1d1f]">

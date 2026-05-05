@@ -1,6 +1,5 @@
 <?php
-require_once 'config.php';
-require_once 'db.php';
+require_once 'includes/init.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,6 +100,7 @@ require_once 'db.php';
                     &copy; 2026 ShreeBitu Platform. All rights reserved.
                 </div>
             </div>
+            <?php include 'includes/footer.php'; ?>
         </div>
     </main>
 

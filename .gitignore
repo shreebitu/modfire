@@ -1,0 +1,46 @@
+# ============================================================
+# .gitignore - Sensitive & unnecessary files ko GitHub se exclude karo
+# ============================================================
+
+# --- DATABASE CREDENTIALS (MOST IMPORTANT!) ---
+# Ye file mein DB username, password hai — kabhi push mat karo
+db.php
+
+# --- DATABASE SQL DUMP ---
+# Production database structure/data leak ho sakta hai
+database.sql
+
+# --- CONFIG FILE (has debug mode, base URLs) ---
+# Production config leak se hack ho sakte ho
+config.php
+
+# --- UPLOADS DIRECTORY ---
+# User uploaded files — GitHub pe nahi jaane chahiye
+uploads/
+uploads/**
+
+# --- ENVIRONMENT / SECRET FILES ---
+.env
+.env.*
+*.env
+
+# --- PHP ERROR LOGS ---
+*.log
+error_log
+php_errors.log
+
+# --- OS GENERATED FILES ---
+Thumbs.db
+Desktop.ini
+.DS_Store
+._*
+
+# --- EDITOR / IDE FILES ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- XAMPP / SERVER CONFIG ---
+.htaccess

@@ -1,6 +1,5 @@
 <?php
-require_once '../config.php';
-require_once '../db.php';
+require_once '../includes/init.php';
 
 if (!isLoggedIn()) {
     redirect('../auth/login.php');
@@ -117,7 +116,7 @@ $current_page = 'favorites.php';
                                 class="bg-white rounded-2xl md:rounded-3xl border border-slate-100 p-3 md:p-4 shadow-sm hover:shadow-md transition-all flex items-center gap-4 group">
                                 <div
                                     class="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-slate-50 overflow-hidden flex-shrink-0 shadow-inner">
-                                    <img src="../<?php echo htmlspecialchars($app['logo']); ?>"
+                                    <img src="<?php echo $base_url . htmlspecialchars($app['logo']); ?>"
                                         class="w-full h-full object-cover">
                                 </div>
                                 <div class="flex-1 min-w-0">

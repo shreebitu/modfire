@@ -1,7 +1,24 @@
 <?php
-require_once '../config.php';
-require_once '../db.php';
+/**
+ * ============================================================
+ * USER: APP SUBMISSION PAGE
+ * ============================================================
+ * Purpose: Allows logged-in users to submit new apps to the platform.
+ *          Handles logo upload, optional file upload (APK/PDF/PPT),
+ *          external link, and all metadata fields.
+ *
+ * Input:   POST: name, description, category, logo (file), app_file (file),
+ *          apk_link, file_size, os_compatible, language, license_type,
+ *          developer, csrf_token
+ * Output:  Success/error message, form with mobile + desktop layouts
+ * Security: Login required, CSRF protected, rate-limited (5/hour),
+ *           file extension whitelist, duplicate URL detection
+ * Connects to: apps table, categories table, site_settings
+ * ============================================================
+ */
+require_once '../includes/init.php';
 
+// ── Authentication Gate ──
 if (!isLoggedIn()) {
     redirect('../auth/login.php');
 }
@@ -9,15 +26,18 @@ if (!isLoggedIn()) {
 $error = '';
 $success = '';
 
+// ── Handle Form Submission ──
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Check if uploads are enabled in admin settings
     if (($site_settings['upload_enabled'] ?? '1') == '0') {
         die("New submissions are currently disabled by the administrator.");
     }
+    // Verify CSRF token
     verifyCsrfToken($_POST['csrf_token'] ?? '');
 
     $user_id = $_SESSION['user_id'];
 
-    // Rate Limiting: max 5 per hour
+    // ── Rate Limiting: Prevent spam submissions (max 5 per hour per user) ──
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM apps WHERE user_id = ? AND created_at >= DATE_SUB(NOW(), INTERVAL 1 HOUR)");
     $stmt->execute([$user_id]);
     $recent_submissions = $stmt->fetchColumn();
@@ -27,14 +47,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "You have reached the limit of 5 submissions per hour. Please try again later.";
     }
 
+    // ── Collect the external download link ──
     $apk_link = sanitizeInput($_POST['apk_link'] ?? '');
 
-    // Check if external links are allowed
+    // Check if external links are allowed by admin settings
     if (!empty($apk_link) && ($site_settings['external_links_allowed'] ?? '1') == '0' && empty($_FILES['app_file']['name'])) {
         $error = "Submitting external links is currently disabled. Please upload a file instead.";
     }
 
-    // Duplicate URL Detection
+    // ── Duplicate URL Detection: Prevent the same link from being submitted twice ──
     if (empty($error) && !empty($apk_link)) {
         $stmt = $pdo->prepare("SELECT id FROM apps WHERE apk_link = ?");
         $stmt->execute([$apk_link]);
@@ -43,6 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
+    // ── Collect all metadata fields ──
+    // Desktop and mobile forms have separate field names; pick whichever is filled
     $name = sanitizeInput($_POST['name']);
     $allowed_tags = '<p><br><b><strong><i><em><u><ul><ol><li><a href title target><h1><h2><h3><h4><h5><h6><img><blockquote><span><div><hr><table><tbody><tr><td><th>';
     $description_desktop = isset($_POST['description_desktop']) ? strip_tags(trim($_POST['description_desktop']), $allowed_tags) : '';
@@ -51,6 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $category = !empty($_POST['category_desktop']) ? sanitizeInput($_POST['category_desktop']) : (isset($_POST['category_mobile']) ? sanitizeInput($_POST['category_mobile']) : '');
     $file_size = !empty($_POST['file_size_desktop']) ? sanitizeInput($_POST['file_size_desktop']) : (isset($_POST['file_size_mobile']) ? sanitizeInput($_POST['file_size_mobile']) : '');
 
+    // OS compatibility can come from checkboxes (mobile) or text input (desktop)
     $os_mobile_arr = [];
     if (!empty($_POST['os_compatible_m1']))
         $os_mobile_arr[] = sanitizeInput($_POST['os_compatible_m1']);
@@ -63,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $license_type = !empty($_POST['license_type_desktop']) ? sanitizeInput($_POST['license_type_desktop']) : (isset($_POST['license_type_mobile']) ? sanitizeInput($_POST['license_type_mobile']) : '');
     $developer = !empty($_POST['developer_desktop']) ? sanitizeInput($_POST['developer_desktop']) : (isset($_POST['developer_mobile']) ? sanitizeInput($_POST['developer_mobile']) : '');
 
-    // Handle logo upload
+    // ── Handle Logo Upload (required) ──
     $logo_path = '';
     if (isset($_FILES['logo']) && $_FILES['logo']['error'] === UPLOAD_ERR_OK) {
         $upload_dir = '../uploads/';
@@ -72,6 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $allowed_img = ['jpg', 'jpeg', 'png', 'svg', 'webp'];
 
         if (in_array($file_ext, $allowed_img)) {
+            // Generate a unique filename to prevent collisions
             $file_name = 'logo_' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $file_ext;
             if (move_uploaded_file($file_tmp, $upload_dir . $file_name)) {
                 $logo_path = 'uploads/' . $file_name;
@@ -85,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Please upload a logo.";
     }
 
-    // Handle Main File Upload
+    // ── Handle Main File Upload (optional — alternative to external link) ──
     $final_apk_link = $apk_link;
     if (empty($error) && isset($_FILES['app_file']) && $_FILES['app_file']['error'] === UPLOAD_ERR_OK) {
         $upload_dir = '../uploads/files/';
@@ -96,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $file_orig_name = $_FILES['app_file']['name'];
         $file_ext = strtolower(pathinfo($file_orig_name, PATHINFO_EXTENSION));
 
-        // Global Limit Checks
+        // Validate against admin-configured allowed extensions and max file size
         $allowed_exts = explode(',', str_replace(' ', '', $site_settings['allowed_extensions'] ?? 'apk,pdf,ppt'));
         $max_size_mb = (int) ($site_settings['max_file_size'] ?? 100);
         $file_size_bytes = $_FILES['app_file']['size'];
@@ -108,7 +133,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $new_file_name = 'file_' . time() . '_' . bin2hex(random_bytes(8)) . '.' . $file_ext;
             if (move_uploaded_file($file_tmp, $upload_dir . $new_file_name)) {
+                // Use local file path as the download link
                 $final_apk_link = 'uploads/files/' . $new_file_name;
+                // Auto-detect file size if not manually entered
                 if (empty($file_size)) {
                     $file_size = round($file_size_bytes / (1024 * 1024), 2) . ' MB';
                 }
@@ -118,11 +145,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
+    // Ensure at least one download source is provided
     if (empty($error) && empty($final_apk_link)) {
         $error = "Please provide an external link or upload a file.";
     }
 
+    // ── Insert the app into the database ──
     if (empty($error)) {
+        // If approval system is enabled, set status to 'pending'; otherwise auto-approve
         $initial_status = ($site_settings['approval_system'] ?? '1') == '1' ? 'pending' : 'approved';
         $stmt = $pdo->prepare("INSERT INTO apps (name, description, logo, apk_link, category, user_id, file_size, os_compatible, language, license_type, developer, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         if ($stmt->execute([$name, $description, $logo_path, $final_apk_link, $category, $user_id, $file_size, $os_compatible, $language, $license_type, $developer, $initial_status])) {
@@ -134,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Fetch categories
+// ── Fetch categories for the dropdown/pill selectors ──
 $stmt = $pdo->query("SELECT * FROM categories");
 $categories = $stmt->fetchAll();
 ?>

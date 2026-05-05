@@ -1,12 +1,10 @@
 <?php
-require_once 'config.php';
-require_once 'db.php';
+require_once 'includes/init.php';
 
-$cat_slug = isset($_GET['slug']) ? sanitizeInput($_GET['slug']) : '';
+$cat_slug = sanitizeInput($_GET['slug'] ?? '');
 
 if (empty($cat_slug)) {
-    header("Location: index.php");
-    exit();
+    redirect("index.php");
 }
 
 // Fetch category details
@@ -15,7 +13,17 @@ $stmt->execute([$cat_slug]);
 $category_details = $stmt->fetch();
 
 if (!$category_details) {
-    header("Location: 404.php");
+    // Try plural/singular fallback (e.g. window -> windows)
+    $fallback_slug = (substr($cat_slug, -1) === 's') ? substr($cat_slug, 0, -1) : $cat_slug . 's';
+    $stmt = $pdo->prepare("SELECT * FROM categories WHERE slug = ?");
+    $stmt->execute([$fallback_slug]);
+    $category_details = $stmt->fetch();
+    
+    if ($category_details) {
+        redirect("category/" . $category_details['slug']);
+    }
+
+    include '404.php';
     exit();
 }
 
@@ -26,8 +34,8 @@ $page = isset($_GET['page']) && (int) $_GET['page'] > 0 ? (int) $_GET['page'] : 
 $limit = 24;
 $offset = ($page - 1) * $limit;
 
-$params = [$category_id];
-$where = ["apps.status = 'approved'", "apps.category_id = ?"];
+$params = [$category_name];
+$where = ["apps.status = 'approved'", "apps.category = ?"];
 
 if (isLoggedIn()) {
     $current_user_id = $_SESSION['user_id'];
@@ -39,31 +47,30 @@ if (isLoggedIn()) {
 
 $where_clause = implode(" AND ", $where);
 
+$queryFields = "apps.*, users.username as uploader_name, (SELECT ROUND(AVG(rating), 1) FROM reviews WHERE app_id = apps.id) as avg_rating, (SELECT COUNT(*) FROM downloads_log WHERE app_id = apps.id) as downloads";
+
 if (isLoggedIn()) {
-    $stmt = $pdo->prepare("SELECT apps.*, users.username as uploader_name, (SELECT ROUND(AVG(rating), 1) FROM reviews WHERE app_id = apps.id) as avg_rating, 
-                           (SELECT COUNT(*) FROM favorites WHERE user_id = ? AND app_id = apps.id) as is_favorited
-                           FROM apps 
-                           JOIN users ON apps.user_id = users.id
-                           WHERE $where_clause 
-                           ORDER BY apps.created_at DESC 
-                           LIMIT $limit OFFSET $offset");
-    $stmt->execute(array_merge([$current_user_id], $params));
+    $queryFields .= ", (SELECT COUNT(*) FROM favorites WHERE user_id = ? AND app_id = apps.id) as is_favorited";
+    $finalParams = array_merge([$current_user_id], $params);
 } else {
-    $stmt = $pdo->prepare("SELECT apps.*, users.username as uploader_name, (SELECT ROUND(AVG(rating), 1) FROM reviews WHERE app_id = apps.id) as avg_rating, 
-                           0 as is_favorited
-                           FROM apps 
-                           JOIN users ON apps.user_id = users.id
-                           WHERE $where_clause 
-                           ORDER BY apps.created_at DESC 
-                           LIMIT $limit OFFSET $offset");
-    $stmt->execute($params);
+    $queryFields .= ", 0 as is_favorited";
+    $finalParams = $params;
 }
+
+$stmt = $pdo->prepare("SELECT $queryFields FROM apps JOIN users ON apps.user_id = users.id WHERE $where_clause ORDER BY apps.created_at DESC LIMIT $limit OFFSET $offset");
+$stmt->execute($finalParams);
 $apps = $stmt->fetchAll();
 
 $stmtCount = $pdo->prepare("SELECT COUNT(*) FROM apps JOIN users ON apps.user_id = users.id WHERE $where_clause");
 $stmtCount->execute($params);
 $total_apps = $stmtCount->fetchColumn();
 $total_pages = ceil($total_apps / $limit);
+
+// Dynamic SEO Helpers
+$protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';
+$host = $_SERVER['HTTP_HOST'];
+$canonical_url = $protocol . "://" . $host . $base_url . 'category/' . $cat_slug;
+$og_image = $protocol . "://" . $host . $assets_url . 'images/logo.png';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,6 +81,14 @@ $total_pages = ceil($total_apps / $limit);
     <base href="<?php echo $base_url; ?>">
     <title><?php echo htmlspecialchars($category_name); ?> - Browse Apps | ShreeBitu</title>
     <meta name="description" content="Discover and download premium apps in the <?php echo htmlspecialchars($category_name); ?> category.">
+    <link rel="canonical" href="<?php echo $canonical_url; ?>">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?php echo $canonical_url; ?>">
+    <meta property="og:title" content="<?php echo htmlspecialchars($category_name); ?> - Browse Apps | ShreeBitu">
+    <meta property="og:description" content="Discover and download premium apps in the <?php echo htmlspecialchars($category_name); ?> category.">
+    <meta property="og:image" content="<?php echo $og_image; ?>">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
@@ -180,8 +195,8 @@ $total_pages = ceil($total_apps / $limit);
         include 'includes/header.php';
         ?>
 
-        <div class="flex-1 overflow-y-auto px-4 md:px-8 lg:px-10 pb-12 main-scroll">
-            <div class="max-w-[1400px] mx-auto">
+        <div class="flex-1 overflow-y-auto main-scroll">
+            <div class="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-10 pb-12">
 
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10 mt-6">
                     <div>
@@ -204,56 +219,9 @@ $total_pages = ceil($total_apps / $limit);
                     </div>
                 <?php else: ?>
                     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-                        <?php foreach ($apps as $app): ?>
-                            <a href="<?php echo htmlspecialchars($app['slug']); ?>"
-                                class="app-card bg-white p-4 rounded-[28px] flex flex-col group h-full">
-                                <div
-                                    class="aspect-square w-full rounded-2xl bg-slate-50 mb-4 overflow-hidden relative shadow-inner">
-                                    <img src="<?php echo $base_url . htmlspecialchars($app['logo']); ?>"
-                                        alt="<?php echo htmlspecialchars($app['name']); ?>"
-                                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                        onerror="this.src='<?php echo $assets_url; ?>images/logo.png'">
-
-                                    <!-- Favorite Button -->
-                                    <?php if (isLoggedIn()): ?>
-                                        <button onclick="toggleFavorite(event, <?php echo $app['id']; ?>)"
-                                            id="favBtn-<?php echo $app['id']; ?>"
-                                            class="absolute top-2 left-2 w-7 h-7 rounded-lg flex items-center justify-center transition-all shadow-sm backdrop-blur-md active:scale-90 z-20 <?php echo $app['is_favorited'] ? 'bg-pink-500 text-white' : 'bg-white/80 text-slate-400 hover:text-pink-500'; ?>">
-                                            <span
-                                                class="material-symbols-outlined <?php echo $app['is_favorited'] ? 'fill-current' : ''; ?> text-[16px]"><?php echo $app['is_favorited'] ? 'favorite' : 'favorite_border'; ?></span>
-                                        </button>
-                                    <?php endif; ?>
-
-                                    <?php if ($app['avg_rating']): ?>
-                                        <div
-                                            class="absolute bottom-2 right-2 px-2 py-1 bg-white/90 backdrop-blur rounded-lg shadow-sm flex items-center gap-1">
-                                            <span
-                                                class="material-symbols-outlined text-amber-400 text-[12px] fill-current">star</span>
-                                            <span
-                                                class="text-[10px] font-bold text-slate-700"><?php echo $app['avg_rating']; ?></span>
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="flex-1">
-                                    <span
-                                        class="text-[9px] font-black text-indigo-600 uppercase tracking-widest mb-1 block"><?php echo htmlspecialchars($category_name); ?></span>
-                                    <h4
-                                        class="text-[14px] font-bold text-slate-900 leading-tight line-clamp-2 group-hover:text-indigo-600 transition-colors">
-                                        <?php echo htmlspecialchars($app['name']); ?>
-                                    </h4>
-                                </div>
-                                <div class="mt-4 pt-4 border-t border-slate-50 flex items-center justify-between">
-                                    <div class="flex items-center gap-1.5">
-                                        <span
-                                            class="material-symbols-outlined text-slate-400 text-[14px]">download_for_offline</span>
-                                        <span
-                                            class="text-[10px] font-black text-slate-500"><?php echo number_format($app['downloads']); ?></span>
-                                    </div>
-                                    <span
-                                        class="material-symbols-outlined text-slate-300 group-hover:text-indigo-600 transition-colors translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all">arrow_forward</span>
-                                </div>
-                            </a>
-                        <?php endforeach; ?>
+                        <?php foreach ($apps as $app) {
+                            echo renderAppCard($app, $base_url, $assets_url);
+                        } ?>
                     </div>
                 <?php endif; ?>
 
@@ -281,7 +249,8 @@ $total_pages = ceil($total_apps / $limit);
                     </div>
                 <?php endif; ?>
 
-            </div>
+        </div>
+        <?php include 'includes/footer.php'; ?>
         </div>
     </main>
     <script>

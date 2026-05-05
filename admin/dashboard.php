@@ -1,34 +1,48 @@
 <?php
-require_once '../config.php';
-require_once '../db.php';
+/**
+ * ============================================================
+ * ADMIN: COMMAND CENTER DASHBOARD
+ * ============================================================
+ * Purpose: Main admin overview page showing platform stats,
+ *          activity feed, content distribution, and system health.
+ * Access:  Admin role only (enforced by isAdmin() check)
+ * Data:    Aggregates from users, apps, downloads_log, reports,
+ *          activity_logs, and settings tables
+ * ============================================================
+ */
+require_once '../includes/init.php';
 
+// ── Admin-Only Access Gate ──
 if (!isAdmin()) {
     redirect('../auth/login.php');
 }
 
-// Get basic stats
+// ── User Statistics ──
 $usersCount = $pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
 $bannedCount = $pdo->query("SELECT COUNT(*) FROM users WHERE is_banned = 1")->fetchColumn();
 $shadowCount = $pdo->query("SELECT COUNT(*) FROM users WHERE shadow_banned = 1")->fetchColumn();
 
+// ── App/Content Statistics ──
 $appsCount = $pdo->query("SELECT COUNT(*) FROM apps")->fetchColumn();
 $pendingCount = $pdo->query("SELECT COUNT(*) FROM apps WHERE status = 'pending'")->fetchColumn();
 
-// Detailed content stats
+// ── Content Mix Breakdown (by category type) ──
 $apkCount = $pdo->query("SELECT COUNT(*) FROM apps WHERE category LIKE '%apk%' OR category LIKE '%Apps%'")->fetchColumn();
 $pdfCount = $pdo->query("SELECT COUNT(*) FROM apps WHERE category LIKE '%pdf%' OR category LIKE '%Notes%'")->fetchColumn();
 $pptCount = $pdo->query("SELECT COUNT(*) FROM apps WHERE category LIKE '%ppt%' OR category LIKE '%Presentations%'")->fetchColumn();
 
+// ── Download Statistics ──
 $downloadsTotal = $pdo->query("SELECT SUM(downloads) FROM apps")->fetchColumn() ?: 0;
 $dailyDownloads = $pdo->query("SELECT COUNT(*) FROM downloads_log WHERE downloaded_at >= CURDATE()")->fetchColumn();
 
+// ── Pending Reports ──
 $reportsCount = $pdo->query("SELECT COUNT(*) FROM reports WHERE status = 'pending'")->fetchColumn();
 
-// Recent Activity
+// ── Recent Activity Stream (last 6 actions with usernames) ──
 $stmtLogs = $pdo->query("SELECT activity_logs.*, users.username FROM activity_logs LEFT JOIN users ON activity_logs.user_id = users.id ORDER BY activity_logs.created_at DESC LIMIT 6");
 $recentLogs = $stmtLogs->fetchAll();
 
-// System Statuses
+// ── System Status Badges (from site settings) ──
 $maintenanceMode = ($site_settings['maintenance_mode'] ?? '0') == '1';
 $regEnabled = ($site_settings['registration_enabled'] ?? '1') == '1';
 $uploadEnabled = ($site_settings['upload_enabled'] ?? '1') == '1';

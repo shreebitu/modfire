@@ -1,6 +1,5 @@
 <?php
-require_once 'config.php';
-require_once 'db.php';
+require_once 'includes/init.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +22,7 @@ require_once 'db.php';
         .main-scroll::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
     </style>
 </head>
-<body class="flex h-screen overflow-hidden bg-[#f7f9fb] text-[#1d1d1f]">
+<body class="flex h-screen overflow-hidden overflow-x-hidden bg-[#f7f9fb] text-[#1d1d1f]">
 
     <?php include 'includes/sidebar.php'; ?>
     
@@ -52,8 +51,8 @@ require_once 'db.php';
         ?>
 
         <!-- Content Container -->
-        <div class="flex-1 overflow-y-auto px-4 md:px-8 lg:px-10 pb-20 main-scroll">
-            <div class="max-w-4xl mx-auto mt-12 md:mt-16">
+        <div class="flex-1 overflow-y-auto main-scroll">
+            <div class="max-w-4xl mx-auto mt-12 md:mt-16 px-4 md:px-8 lg:px-10 pb-20">
                 
                 <div class="text-center mb-16">
                     <h1 class="text-4xl md:text-6xl font-black text-slate-900 tracking-tight mb-6">Mission & Vision</h1>
@@ -93,6 +92,7 @@ require_once 'db.php';
                     <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
                 </div>
             </div>
+        <?php include 'includes/footer.php'; ?>
         </div>
     </main>
 

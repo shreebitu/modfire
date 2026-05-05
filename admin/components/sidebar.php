@@ -18,7 +18,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <a href="dashboard.php" class="nav-item <?php echo $current_page == 'dashboard.php' ? 'active' : ''; ?> flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all">
                 <span class="material-symbols-outlined">dashboard</span> Dashboard
             </a>
-            <a href="apps.php" class="nav-item <?php echo $current_page == 'apps.php' ? 'active' : ''; ?> flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all">
+            <a href="apps.php" class="nav-item <?php echo in_array($current_page, ['apps.php', 'edit.php']) ? 'active' : ''; ?> flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all">
                 <span class="material-symbols-outlined">inventory_2</span> Manage Content
             </a>
             <a href="users.php" class="nav-item <?php echo $current_page == 'users.php' ? 'active' : ''; ?> flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all">
